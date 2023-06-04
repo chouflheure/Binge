@@ -17,6 +17,9 @@
 		1D187A102A2CC8AE00827277 /* BingePodcastTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D187A0F2A2CC8AE00827277 /* BingePodcastTests.swift */; };
 		1D187A1A2A2CC8AE00827277 /* BingePodcastUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D187A192A2CC8AE00827277 /* BingePodcastUITests.swift */; };
 		1D187A1C2A2CC8AE00827277 /* BingePodcastUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D187A1B2A2CC8AE00827277 /* BingePodcastUITestsLaunchTests.swift */; };
+		1EDD35B0FB92C7A3C47366EF /* Pods_BingePodcast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9BBA30502C47DBBA8D81960 /* Pods_BingePodcast.framework */; };
+		29DAEC475A516448D6CD952D /* Pods_BingePodcastTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78A75B4B4E2FDBC4070B57E7 /* Pods_BingePodcastTests.framework */; };
+		A26896166E47208957C4A86E /* Pods_BingePodcastUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60313659C3135674FC214827 /* Pods_BingePodcastUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		03B35CF9769C67A9DC79EB55 /* Pods-BingePodcast.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BingePodcast.debug.xcconfig"; path = "Target Support Files/Pods-BingePodcast/Pods-BingePodcast.debug.xcconfig"; sourceTree = "<group>"; };
 		1D1879F22A2CC8AA00827277 /* BingePodcast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BingePodcast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D1879F52A2CC8AA00827277 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1D1879F72A2CC8AA00827277 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +55,14 @@
 		1D187A152A2CC8AE00827277 /* BingePodcastUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BingePodcastUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D187A192A2CC8AE00827277 /* BingePodcastUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BingePodcastUITests.swift; sourceTree = "<group>"; };
 		1D187A1B2A2CC8AE00827277 /* BingePodcastUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BingePodcastUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		2A27D8FEFED8FFCB2F8383F9 /* Pods-BingePodcastTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BingePodcastTests.release.xcconfig"; path = "Target Support Files/Pods-BingePodcastTests/Pods-BingePodcastTests.release.xcconfig"; sourceTree = "<group>"; };
+		5E7971384F985948960C594D /* Pods-BingePodcastUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BingePodcastUITests.release.xcconfig"; path = "Target Support Files/Pods-BingePodcastUITests/Pods-BingePodcastUITests.release.xcconfig"; sourceTree = "<group>"; };
+		60313659C3135674FC214827 /* Pods_BingePodcastUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BingePodcastUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		78A75B4B4E2FDBC4070B57E7 /* Pods_BingePodcastTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BingePodcastTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9135F1FDEF5EFAB128CCC592 /* Pods-BingePodcastUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BingePodcastUITests.debug.xcconfig"; path = "Target Support Files/Pods-BingePodcastUITests/Pods-BingePodcastUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		AF99FA8719AA1A2882CBAB12 /* Pods-BingePodcastTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BingePodcastTests.debug.xcconfig"; path = "Target Support Files/Pods-BingePodcastTests/Pods-BingePodcastTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C3D264B70B526E9DC75D6150 /* Pods-BingePodcast.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BingePodcast.release.xcconfig"; path = "Target Support Files/Pods-BingePodcast/Pods-BingePodcast.release.xcconfig"; sourceTree = "<group>"; };
+		E9BBA30502C47DBBA8D81960 /* Pods_BingePodcast.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BingePodcast.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1EDD35B0FB92C7A3C47366EF /* Pods_BingePodcast.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29DAEC475A516448D6CD952D /* Pods_BingePodcastTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A26896166E47208957C4A86E /* Pods_BingePodcastUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +100,8 @@
 				1D187A0E2A2CC8AE00827277 /* BingePodcastTests */,
 				1D187A182A2CC8AE00827277 /* BingePodcastUITests */,
 				1D1879F32A2CC8AA00827277 /* Products */,
+				C26A9FA55012096BD8A7CEB5 /* Pods */,
+				480D38A7599923BE528AD4B8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,14 +118,10 @@
 		1D1879F42A2CC8AA00827277 /* BingePodcast */ = {
 			isa = PBXGroup;
 			children = (
-				1D1879F52A2CC8AA00827277 /* AppDelegate.swift */,
-				1D1879F72A2CC8AA00827277 /* SceneDelegate.swift */,
-				1D1879F92A2CC8AA00827277 /* ViewController.swift */,
-				1D1879FB2A2CC8AA00827277 /* Main.storyboard */,
-				1D187A012A2CC8AD00827277 /* Assets.xcassets */,
-				1D187A032A2CC8AD00827277 /* LaunchScreen.storyboard */,
-				1D187A062A2CC8AD00827277 /* Info.plist */,
-				1D1879FE2A2CC8AA00827277 /* BingePodcast.xcdatamodeld */,
+				1D9869CD2A2D19BE00D26CEB /* Productions Files */,
+				1D9869CC2A2D19AC00D26CEB /* Controller */,
+				1D9869CB2A2D19A500D26CEB /* Model */,
+				1D9869CA2A2D199D00D26CEB /* View */,
 			);
 			path = BingePodcast;
 			sourceTree = "<group>";
@@ -130,6 +143,65 @@
 			path = BingePodcastUITests;
 			sourceTree = "<group>";
 		};
+		1D9869CA2A2D199D00D26CEB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1D187A032A2CC8AD00827277 /* LaunchScreen.storyboard */,
+				1D1879FB2A2CC8AA00827277 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1D9869CB2A2D19A500D26CEB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1D9869CC2A2D19AC00D26CEB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1D1879F92A2CC8AA00827277 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1D9869CD2A2D19BE00D26CEB /* Productions Files */ = {
+			isa = PBXGroup;
+			children = (
+				1D1879F72A2CC8AA00827277 /* SceneDelegate.swift */,
+				1D1879F52A2CC8AA00827277 /* AppDelegate.swift */,
+				1D187A062A2CC8AD00827277 /* Info.plist */,
+				1D187A012A2CC8AD00827277 /* Assets.xcassets */,
+				1D1879FE2A2CC8AA00827277 /* BingePodcast.xcdatamodeld */,
+			);
+			path = "Productions Files";
+			sourceTree = "<group>";
+		};
+		480D38A7599923BE528AD4B8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E9BBA30502C47DBBA8D81960 /* Pods_BingePodcast.framework */,
+				78A75B4B4E2FDBC4070B57E7 /* Pods_BingePodcastTests.framework */,
+				60313659C3135674FC214827 /* Pods_BingePodcastUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C26A9FA55012096BD8A7CEB5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				03B35CF9769C67A9DC79EB55 /* Pods-BingePodcast.debug.xcconfig */,
+				C3D264B70B526E9DC75D6150 /* Pods-BingePodcast.release.xcconfig */,
+				AF99FA8719AA1A2882CBAB12 /* Pods-BingePodcastTests.debug.xcconfig */,
+				2A27D8FEFED8FFCB2F8383F9 /* Pods-BingePodcastTests.release.xcconfig */,
+				9135F1FDEF5EFAB128CCC592 /* Pods-BingePodcastUITests.debug.xcconfig */,
+				5E7971384F985948960C594D /* Pods-BingePodcastUITests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -137,9 +209,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1D187A1F2A2CC8AE00827277 /* Build configuration list for PBXNativeTarget "BingePodcast" */;
 			buildPhases = (
+				6EEB7E5E78AA9E3AA7B3226D /* [CP] Check Pods Manifest.lock */,
 				1D1879EE2A2CC8AA00827277 /* Sources */,
 				1D1879EF2A2CC8AA00827277 /* Frameworks */,
 				1D1879F02A2CC8AA00827277 /* Resources */,
+				E91A568289B1D51BDE3352AC /* [CP] Embed Pods Frameworks */,
+				1D187A282A2CE45100827277 /* SwiftGen */,
 			);
 			buildRules = (
 			);
@@ -154,6 +229,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1D187A222A2CC8AE00827277 /* Build configuration list for PBXNativeTarget "BingePodcastTests" */;
 			buildPhases = (
+				F56991A22A4F4482E9E63DE4 /* [CP] Check Pods Manifest.lock */,
 				1D187A072A2CC8AE00827277 /* Sources */,
 				1D187A082A2CC8AE00827277 /* Frameworks */,
 				1D187A092A2CC8AE00827277 /* Resources */,
@@ -172,6 +248,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1D187A252A2CC8AE00827277 /* Build configuration list for PBXNativeTarget "BingePodcastUITests" */;
 			buildPhases = (
+				4B5E0F35705F3218FBDCE865 /* [CP] Check Pods Manifest.lock */,
 				1D187A112A2CC8AE00827277 /* Sources */,
 				1D187A122A2CC8AE00827277 /* Frameworks */,
 				1D187A132A2CC8AE00827277 /* Resources */,
@@ -255,6 +332,110 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1D187A282A2CE45100827277 /* SwiftGen */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftGen;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# \n# if [[ -f \"${PODS_ROOT}/SwiftGen/bin/swiftgen\" ]]; then\n#   \"${PODS_ROOT}/SwiftGen/bin/swiftgen\" …\n# else\n#   echo \"warning: SwiftGen is not installed. Run 'pod install # --repo-update' to install it.\"\n# fi\n\n";
+		};
+		4B5E0F35705F3218FBDCE865 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BingePodcastUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6EEB7E5E78AA9E3AA7B3226D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BingePodcast-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E91A568289B1D51BDE3352AC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BingePodcast/Pods-BingePodcast-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BingePodcast/Pods-BingePodcast-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BingePodcast/Pods-BingePodcast-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F56991A22A4F4482E9E63DE4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BingePodcastTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1D1879EE2A2CC8AA00827277 /* Sources */ = {
@@ -436,6 +617,7 @@
 		};
 		1D187A202A2CC8AE00827277 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 03B35CF9769C67A9DC79EB55 /* Pods-BingePodcast.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -443,7 +625,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = P72QBKGC25;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = BingePodcast/Info.plist;
+				INFOPLIST_FILE = "BingePodcast/Productions\\ Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -464,6 +646,7 @@
 		};
 		1D187A212A2CC8AE00827277 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C3D264B70B526E9DC75D6150 /* Pods-BingePodcast.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -471,7 +654,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = P72QBKGC25;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = BingePodcast/Info.plist;
+				INFOPLIST_FILE = "BingePodcast/Productions\\ Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -492,6 +675,7 @@
 		};
 		1D187A232A2CC8AE00827277 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AF99FA8719AA1A2882CBAB12 /* Pods-BingePodcastTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -512,6 +696,7 @@
 		};
 		1D187A242A2CC8AE00827277 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2A27D8FEFED8FFCB2F8383F9 /* Pods-BingePodcastTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -532,6 +717,7 @@
 		};
 		1D187A262A2CC8AE00827277 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9135F1FDEF5EFAB128CCC592 /* Pods-BingePodcastUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -550,6 +736,7 @@
 		};
 		1D187A272A2CC8AE00827277 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5E7971384F985948960C594D /* Pods-BingePodcastUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
