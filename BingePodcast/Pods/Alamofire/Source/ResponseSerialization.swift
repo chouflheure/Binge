@@ -327,6 +327,7 @@ extension DownloadRequest {
     /// - parameter completionHandler: The code to be executed once the request has finished.
     ///
     /// - returns: The request.
+    @available(iOS 10.0, *)
     @discardableResult
     public func responseData(
         queue: DispatchQueue? = nil,
@@ -456,6 +457,7 @@ extension DownloadRequest {
     /// - parameter completionHandler: A closure to be executed once the request has finished.
     ///
     /// - returns: The request.
+    @available(iOS 10.0, *)
     @discardableResult
     public func responseString(
         queue: DispatchQueue? = nil,
@@ -577,6 +579,7 @@ extension DownloadRequest {
     /// - parameter completionHandler: A closure to be executed once the request has finished.
     ///
     /// - returns: The request.
+    @available(iOS 10.0, *)
     @discardableResult
     public func responseJSON(
         queue: DispatchQueue? = nil,
@@ -698,6 +701,7 @@ extension DownloadRequest {
     /// - parameter completionHandler: A closure to be executed once the request has finished.
     ///
     /// - returns: The request.
+    @available(iOS 10.0, *)
     @discardableResult
     public func responsePropertyList(
         queue: DispatchQueue? = nil,
