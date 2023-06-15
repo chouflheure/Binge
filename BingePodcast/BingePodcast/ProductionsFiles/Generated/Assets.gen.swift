@@ -7,34 +7,18 @@ import UIKit
 // MARK: - Asset Catalogs
 
 internal enum Assets {
-  internal static let accentColor = ColorAsset(name: "AccentColor")
+  internal enum IconNavBar {
+    internal static let favoriteSelect = ImageAsset(name: "favorite_select")
+    internal static let favoriteUnselect = ImageAsset(name: "favorite_unselect")
+    internal static let homeSelect = ImageAsset(name: "home_select")
+    internal static let homeUnselect = ImageAsset(name: "home_unselect")
+    internal static let podcastSelect = ImageAsset(name: "podcast_select")
+    internal static let podcastUnselect = ImageAsset(name: "podcast_unselect")
+  }
   internal static let launchScreen = ImageAsset(name: "launchScreen")
 }
 
 // MARK: - Implementation Details
-internal final class ColorAsset {
-  internal fileprivate(set) var name: String
-
-  internal typealias Color = UIColor
-  internal private(set) lazy var color: Color = {
-    guard let color = Color(asset: self) else {
-      fatalError("Unable to load color asset named \(name).")
-    }
-    return color
-  }()
-
-  fileprivate init(name: String) {
-    self.name = name
-  }
-}
-
-internal extension ColorAsset.Color {
-  convenience init?(asset: ColorAsset) {
-    let bundle = BundleToken.bundle
-    self.init(named: asset.name, in: bundle, compatibleWith: nil)
-  }
-}
-
 
 
 internal struct ImageAsset {

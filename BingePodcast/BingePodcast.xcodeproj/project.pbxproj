@@ -17,6 +17,8 @@
 		1D187A102A2CC8AE00827277 /* BingePodcastTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D187A0F2A2CC8AE00827277 /* BingePodcastTests.swift */; };
 		1D187A1A2A2CC8AE00827277 /* BingePodcastUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D187A192A2CC8AE00827277 /* BingePodcastUITests.swift */; };
 		1D187A1C2A2CC8AE00827277 /* BingePodcastUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D187A1B2A2CC8AE00827277 /* BingePodcastUITestsLaunchTests.swift */; };
+		1D973A6B2A3A875F0027AC75 /* PlayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D973A6A2A3A875F0027AC75 /* PlayerModel.swift */; };
+		1D973A6D2A3A87800027AC75 /* Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D973A6C2A3A87800027AC75 /* Delegate.swift */; };
 		1D986A962A2DEB0100D26CEB /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D986A952A2DEB0100D26CEB /* Colors.xcassets */; };
 		1D986A9F2A2DEF7600D26CEB /* Colors.gen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D986A9D2A2DEF7600D26CEB /* Colors.gen.swift */; };
 		1D986AA02A2DEF7600D26CEB /* Assets.gen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D986A9E2A2DEF7600D26CEB /* Assets.gen.swift */; };
@@ -52,6 +54,7 @@
 		1D986AE42A2E151900D26CEB /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1D986AE32A2E151900D26CEB /* FirebaseRemoteConfigSwift */; };
 		1D986AE62A2E151900D26CEB /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 1D986AE52A2E151900D26CEB /* FirebaseStorage */; };
 		1D986AE82A2E151900D26CEB /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 1D986AE72A2E151900D26CEB /* FirebaseStorageCombine-Community */; };
+		1DC3F5002A3A7A86007F4AC8 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC3F4FF2A3A7A86007F4AC8 /* PlayerViewController.swift */; };
 		1DCA9ECE2A35FD22008ED92E /* PlayerAudioService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCA9ECD2A35FD22008ED92E /* PlayerAudioService.swift */; };
 		1EDD35B0FB92C7A3C47366EF /* Pods_BingePodcast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9BBA30502C47DBBA8D81960 /* Pods_BingePodcast.framework */; };
 		29DAEC475A516448D6CD952D /* Pods_BingePodcastTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78A75B4B4E2FDBC4070B57E7 /* Pods_BingePodcastTests.framework */; };
@@ -91,6 +94,8 @@
 		1D187A152A2CC8AE00827277 /* BingePodcastUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BingePodcastUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D187A192A2CC8AE00827277 /* BingePodcastUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BingePodcastUITests.swift; sourceTree = "<group>"; };
 		1D187A1B2A2CC8AE00827277 /* BingePodcastUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BingePodcastUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		1D973A6A2A3A875F0027AC75 /* PlayerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerModel.swift; sourceTree = "<group>"; };
+		1D973A6C2A3A87800027AC75 /* Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delegate.swift; sourceTree = "<group>"; };
 		1D986A952A2DEB0100D26CEB /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		1D986A9D2A2DEF7600D26CEB /* Colors.gen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.gen.swift; sourceTree = "<group>"; };
 		1D986A9E2A2DEF7600D26CEB /* Assets.gen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.gen.swift; sourceTree = "<group>"; };
@@ -99,6 +104,7 @@
 		1D986AAA2A2E08CF00D26CEB /* Proxima-Nova-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima-Nova-Bold.otf"; sourceTree = "<group>"; };
 		1D986AAB2A2E08D000D26CEB /* Proxima-Nova-Sbold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima-Nova-Sbold.ttf"; sourceTree = "<group>"; };
 		1D986AB02A2E120500D26CEB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1DC3F4FF2A3A7A86007F4AC8 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		1DCA9ECD2A35FD22008ED92E /* PlayerAudioService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerAudioService.swift; sourceTree = "<group>"; };
 		2A27D8FEFED8FFCB2F8383F9 /* Pods-BingePodcastTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BingePodcastTests.release.xcconfig"; path = "Target Support Files/Pods-BingePodcastTests/Pods-BingePodcastTests.release.xcconfig"; sourceTree = "<group>"; };
 		5E7971384F985948960C594D /* Pods-BingePodcastUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BingePodcastUITests.release.xcconfig"; path = "Target Support Files/Pods-BingePodcastUITests/Pods-BingePodcastUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -215,6 +221,15 @@
 			path = BingePodcastUITests;
 			sourceTree = "<group>";
 		};
+		1D973A692A3A873F0027AC75 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				1DCA9ECD2A35FD22008ED92E /* PlayerAudioService.swift */,
+				1D973A6C2A3A87800027AC75 /* Delegate.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		1D9869CA2A2D199D00D26CEB /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -227,7 +242,8 @@
 		1D9869CB2A2D19A500D26CEB /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1DCA9ECD2A35FD22008ED92E /* PlayerAudioService.swift */,
+				1D973A6A2A3A875F0027AC75 /* PlayerModel.swift */,
+				1D973A692A3A873F0027AC75 /* Service */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -236,6 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				1D1879F92A2CC8AA00827277 /* ViewController.swift */,
+				1DC3F4FF2A3A7A86007F4AC8 /* PlayerViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -576,12 +593,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D973A6B2A3A875F0027AC75 /* PlayerModel.swift in Sources */,
 				1D986AA02A2DEF7600D26CEB /* Assets.gen.swift in Sources */,
 				1D986A9F2A2DEF7600D26CEB /* Colors.gen.swift in Sources */,
 				1D187A002A2CC8AA00827277 /* BingePodcast.xcdatamodeld in Sources */,
 				1DCA9ECE2A35FD22008ED92E /* PlayerAudioService.swift in Sources */,
 				1D986AA62A2DFF0E00D26CEB /* Strings.gen.swift in Sources */,
+				1DC3F5002A3A7A86007F4AC8 /* PlayerViewController.swift in Sources */,
 				1D1879FA2A2CC8AA00827277 /* ViewController.swift in Sources */,
+				1D973A6D2A3A87800027AC75 /* Delegate.swift in Sources */,
 				1D1879F62A2CC8AA00827277 /* AppDelegate.swift in Sources */,
 				1D1879F82A2CC8AA00827277 /* SceneDelegate.swift in Sources */,
 			);
@@ -769,8 +789,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -778,6 +797,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.calvignaccharles.BingePodcast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -798,8 +820,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -807,6 +828,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.calvignaccharles.BingePodcast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
