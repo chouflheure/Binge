@@ -32,7 +32,7 @@ class PlayerViewController: UIViewController {
         // . Update UI
         // . Segue pour description
 
-        setUpUI()
+        // setUpUI()
     }
     
     
@@ -85,7 +85,7 @@ private extension PlayerViewController {
     
     func backgroundColorGradient() {
         // implement le gradient view color
-        globalView.backgroundColor = .black
+        // globalView.backgroundColor = .black
     }
     
     func setUpsliderUI() {

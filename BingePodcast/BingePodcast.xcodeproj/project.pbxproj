@@ -18,6 +18,10 @@
 		1D187A1A2A2CC8AE00827277 /* BingePodcastUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D187A192A2CC8AE00827277 /* BingePodcastUITests.swift */; };
 		1D187A1C2A2CC8AE00827277 /* BingePodcastUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D187A1B2A2CC8AE00827277 /* BingePodcastUITestsLaunchTests.swift */; };
 		1D55E1E52A3DCF9100F1A9BD /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D55E1E42A3DCF9100F1A9BD /* TestViewController.swift */; };
+		1D55E2902A408B2200F1A9BD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D55E28F2A408B2200F1A9BD /* Constants.swift */; };
+		1D55E2922A409CB000F1A9BD /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D55E2912A409CB000F1A9BD /* UIButton.swift */; };
+		1D55E2942A40B3D400F1A9BD /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D55E2932A40B3D400F1A9BD /* UIImage.swift */; };
+		1D55E2962A4119AC00F1A9BD /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D55E2952A4119AC00F1A9BD /* UILabel.swift */; };
 		1D973A6B2A3A875F0027AC75 /* PlayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D973A6A2A3A875F0027AC75 /* PlayerModel.swift */; };
 		1D973A6D2A3A87800027AC75 /* Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D973A6C2A3A87800027AC75 /* Delegate.swift */; };
 		1D986A962A2DEB0100D26CEB /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D986A952A2DEB0100D26CEB /* Colors.xcassets */; };
@@ -97,6 +101,10 @@
 		1D187A192A2CC8AE00827277 /* BingePodcastUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BingePodcastUITests.swift; sourceTree = "<group>"; };
 		1D187A1B2A2CC8AE00827277 /* BingePodcastUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BingePodcastUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		1D55E1E42A3DCF9100F1A9BD /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		1D55E28F2A408B2200F1A9BD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		1D55E2912A409CB000F1A9BD /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
+		1D55E2932A40B3D400F1A9BD /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
+		1D55E2952A4119AC00F1A9BD /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		1D973A6A2A3A875F0027AC75 /* PlayerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerModel.swift; sourceTree = "<group>"; };
 		1D973A6C2A3A87800027AC75 /* Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delegate.swift; sourceTree = "<group>"; };
 		1D986A952A2DEB0100D26CEB /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -276,6 +284,7 @@
 				1D1879FE2A2CC8AA00827277 /* BingePodcast.xcdatamodeld */,
 				1D986AA32A2DF33F00D26CEB /* Strings.strings */,
 				1DDF70022A3CC81C00EC2294 /* String.swift */,
+				1D55E28F2A408B2200F1A9BD /* Constants.swift */,
 			);
 			path = ProductionsFiles;
 			sourceTree = "<group>";
@@ -302,6 +311,9 @@
 		1DDF70042A3CC84300EC2294 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				1D55E2912A409CB000F1A9BD /* UIButton.swift */,
+				1D55E2932A40B3D400F1A9BD /* UIImage.swift */,
+				1D55E2952A4119AC00F1A9BD /* UILabel.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -615,17 +627,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D55E2962A4119AC00F1A9BD /* UILabel.swift in Sources */,
 				1D973A6B2A3A875F0027AC75 /* PlayerModel.swift in Sources */,
 				1D986AA02A2DEF7600D26CEB /* Assets.gen.swift in Sources */,
 				1D986A9F2A2DEF7600D26CEB /* Colors.gen.swift in Sources */,
 				1D187A002A2CC8AA00827277 /* BingePodcast.xcdatamodeld in Sources */,
 				1DCA9ECE2A35FD22008ED92E /* PlayerAudioService.swift in Sources */,
+				1D55E2922A409CB000F1A9BD /* UIButton.swift in Sources */,
 				1D55E1E52A3DCF9100F1A9BD /* TestViewController.swift in Sources */,
 				1D986AA62A2DFF0E00D26CEB /* Strings.gen.swift in Sources */,
 				1DDF70032A3CC81C00EC2294 /* String.swift in Sources */,
+				1D55E2942A40B3D400F1A9BD /* UIImage.swift in Sources */,
 				1DC3F5002A3A7A86007F4AC8 /* PlayerViewController.swift in Sources */,
 				1D1879FA2A2CC8AA00827277 /* ViewController.swift in Sources */,
 				1D973A6D2A3A87800027AC75 /* Delegate.swift in Sources */,
+				1D55E2902A408B2200F1A9BD /* Constants.swift in Sources */,
 				1D1879F62A2CC8AA00827277 /* AppDelegate.swift in Sources */,
 				1D1879F82A2CC8AA00827277 /* SceneDelegate.swift in Sources */,
 			);

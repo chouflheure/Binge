@@ -7,6 +7,7 @@ import UIKit
 // MARK: - Asset Catalogs
 
 internal enum Assets {
+  internal static let aBientotDeTeRevoir = ImageAsset(name: "A_Bientot_de_te_revoir")
   internal enum IconNavBar {
     internal static let favoriteSelect = ImageAsset(name: "favorite_select")
     internal static let favoriteUnselect = ImageAsset(name: "favorite_unselect")
