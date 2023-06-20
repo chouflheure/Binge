@@ -39,6 +39,8 @@ extension String {
         let time = [seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60]
         var val = String()
         
+            
+        // hours
         if time[0] != 0 && time[0] < 10 {
             val.append("0\(time[0]):")
         }
@@ -46,6 +48,7 @@ extension String {
             val.append("\(time[0]):")
         }
         
+        // minutes
         if time[1] != 0 && time[1] < 10 {
             val.append("0\(time[1]):")
         }
@@ -71,20 +74,24 @@ class TestViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view = view
-        // convertHoursToFloat(totalTime: "02:11:31")
         setupUI()
     }
     
     let totalTimeTest = "01:01"
     
-    let isPlaying: Bool = false
-    
-    
+    var isPlaying: Bool = false
+    var imageString: String = "pause"
     
     
     private func setupUI() {
+        isPlayingFunction()
         setupGenralView()
         setupScrollView()
+    }
+    
+    func isPlayingFunction() {
+        isPlaying = !isPlaying
+        imageString = isPlaying ? "pause" : "play.fill"
     }
     
     private func setupGenralView() {
@@ -364,10 +371,7 @@ private extension TestViewController {
     // MARK: - Slider
     static var slider: UISlider = {
         let slider = UISlider()
-        slider.addTarget(self,
-                         action: #selector(actionSliderValueChanged(_:)),
-                         for: .valueChanged
-        )
+        slider.addTarget(self, action: #selector(actionSliderValueChanged(_:)), for: .valueChanged)
 
         slider.value = 0
         slider.minimumValue = 0
@@ -378,7 +382,7 @@ private extension TestViewController {
         slider.minimumTrackTintColor = Colors.darkBlue.color
         
         var thumbImage = UIImage(systemName: "circlebadge.fill")!.maskWithColor(color: Colors.darkBlue.color)
-        var size = CGSizeMake( thumbImage?.size.width ?? 3.0 , thumbImage?.size.height ?? 3.0 )
+        var size = CGSizeMake(thumbImage?.size.width ?? 3.0 , thumbImage?.size.height ?? 3.0)
         slider.setThumbImage(thumbImage, for: .normal)
         slider.setThumbImage(thumbImage, for: .highlighted)
 
@@ -431,7 +435,6 @@ private extension TestViewController {
         stack.heightAnchor.constraint(equalToConstant: 80).isActive = true
         
         // Action Button
-        
         seekLessButton.addTarget(self, action: #selector(actionPressButtonLightColor(_:)), for: .touchUpInside)
         seekLessButton.addTarget(self, action: #selector(actionPressMoinsSeekButton(_:)), for: .touchDown)
         playPauseButton.addTarget(self, action: #selector(actionPressButtonLightColor(_:)), for: .touchUpInside)
@@ -473,11 +476,12 @@ private extension TestViewController {
                                height: Constants.widthSquareSeekLessButton,
                                button: button,
                                image: "arrow.counterclockwise",
-                               imageWidth: Constants.widthSquareSeekLessButton / 2,
-                               imageHeight: Constants.widthSquareSeekLessButton / 2
+                               imageWidth: Constants.widthSquareSeekLessButton / 2
         )
+        
         return button
     }()
+    
     
     // MARK: - Seek More Button
     static let seekMoreButton: UIButton = {
@@ -486,8 +490,7 @@ private extension TestViewController {
                                height: Constants.widthSquareSeekMoreButton,
                                button: button,
                                image: "arrow.clockwise",
-                               imageWidth: Constants.widthSquareSeekMoreButton / 2,
-                               imageHeight: Constants.widthSquareSeekMoreButton / 2
+                               imageWidth: Constants.widthSquareSeekMoreButton / 2
         )
         return button
     }()
@@ -498,9 +501,8 @@ private extension TestViewController {
         button.generatedButton(width: Constants.widthSquarePlayPauseButton,
                                height: Constants.widthSquarePlayPauseButton,
                                button: button,
-                               image: "pause.fill",
-                               imageWidth: 33.0,
-                               imageHeight: 40.0
+                               image: "pause",
+                               imageWidth: Constants.widthSquarePlayPauseButton / 2
         )
         return button
     }()
@@ -532,6 +534,15 @@ private extension TestViewController {
     
     @objc func actionPressPlayPauseButton(_ sender: UIButton) {
         sender.layer.borderColor = Colors.darkBlue.color.withAlphaComponent(0.3).cgColor
+
+        var imageString = String()
+        if isPlaying {
+            imageString = "pause"
+        } else {
+            imageString = "play.fill"
+        }
+
+        sender.changeSizeButton(button: sender, imageWidth: Constants.widthSquarePlayPauseButton / 2, imageString: imageString)
         print("@@@ click play pause")
     }
     

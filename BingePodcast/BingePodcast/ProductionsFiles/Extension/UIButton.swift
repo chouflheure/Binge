@@ -8,7 +8,7 @@ extension UIButton {
     // "Cannot use instance member 'setUpButton' within property initializer; property initializers run before 'self' is available"
     
     func generatedButton(width: CGFloat, height: CGFloat, button: UIButton,
-                         image: String, imageWidth: CGFloat, imageHeight: CGFloat) {
+                         image: String, imageWidth: CGFloat) {
         
         button.translatesAutoresizingMaskIntoConstraints = false
         [
@@ -16,23 +16,21 @@ extension UIButton {
             button.heightAnchor.constraint(equalToConstant: height)
         ].forEach{$0.isActive = true}
         
+        let font = UIFont.systemFont(ofSize: imageWidth)
+        let config = UIImage.SymbolConfiguration(font: font)
+        let image = UIImage(systemName: image, withConfiguration: config)
+        
         button.layer.cornerRadius = height / 2
         button.layer.borderWidth = 2.5
         button.layer.borderColor = Colors.darkBlue.color.cgColor
-
-        let image = UIImage(systemName: image)
-        let imageView = UIImageView(image: image)
-        imageView.frame.size = CGSize(width: width, height: height)
-        imageView.tintColor = Colors.yellow.color
-
-        button.addSubview(imageView)
-        
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        [
-            imageView.centerXAnchor.constraint(equalTo: button.centerXAnchor),
-            imageView.centerYAnchor.constraint(equalTo: button.centerYAnchor),
-            imageView.widthAnchor.constraint(equalToConstant: imageWidth),
-            imageView.heightAnchor.constraint(equalToConstant: imageHeight)
-        ].forEach{ $0.isActive = true }
+        button.tintColor = Colors.yellow.color
+        button.setImage(image, for: .normal)
+    }
+    
+    func changeSizeButton(button: UIButton, imageWidth: CGFloat, imageString: String) {
+        let font = UIFont.systemFont(ofSize: imageWidth)
+        let config = UIImage.SymbolConfiguration(font: font)
+        let image = UIImage(systemName: imageString, withConfiguration: config)
+        button.setImage(image, for: .normal)
     }
 }
