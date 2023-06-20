@@ -7,66 +7,10 @@
 
 import UIKit
 
-extension Float {
-    func convertHoursToFloat(totalTime: String) -> Int{
-        let delimiter = ":"
-        let token = totalTime.components(separatedBy: delimiter)
-        
-        var newVal = Int()
-
-        if totalTime.count > 5 {
-            newVal = (Int(token[0]) ?? 0 ) * 3600
-            newVal += (Int(token[1]) ?? 0 ) * 60
-            newVal += (Int(token[2]) ?? 0 )
-        }
-        else if totalTime.count > 3 {
-            newVal += (Int(token[0]) ?? 0 ) * 60
-            newVal += (Int(token[1]) ?? 0 )
-        }
-        else {
-            newVal += (Int(token[0]) ?? 0 )
-        }
-        
-        
-        return newVal
-    }
-}
-
-extension String {
-    
-    
-    func secondsToHoursMinutesSecondsToString(_ seconds: Int) -> String {
-        let time = [seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60]
-        var val = String()
-        
-            
-        // hours
-        if time[0] != 0 && time[0] < 10 {
-            val.append("0\(time[0]):")
-        }
-        if time[0] != 0 && time[0] >= 10 {
-            val.append("\(time[0]):")
-        }
-        
-        // minutes
-        if time[1] != 0 && time[1] < 10 {
-            val.append("0\(time[1]):")
-        }
-        if time[1] != 0 && time[1] >= 10 {
-            val.append("\(time[1]):")
-        }
-        if time[1] == 0 {
-            val.append("00:")
-        }
-
-        if time[2] >= 10 {
-            val.append("\(time[2])")
-        } else {
-            val.append("0\(time[2])")
-        }
-        
-        return val
-    }
+enum SizeScreen {
+    case small
+    case medium
+    case large
 }
 
 class TestViewController: UIViewController {
@@ -76,22 +20,21 @@ class TestViewController: UIViewController {
         self.view = view
         setupUI()
     }
-    
-    let totalTimeTest = "01:01"
-    
+
+
+    let totalTimeTest: String = "01:01"
     var isPlaying: Bool = false
-    var imageString: String = "pause"
+    var imageString: String = "play"
+    var isFavorite: Bool = true
+    var isSmallScreen: Bool = UIScreen.main.bounds.height < 800
     
-    
+
     private func setupUI() {
-        isPlayingFunction()
         setupGenralView()
         setupScrollView()
-    }
-    
-    func isPlayingFunction() {
-        isPlaying = !isPlaying
-        imageString = isPlaying ? "pause" : "play.fill"
+
+        // TODO: Drag and drop dans un bouton
+
     }
     
     private func setupGenralView() {
@@ -122,7 +65,7 @@ class TestViewController: UIViewController {
     private func setupScrollView() {
         view.addSubview(scrollView)
         scrollView.addSubview(scrollViewContainer)
-        scrollViewContainer.addArrangedSubview(playerView)
+        scrollViewContainer.addArrangedSubview(setupPlayerView())
         scrollViewContainer.addArrangedSubview(descriptionView)
         
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -153,70 +96,92 @@ class TestViewController: UIViewController {
     }()
     
     // MARK: - PlayerView
-    let playerView: UIView = {
+    func setupPlayerView() -> UIView{
         let view = UIView()
 
         view.heightAnchor.constraint(
             equalToConstant: UIScreen.main.bounds.height - UIScreen.main.bounds.height/4.5
                 ).isActive = true
 
-        view.addSubview(stackViewGeneral)
+        view.addSubview(TestViewController.stackViewGeneral)
 
-        stackViewGeneral.translatesAutoresizingMaskIntoConstraints = false
+        TestViewController.stackViewGeneral.translatesAutoresizingMaskIntoConstraints = false
         [
-            stackViewGeneral.topAnchor.constraint(equalTo: view.topAnchor),
-            stackViewGeneral.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            stackViewGeneral.leftAnchor.constraint(equalTo: view.leftAnchor),
-            stackViewGeneral.rightAnchor.constraint(equalTo: view.rightAnchor)
+            TestViewController.stackViewGeneral.topAnchor.constraint(equalTo: view.topAnchor),
+            TestViewController.stackViewGeneral.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            TestViewController.stackViewGeneral.leftAnchor.constraint(equalTo: view.leftAnchor),
+            TestViewController.stackViewGeneral.rightAnchor.constraint(equalTo: view.rightAnchor)
         ].forEach{ $0.isActive = true }
         
         let verticalSpacerBetweenImageAndTitle = UIView()
-        
-        // image view
-        stackViewGeneral.addArrangedSubview(verticalStackImage)
-        verticalStackImage.topAnchor.constraint(equalTo: stackViewGeneral.topAnchor, constant: 40.0).isActive = true
+        let verticalSpacerBetweenTitleAndSubtitle = UIView()
+        let verticalSpacerBetweenSubtitleAndSlider = UIView()
+        let verticalSpacerBetweenSliderAndTime = UIView()
+        let verticalSpacerBetweenTimeAndPlayer = UIView()
 
-        stackViewGeneral.addArrangedSubview(verticalSpacerBetweenImageAndTitle)
+        // image view
+        TestViewController.stackViewGeneral.addArrangedSubview(TestViewController.verticalStackImage)
+        TestViewController.verticalStackImage.topAnchor.constraint(equalTo: TestViewController.stackViewGeneral.topAnchor, constant: 40.0).isActive = true
+
+        TestViewController.stackViewGeneral.addArrangedSubview(verticalSpacerBetweenImageAndTitle)
         
         // title
-        stackViewGeneral.addArrangedSubview(horizontalStackTitle)
-        
-        
+        TestViewController.stackViewGeneral.addArrangedSubview(TestViewController.horizontalStackTitle)
+        // vertical spacer
+        TestViewController.stackViewGeneral.addArrangedSubview(verticalSpacerBetweenTitleAndSubtitle)
         // subtitle
-        stackViewGeneral.addArrangedSubview(horizontalStackSubtitle)
-        
+        TestViewController.stackViewGeneral.addArrangedSubview(TestViewController.horizontalStackSubtitle)
+        // vertical spacer
+        TestViewController.stackViewGeneral.addArrangedSubview(verticalSpacerBetweenSubtitleAndSlider)
         // slider
-        stackViewGeneral.addArrangedSubview(verticalStackSlider)
-        
-        // Time - time
-        stackViewGeneral.addArrangedSubview(horizontalStackTime)
-        
+        TestViewController.stackViewGeneral.addArrangedSubview(TestViewController.verticalStackSlider)
+        // vertical spacer
+        TestViewController.stackViewGeneral.addArrangedSubview(verticalSpacerBetweenSliderAndTime)
+        // time
+        TestViewController.stackViewGeneral.addArrangedSubview(TestViewController.horizontalStackTime)
+        // vertical spacer
+        TestViewController.stackViewGeneral.addArrangedSubview(verticalSpacerBetweenTimeAndPlayer)
         // button Player
-        stackViewGeneral.addArrangedSubview(horizontalStackButtonPlayer)
+        TestViewController.stackViewGeneral.addArrangedSubview(TestViewController.horizontalStackButtonPlayer)
 
         [
-            verticalStackImage.leftAnchor.constraint(equalTo: stackViewGeneral.leftAnchor, constant: 0),
-            verticalStackImage.widthAnchor.constraint(equalTo: stackViewGeneral.widthAnchor, constant: -20),
+            // image view
+            TestViewController.verticalStackImage.leftAnchor.constraint(equalTo: TestViewController.stackViewGeneral.leftAnchor, constant: 0),
+            TestViewController.verticalStackImage.widthAnchor.constraint(equalTo: TestViewController.stackViewGeneral.widthAnchor, constant: -20),
+            TestViewController.verticalStackImage.heightAnchor.constraint(equalTo: TestViewController.stackViewGeneral.widthAnchor, constant: -40),
+            verticalSpacerBetweenImageAndTitle.heightAnchor.constraint(equalToConstant: isSmallScreen ? Constants.verticalSmallSpacer : Constants.verticalLargeSpacer),
             
-            verticalStackImage.heightAnchor.constraint(equalTo: stackViewGeneral.widthAnchor, constant: -40),
+            // title
+            TestViewController.horizontalStackTitle.leftAnchor.constraint(equalTo: TestViewController.stackViewGeneral.leftAnchor, constant: 0),
+            TestViewController.horizontalStackTitle.rightAnchor.constraint(equalTo: TestViewController.stackViewGeneral.rightAnchor, constant: -20),
+            verticalSpacerBetweenTitleAndSubtitle.heightAnchor.constraint(equalToConstant: 0),
             
-            verticalSpacerBetweenImageAndTitle.heightAnchor.constraint(equalToConstant: 10),
+            // subtitle
+            TestViewController.horizontalStackSubtitle.leftAnchor.constraint(equalTo: TestViewController.stackViewGeneral.leftAnchor, constant: 0),
+            TestViewController.horizontalStackSubtitle.rightAnchor.constraint(equalTo: TestViewController.stackViewGeneral.rightAnchor, constant: -20),
+            TestViewController.horizontalStackSubtitle.heightAnchor.constraint(equalToConstant: 30),
+            verticalSpacerBetweenSubtitleAndSlider.heightAnchor.constraint(equalToConstant: isSmallScreen ? Constants.verticalSmallSpacer : Constants.verticalLargeSpacer),
             
+            // slider
+            TestViewController.verticalStackSlider.leftAnchor.constraint(equalTo: TestViewController.stackViewGeneral.leftAnchor, constant: 0),
+            TestViewController.verticalStackSlider.rightAnchor.constraint(equalTo: TestViewController.stackViewGeneral.rightAnchor, constant: -20),
+            verticalSpacerBetweenSliderAndTime.heightAnchor.constraint(equalToConstant: 10),
             
-            horizontalStackTitle.leftAnchor.constraint(equalTo: stackViewGeneral.leftAnchor, constant: 10),
-            horizontalStackTitle.rightAnchor.constraint(equalTo: stackViewGeneral.rightAnchor, constant: -20),
-            horizontalStackSubtitle.leftAnchor.constraint(equalTo: stackViewGeneral.leftAnchor, constant: 10),
-            horizontalStackSubtitle.rightAnchor.constraint(equalTo: stackViewGeneral.rightAnchor, constant: -20),
-            verticalStackSlider.leftAnchor.constraint(equalTo: stackViewGeneral.leftAnchor, constant: 10),
-            verticalStackSlider.rightAnchor.constraint(equalTo: stackViewGeneral.rightAnchor, constant: -20),
-            horizontalStackTime.leftAnchor.constraint(equalTo: stackViewGeneral.leftAnchor, constant: 10),
-            horizontalStackTime.rightAnchor.constraint(equalTo: stackViewGeneral.rightAnchor, constant: -20),
-            horizontalStackButtonPlayer.leftAnchor.constraint(equalTo: stackViewGeneral.leftAnchor, constant: 10),
-            horizontalStackButtonPlayer.rightAnchor.constraint(equalTo: stackViewGeneral.rightAnchor, constant: -20)
-        ].forEach{$0.isActive = true}
+            // time
+            TestViewController.horizontalStackTime.leftAnchor.constraint(equalTo: TestViewController.stackViewGeneral.leftAnchor, constant: 0),
+            TestViewController.horizontalStackTime.rightAnchor.constraint(equalTo: TestViewController.stackViewGeneral.rightAnchor, constant: -20),
+            TestViewController.horizontalStackTime.heightAnchor.constraint(equalToConstant: 15),
+            verticalSpacerBetweenTimeAndPlayer.heightAnchor.constraint(equalToConstant: 0),
+            
+            // player
+            TestViewController.horizontalStackButtonPlayer.leftAnchor.constraint(equalTo: TestViewController.stackViewGeneral.leftAnchor, constant: 0),
+            TestViewController.horizontalStackButtonPlayer.rightAnchor.constraint(equalTo: TestViewController.stackViewGeneral.rightAnchor, constant: -20),
+            TestViewController.horizontalStackButtonPlayer.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: isSmallScreen ? -Constants.verticalSmallSpacer : -Constants.verticalMediumSpacer)
 
+        ].forEach{$0.isActive = true}
+        
         return view
-    }()
+    }
 
     // MARK: - Description View
     let descriptionView: UIView = {
@@ -226,17 +191,17 @@ class TestViewController: UIViewController {
         
         let title = UILabel()
         title.text = "Description"
-        title.font = UIFont(name: "ProximaNova-Bold", size: 18)
+        title.font = UIFont(name: .fonts.proximaNova_Alt_Bold.fontName(), size: 18)
         title.textColor = Colors.yellow.color
 
         let descritpion = UILabel()
         descritpion.text = """
             Cet été, A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices.
             """
-        descritpion.setLineSpacing(lineSpacing: 10.0)
+        descritpion.setLineSpacing(lineSpacing: 8.0)
         descritpion.numberOfLines = 0
-        descritpion.font = UIFont(name: "ProximaNova-semiBold", size: 18)
-        descritpion.textColor = Colors.ligthBlue.color
+        descritpion.font = UIFont(name: .fonts.proximaNova_Alt_Thin.fontName(), size: 16)
+        descritpion.textColor = .white
         
         view.layer.cornerRadius = 20
         view.backgroundColor = Colors.purpleGradientMax.color.withAlphaComponent(0.8)
@@ -261,6 +226,8 @@ class TestViewController: UIViewController {
 
         return view
     }()
+    
+
 
 }
 
@@ -315,6 +282,20 @@ private extension TestViewController {
         return stack
     }()
     
+    // MARK: - heart Button
+    static let heartButton: UIButton = {
+        let button = UIButton()
+        button.generatedButton(isBordering: false,
+                               width: Constants.widthSquareSeekLessButton,
+                               height: Constants.widthSquareSeekLessButton,
+                               button: button,
+                               image: "heart",
+                               imageWidth: Constants.widthSquareSeekLessButton / 2,
+                               color: .white
+        )
+        return button
+    }()
+    
     // MARK: - horizontalStack Title
     static var horizontalStackTitle: UIStackView = {
         
@@ -325,28 +306,14 @@ private extension TestViewController {
 
         let title = UILabel()
         title.text = "À Bientôt de te revoir"
-        title.font = UIFont(name: "ProximaNova-Bold", size: 20)
+        title.font = UIFont(name: .fonts.proximaNova_Semibold.fontName(), size: 20)
         title.numberOfLines = 1
         title.textColor = Colors.yellow.color
-        
-        let heartButton = UIButton()
-        heartButton.frame.size = CGSize(width: 30, height: 30)
-        
-        let imageHeart = UIImage(systemName: "heart")
-        let imageViewFavorite = UIImageView(image: imageHeart)
-        imageViewFavorite.frame.size = CGSize(width: 30, height: 25)
-        
-        heartButton.addSubview(imageViewFavorite)
-        
-        imageViewFavorite.rightAnchor.constraint(equalTo: heartButton.rightAnchor).isActive = true
 
         stack.addArrangedSubview(title)
         stack.addArrangedSubview(heartButton)
-        
-        heartButton.addTarget(self,
-                              action: #selector(actionPressFavoriteButton(_:)),
-                              for: .touchUpInside
-        )
+
+        heartButton.addTarget(self, action: #selector(actionPressFavoriteButton(_:)), for: .touchUpInside)
 
         return stack
     }()
@@ -358,7 +325,8 @@ private extension TestViewController {
 
         let subtitle = UILabel()
         subtitle.text = "Episode 112"
-        subtitle.font = UIFont(name: "ProximaNova-Semibold", size: 17.0)
+        subtitle.font = UIFont(name: .fonts.proximaNova_Bold.fontName(), size: 17.0)
+        subtitle.textColor = .white
         subtitle.numberOfLines = 1
         let viewSpacer = UIView()
         viewSpacer.frame.size.width = 30
@@ -402,15 +370,17 @@ private extension TestViewController {
         let spendTime = UILabel()
         spendTime.text = "00:00"
         spendTime.font = spendTime.font.withSize(12)
+        spendTime.textColor = .white
         return spendTime
     }()
     
     // MARK: - Total Time
     static var totalTime: UILabel = {
         let totalTime = UILabel()
-        totalTime.text = "11:23"
+        totalTime.text = "03:00:10"
         totalTime.textAlignment = .right
         totalTime.font = totalTime.font.withSize(12)
+        totalTime.textColor = .white
         return totalTime
     }()
 
@@ -431,16 +401,16 @@ private extension TestViewController {
         stack = stack.horizontalStack()
         stack.alignment = .center
         
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.heightAnchor.constraint(equalToConstant: 80).isActive = true
-        
         // Action Button
         seekLessButton.addTarget(self, action: #selector(actionPressButtonLightColor(_:)), for: .touchUpInside)
         seekLessButton.addTarget(self, action: #selector(actionPressMoinsSeekButton(_:)), for: .touchDown)
+        seekLessButton.addTarget(self, action: #selector(actionPressButtonLightColor(_:)), for: .allEvents)
         playPauseButton.addTarget(self, action: #selector(actionPressButtonLightColor(_:)), for: .touchUpInside)
         playPauseButton.addTarget(self, action: #selector(actionPressPlayPauseButton(_:)), for: .touchDown)
+        playPauseButton.addTarget(self, action: #selector(actionPressButtonLightColor(_:)), for: .allEvents)
         seekMoreButton.addTarget(self, action: #selector(actionPressButtonLightColor(_:)), for: .touchUpInside)
         seekMoreButton.addTarget(self, action: #selector(actionPressPlusSeekButton(_:)), for: .touchDown)
+        seekMoreButton.addTarget(self, action: #selector(actionPressButtonLightColor(_:)), for: .allEvents)
         
         let horizontalViewBetweenGeneralViewAndSeekLessButton = UIView()
         let horizontalViewBetweenSeekLessButtonAndPlayPauseButton = UIView()
@@ -463,6 +433,7 @@ private extension TestViewController {
 
         return stack
     }()
+    
 }
 
 
@@ -472,13 +443,14 @@ private extension TestViewController {
     // MARK: - Seek Less Button
     static let seekLessButton: UIButton = {
         let button = UIButton()
-        button.generatedButton(width: Constants.widthSquareSeekLessButton,
+        button.generatedButton(isBordering: true,
+                               width: Constants.widthSquareSeekLessButton,
                                height: Constants.widthSquareSeekLessButton,
                                button: button,
                                image: "arrow.counterclockwise",
-                               imageWidth: Constants.widthSquareSeekLessButton / 2
+                               imageWidth: Constants.widthSquareSeekLessButton / 2,
+                               color: Colors.yellow.color
         )
-        
         return button
     }()
     
@@ -486,11 +458,13 @@ private extension TestViewController {
     // MARK: - Seek More Button
     static let seekMoreButton: UIButton = {
         let button = UIButton()
-        button.generatedButton(width: Constants.widthSquareSeekMoreButton,
+        button.generatedButton(isBordering: true,
+                               width: Constants.widthSquareSeekMoreButton,
                                height: Constants.widthSquareSeekMoreButton,
                                button: button,
                                image: "arrow.clockwise",
-                               imageWidth: Constants.widthSquareSeekMoreButton / 2
+                               imageWidth: Constants.widthSquareSeekMoreButton / 2,
+                               color: Colors.yellow.color
         )
         return button
     }()
@@ -498,11 +472,13 @@ private extension TestViewController {
     // MARK: - Play Pause Button
     static let playPauseButton: UIButton = {
         let button = UIButton()
-        button.generatedButton(width: Constants.widthSquarePlayPauseButton,
+        button.generatedButton(isBordering: true,
+                               width: Constants.widthSquarePlayPauseButton,
                                height: Constants.widthSquarePlayPauseButton,
                                button: button,
-                               image: "pause",
-                               imageWidth: Constants.widthSquarePlayPauseButton / 2
+                               image: "pause.fill",
+                               imageWidth: Constants.widthSquarePlayPauseButton / 2,
+                               color: Colors.yellow.color
         )
         return button
     }()
@@ -520,11 +496,20 @@ private extension TestViewController {
         UIView.animate(withDuration: 0.1, delay: 0.1) {
             sender.layer.borderColor = Colors.darkBlue.color.withAlphaComponent(1).cgColor
         }
-       
     }
     
     @objc func actionPressFavoriteButton(_ sender: UIButton) {
         print("@@@ click favorite")
+
+        var imageString = String()
+        if isFavorite {
+            imageString = "heart.fill"
+        } else {
+            imageString = "heart"
+        }
+        isFavorite = !isFavorite
+        
+        sender.changeSizeButton(button: sender, imageWidth: 25, imageString: imageString)
     }
     
     @objc func actionPressMoinsSeekButton(_ sender: UIButton) {
@@ -537,10 +522,11 @@ private extension TestViewController {
 
         var imageString = String()
         if isPlaying {
-            imageString = "pause"
+            imageString = "pause.fill"
         } else {
             imageString = "play.fill"
         }
+        isPlaying = !isPlaying
 
         sender.changeSizeButton(button: sender, imageWidth: Constants.widthSquarePlayPauseButton / 2, imageString: imageString)
         print("@@@ click play pause")
@@ -551,75 +537,3 @@ private extension TestViewController {
         print("@@@ click plus seek")
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-extension UIViewController {
- 
-    
-    // ####################    USE THAT
-    func generateVerticalStackView() -> UIStackView {
-        let stack = UIStackView()
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.axis = .vertical
-        stack.distribution = .fill
-        stack.alignment = .center
-        stack.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        return stack
-    }
-    
-    func generateStackView() -> UIStackView {
-        let stack = UIStackView()
-        stack.distribution = .fill
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.axis = .horizontal
-        stack.alignment = .center
-        return stack
-    }
-
-    func generateVerticalSpacer(height: CGFloat = 30.0, color: UIColor = Colors.darkBlue.color) -> UIView {
-        let view = UIView()
-        view.heightAnchor.constraint(equalToConstant: height).isActive = true
-        return view
-    }
-
-   
-    func generateTitleHeader(
-        text: String,
-        size: CGFloat = 26.0,
-        weight: UIFont.Weight = .semibold
-    ) -> UILabel {
-        let label = UILabel()
-        label.text = text
-        label.font = UIFont.systemFont(ofSize: size, weight: weight)
-        label.textColor = .white
-        label.numberOfLines = 0
-        label.textAlignment = .center
-        label.contentMode = .center
-        return label
-    }
-
-    func generateSingleLineView(color: UIColor) -> UIView {
-        let v = UIView(frame: .zero)
-        v.backgroundColor = color
-        v.translatesAutoresizingMaskIntoConstraints = false
-        v.heightAnchor.constraint(equalToConstant: 1.0).isActive = true
-        return v
-    }
-    // ####################
-}
-
-
