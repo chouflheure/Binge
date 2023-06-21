@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="70px" height="70px" viewBox="0 0 70 70" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group</title>
+    <g id="Player-audio" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="A-bientot-de-te-revoir_1" transform="translate(-160.000000, -612.000000)">
+            <g id="Group-4" transform="translate(69.000000, 612.000000)">
+                <g id="Group" transform="translate(91.000000, 0.000000)">
+                    <circle id="Oval" stroke-opacity="0" stroke="#144D93" stroke-width="2.5" cx="35" cy="35" r="33.75"></circle>
+                    <path d="M39.6886588,24.160917 L52.5506844,44.4283511 C53.1425397,45.3609716 52.8662949,46.5968035 51.9336744,47.1886588 C51.6132337,47.3920155 51.2415465,47.5 50.8620255,47.5 L25.1379745,47.5 C24.033405,47.5 23.1379745,46.6045695 23.1379745,45.5 C23.1379745,45.120479 23.245959,44.7487918 23.4493156,44.4283511 L36.3113412,24.160917 C36.9031965,23.2282964 38.1390284,22.9520517 39.0716489,23.543907 C39.320225,23.7016572 39.5309086,23.9123409 39.6886588,24.160917 Z" id="Triangle" fill="#FFFA01" transform="translate(38.000000, 34.500000) rotate(90.000000) translate(-38.000000, -34.500000) "></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

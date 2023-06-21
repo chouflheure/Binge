@@ -100,7 +100,7 @@ class TestViewController: UIViewController {
         let view = UIView()
 
         view.heightAnchor.constraint(
-            equalToConstant: UIScreen.main.bounds.height - UIScreen.main.bounds.height/4.5
+            equalToConstant: UIScreen.main.bounds.height - UIScreen.main.bounds.height - 100
                 ).isActive = true
 
         view.addSubview(TestViewController.stackViewGeneral)
@@ -124,7 +124,6 @@ class TestViewController: UIViewController {
         TestViewController.verticalStackImage.topAnchor.constraint(equalTo: TestViewController.stackViewGeneral.topAnchor, constant: 40.0).isActive = true
 
         TestViewController.stackViewGeneral.addArrangedSubview(verticalSpacerBetweenImageAndTitle)
-        
         // title
         TestViewController.stackViewGeneral.addArrangedSubview(TestViewController.horizontalStackTitle)
         // vertical spacer
@@ -159,19 +158,20 @@ class TestViewController: UIViewController {
             // subtitle
             TestViewController.horizontalStackSubtitle.leftAnchor.constraint(equalTo: TestViewController.stackViewGeneral.leftAnchor, constant: 0),
             TestViewController.horizontalStackSubtitle.rightAnchor.constraint(equalTo: TestViewController.stackViewGeneral.rightAnchor, constant: -20),
-            TestViewController.horizontalStackSubtitle.heightAnchor.constraint(equalToConstant: 30),
-            verticalSpacerBetweenSubtitleAndSlider.heightAnchor.constraint(equalToConstant: isSmallScreen ? Constants.verticalSmallSpacer : Constants.verticalLargeSpacer),
+            TestViewController.horizontalStackSubtitle.heightAnchor.constraint(equalToConstant: 25),
+            verticalSpacerBetweenSubtitleAndSlider.heightAnchor.constraint(equalToConstant: isSmallScreen ? Constants.verticalSmallSpacer : Constants.verticalMediumSpacer),
             
             // slider
             TestViewController.verticalStackSlider.leftAnchor.constraint(equalTo: TestViewController.stackViewGeneral.leftAnchor, constant: 0),
             TestViewController.verticalStackSlider.rightAnchor.constraint(equalTo: TestViewController.stackViewGeneral.rightAnchor, constant: -20),
-            verticalSpacerBetweenSliderAndTime.heightAnchor.constraint(equalToConstant: 10),
+            TestViewController.verticalStackSlider.heightAnchor.constraint(equalToConstant: 20),
+            verticalSpacerBetweenSliderAndTime.heightAnchor.constraint(equalToConstant: 0),
             
             // time
             TestViewController.horizontalStackTime.leftAnchor.constraint(equalTo: TestViewController.stackViewGeneral.leftAnchor, constant: 0),
             TestViewController.horizontalStackTime.rightAnchor.constraint(equalTo: TestViewController.stackViewGeneral.rightAnchor, constant: -20),
             TestViewController.horizontalStackTime.heightAnchor.constraint(equalToConstant: 15),
-            verticalSpacerBetweenTimeAndPlayer.heightAnchor.constraint(equalToConstant: 0),
+            verticalSpacerBetweenTimeAndPlayer.heightAnchor.constraint(equalToConstant: 10),
             
             // player
             TestViewController.horizontalStackButtonPlayer.leftAnchor.constraint(equalTo: TestViewController.stackViewGeneral.leftAnchor, constant: 0),
@@ -189,11 +189,31 @@ class TestViewController: UIViewController {
         view.heightAnchor.constraint(equalToConstant: 300).isActive = true
         view.backgroundColor = .blue
         
+        var stackTitleAndFullScreen = UIStackView()
+        stackTitleAndFullScreen = stackTitleAndFullScreen.horizontalStack()
+        stackTitleAndFullScreen.alignment = .center
+        stackTitleAndFullScreen.distribution = .fill
+        
         let title = UILabel()
-        title.text = "Description"
+        title.text = L10n.description
         title.font = UIFont(name: .fonts.proximaNova_Alt_Bold.fontName(), size: 18)
         title.textColor = Colors.yellow.color
 
+        let fullScreenButton = UIButton()
+        fullScreenButton.generatedButton(isBordering: true,
+                                         width: 30,
+                                         height: 30,
+                                         button: fullScreenButton,
+                                         image: Assets.Picto.fullScreen.name,
+                                         borderColor: .white.withAlphaComponent(0),
+                                         backGroundColor: .white.withAlphaComponent(0.3)
+        )
+        
+        fullScreenButton.addTarget(self, action: #selector(actionFullScreenButton), for: .touchUpInside)
+        
+        stackTitleAndFullScreen.addArrangedSubview(title)
+        stackTitleAndFullScreen.addArrangedSubview(fullScreenButton)
+        
         let descritpion = UILabel()
         descritpion.text = """
             Cet été, A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices.
@@ -205,15 +225,15 @@ class TestViewController: UIViewController {
         
         view.layer.cornerRadius = 20
         view.backgroundColor = Colors.purpleGradientMax.color.withAlphaComponent(0.8)
-        view.addSubview(title)
+        view.addSubview(stackTitleAndFullScreen)
         view.addSubview(descritpion)
 
-        title.translatesAutoresizingMaskIntoConstraints = false
+        stackTitleAndFullScreen.translatesAutoresizingMaskIntoConstraints = false
         [
-            title.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
-            title.heightAnchor.constraint(equalToConstant: 30),
-            title.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            title.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20)
+            stackTitleAndFullScreen.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
+            stackTitleAndFullScreen.heightAnchor.constraint(equalToConstant: 30),
+            stackTitleAndFullScreen.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            stackTitleAndFullScreen.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20)
         ].forEach{ $0.isActive = true }
         
         descritpion.translatesAutoresizingMaskIntoConstraints = false
@@ -256,7 +276,6 @@ private extension TestViewController {
         let stack = UIStackView()
         stack.distribution = .fill
         stack.axis = .vertical
-        // stack.backgroundColor = .gray
         return stack
     }()
 
@@ -289,9 +308,9 @@ private extension TestViewController {
                                width: Constants.widthSquareSeekLessButton,
                                height: Constants.widthSquareSeekLessButton,
                                button: button,
-                               image: "heart",
-                               imageWidth: Constants.widthSquareSeekLessButton / 2,
-                               color: .white
+                               image: Assets.Picto.favoriteNotSelected.name,
+                               borderColor: .white.withAlphaComponent(0),
+                               backGroundColor: .white.withAlphaComponent(0)
         )
         return button
     }()
@@ -325,12 +344,12 @@ private extension TestViewController {
 
         let subtitle = UILabel()
         subtitle.text = "Episode 112"
-        subtitle.font = UIFont(name: .fonts.proximaNova_Bold.fontName(), size: 17.0)
+        subtitle.font = UIFont(name: .fonts.proximaNova_Regular.fontName(), size: 17.0)
         subtitle.textColor = .white
         subtitle.numberOfLines = 1
         let viewSpacer = UIView()
         viewSpacer.frame.size.width = 30
-        
+
         stack.addArrangedSubview(subtitle)
         stack.addArrangedSubview(viewSpacer)
         return stack
@@ -348,11 +367,8 @@ private extension TestViewController {
         slider.thumbTintColor = Colors.darkBlue.color
         slider.maximumTrackTintColor = Colors.ligthBlue.color
         slider.minimumTrackTintColor = Colors.darkBlue.color
-        
-        var thumbImage = UIImage(systemName: "circlebadge.fill")!.maskWithColor(color: Colors.darkBlue.color)
-        var size = CGSizeMake(thumbImage?.size.width ?? 3.0 , thumbImage?.size.height ?? 3.0)
-        slider.setThumbImage(thumbImage, for: .normal)
-        slider.setThumbImage(thumbImage, for: .highlighted)
+        slider.setThumbImage(UIImage(named: Assets.Picto.thumb.name), for: .normal)
+        slider.setThumbImage(UIImage(named: Assets.Picto.thumb.name), for: .highlighted)
 
         return slider
     }()
@@ -447,9 +463,9 @@ private extension TestViewController {
                                width: Constants.widthSquareSeekLessButton,
                                height: Constants.widthSquareSeekLessButton,
                                button: button,
-                               image: "arrow.counterclockwise",
-                               imageWidth: Constants.widthSquareSeekLessButton / 2,
-                               color: Colors.yellow.color
+                               image: Assets.Picto.seekLess.name,
+                               borderColor: Colors.darkBlue.color,
+                               backGroundColor: .white.withAlphaComponent(0)
         )
         return button
     }()
@@ -462,9 +478,9 @@ private extension TestViewController {
                                width: Constants.widthSquareSeekMoreButton,
                                height: Constants.widthSquareSeekMoreButton,
                                button: button,
-                               image: "arrow.clockwise",
-                               imageWidth: Constants.widthSquareSeekMoreButton / 2,
-                               color: Colors.yellow.color
+                               image: Assets.Picto.seekMore.name,
+                               borderColor: Colors.darkBlue.color,
+                               backGroundColor: .white.withAlphaComponent(0)
         )
         return button
     }()
@@ -476,9 +492,9 @@ private extension TestViewController {
                                width: Constants.widthSquarePlayPauseButton,
                                height: Constants.widthSquarePlayPauseButton,
                                button: button,
-                               image: "pause.fill",
-                               imageWidth: Constants.widthSquarePlayPauseButton / 2,
-                               color: Colors.yellow.color
+                               image: Assets.Picto.pause.name,
+                               borderColor: Colors.darkBlue.color,
+                               backGroundColor: .white.withAlphaComponent(0)
         )
         return button
     }()
@@ -503,9 +519,9 @@ private extension TestViewController {
 
         var imageString = String()
         if isFavorite {
-            imageString = "heart.fill"
+            imageString = Assets.Picto.favoriteSelected.name
         } else {
-            imageString = "heart"
+            imageString = Assets.Picto.favoriteNotSelected.name
         }
         isFavorite = !isFavorite
         
@@ -522,9 +538,9 @@ private extension TestViewController {
 
         var imageString = String()
         if isPlaying {
-            imageString = "pause.fill"
+            imageString = Assets.Picto.pause.name
         } else {
-            imageString = "play.fill"
+            imageString = Assets.Picto.play.name
         }
         isPlaying = !isPlaying
 
@@ -535,5 +551,9 @@ private extension TestViewController {
     @objc func actionPressPlusSeekButton(_ sender: UIButton) {
         sender.layer.borderColor = Colors.darkBlue.color.withAlphaComponent(0.3).cgColor
         print("@@@ click plus seek")
+    }
+    
+    @objc func actionFullScreenButton(_ sender: UIButton) {
+        print("@@@ click fullScreen")
     }
 }

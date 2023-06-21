@@ -17,6 +17,17 @@ internal enum Assets {
     internal static let podcastUnselect = ImageAsset(name: "podcast_unselect")
   }
   internal static let launchScreen = ImageAsset(name: "launchScreen")
+  internal enum Picto {
+    internal static let favoriteNotSelected = ImageAsset(name: "favorite_not_selected")
+    internal static let favoriteSelected = ImageAsset(name: "favorite_selected")
+    internal static let fullScreen = ImageAsset(name: "fullScreen")
+    internal static let pause = ImageAsset(name: "pause")
+    internal static let play = ImageAsset(name: "play")
+    internal static let reductFullScreen = ImageAsset(name: "reductFullScreen")
+    internal static let seekLess = ImageAsset(name: "seekLess")
+    internal static let seekMore = ImageAsset(name: "seekMore")
+    internal static let thumb = ImageAsset(name: "thumb")
+  }
 }
 
 // MARK: - Implementation Details

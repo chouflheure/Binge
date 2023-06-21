@@ -12,8 +12,8 @@ extension UIButton {
                          height: CGFloat,
                          button: UIButton,
                          image: String,
-                         imageWidth: CGFloat,
-                         color: UIColor)
+                         borderColor: UIColor,
+                         backGroundColor: UIColor)
     {
     
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -22,24 +22,22 @@ extension UIButton {
             button.heightAnchor.constraint(equalToConstant: height)
         ].forEach{$0.isActive = true}
         
-        let font = UIFont.systemFont(ofSize: imageWidth)
-        let config = UIImage.SymbolConfiguration(font: font)
-        let image = UIImage(systemName: image, withConfiguration: config)
-        
+        let image = UIImage(named: image)
+
         if isBordering {
             button.layer.cornerRadius = height / 2
             button.layer.borderWidth = 2.5
-            button.layer.borderColor = Colors.darkBlue.color.cgColor
+            button.layer.borderColor = borderColor.cgColor
         }
 
-        button.tintColor = color
+        button.contentMode = .scaleAspectFit
         button.setImage(image, for: .normal)
+        button.backgroundColor = backGroundColor
     }
-    
+
     func changeSizeButton(button: UIButton, imageWidth: CGFloat, imageString: String) {
-        let font = UIFont.systemFont(ofSize: imageWidth)
-        let config = UIImage.SymbolConfiguration(font: font)
-        let image = UIImage(systemName: imageString, withConfiguration: config)
+        let image = UIImage(named: imageString)
+        button.contentMode = .scaleAspectFit
         button.setImage(image, for: .normal)
     }
 }
