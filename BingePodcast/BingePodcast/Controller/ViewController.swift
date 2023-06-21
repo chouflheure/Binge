@@ -26,8 +26,8 @@ class ViewController: UIViewController {
             // try await testFecthAllPodcast()
         }
         
-        molecule1()
-        testAudio.play(url: URL(string: urlString)!)
+        // molecule1()
+        // testAudio.play(url: URL(string: urlString)!)
     }
 
 
