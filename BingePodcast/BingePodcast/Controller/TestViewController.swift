@@ -223,10 +223,16 @@ class TestViewController: UIViewController {
         descritpion.font = UIFont(name: .fonts.proximaNova_Alt_Thin.fontName(), size: 16)
         descritpion.textColor = .white
         
-        view.layer.cornerRadius = 20
+        view.layer.cornerRadius = 33
         view.backgroundColor = Colors.purpleGradientMax.color.withAlphaComponent(0.8)
         view.addSubview(stackTitleAndFullScreen)
         view.addSubview(descritpion)
+        
+        view.layer.shadowRadius = 3
+        view.layer.shadowOffset = CGSize(width: -2, height: -2)
+        view.layer.shadowOpacity = 0.3
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.masksToBounds = false
 
         stackTitleAndFullScreen.translatesAutoresizingMaskIntoConstraints = false
         [
