@@ -9,12 +9,9 @@ import UIKit
 internal enum Assets {
   internal static let aBientotDeTeRevoir = ImageAsset(name: "A_Bientot_de_te_revoir")
   internal enum IconNavBar {
-    internal static let favoriteSelect = ImageAsset(name: "favorite_select")
-    internal static let favoriteUnselect = ImageAsset(name: "favorite_unselect")
-    internal static let homeSelect = ImageAsset(name: "home_select")
-    internal static let homeUnselect = ImageAsset(name: "home_unselect")
-    internal static let podcastSelect = ImageAsset(name: "podcast_select")
-    internal static let podcastUnselect = ImageAsset(name: "podcast_unselect")
+    internal static let favorite = ImageAsset(name: "favorite")
+    internal static let home = ImageAsset(name: "home")
+    internal static let podcast = ImageAsset(name: "podcast")
   }
   internal static let launchScreen = ImageAsset(name: "launchScreen")
   internal enum Picto {

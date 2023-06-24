@@ -74,7 +74,7 @@
             </objects>
             <point key="canvasLocation" x="1779" y="526"/>
         </scene>
-        <!--Item-->
+        <!--Favoris-->
         <scene sceneID="tQg-dO-hFL">
             <objects>
                 <viewController id="afF-jg-We1" sceneMemberID="viewController">
@@ -84,7 +84,14 @@
                         <viewLayoutGuide key="safeArea" id="uAh-Gh-e3H"/>
                         <color key="backgroundColor" systemColor="systemRedColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="lNS-PT-H7c"/>
+                    <tabBarItem key="tabBarItem" title="Favoris" image="favorite" id="lNS-PT-H7c">
+                        <color key="badgeColor" red="0.14430752399999999" green="0.29589098689999999" blue="0.56081062559999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" systemColor="systemRedColor"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KhU-xl-hpx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -106,7 +113,7 @@
             </objects>
             <point key="canvasLocation" x="3034" y="474"/>
         </scene>
-        <!--Item 2-->
+        <!--Podcast-->
         <scene sceneID="uo4-sw-gL4">
             <objects>
                 <viewController id="YsL-op-ptH" sceneMemberID="viewController">
@@ -116,13 +123,13 @@
                         <viewLayoutGuide key="safeArea" id="NWm-zX-B8Z"/>
                         <color key="backgroundColor" systemColor="systemCyanColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="dqK-0d-Doz"/>
+                    <tabBarItem key="tabBarItem" title="Podcast" image="podcast" id="dqK-0d-Doz"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IfW-6H-zsf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3982" y="1549"/>
+            <point key="canvasLocation" x="3982" y="1678"/>
         </scene>
-        <!--Item 1-->
+        <!--Acceuil-->
         <scene sceneID="Qnu-sM-yL3">
             <objects>
                 <viewController id="OKS-k3-dup" sceneMemberID="viewController">
@@ -132,7 +139,7 @@
                         <viewLayoutGuide key="safeArea" id="9fS-Ni-1ny"/>
                         <color key="backgroundColor" systemColor="systemBrownColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="HSg-rc-y5S"/>
+                    <tabBarItem key="tabBarItem" title="Acceuil" image="home" id="HSg-rc-y5S"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EWr-pv-tkV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -142,9 +149,18 @@
         <scene sceneID="paM-jI-oD4">
             <objects>
                 <tabBarController id="LPY-Dk-sa5" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="YrB-Fd-tVI" customClass="RollingPitTabBar" customModule="BingePodcast">
+                    <tabBar key="tabBar" autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" itemPositioning="centered" id="YrB-Fd-tVI" customClass="RollingPitTabBar" customModule="BingePodcast">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.14430752399999999" green="0.29589098689999999" blue="0.56081062559999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="tintColor" red="0.14430752399999999" green="0.29589098689999999" blue="0.56081062559999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="barTintColor" red="0.14430752399999999" green="0.29589098689999999" blue="0.56081062559999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="selectedImageTintColor" red="0.14430752399999999" green="0.29589098689999999" blue="0.56081062559999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" systemColor="systemRedColor"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
                         <segue destination="OKS-k3-dup" kind="relationship" relationship="viewControllers" id="IHH-0m-Q8j"/>
@@ -163,6 +179,9 @@
         </designable>
     </designables>
     <resources>
+        <image name="favorite" width="22" height="22"/>
+        <image name="home" width="22" height="22"/>
+        <image name="podcast" width="22.000001907348633" height="22.601316452026367"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

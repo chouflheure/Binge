@@ -18,33 +18,16 @@ extension CGFloat {
 }
 
 class RollingPitTabBar: UITabBar {
-
-    @IBOutlet weak var myTabBar: UITabBar?
-
     
-    var arrayImageSelected: [String] {[
-        Assets.IconNavBar.homeUnselect.name,
-        Assets.IconNavBar.podcastUnselect.name,
-        Assets.IconNavBar.favoriteUnselect.name
-    ]}
-
-    var arrayTitle: [String] {[
-        "1",
-        "2",
-        "3"
-    ]}
+    public var barBackColor : UIColor = Colors.ligthBlue.color
+    public var barHeight : CGFloat = 65
+    public var barTopRadius : CGFloat = 20
+    public var barBottomRadius : CGFloat = 20
+    public var circleBackColor : UIColor = Colors.ligthBlue.color
+    public var circleRadius : CGFloat = 40
     
-    
-    @IBInspectable public var barBackColor : UIColor = Colors.ligthBlue.color
-    @IBInspectable public var barHeight : CGFloat = 65
-    @IBInspectable public var barTopRadius : CGFloat = 20
-    @IBInspectable public var barBottomRadius : CGFloat = 20
-    
-    @IBInspectable public var circleBackColor : UIColor = Colors.ligthBlue.color
-    @IBInspectable public var circleRadius : CGFloat = 40
-    
-    @IBInspectable var marginBottom : CGFloat = 20
-    @IBInspectable var marginTop : CGFloat = 0
+    var marginBottom : CGFloat = 20
+    var marginTop : CGFloat = 0
     
     
     let marginLeft : CGFloat = 15
@@ -72,18 +55,22 @@ class RollingPitTabBar: UITabBar {
     
     private func createCircleRect() -> CGRect{
         
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: Colors.darkBlue.color], for: .selected)
+         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: Colors.darkBlue.color], for: .normal)
+        
+        
         let backRect = barRect
         let radius = circleRadius
         let circleXCenter = getCircleCenter()
         
-        let x : CGFloat = circleXCenter - radius + 10
-        let y = backRect.origin.y - radius + 30
+        let x : CGFloat = circleXCenter - radius + 15
+        let y = backRect.origin.y - radius + 25
         
         
         let pos = CGPoint(x: x, y: y)
         
         
-        let result = CGRect(origin: pos, size: CGSize(width: radius * 2 - 20, height: radius * 2 - 20))
+        let result = CGRect(origin: pos, size: CGSize(width: radius * 2 - 30, height: radius * 2 - 30))
         
         return result
     }
@@ -108,13 +95,6 @@ class RollingPitTabBar: UITabBar {
     
     
     func createPitMaskPath(rect: CGRect) -> CGMutablePath {
-        let circleXcenter = getCircleCenter()
-        let backRect = barRect
-        let x : CGFloat = circleXcenter
-        let y = backRect.origin.y
-        
-        let center = CGPoint(x: x, y: y)
-        
         // create the tab bar
         let maskPath = CGMutablePath()
         maskPath.addRect(rect)
@@ -150,16 +130,15 @@ class RollingPitTabBar: UITabBar {
         let result = CAShapeLayer();
         result.fillColor = self.barBackColor.cgColor
         result.mask = self.backgroundMask
-        
         return result
     }()
     
     private lazy var circle : CAShapeLayer = {
         let result = CAShapeLayer()
-        // result.fillColor = circleBackColor.cgColor
         result.fillColor = Colors.ligthBlue.color.cgColor
-        result.borderWidth = 10
         result.strokeColor = Colors.yellow.color.cgColor
+        result.lineWidth = 2
+
         return result
     }()
     
@@ -184,6 +163,7 @@ class RollingPitTabBar: UITabBar {
         
         var result : [(item : UITabBarItem, view : UIView)] = []
         for item in items {
+            item.image = item.image?.withRenderingMode(.alwaysOriginal)
             if let v = getViewForItem(item: item) {
                 result.append((item: item, view: v))
             }
@@ -196,6 +176,7 @@ class RollingPitTabBar: UITabBar {
     private func getViewForItem(item : UITabBarItem?) -> UIView?{
         if let item = item {
             let v = item.value(forKey: "view") as? UIView
+            v?.tintColor = .blue
             return v
         }
         
@@ -207,22 +188,22 @@ class RollingPitTabBar: UITabBar {
         let margin : CGFloat = 5
         let x = view.frame.origin.x
         var y = barRect.origin.y + margin
-        let h = barHeight - (margin * 2)
+        var h = barHeight - (margin * 2)
         let w = view.frame.width
         if self.selectedItem == item {
-            y = barRect.origin.y - (self.circleRadius / 2)
+            h = 88
+            y = barRect.origin.y - (self.circleRadius) + 12
         }
-        
         
         view.frame = CGRect(x: x, y: y, width: w, height: h)
     }
     
     private func animateHideAndShowItem(itemView : UIView){
-        itemView.alpha = 0
+        itemView.alpha = 1
         itemView.isHidden = false
 
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(400) , execute: {
-            UIView.animate(withDuration: 0.4) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(200) , execute: {
+            UIView.animate(withDuration: 0.5) {
                 itemView.alpha = 1
             }
         })
@@ -232,7 +213,6 @@ class RollingPitTabBar: UITabBar {
     private func createPathMoveAnimation(toVal : CGPath) -> CABasicAnimation{
         let animation = CABasicAnimation(keyPath: "path")
         animation.duration = 1
-//        animation.beginTime = CACurrentMediaTime() + 2
         animation.toValue = toVal
         animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
         
@@ -280,11 +260,10 @@ class RollingPitTabBar: UITabBar {
             if selectedChanged {
                 self.animateHideAndShowItem(itemView: item.view)
             }
-            
             self.positionItem(barRect: barR, totalCount: total, idx: idx, item: item.item, view: item.view)
         }
     }
-    
+
     override var selectedItem: UITabBarItem? {
         get{
             return super.selectedItem
@@ -301,7 +280,6 @@ class RollingPitTabBar: UITabBar {
     override func layoutSubviews() {
         super.layoutSubviews()
         background.fillColor = self.barBackColor.cgColor
-        //circle.fillColor = self.circleBackColor.cgColor
         circle.backgroundColor = self.circleBackColor.cgColor
         circle.borderColor = Colors.yellow.color.cgColor
 
@@ -315,7 +293,6 @@ class RollingPitTabBar: UITabBar {
         self.backgroundColor = UIColor.clear
         self.backgroundImage = UIImage()
         self.shadowImage = UIImage()
-        
         background.fillColor = self.barBackColor.cgColor
         circle.fillColor = self.circleBackColor.cgColor
         
@@ -326,7 +303,7 @@ class RollingPitTabBar: UITabBar {
         self.backgroundColor = UIColor.clear
         self.backgroundImage = UIImage()
         self.shadowImage = UIImage()
-        
+        self.tintColor = Colors.darkBlue.color
         self.layer.insertSublayer(circle, at: 0)
         self.layer.insertSublayer(background, at: 0)
     }
