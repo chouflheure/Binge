@@ -29,14 +29,24 @@ class TestViewController: UIViewController {
     var isSmallScreen: Bool = UIScreen.main.bounds.height < 800
     
 
+    internal override func viewWillAppear(_ animated: Bool) {
+        
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .darkContent
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     private func setupUI() {
         setupGenralView()
         setupScrollView()
-
         // TODO: Drag and drop dans un bouton
-
     }
-    
+
     private func setupGenralView() {
         gradient.frame = view.bounds
         view.layer.addSublayer(gradient)
