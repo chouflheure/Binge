@@ -29,14 +29,24 @@ class TestViewController: UIViewController {
     var isSmallScreen: Bool = UIScreen.main.bounds.height < 800
     
 
+    internal override func viewWillAppear(_ animated: Bool) {
+        
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .darkContent
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     private func setupUI() {
         setupGenralView()
         setupScrollView()
-
         // TODO: Drag and drop dans un bouton
-
     }
-    
+
     private func setupGenralView() {
         gradient.frame = view.bounds
         view.layer.addSublayer(gradient)
@@ -223,10 +233,16 @@ class TestViewController: UIViewController {
         descritpion.font = UIFont(name: .fonts.proximaNova_Alt_Thin.fontName(), size: 16)
         descritpion.textColor = .white
         
-        view.layer.cornerRadius = 20
+        view.layer.cornerRadius = 33
         view.backgroundColor = Colors.purpleGradientMax.color.withAlphaComponent(0.8)
         view.addSubview(stackTitleAndFullScreen)
         view.addSubview(descritpion)
+        
+        view.layer.shadowRadius = 3
+        view.layer.shadowOffset = CGSize(width: -2, height: -2)
+        view.layer.shadowOpacity = 0.3
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.masksToBounds = false
 
         stackTitleAndFullScreen.translatesAutoresizingMaskIntoConstraints = false
         [
