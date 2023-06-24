@@ -18,8 +18,10 @@ internal enum Assets {
   }
   internal static let launchScreen = ImageAsset(name: "launchScreen")
   internal enum Picto {
-    internal static let favoriteNotSelected = ImageAsset(name: "favorite_not_selected")
-    internal static let favoriteSelected = ImageAsset(name: "favorite_selected")
+    internal static let favoriteSelectBlue = ImageAsset(name: "favorite_select_blue")
+    internal static let favoriteSelectedWhite = ImageAsset(name: "favorite_selected_white")
+    internal static let favoriteUnselectBlue = ImageAsset(name: "favorite_unselect_blue")
+    internal static let favoriteUnselectedWhite = ImageAsset(name: "favorite_unselected_white")
     internal static let fullScreen = ImageAsset(name: "fullScreen")
     internal static let pause = ImageAsset(name: "pause")
     internal static let play = ImageAsset(name: "play")
@@ -27,6 +29,8 @@ internal enum Assets {
     internal static let seekLess = ImageAsset(name: "seekLess")
     internal static let seekMore = ImageAsset(name: "seekMore")
     internal static let thumb = ImageAsset(name: "thumb")
+    internal static let timerClock1 = ImageAsset(name: "timerClock 1")
+    internal static let timerClock = ImageAsset(name: "timerClock")
   }
 }
 

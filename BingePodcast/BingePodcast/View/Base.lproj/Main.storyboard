@@ -113,7 +113,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tse-Ta-EpB">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tse-Ta-EpB" userLabel="View Carousel">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="230"/>
                                 <color key="backgroundColor" systemColor="systemBlueColor"/>
                                 <constraints>
@@ -124,7 +124,7 @@
                                 <rect key="frame" x="0.0" y="230" width="375" height="437"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="cuO-T8-xWB">
-                                        <rect key="frame" x="20" y="46" width="335" height="391"/>
+                                        <rect key="frame" x="20" y="46" width="335" height="386"/>
                                         <color key="backgroundColor" name="AccentColor"/>
                                         <color key="sectionIndexBackgroundColor" name="AccentColor"/>
                                         <prototypes>
@@ -150,7 +150,7 @@
                                 <constraints>
                                     <constraint firstItem="316-Ci-WoN" firstAttribute="top" secondItem="gVv-IN-0UU" secondAttribute="top" constant="15" id="HGl-dR-zNn"/>
                                     <constraint firstAttribute="trailing" secondItem="316-Ci-WoN" secondAttribute="trailing" constant="20" id="MyJ-5i-hKx"/>
-                                    <constraint firstAttribute="bottom" secondItem="cuO-T8-xWB" secondAttribute="bottom" id="XDj-BA-JJs"/>
+                                    <constraint firstAttribute="bottom" secondItem="cuO-T8-xWB" secondAttribute="bottom" constant="5" id="XDj-BA-JJs"/>
                                     <constraint firstItem="cuO-T8-xWB" firstAttribute="top" secondItem="316-Ci-WoN" secondAttribute="bottom" constant="10" id="gmZ-Qu-NwY"/>
                                     <constraint firstItem="cuO-T8-xWB" firstAttribute="leading" secondItem="gVv-IN-0UU" secondAttribute="leading" constant="20" id="jcN-lb-9ee"/>
                                     <constraint firstAttribute="trailing" secondItem="cuO-T8-xWB" secondAttribute="trailing" constant="20" id="nQK-gx-0JH"/>
@@ -159,7 +159,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="e0H-WM-4Ri"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemBlueColor"/>
                         <constraints>
                             <constraint firstItem="Tse-Ta-EpB" firstAttribute="trailing" secondItem="e0H-WM-4Ri" secondAttribute="trailing" id="0Tq-iH-FcP"/>
                             <constraint firstItem="gVv-IN-0UU" firstAttribute="top" secondItem="Tse-Ta-EpB" secondAttribute="bottom" id="7Sm-3x-vBL"/>
@@ -174,7 +174,7 @@
                     <connections>
                         <outlet property="episodeTableView" destination="cuO-T8-xWB" id="BDd-Fu-XMY"/>
                         <outlet property="titleTableView" destination="316-Ci-WoN" id="PaI-Gh-eo0"/>
-                        <outlet property="viewCaroussel" destination="Tse-Ta-EpB" id="Izu-VO-GZn"/>
+                        <outlet property="viewCarousel" destination="Tse-Ta-EpB" id="VAU-8w-d7y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mag-VA-3Pn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

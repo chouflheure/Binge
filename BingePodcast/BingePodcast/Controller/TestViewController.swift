@@ -308,7 +308,7 @@ private extension TestViewController {
                                width: Constants.widthSquareSeekLessButton,
                                height: Constants.widthSquareSeekLessButton,
                                button: button,
-                               image: Assets.Picto.favoriteNotSelected.name,
+                               image: Assets.Picto.favoriteSelectedWhite.name,
                                borderColor: .white.withAlphaComponent(0),
                                backGroundColor: .white.withAlphaComponent(0)
         )
@@ -519,9 +519,9 @@ private extension TestViewController {
 
         var imageString = String()
         if isFavorite {
-            imageString = Assets.Picto.favoriteSelected.name
+            imageString = Assets.Picto.favoriteSelectedWhite.name
         } else {
-            imageString = Assets.Picto.favoriteNotSelected.name
+            imageString = Assets.Picto.favoriteUnselectedWhite.name
         }
         isFavorite = !isFavorite
         
