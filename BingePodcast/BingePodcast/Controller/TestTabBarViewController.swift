@@ -19,11 +19,11 @@ extension CGFloat {
 
 class RollingPitTabBar: UITabBar {
     
-    public var barBackColor : UIColor = Colors.ligthBlue.color
+    public var barBackColor : UIColor = .white
     public var barHeight : CGFloat = 65
     public var barTopRadius : CGFloat = 20
     public var barBottomRadius : CGFloat = 20
-    public var circleBackColor : UIColor = Colors.ligthBlue.color
+    public var circleBackColor : UIColor = .white
     public var circleRadius : CGFloat = 40
     
     var marginBottom : CGFloat = 20
@@ -130,7 +130,7 @@ class RollingPitTabBar: UITabBar {
     
     private lazy var circle : CAShapeLayer = {
         let result = CAShapeLayer()
-        result.fillColor = Colors.ligthBlue.color.cgColor
+        result.fillColor = circleBackColor.cgColor
         result.strokeColor = Colors.yellow.color.cgColor
         result.lineWidth = 2
 
@@ -303,6 +303,12 @@ class RollingPitTabBar: UITabBar {
         self.tintColor = Colors.darkBlue.color
         self.layer.insertSublayer(circle, at: 0)
         self.layer.insertSublayer(background, at: 0)
+        self.layer.cornerRadius = 30
+        self.layer.shadowRadius = 3
+        self.layer.shadowOffset = CGSize(width: 1, height: -2)
+        self.layer.shadowOpacity = 0.3
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.masksToBounds = false
     }
 
     override init(frame: CGRect) {
