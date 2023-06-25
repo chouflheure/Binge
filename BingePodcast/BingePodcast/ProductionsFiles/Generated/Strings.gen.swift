@@ -10,6 +10,8 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum L10n {
+  /// Tous les épisodes
+  internal static let allEpisodes = L10n.tr("Strings", "allEpisodes", fallback: "Tous les épisodes")
   /// Description
   internal static let description = L10n.tr("Strings", "description", fallback: "Description")
 }

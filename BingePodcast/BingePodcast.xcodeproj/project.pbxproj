@@ -267,6 +267,7 @@
 		1D9869CA2A2D199D00D26CEB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1DE525502A483FE9008132B0 /* Cell */,
 				1D187A032A2CC8AD00827277 /* LaunchScreen.storyboard */,
 				1D1879FB2A2CC8AA00827277 /* Main.storyboard */,
 			);
@@ -285,6 +286,7 @@
 		1D9869CC2A2D19AC00D26CEB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				1DE5254F2A483FDD008132B0 /* Cell */,
 				1D1879F92A2CC8AA00827277 /* ViewController.swift */,
 				1DC3F4FF2A3A7A86007F4AC8 /* PlayerViewController.swift */,
 				1D55E1E42A3DCF9100F1A9BD /* TestViewController.swift */,
@@ -358,6 +360,20 @@
 				1D986AB02A2E120500D26CEB /* GoogleService-Info.plist */,
 			);
 			path = Plist;
+			sourceTree = "<group>";
+		};
+		1DE5254F2A483FDD008132B0 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		1DE525502A483FE9008132B0 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		480D38A7599923BE528AD4B8 /* Frameworks */ = {
