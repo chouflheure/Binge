@@ -46,7 +46,7 @@ class RollingPitTabBar: UITabBar {
             let h = self.barHeight
             let w = bounds.width - (marginLeft + marginRight)
             let x = bounds.minX + marginLeft
-            let y = marginTop + circleRadius
+            let y = marginTop
             
             let rect = CGRect(x: x, y: y, width: w, height: h)
             return rect
@@ -62,14 +62,9 @@ class RollingPitTabBar: UITabBar {
         let backRect = barRect
         let radius = circleRadius
         let circleXCenter = getCircleCenter()
-        
         let x : CGFloat = circleXCenter - radius + 15
         let y = backRect.origin.y - radius + 25
-        
-        
         let pos = CGPoint(x: x, y: y)
-        
-        
         let result = CGRect(origin: pos, size: CGSize(width: radius * 2 - 30, height: radius * 2 - 30))
         
         return result
@@ -149,10 +144,11 @@ class RollingPitTabBar: UITabBar {
     }()
 
 
+    // Tab bar size
     override public func sizeThatFits(_ size: CGSize) -> CGSize {
         super.sizeThatFits(size)
         var sizeThatFits = super.sizeThatFits(size)
-        sizeThatFits.height = self.barHeight + marginTop + marginBottom + self.circleRadius
+        sizeThatFits.height = self.barHeight + marginTop + marginBottom
         return sizeThatFits
     }
     
@@ -303,6 +299,7 @@ class RollingPitTabBar: UITabBar {
         self.backgroundColor = UIColor.clear
         self.backgroundImage = UIImage()
         self.shadowImage = UIImage()
+        self.layer.frame.size.height = 0
         self.tintColor = Colors.darkBlue.color
         self.layer.insertSublayer(circle, at: 0)
         self.layer.insertSublayer(background, at: 0)
@@ -317,5 +314,4 @@ class RollingPitTabBar: UITabBar {
         super.init(coder: aDecoder)
         setup()
     }
-
 }
