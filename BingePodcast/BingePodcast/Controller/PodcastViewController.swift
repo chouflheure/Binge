@@ -8,47 +8,84 @@
 import UIKit
 
 class PodcastViewController: UIViewController {
-    
-    
-    
+
     @IBOutlet weak var titleTableView: UILabel!
-    
     @IBOutlet weak var carouselView: UIView!
     @IBOutlet weak var tableViewEpisode: UITableView!
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupGenralView()
         titleSetUp()
         initTableView()
-        // Do any additional setup after loading the view.
+        initGeneralView()
+        initViewCarouselView()
+        tableViewEpisode.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -82).isActive = true
+        carouselView.backgroundColor = .clear
+        
     }
     
     
+    private func setupGenralView() {
+        gradient.frame = view.bounds
+        view.layer.insertSublayer(gradient, at: 0)
+    }
+    
+    lazy var gradient: CAGradientLayer = {
+        let gradient = CAGradientLayer()
+        gradient.type = .axial
+        gradient.colors = [
+            Colors.ligthBlue.color.cgColor,
+            UIColor.white.cgColor
+        ]
+        gradient.locations = [0, 1, 1]
+        return gradient
+    }()
+    
+    
+    private func initGeneralView() {
+        view.backgroundColor = Colors.ligthBlue.color
+    }
+    
+    private func initViewCarouselView() {
+        carouselView.heightAnchor.constraint(equalToConstant: 300).isActive = true
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+    }
+    
     let cellSpacingHeight: CGFloat = 5
         
-        let episodeArray = ["Episode 1", "Episode 2", "Episode 3", "Episode 4", "Episode 5", "Episode 6",
-                            "Episode 7", "Episode 8"]
+        let episodeArray = ["Episode 1", "Episode 2", "Episode 3", "Episode 4", "Episode 5", "Episode 6", "Episode 7", "Episode 8"]
         
-        let titleEpisode = ["Les jeux olympiques s…", "À quoi ca sert de courir ?", "Peut-on toujours repous…",
+        let titleEpisode = ["Les jeux olympiques sont ils utilent", "À quoi ca sert de courir ?", "Peut-on toujours repous…",
                             "Pourquoi les ballons no…", "Les jeux olympiques s…", "À quoi ca sert de courir ?",
                             "Peut-on toujours repous…", "Pourquoi les ballons no…"]
         
         let favorite = [true, false, false, true, false, true, true, true]
 
         let time = ["12:45", "12:45", "12:45", "12:45", "12:45", "12:45", "12:45", "12:45"]
+    
     let imagePodcastString = Assets.aBientotDeTeRevoir.name
     
     
     
     private func titleSetUp() {
         titleTableView.text = L10n.allEpisodes
+        titleTableView.font = UIFont(name: .fonts.proximaNova_Thin.fontName(), size: 18)
+        titleTableView.textColor = Colors.darkBlue.color
     }
     
     private func initTableView() {
         tableViewEpisode.delegate = self
         tableViewEpisode.dataSource = self
         tableViewEpisode.register(UINib(nibName: "CellPodcastViewController", bundle: nil), forCellReuseIdentifier: "cell")
+        tableViewEpisode.backgroundColor = .clear
     }
 }
 
@@ -83,46 +120,44 @@ extension PodcastViewController: UITableViewDelegate {
 extension PodcastViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-           1 // recipeList.count
-       }
+        1
+    }
 
-       func numberOfSections(in tableView: UITableView) -> Int {
-           episodeArray.count
-       }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        episodeArray.count
+    }
        
-       func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
            
-           let index = indexPath.section
+        let index = indexPath.section
 
-           let cell = tableView.dequeueReusableCell(
-               withIdentifier: "cell",
-               for: indexPath as IndexPath) as? CellPodcastViewController
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: "cell",
+            for: indexPath as IndexPath) as? CellPodcastViewController
 
-           guard var cell = cell else {return UITableViewCell()}
+        guard let cell = cell else {return UITableViewCell()}
 
-           cell.setupCell(title: episodeArray[index], subtitle: titleEpisode[index], imageEpisode: imagePodcastString, time: time[index], favorite: favorite[index])
-           
-           // cell = cell.setupUI(cell: cell, recipeList: recipeList, indexPath: indexPath.row)
-           
-           
-           return cell
-       }
+        cell.setupCell(title: episodeArray[index], subtitle: titleEpisode[index], imageEpisode: imagePodcastString, time: time[index], favorite: favorite[index])
+        
+        return cell
+    }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-            let headerView = UIView()
-            headerView.backgroundColor = UIColor.clear
-            return headerView
-        }
+        let headerView = UIView()
+        headerView.backgroundColor = .clear
+        return headerView
+    }
 
-        
-
-        func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-                cellSpacingHeight
-            }
-        
-        
-        func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-           85
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+            cellSpacingHeight
         }
+        
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        82
+    }
 
 }
+
+
+
+

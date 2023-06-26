@@ -17,7 +17,7 @@ extension CGFloat {
     }
 }
 
-class RollingPitTabBar: UITabBar {
+class FloatingTabBarViewController: UITabBar {
     
     public var barBackColor : UIColor = .white
     public var barHeight : CGFloat = 65
@@ -25,21 +25,12 @@ class RollingPitTabBar: UITabBar {
     public var barBottomRadius : CGFloat = 20
     public var circleBackColor : UIColor = .white
     public var circleRadius : CGFloat = 40
-    
     var marginBottom : CGFloat = 20
     var marginTop : CGFloat = 0
-    
-    
     let marginLeft : CGFloat = 15
     let marginRight : CGFloat = 15
-    
-    
     let pitCornerRad : CGFloat = 0
-    
     let pitCircleDistanceOffset : CGFloat = 0
-    
-    
-
 
     private var barRect : CGRect{
         get{
@@ -57,8 +48,7 @@ class RollingPitTabBar: UITabBar {
         
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: Colors.darkBlue.color], for: .selected)
          UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: Colors.darkBlue.color], for: .normal)
-        
-        
+
         let backRect = barRect
         let radius = circleRadius
         let circleXCenter = getCircleCenter()
@@ -93,7 +83,6 @@ class RollingPitTabBar: UITabBar {
         // create the tab bar
         let maskPath = CGMutablePath()
         maskPath.addRect(rect)
-        
         return maskPath
     }
     

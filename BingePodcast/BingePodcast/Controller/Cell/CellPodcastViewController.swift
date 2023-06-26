@@ -29,7 +29,7 @@ class CellPodcastViewController: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        self.backgroundColor = .clear
         // Configure the view for the selected state
     }
     
@@ -39,11 +39,25 @@ class CellPodcastViewController: UITableViewCell {
                        time: String,
                        favorite: Bool) {
             
-            self.titleEpisode.text = title
-            self.subtitleEpisode.text = subtitle
-            self.totalTimeEpisode.text = time
-            
-        self.favorisImageView.image = favorite ? Assets.Picto.favoriteSelected.image : Assets.Picto.favoriteNotSelected.image
+        self.titleEpisode.text = title
+        self.titleEpisode.numberOfLines = 1
+        self.titleEpisode.font = UIFont(name: .fonts.proximaNova_Regular.fontName(), size: 18)
+        self.titleEpisode.textColor = Colors.darkBlue.color
+        
+        self.subtitleEpisode.text = subtitle
+        self.subtitleEpisode.numberOfLines = 1
+        self.subtitleEpisode.font = UIFont(name: .fonts.proximaNova_Alt_Light.fontName(), size: 16)
+        self.subtitleEpisode.textColor = Colors.darkBlue.color
+        
+        self.totalTimeEpisode.text = time
+        self.totalTimeEpisode.numberOfLines = 1
+        self.totalTimeEpisode.font = UIFont(name: .fonts.proximaNova_Alt_Thin.fontName(), size: 15)
+        self.totalTimeEpisode.textColor = Colors.darkBlue.color
+        
+        self.episodeImageView.image = UIImage(named: imageEpisode)
+        self.episodeImageView.layer.cornerRadius = 10
+        
+        self.favorisImageView.image = favorite ? Assets.Picto.Favorite.favoriteSelectedBlue.image : Assets.Picto.Favorite.favoriteUnselectedBlue.image
         }
     
 }

@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -83,10 +82,10 @@
             </objects>
             <point key="canvasLocation" x="3982" y="2014"/>
         </scene>
-        <!--Test View Controller-->
+        <!--Player View Controller-->
         <scene sceneID="tdZ-bj-yva">
             <objects>
-                <viewController id="eRR-uA-dfF" customClass="TestViewController" customModule="BingePodcast" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="eRR-uA-dfF" customClass="PlayerViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DzE-fP-xoB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -107,25 +106,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AC7-1p-1JI">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="177"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eEX-iH-bca">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="177" id="Y6r-fg-ban"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HoZ-er-gkS">
-                                <rect key="frame" x="0.0" y="177" width="25" height="441"/>
-                                <color key="backgroundColor" red="0.75759977099999998" green="0.80684167149999997" blue="0.87059712410000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="25" id="GzE-ga-iyY"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Pf-25-2fv">
-                                <rect key="frame" x="350" y="177" width="25" height="441"/>
-                                <color key="backgroundColor" red="0.75759977099999998" green="0.80684167149999997" blue="0.87059712410000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="25" id="TBP-xt-UuA"/>
+                                    <constraint firstAttribute="height" priority="750" constant="180" id="PjM-OE-d68"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0yo-RB-WLh">
@@ -134,60 +119,58 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Qen-0B-2mM">
-                                <rect key="frame" x="25" y="219" width="325" height="399"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <color key="sectionIndexBackgroundColor" name="AccentColor"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Qen-0B-2mM">
+                                <rect key="frame" x="25" y="221" width="325" height="397"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="HkZ-XC-58u">
+                                    <rect key="frame" x="0.0" y="160" width="325" height="26"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="82" id="u3i-rV-2A6" customClass="CellPodcastViewController" customModule="BingePodcast" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="0.0" reuseIdentifier="cell" focusStyle="custom" rowHeight="82" id="u3i-rV-2A6" customClass="CellPodcastViewController" customModule="BingePodcast" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="325" height="82"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="u3i-rV-2A6" id="GgA-qz-CNz">
                                             <rect key="frame" x="0.0" y="0.0" width="325" height="82"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.14430752399999999" green="0.29589098689999999" blue="0.56081062559999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="NWm-zX-B8Z"/>
-                        <color key="backgroundColor" red="0.75759977099999998" green="0.80684167149999997" blue="0.87059712410000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="NWm-zX-B8Z" firstAttribute="bottom" secondItem="5Pf-25-2fv" secondAttribute="bottom" id="1ON-dx-KrO"/>
-                            <constraint firstItem="AC7-1p-1JI" firstAttribute="leading" secondItem="NWm-zX-B8Z" secondAttribute="leading" id="1lo-qC-dVw"/>
-                            <constraint firstItem="5Pf-25-2fv" firstAttribute="leading" secondItem="0yo-RB-WLh" secondAttribute="trailing" id="KRg-TU-V5N"/>
-                            <constraint firstItem="5Pf-25-2fv" firstAttribute="leading" secondItem="0yo-RB-WLh" secondAttribute="trailing" id="KaX-0o-Ctg"/>
-                            <constraint firstItem="Qen-0B-2mM" firstAttribute="leading" secondItem="HoZ-er-gkS" secondAttribute="trailing" id="Kfm-uf-0GB"/>
-                            <constraint firstItem="NWm-zX-B8Z" firstAttribute="bottom" secondItem="HoZ-er-gkS" secondAttribute="bottom" id="Rmw-sz-xWl"/>
-                            <constraint firstItem="Qen-0B-2mM" firstAttribute="top" secondItem="0yo-RB-WLh" secondAttribute="bottom" constant="8" symbolic="YES" id="SmV-Cv-Xyl"/>
-                            <constraint firstItem="Qen-0B-2mM" firstAttribute="bottom" secondItem="NWm-zX-B8Z" secondAttribute="bottom" id="Ueo-su-jg6"/>
-                            <constraint firstItem="AC7-1p-1JI" firstAttribute="trailing" secondItem="NWm-zX-B8Z" secondAttribute="trailing" id="a40-mV-nym"/>
-                            <constraint firstItem="0yo-RB-WLh" firstAttribute="top" secondItem="AC7-1p-1JI" secondAttribute="bottom" constant="10" id="bhh-aO-X5l"/>
-                            <constraint firstItem="HoZ-er-gkS" firstAttribute="leading" secondItem="NWm-zX-B8Z" secondAttribute="leading" id="c2D-sN-glk"/>
-                            <constraint firstItem="HoZ-er-gkS" firstAttribute="top" secondItem="AC7-1p-1JI" secondAttribute="bottom" id="e8s-fb-xE2"/>
-                            <constraint firstItem="5Pf-25-2fv" firstAttribute="top" secondItem="AC7-1p-1JI" secondAttribute="bottom" id="hHN-e2-sB1"/>
-                            <constraint firstItem="5Pf-25-2fv" firstAttribute="trailing" secondItem="NWm-zX-B8Z" secondAttribute="trailing" id="hx3-hR-7kI"/>
-                            <constraint firstItem="0yo-RB-WLh" firstAttribute="leading" secondItem="HoZ-er-gkS" secondAttribute="trailing" id="sSg-nD-wR4"/>
-                            <constraint firstItem="5Pf-25-2fv" firstAttribute="leading" secondItem="Qen-0B-2mM" secondAttribute="trailing" id="wOf-f8-1C4"/>
-                            <constraint firstItem="AC7-1p-1JI" firstAttribute="top" secondItem="kDD-2r-wMl" secondAttribute="top" id="xP9-69-jfJ"/>
+                            <constraint firstItem="Qen-0B-2mM" firstAttribute="leading" secondItem="NWm-zX-B8Z" secondAttribute="leading" constant="25" id="0oH-6z-l8B"/>
+                            <constraint firstItem="NWm-zX-B8Z" firstAttribute="trailing" secondItem="Qen-0B-2mM" secondAttribute="trailing" constant="25" id="0qE-CI-4Ui"/>
+                            <constraint firstItem="0yo-RB-WLh" firstAttribute="leading" secondItem="NWm-zX-B8Z" secondAttribute="leading" constant="25" id="BgE-eA-04p"/>
+                            <constraint firstItem="eEX-iH-bca" firstAttribute="trailing" secondItem="NWm-zX-B8Z" secondAttribute="trailing" id="L8W-Y4-ORE"/>
+                            <constraint firstItem="eEX-iH-bca" firstAttribute="top" secondItem="kDD-2r-wMl" secondAttribute="top" id="Q3l-nG-2f0"/>
+                            <constraint firstItem="Qen-0B-2mM" firstAttribute="top" secondItem="0yo-RB-WLh" secondAttribute="bottom" constant="10" id="SmV-Cv-Xyl"/>
+                            <constraint firstItem="NWm-zX-B8Z" firstAttribute="trailing" secondItem="0yo-RB-WLh" secondAttribute="trailing" constant="25" id="VME-Cx-9Cm"/>
+                            <constraint firstItem="0yo-RB-WLh" firstAttribute="top" secondItem="eEX-iH-bca" secondAttribute="bottom" constant="7" id="YqA-jn-dZX"/>
+                            <constraint firstItem="eEX-iH-bca" firstAttribute="leading" secondItem="NWm-zX-B8Z" secondAttribute="leading" id="ZDW-aq-Bay"/>
+                            <constraint firstItem="NWm-zX-B8Z" firstAttribute="bottom" secondItem="Qen-0B-2mM" secondAttribute="bottom" id="mB3-dt-ygh"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Podcast" image="podcast" id="dqK-0d-Doz"/>
                     <connections>
-                        <outlet property="carouselView" destination="AC7-1p-1JI" id="z1l-rA-dsb"/>
+                        <outlet property="carouselView" destination="eEX-iH-bca" id="kwN-T7-0F3"/>
                         <outlet property="tableViewEpisode" destination="Qen-0B-2mM" id="q5p-jV-K23"/>
                         <outlet property="titleTableView" destination="0yo-RB-WLh" id="Cas-GZ-Qb0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IfW-6H-zsf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3062" y="2014"/>
+            <point key="canvasLocation" x="3061.5999999999999" y="2013.6431784107947"/>
         </scene>
         <!--Acceuil-->
         <scene sceneID="Qnu-sM-yL3">
             <objects>
-                <viewController id="OKS-k3-dup" sceneMemberID="viewController">
+                <viewController id="OKS-k3-dup" customClass="TestPageViewController" customModule="BingePodcast" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wps-Jr-bSr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -204,7 +187,7 @@
         <scene sceneID="paM-jI-oD4">
             <objects>
                 <tabBarController id="LPY-Dk-sa5" sceneMemberID="viewController">
-                    <tabBar key="tabBar" autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" itemPositioning="centered" id="YrB-Fd-tVI" customClass="RollingPitTabBar" customModule="BingePodcast">
+                    <tabBar key="tabBar" autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" itemPositioning="centered" id="YrB-Fd-tVI" customClass="FloatingTabBarViewController" customModule="BingePodcast" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.14430752399999999" green="0.29589098689999999" blue="0.56081062559999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -228,18 +211,10 @@
             <point key="canvasLocation" x="3062" y="1246"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="YrB-Fd-tVI">
-            <size key="intrinsicContentSize" width="-1" height="49"/>
-        </designable>
-    </designables>
     <resources>
         <image name="favorite" width="22" height="22"/>
         <image name="home" width="22" height="22"/>
         <image name="podcast" width="22.000001907348633" height="22.601316452026367"/>
-        <namedColor name="AccentColor">
-            <color red="1" green="0.79199999570846558" blue="0.15700000524520874" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
