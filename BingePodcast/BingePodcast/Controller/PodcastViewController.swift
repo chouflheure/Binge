@@ -20,7 +20,6 @@ class PodcastViewController: UIViewController {
         initTableView()
         initGeneralView()
         initViewCarouselView()
-        tableViewEpisode.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -82).isActive = true
         carouselView.backgroundColor = .clear
         
     }

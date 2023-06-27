@@ -14,7 +14,7 @@ class PlayerAudioService {
         do {
             let playerItem = AVPlayerItem(url: url)
 
-            testAudio = try AVPlayer(playerItem: playerItem)
+            testAudio = AVPlayer(playerItem: playerItem)
             testAudio.volume = 0
             testAudio.play()
 

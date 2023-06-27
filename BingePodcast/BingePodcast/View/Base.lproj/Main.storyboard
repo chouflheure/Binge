@@ -69,13 +69,8 @@
                         <viewLayoutGuide key="safeArea" id="uAh-Gh-e3H"/>
                         <color key="backgroundColor" systemColor="systemRedColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Favoris" image="favorite" id="lNS-PT-H7c">
-                        <color key="badgeColor" red="0.14430752399999999" green="0.29589098689999999" blue="0.56081062559999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
-                                <color key="value" systemColor="systemRedColor"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
+                    <tabBarItem key="tabBarItem" title="Favoris" image="tab_bar_icon_favorite_unselected" selectedImage="tab_bar_icon_favorite_selected" id="lNS-PT-H7c">
+                        <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-4"/>
                     </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KhU-xl-hpx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -120,7 +115,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Qen-0B-2mM">
-                                <rect key="frame" x="25" y="221" width="325" height="397"/>
+                                <rect key="frame" x="25" y="221" width="325" height="497"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="HkZ-XC-58u">
@@ -153,10 +148,10 @@
                             <constraint firstItem="NWm-zX-B8Z" firstAttribute="trailing" secondItem="0yo-RB-WLh" secondAttribute="trailing" constant="25" id="VME-Cx-9Cm"/>
                             <constraint firstItem="0yo-RB-WLh" firstAttribute="top" secondItem="eEX-iH-bca" secondAttribute="bottom" constant="7" id="YqA-jn-dZX"/>
                             <constraint firstItem="eEX-iH-bca" firstAttribute="leading" secondItem="NWm-zX-B8Z" secondAttribute="leading" id="ZDW-aq-Bay"/>
-                            <constraint firstItem="NWm-zX-B8Z" firstAttribute="bottom" secondItem="Qen-0B-2mM" secondAttribute="bottom" id="mB3-dt-ygh"/>
+                            <constraint firstItem="NWm-zX-B8Z" firstAttribute="bottom" secondItem="Qen-0B-2mM" secondAttribute="bottom" constant="-100" id="mB3-dt-ygh"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Podcast" image="podcast" id="dqK-0d-Doz"/>
+                    <tabBarItem key="tabBarItem" title="Podcast" image="tab_bar_icon_podcast_unselected" selectedImage="tab_bar_icon_podcast_selected" id="dqK-0d-Doz"/>
                     <connections>
                         <outlet property="carouselView" destination="eEX-iH-bca" id="kwN-T7-0F3"/>
                         <outlet property="tableViewEpisode" destination="Qen-0B-2mM" id="q5p-jV-K23"/>
@@ -167,7 +162,7 @@
             </objects>
             <point key="canvasLocation" x="3061.5999999999999" y="2013.6431784107947"/>
         </scene>
-        <!--Acceuil-->
+        <!--Accueil-->
         <scene sceneID="Qnu-sM-yL3">
             <objects>
                 <viewController id="OKS-k3-dup" customClass="TestPageViewController" customModule="BingePodcast" customModuleProvider="target" sceneMemberID="viewController">
@@ -177,7 +172,7 @@
                         <viewLayoutGuide key="safeArea" id="9fS-Ni-1ny"/>
                         <color key="backgroundColor" systemColor="systemBrownColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Acceuil" image="home" id="HSg-rc-y5S"/>
+                    <tabBarItem key="tabBarItem" title="Accueil" image="tab_bar_icon_home_unselected" selectedImage="tab_bar_icon_home_selected" id="HSg-rc-y5S"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EWr-pv-tkV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -194,11 +189,6 @@
                         <color key="tintColor" red="0.14430752399999999" green="0.29589098689999999" blue="0.56081062559999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <color key="barTintColor" red="0.14430752399999999" green="0.29589098689999999" blue="0.56081062559999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <color key="selectedImageTintColor" red="0.14430752399999999" green="0.29589098689999999" blue="0.56081062559999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
-                                <color key="value" systemColor="systemRedColor"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
                         <segue destination="OKS-k3-dup" kind="relationship" relationship="viewControllers" id="IHH-0m-Q8j"/>
@@ -212,9 +202,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="favorite" width="22" height="22"/>
-        <image name="home" width="22" height="22"/>
-        <image name="podcast" width="22.000001907348633" height="22.601316452026367"/>
+        <image name="tab_bar_icon_favorite_selected" width="22" height="22.008342742919922"/>
+        <image name="tab_bar_icon_favorite_unselected" width="22" height="22"/>
+        <image name="tab_bar_icon_home_selected" width="22.978767395019531" height="22.978017807006836"/>
+        <image name="tab_bar_icon_home_unselected" width="21.999998092651367" height="22.003536224365234"/>
+        <image name="tab_bar_icon_podcast_selected" width="22.999988555908203" height="23"/>
+        <image name="tab_bar_icon_podcast_unselected" width="21.999998092651367" height="22.601316452026367"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
