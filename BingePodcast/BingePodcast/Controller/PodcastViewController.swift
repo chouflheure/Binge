@@ -9,21 +9,79 @@ import UIKit
 
 class PodcastViewController: UIViewController {
 
-    @IBOutlet weak var titleTableView: UILabel!
     @IBOutlet weak var carouselView: UIView!
+    @IBOutlet weak var titleTableView: UILabel!
     @IBOutlet weak var tableViewEpisode: UITableView!
-
+    
+    private let cellPodcast = "cellPodcast"
+    private let cellEpisode = "cellEpisode"
+    private let cellEpisodeTabViewCell = "CellEpisodeTabViewCell"
+    private var myCollectionView:UICollectionView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupGenralView()
         titleSetUp()
         initTableView()
         initGeneralView()
-        initViewCarouselView()
+        // initViewCarouselView()
         carouselView.backgroundColor = .clear
+        // collectionViewPodcast.delegate = self
+        // collectionViewPodcast.dataSource = self
+        setCollectionView()
         
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+
+    
+    // Methode qui permet de créer un scroll automatique 
+    @objc func scrollAutomatically(_ timer1: Timer) {
+
+        if let coll  = myCollectionView {
+            for cell in coll.visibleCells {
+                let indexPath: IndexPath? = coll.indexPath(for: cell)
+                if ((indexPath?.row)! < 7){
+                    let indexPath1: IndexPath?
+                    indexPath1 = IndexPath.init(row: (indexPath?.row)! + 1, section: (indexPath?.section)!)
+                    
+                    coll.scrollToItem(at: indexPath1!, at: .right, animated: true)
+                    coll.center.x = carouselView.center.x
+                }
+                else{
+                    let indexPath1: IndexPath?
+                    indexPath1 = IndexPath.init(row: 0, section: (indexPath?.section)!)
+                    coll.scrollToItem(at: indexPath1!, at: .left, animated: true)
+                }
+
+            }
+        }
+    }
+    
+    private func setCollectionView() {
+        
+        
+        
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 30, left: 10, bottom: 10, right: 10)
+        layout.itemSize = CGSize(width: carouselView.frame.size.width - 150, height: carouselView.frame.size.height - 40)
+        layout.scrollDirection = .horizontal
+        
+        
+        
+        myCollectionView = UICollectionView(frame: CGRect(x: carouselView.frame.origin.x, y: carouselView.frame.origin.y, width: UIScreen.main.bounds.width, height: carouselView.frame.size.height), collectionViewLayout: layout)
+        
+        myCollectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "MyCell")
+        myCollectionView?.backgroundColor = UIColor.white
+        
+        myCollectionView?.dataSource = self
+        myCollectionView?.delegate = self
+        
+        carouselView.addSubview(myCollectionView ?? UICollectionView())
+    }
     
     private func setupGenralView() {
         gradient.frame = view.bounds
@@ -83,7 +141,7 @@ class PodcastViewController: UIViewController {
     private func initTableView() {
         tableViewEpisode.delegate = self
         tableViewEpisode.dataSource = self
-        tableViewEpisode.register(UINib(nibName: "CellPodcastViewController", bundle: nil), forCellReuseIdentifier: "cell")
+        tableViewEpisode.register(UINib(nibName: cellEpisodeTabViewCell, bundle: nil), forCellReuseIdentifier: cellEpisode)
         tableViewEpisode.backgroundColor = .clear
     }
 }
@@ -92,7 +150,7 @@ extension PodcastViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             
-            print("@@@ select at \(indexPath)")
+        print("@@@ select at \(indexPath)")
             /*
             let vc = storyboard?.instantiateViewController(withIdentifier: "DetailRecipeController") as? DetailRecipe
             
@@ -131,8 +189,8 @@ extension PodcastViewController: UITableViewDataSource {
         let index = indexPath.section
 
         let cell = tableView.dequeueReusableCell(
-            withIdentifier: "cell",
-            for: indexPath as IndexPath) as? CellPodcastViewController
+            withIdentifier: cellEpisode,
+            for: indexPath as IndexPath) as? CellEpisodeTabViewCell
 
         guard let cell = cell else {return UITableViewCell()}
 
@@ -158,5 +216,92 @@ extension PodcastViewController: UITableViewDataSource {
 }
 
 
+extension PodcastViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 9 // How many cells to display
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath)
+        myCell.backgroundColor = UIColor.gray
+        return myCell
+    }
+}
 
+extension PodcastViewController: UICollectionViewDelegate {
+ 
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("User tapped on item \(indexPath.row)")
+        
+    }
+    
+    
+    
+    func indexPathForPreferredFocusedView(in collectionView: UICollectionView) -> IndexPath? {
+        IndexPath(row: 3, section: 0)
+    }
+    
+    func scrollToNextCell(){
+
+            //get Collection View Instance
+           
+
+            //get cell size
+            let cellSize = CGSizeMake(self.view.frame.width, self.view.frame.height);
+
+            //get current content Offset of the Collection view
+        let contentOffset = myCollectionView?.contentOffset;
+
+            //scroll to next cell
+        myCollectionView?.scrollRectToVisible(CGRectMake(contentOffset!.x + cellSize.width, contentOffset!.y, cellSize.width, cellSize.height), animated: true);
+
+
+        }
+
+        /**
+         Invokes Timer to start Automatic Animation with repeat enabled
+         */
+        func startTimer() {
+
+            let timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: Selector("scrollToNextCell"), userInfo: nil, repeats: true);
+
+
+        }
+    
+}
+
+
+
+    
+    
+    // MARK: UICollectionViewDelegate
+
+    /*
+    // Uncomment this method to specify if the specified item should be highlighted during tracking
+    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    */
+
+    /*
+    // Uncomment this method to specify if the specified item should be selected
+    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    */
+
+    /*
+    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
+    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+
+    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
+        return false
+    }
+
+    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
+    
+    }
+    */
 

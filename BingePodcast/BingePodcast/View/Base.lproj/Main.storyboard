@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LPY-Dk-sa5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VKB-kT-SMC">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -124,7 +124,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="0.0" reuseIdentifier="cell" focusStyle="custom" rowHeight="82" id="u3i-rV-2A6" customClass="CellPodcastViewController" customModule="BingePodcast" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="0.0" reuseIdentifier="cellEpisode" focusStyle="custom" rowHeight="82" id="u3i-rV-2A6" customClass="CellEpisodeTabViewCell" customModule="BingePodcast" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="325" height="82"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="u3i-rV-2A6" id="GgA-qz-CNz">
@@ -141,6 +141,7 @@
                         <constraints>
                             <constraint firstItem="Qen-0B-2mM" firstAttribute="leading" secondItem="NWm-zX-B8Z" secondAttribute="leading" constant="25" id="0oH-6z-l8B"/>
                             <constraint firstItem="NWm-zX-B8Z" firstAttribute="trailing" secondItem="Qen-0B-2mM" secondAttribute="trailing" constant="25" id="0qE-CI-4Ui"/>
+                            <constraint firstItem="eEX-iH-bca" firstAttribute="trailing" secondItem="NWm-zX-B8Z" secondAttribute="trailing" id="4kr-Qg-mnH"/>
                             <constraint firstItem="0yo-RB-WLh" firstAttribute="leading" secondItem="NWm-zX-B8Z" secondAttribute="leading" constant="25" id="BgE-eA-04p"/>
                             <constraint firstItem="eEX-iH-bca" firstAttribute="trailing" secondItem="NWm-zX-B8Z" secondAttribute="trailing" id="L8W-Y4-ORE"/>
                             <constraint firstItem="eEX-iH-bca" firstAttribute="top" secondItem="kDD-2r-wMl" secondAttribute="top" id="Q3l-nG-2f0"/>

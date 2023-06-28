@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CellPodcastViewController: UITableViewCell {
+class CellEpisodeTabViewCell: UITableViewCell {
     
     @IBOutlet weak var episodeImageView: UIImageView!
     @IBOutlet weak var playButtonImageView: UIImageView!

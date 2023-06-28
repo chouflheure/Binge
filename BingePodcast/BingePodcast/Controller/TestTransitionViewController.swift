@@ -1,5 +1,4 @@
-
- import UIKit
+import UIKit
 
 enum Pages: CaseIterable {
     case pageZero
@@ -205,7 +204,7 @@ class PageVC: UIViewController {
     private func initTableView() {
         tableViewEpisode.delegate = self
         tableViewEpisode.dataSource = self
-        tableViewEpisode.register(UINib(nibName: "CellPodcastViewController", bundle: nil), forCellReuseIdentifier: "cell")
+        tableViewEpisode.register(UINib(nibName: "CellEpisodeTabViewCell", bundle: nil), forCellReuseIdentifier: "cellEpisode")
         tableViewEpisode.backgroundColor = .clear
     }
     
@@ -234,8 +233,8 @@ extension PageVC: UITableViewDataSource {
         let index = indexPath.section
         
         let cell = tableView.dequeueReusableCell(
-            withIdentifier: "cell",
-            for: indexPath as IndexPath) as? CellPodcastViewController
+            withIdentifier: "cellEpisode",
+            for: indexPath as IndexPath) as? CellEpisodeTabViewCell
         
         guard let cell = cell else {return UITableViewCell()}
         
