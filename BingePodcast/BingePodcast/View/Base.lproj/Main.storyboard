@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VKB-kT-SMC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LPY-Dk-sa5">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -9,56 +9,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
-        <scene sceneID="DT7-Xh-QsQ">
-            <objects>
-                <navigationController hidesBarsWhenVerticallyCompact="YES" id="VKB-kT-SMC" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="OLE-mZ-7bf">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Net-NR-5TJ">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </toolbar>
-                    <connections>
-                        <segue destination="2ow-lC-7V3" kind="relationship" relationship="rootViewController" id="ecR-pe-5G4"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Znh-LP-qec" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4156" y="1245"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="yn0-dL-fKh">
-            <objects>
-                <viewController id="2ow-lC-7V3" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="fDz-la-d8Y">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gId-fU-Zl8">
-                                <rect key="frame" x="30" y="414" width="315" height="35"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="go player &gt;"/>
-                                <connections>
-                                    <segue destination="eRR-uA-dfF" kind="show" id="rLb-5e-IC2"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="GGy-IT-xa9"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="GGy-IT-xa9" firstAttribute="trailing" secondItem="gId-fU-Zl8" secondAttribute="trailing" constant="30" id="VNJ-ea-maJ"/>
-                            <constraint firstItem="gId-fU-Zl8" firstAttribute="top" secondItem="GGy-IT-xa9" secondAttribute="top" constant="350" id="a8w-I4-ePp"/>
-                            <constraint firstItem="gId-fU-Zl8" firstAttribute="leading" secondItem="GGy-IT-xa9" secondAttribute="leading" constant="30" id="j1t-Ut-32m"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="eCl-uN-BeL"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7Yc-cB-wQ4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5049" y="1245"/>
-        </scene>
         <!--Favoris-->
         <scene sceneID="tQg-dO-hFL">
             <objects>
@@ -80,7 +30,7 @@
         <!--Player View Controller-->
         <scene sceneID="tdZ-bj-yva">
             <objects>
-                <viewController id="eRR-uA-dfF" customClass="PlayerViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PlayerViewController" id="eRR-uA-dfF" customClass="PlayerViewController" customModule="BingePodcast" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DzE-fP-xoB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -91,7 +41,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AML-Wl-Syi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5922" y="1245"/>
+            <point key="canvasLocation" x="3062" y="2937"/>
         </scene>
         <!--Podcast-->
         <scene sceneID="uo4-sw-gL4">
@@ -144,7 +94,7 @@
                             <constraint firstItem="eEX-iH-bca" firstAttribute="trailing" secondItem="NWm-zX-B8Z" secondAttribute="trailing" id="4kr-Qg-mnH"/>
                             <constraint firstItem="0yo-RB-WLh" firstAttribute="leading" secondItem="NWm-zX-B8Z" secondAttribute="leading" constant="25" id="BgE-eA-04p"/>
                             <constraint firstItem="eEX-iH-bca" firstAttribute="trailing" secondItem="NWm-zX-B8Z" secondAttribute="trailing" id="L8W-Y4-ORE"/>
-                            <constraint firstItem="eEX-iH-bca" firstAttribute="top" secondItem="kDD-2r-wMl" secondAttribute="top" id="Q3l-nG-2f0"/>
+                            <constraint firstItem="eEX-iH-bca" firstAttribute="top" secondItem="kDD-2r-wMl" secondAttribute="top" priority="750" id="Q3l-nG-2f0"/>
                             <constraint firstItem="Qen-0B-2mM" firstAttribute="top" secondItem="0yo-RB-WLh" secondAttribute="bottom" constant="10" id="SmV-Cv-Xyl"/>
                             <constraint firstItem="NWm-zX-B8Z" firstAttribute="trailing" secondItem="0yo-RB-WLh" secondAttribute="trailing" constant="25" id="VME-Cx-9Cm"/>
                             <constraint firstItem="0yo-RB-WLh" firstAttribute="top" secondItem="eEX-iH-bca" secondAttribute="bottom" constant="7" id="YqA-jn-dZX"/>

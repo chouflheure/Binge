@@ -7,11 +7,19 @@
 
 import UIKit
 
+
+// https://guides.codepath.com/ios/Moving-and-Transforming-Views-with-Gestures
+// lien pour faire bouger les view => Home page
+
+
+
 class PodcastViewController: UIViewController {
 
     @IBOutlet weak var carouselView: UIView!
     @IBOutlet weak var titleTableView: UILabel!
     @IBOutlet weak var tableViewEpisode: UITableView!
+    
+    var actualIndexPathRow = 0
     
     private let cellPodcast = "cellPodcast"
     private let cellEpisode = "cellEpisode"
@@ -26,61 +34,64 @@ class PodcastViewController: UIViewController {
         initGeneralView()
         // initViewCarouselView()
         carouselView.backgroundColor = .clear
-        // collectionViewPodcast.delegate = self
-        // collectionViewPodcast.dataSource = self
         setCollectionView()
-        
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
     
-
-    
-    // Methode qui permet de créer un scroll automatique 
-    @objc func scrollAutomatically(_ timer1: Timer) {
-
-        if let coll  = myCollectionView {
-            for cell in coll.visibleCells {
-                let indexPath: IndexPath? = coll.indexPath(for: cell)
-                if ((indexPath?.row)! < 7){
-                    let indexPath1: IndexPath?
-                    indexPath1 = IndexPath.init(row: (indexPath?.row)! + 1, section: (indexPath?.section)!)
-                    
-                    coll.scrollToItem(at: indexPath1!, at: .right, animated: true)
-                    coll.center.x = carouselView.center.x
-                }
-                else{
-                    let indexPath1: IndexPath?
-                    indexPath1 = IndexPath.init(row: 0, section: (indexPath?.section)!)
-                    coll.scrollToItem(at: indexPath1!, at: .left, animated: true)
-                }
-
-            }
-        }
-    }
-    
     private func setCollectionView() {
-        
-        
-        
+ 
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 30, left: 10, bottom: 10, right: 10)
         layout.itemSize = CGSize(width: carouselView.frame.size.width - 150, height: carouselView.frame.size.height - 40)
+        print("@@@ carouselView width  = \(carouselView.frame.size.width - 150)")
+        print("@@@ carouselView height = \(carouselView.frame.size.height - 40)")
+
         layout.scrollDirection = .horizontal
-        
-        
-        
+
+        myCollectionView?.showsVerticalScrollIndicator = false
+        myCollectionView?.showsHorizontalScrollIndicator = false
+
         myCollectionView = UICollectionView(frame: CGRect(x: carouselView.frame.origin.x, y: carouselView.frame.origin.y, width: UIScreen.main.bounds.width, height: carouselView.frame.size.height), collectionViewLayout: layout)
         
-        myCollectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "MyCell")
+        myCollectionView?.register(CellPodcastCollectionViewCell.self, forCellWithReuseIdentifier: cellPodcast)
         myCollectionView?.backgroundColor = UIColor.white
         
         myCollectionView?.dataSource = self
         myCollectionView?.delegate = self
-        
+
+        // positionCellWithIdexPath(indexCell: 0)
+
         carouselView.addSubview(myCollectionView ?? UICollectionView())
+
+        let swipeGestureRecognizerDownLeftToRight = UISwipeGestureRecognizer(target: self, action: #selector(swipeLeftToRight(_:)))
+        let swipeGestureRecognizerDownRightToLeft = UISwipeGestureRecognizer(target: self, action: #selector(swipeRightToLeft(_:)))
+        swipeGestureRecognizerDownRightToLeft.direction = .left
+        swipeGestureRecognizerDownLeftToRight.direction = .right
+        
+        carouselView.addGestureRecognizer(swipeGestureRecognizerDownLeftToRight)
+        carouselView.addGestureRecognizer(swipeGestureRecognizerDownRightToLeft)
+
+        positionCellWithIdexPath(indexCell: 0)
+        
+        myCollectionView?.isScrollEnabled = false
+
+    }
+    
+    @objc private func swipeLeftToRight(_ sender: UISwipeGestureRecognizer) {
+        print("@@@ swipe left to right")
+        if actualIndexPathRow != 0 {
+            positionCellWithIdexPath(indexCell: actualIndexPathRow - 1)
+        }
+    }
+    
+    @objc private func swipeRightToLeft(_ sender: UISwipeGestureRecognizer) {
+        print("@@@ swipe right to left")
+        if actualIndexPathRow != 6 {
+            positionCellWithIdexPath(indexCell: actualIndexPathRow + 1)
+        }
     }
     
     private func setupGenralView() {
@@ -151,26 +162,11 @@ extension PodcastViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             
         print("@@@ select at \(indexPath)")
-            /*
-            let vc = storyboard?.instantiateViewController(withIdentifier: "DetailRecipeController") as? DetailRecipe
-            
-            var description = String()
-            recipeList[indexPath.row].recipe.ingredients.forEach {
-                description.append(" \($0.food.capitalizingFirstLetter()),")
-            }
-            description.removeLast()
 
-            vc?.label = recipeList[indexPath.row].recipe.label
-            vc?.yield = recipeList[indexPath.row].recipe.yield
-            vc?.totalTime = recipeList[indexPath.row].recipe.totalTime ?? 0
-            vc?.url = recipeList[indexPath.row].recipe.url
-            vc?.ingredientLines = recipeList[indexPath.row].recipe.ingredientLines
-            vc?.image = recipeList[indexPath.row].recipe.image ?? ""
-            vc?.ingredients = description
-
-            guard let vc = vc else {return}
-            self.navigationController?.pushViewController(vc, animated: true)
-             */
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainViewController = storyBoard.instantiateViewController(withIdentifier: "PlayerViewController") as! PlayerViewController
+        self.present(mainViewController, animated: true, completion: nil)
+        
         }
 }
         
@@ -218,56 +214,61 @@ extension PodcastViewController: UITableViewDataSource {
 
 extension PodcastViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 9 // How many cells to display
+        return 7 // How many cells to display
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath)
-        myCell.backgroundColor = UIColor.gray
+        let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: cellPodcast, for: indexPath) as? CellPodcastCollectionViewCell
+        
+        guard let myCell = myCell else {return UICollectionViewCell()}
+        // myCell.backgroundColor = UIColor.gray
+        myCell.setUpUI(title: "Title Test")
+
+        switch indexPath.row {
+        case 0:  myCell.backgroundColor = .red
+        case 1:  myCell.backgroundColor = .blue
+        case 2:  myCell.backgroundColor = .green
+        case 3:  myCell.backgroundColor = .brown
+        case 4:  myCell.backgroundColor = .black
+        case 5:  myCell.backgroundColor = .darkGray
+        case 6:  myCell.backgroundColor = .orange
+        default: myCell.backgroundColor = UIColor.gray
+        }
+
         return myCell
     }
 }
 
 extension PodcastViewController: UICollectionViewDelegate {
  
+    private func positionCellWithIdexPath(indexCell: Int) {
+        
+        
+        let attributes = myCollectionView?.layoutAttributesForItem(at: IndexPath(row: indexCell, section: 0))
+        print("@@@ attributes = \(attributes)")
+        print("@@@ attributes zIndex = \(attributes?.zIndex)")
+        print("@@@ attributes origin = \(attributes?.frame.origin)")
+        var height: CGFloat? = 0.0
+        var width: CGFloat? = 0.0
+        print("@@@ carousel cennter : \(carouselView.frame.width)")
+        if attributes != nil {
+            width = attributes!.frame.origin.x - attributes!.frame.width/2 + 40
+            height = 0
+        }
+        
+        let position = CGPoint(x: width ?? 0, y: height ?? 0)
+        print("@@@ position = \(position)")
+        
+        myCollectionView?.setContentOffset(position, animated: true)
+        actualIndexPathRow = indexCell
+    }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("User tapped on item \(indexPath.row)")
+        print("@@@ User tapped on item \(indexPath.row)")
+
+        positionCellWithIdexPath(indexCell: indexPath.row)
         
     }
-    
-    
-    
-    func indexPathForPreferredFocusedView(in collectionView: UICollectionView) -> IndexPath? {
-        IndexPath(row: 3, section: 0)
-    }
-    
-    func scrollToNextCell(){
-
-            //get Collection View Instance
-           
-
-            //get cell size
-            let cellSize = CGSizeMake(self.view.frame.width, self.view.frame.height);
-
-            //get current content Offset of the Collection view
-        let contentOffset = myCollectionView?.contentOffset;
-
-            //scroll to next cell
-        myCollectionView?.scrollRectToVisible(CGRectMake(contentOffset!.x + cellSize.width, contentOffset!.y, cellSize.width, cellSize.height), animated: true);
-
-
-        }
-
-        /**
-         Invokes Timer to start Automatic Animation with repeat enabled
-         */
-        func startTimer() {
-
-            let timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: Selector("scrollToNextCell"), userInfo: nil, repeats: true);
-
-
-        }
-    
 }
 
 
