@@ -42,4 +42,4 @@ jobs:
         scheme: BingePodcast
         workspace: BingePodcast.xcworkspace
         working-directory: BingePodcast
-        platform: iOS Simulator
+        platform: iOS
