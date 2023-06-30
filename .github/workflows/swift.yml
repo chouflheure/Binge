@@ -1,6 +1,3 @@
-# This workflow will build a Swift project
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-swift
-
 name: Swift
 
 on:
@@ -16,7 +13,19 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - uses: actions/cache@v3
+      with:
+        path: BingePodcast/Pods
+        key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-pods-
+    - name: CocoaPod Install
+      run: pod install
+      working-directory: BingePodcast
     - name: Build
-      run: swift build -v
-    - name: Run tests
-      run: swift test -v
+      uses: mxcl/xcodebuild@v2
+      with: 
+        scheme: BingePodcast
+        workspace: BingePodcast.xcworkspace
+        working-directory: BingePodcast
+        platform: iOS
