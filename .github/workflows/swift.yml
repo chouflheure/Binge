@@ -35,8 +35,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: "Testing :tada:"
-      uses: mxcl/xcodebuild@v1
+    - name: "Testing"
+      uses: mxcl/xcodebuild@v2
       with: 
+        scheme: BingePodcast
         workspace: BingePodcast
         working-directory: BingePodcast
