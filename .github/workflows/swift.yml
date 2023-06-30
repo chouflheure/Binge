@@ -16,27 +16,16 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - uses: actions/cache@v3
+      with:
+        path: BingePodcast/Pods
+        key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-pods-
+    - name: CocoaPod Install
+      run: pod install
+      working-directory: BingePodcast
     - name: Build
-      working-directory: BingePodcast 
-      run: |
-        toto
-        xcodebuild 
-          -workspace "BingePodcast"
-          -scheme "BingePodcast" \
-          -archivePath $RUNNER_TEMP/bingePodcast.xcarchive \
-          -sdk iphoneos \
-          -configuration Debug \
-          -destination generic/platform=iOS \
-          -allowProvisioningUpdates \
-          clean archive
-
-  run_test:
-
-    runs-on: macos-latest
-
-    steps:
-    - uses: actions/checkout@v3
-    - name: Testing
       uses: mxcl/xcodebuild@v2
       with: 
         scheme: BingePodcast
