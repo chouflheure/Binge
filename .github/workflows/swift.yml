@@ -17,6 +17,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build
+      working-directory: BingePodcast 
       run: |
         xcodebuild -scheme "BingePodcast" \
           -archivePath $RUNNER_TEMP/bingePodcast.xcarchive \
