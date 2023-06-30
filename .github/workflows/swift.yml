@@ -34,11 +34,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: "Testing :tada:"
-      working-directory: BingePodcast 
-      run: |
-        xcodebuild -scheme "BingePodcast" \
-          -archivePath $RUNNER_TEMP/bingePodcast.xcarchive \
-          -sdk iphoneos \
-          -configuration Debug \
-          -destination generic/platform=iOS \
-          clean archive
+      uses: mxcl/xcodebuild@v1
+      with: 
+        workspace: BingePodcast
+        working-directory: BingePodcast
