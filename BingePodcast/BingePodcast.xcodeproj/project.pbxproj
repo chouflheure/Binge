@@ -572,7 +572,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "swiftgen config run --config /Users/charlescalvignac/Documents/cours/Binge/Binge/BingePodcast/Pods/SwiftGen/bin/swiftgen.yml\n";
+			shellScript = "\"${PODS_ROOT}/SwiftGen/bin/swiftgen\" config run --config ${PODS_ROOT}/SwiftGen/bin/swiftgen.yml\n";
 		};
 		4B5E0F35705F3218FBDCE865 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
