@@ -32,7 +32,7 @@ class PodcastViewController: UIViewController {
         titleSetUp()
         initTableView()
         initGeneralView()
-        // initViewCarouselView()
+        initViewCarouselView()
         carouselView.backgroundColor = .clear
         setCollectionView()
     }
@@ -45,7 +45,7 @@ class PodcastViewController: UIViewController {
  
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 30, left: 10, bottom: 10, right: 10)
-        layout.itemSize = CGSize(width: carouselView.frame.size.width - 150, height: carouselView.frame.size.height - 40)
+        layout.itemSize = CGSize(width: carouselView.frame.size.width - 150, height: 300)
         print("@@@ carouselView width  = \(carouselView.frame.size.width - 150)")
         print("@@@ carouselView height = \(carouselView.frame.size.height - 40)")
 
@@ -54,7 +54,7 @@ class PodcastViewController: UIViewController {
         myCollectionView?.showsVerticalScrollIndicator = false
         myCollectionView?.showsHorizontalScrollIndicator = false
 
-        myCollectionView = UICollectionView(frame: CGRect(x: carouselView.frame.origin.x, y: carouselView.frame.origin.y, width: UIScreen.main.bounds.width, height: carouselView.frame.size.height), collectionViewLayout: layout)
+        myCollectionView = UICollectionView(frame: CGRect(x: carouselView.frame.origin.x, y: carouselView.frame.origin.y, width: UIScreen.main.bounds.width, height: 300), collectionViewLayout: layout)
         
         myCollectionView?.register(CellPodcastCollectionViewCell.self, forCellWithReuseIdentifier: cellPodcast)
         myCollectionView?.backgroundColor = UIColor.white
