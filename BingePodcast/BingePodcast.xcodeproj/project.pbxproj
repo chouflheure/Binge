@@ -102,7 +102,7 @@
 		1D1879F92A2CC8AA00827277 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1D1879FC2A2CC8AA00827277 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1D1879FF2A2CC8AA00827277 /* BingePodcast.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BingePodcast.xcdatamodel; sourceTree = "<group>"; };
-		1D187A012A2CC8AD00827277 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1D187A012A2CC8AD00827277 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = BingePodcast/ProductionsFiles/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		1D187A042A2CC8AD00827277 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1D187A062A2CC8AD00827277 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1D187A0B2A2CC8AE00827277 /* BingePodcastTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BingePodcastTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
