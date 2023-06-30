@@ -33,7 +33,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Testing :tada:
+    - name: "Testing :tada:"
       working-directory: BingePodcast 
       run: |
         xcodebuild -scheme "BingePodcast" \
