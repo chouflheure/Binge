@@ -19,6 +19,7 @@ jobs:
     - name: Build
       working-directory: BingePodcast 
       run: |
+        toto
         xcodebuild 
           -workspace "BingePodcast"
           -scheme "BingePodcast" \
@@ -35,9 +36,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: "Testing"
+    - name: Testing
       uses: mxcl/xcodebuild@v2
       with: 
         scheme: BingePodcast
-        workspace: BingePodcast
+        workspace: BingePodcast.xcworkspace
         working-directory: BingePodcast
