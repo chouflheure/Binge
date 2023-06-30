@@ -19,7 +19,9 @@ jobs:
     - name: Build
       working-directory: BingePodcast 
       run: |
-        xcodebuild -scheme "BingePodcast" \
+        xcodebuild 
+          -workspace "BingePodcast"
+          -scheme "BingePodcast" \
           -archivePath $RUNNER_TEMP/bingePodcast.xcarchive \
           -sdk iphoneos \
           -configuration Debug \
