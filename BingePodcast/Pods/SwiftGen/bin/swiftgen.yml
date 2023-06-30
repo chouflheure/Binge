@@ -7,10 +7,10 @@
 
 # Generate String
 strings:
-  inputs: /Users/charlescalvignac/Documents/cours/Binge/Binge/BingePodcast/BingePodcast/ProductionsFiles/Strings.strings
+  inputs: ../../../BingePodcast/ProductionsFiles/Strings.strings
   outputs:
     - templateName: structured-swift5
-      output: /Users/charlescalvignac/Documents/cours/Binge/Binge/BingePodcast/BingePodcast/ProductionsFiles/Generated/Strings.gen.swift
+      output: ../../../BingePodcast/ProductionsFiles/Generated/Strings.gen.swift
 
 # Generate Font
 #fonts:
@@ -21,21 +21,21 @@ strings:
 
 # Generate Assets
 xcassets:
-    - inputs: /Users/charlescalvignac/Documents/cours/Binge/Binge/BingePodcast/BingePodcast/ProductionsFiles/Colors.xcassets
+    - inputs: ../../../BingePodcast/ProductionsFiles/Colors.xcassets
       outputs:
         - templatePath: template_disable_swiftFormat.stencil
           params:
             forceProvidesNamespaces: true
             enumName: Colors
-          output: /Users/charlescalvignac/Documents/cours/Binge/Binge/BingePodcast/BingePodcast/ProductionsFiles/Generated/Colors.gen.swift
+          output: ../../../BingePodcast/ProductionsFiles/Generated/Colors.gen.swift
 
-    - inputs: /Users/charlescalvignac/Documents/cours/Binge/Binge/BingePodcast/BingePodcast/ProductionsFiles/Assets.xcassets
+    - inputs: ../../../BingePodcast/ProductionsFiles/Assets.xcassets
       outputs:
         - templatePath: template_disable_swiftFormat.stencil
           params:
             forceProvidesNamespaces: true
             enumName: Assets
-          output: /Users/charlescalvignac/Documents/cours/Binge/Binge/BingePodcast/BingePodcast/ProductionsFiles/Generated/Assets.gen.swift
+          output: ../../../BingePodcast/ProductionsFiles/Generated/Assets.gen.swift
 
 ## For more info, use `swiftgen config doc` to open the full documentation on GitHub.
 ## https://github.com/SwiftGen/SwiftGen/tree/6.6.2/Documentation/

@@ -119,8 +119,8 @@
 		1D973A6C2A3A87800027AC75 /* Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delegate.swift; sourceTree = "<group>"; };
 		1D986A952A2DEB0100D26CEB /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		1D986A9D2A2DEF7600D26CEB /* Colors.gen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.gen.swift; sourceTree = "<group>"; };
-		1D986A9E2A2DEF7600D26CEB /* Assets.gen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.gen.swift; sourceTree = "<group>"; };
-		1D986AA32A2DF33F00D26CEB /* Strings.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Strings.strings; sourceTree = "<group>"; };
+		1D986A9E2A2DEF7600D26CEB /* Assets.gen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Assets.gen.swift; path = BingePodcast/ProductionsFiles/Generated/Assets.gen.swift; sourceTree = SOURCE_ROOT; };
+		1D986AA32A2DF33F00D26CEB /* Strings.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Strings.strings; path = BingePodcast/ProductionsFiles/Strings.strings; sourceTree = SOURCE_ROOT; };
 		1D986AA52A2DFF0E00D26CEB /* Strings.gen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.gen.swift; sourceTree = "<group>"; };
 		1D986AB02A2E120500D26CEB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1DA63F0D2A41F65B0013BB86 /* UIString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIString.swift; sourceTree = "<group>"; };
