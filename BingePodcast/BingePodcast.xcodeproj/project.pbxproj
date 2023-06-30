@@ -104,7 +104,7 @@
 		1D1879FF2A2CC8AA00827277 /* BingePodcast.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BingePodcast.xcdatamodel; sourceTree = "<group>"; };
 		1D187A012A2CC8AD00827277 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = BingePodcast/ProductionsFiles/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		1D187A042A2CC8AD00827277 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		1D187A062A2CC8AD00827277 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1D187A062A2CC8AD00827277 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = BingePodcast/ProductionsFiles/Plist/Info.plist; sourceTree = SOURCE_ROOT; };
 		1D187A0B2A2CC8AE00827277 /* BingePodcastTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BingePodcastTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D187A0F2A2CC8AE00827277 /* BingePodcastTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BingePodcastTests.swift; sourceTree = "<group>"; };
 		1D187A152A2CC8AE00827277 /* BingePodcastUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BingePodcastUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -122,7 +122,7 @@
 		1D986A9E2A2DEF7600D26CEB /* Assets.gen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Assets.gen.swift; path = BingePodcast/ProductionsFiles/Generated/Assets.gen.swift; sourceTree = SOURCE_ROOT; };
 		1D986AA32A2DF33F00D26CEB /* Strings.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Strings.strings; path = BingePodcast/ProductionsFiles/Strings.strings; sourceTree = SOURCE_ROOT; };
 		1D986AA52A2DFF0E00D26CEB /* Strings.gen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.gen.swift; sourceTree = "<group>"; };
-		1D986AB02A2E120500D26CEB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1D986AB02A2E120500D26CEB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "BingePodcast/ProductionsFiles/Plist/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		1DA63F0D2A41F65B0013BB86 /* UIString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIString.swift; sourceTree = "<group>"; };
 		1DA63F0F2A41F79D0013BB86 /* UIFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFloat.swift; sourceTree = "<group>"; };
 		1DA63F192A420F660013BB86 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
