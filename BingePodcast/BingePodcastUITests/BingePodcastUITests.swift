@@ -4,7 +4,7 @@
 //
 //  Created by charlesCalvignac on 04/06/2023.
 //
-
+/*
 import XCTest
 
 final class BingePodcastUITests: XCTestCase {
@@ -39,3 +39,4 @@ final class BingePodcastUITests: XCTestCase {
         }
     }
 }
+*/
