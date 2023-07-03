@@ -135,7 +135,7 @@
                 <outlet property="favorisImageView" destination="C5Z-vS-xi6" id="Wwq-9S-KR7"/>
                 <outlet property="playButtonImageView" destination="v0t-X4-S99" id="omW-rn-JWA"/>
                 <outlet property="subtitleEpisode" destination="6da-Zb-UFF" id="5iz-Ij-hQh"/>
-                <outlet property="titleEpisode" destination="qkr-hU-DDf" id="pmS-L1-SxI"/>
+                <outlet property="titleEpisode" destination="qkr-hU-DDf" id="V2c-jC-Av9"/>
                 <outlet property="totalTimeEpisode" destination="rsh-Kp-Rzf" id="wUt-5v-at4"/>
             </connections>
             <point key="canvasLocation" x="161.83206106870227" y="0.70422535211267612"/>

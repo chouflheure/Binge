@@ -17,8 +17,7 @@ class CellEpisodeTabViewCell: UITableViewCell {
     @IBOutlet weak var subtitleEpisode: UILabel!
     
     @IBOutlet weak var favorisImageView: UIImageView!
-    
-    
+
     @IBOutlet weak var totalTimeEpisode: UILabel!
     
     

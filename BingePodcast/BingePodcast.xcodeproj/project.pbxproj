@@ -19,6 +19,8 @@
 		1D187A1C2A2CC8AE00827277 /* BingePodcastUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D187A1B2A2CC8AE00827277 /* BingePodcastUITestsLaunchTests.swift */; };
 		1D187C932A49C74C00D67271 /* TestTransitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D187C922A49C74C00D67271 /* TestTransitionViewController.swift */; };
 		1D187C992A49D98600D67271 /* UIPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D187C982A49D98600D67271 /* UIPageViewController.swift */; };
+		1D3763922A52F9F800294CCE /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3763912A52F9F800294CCE /* FavoriteViewController.swift */; };
+		1D3763962A530AF400294CCE /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3763952A530AF400294CCE /* TableViewController.swift */; };
 		1D37D0FE2A4B882E00127BB5 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D37D0FD2A4B882E00127BB5 /* CollectionViewController.swift */; };
 		1D37D1002A4B9BE700127BB5 /* testCollectioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D37D0FF2A4B9BE700127BB5 /* testCollectioView.swift */; };
 		1D3C3F492A4C7A9B00F0CA90 /* CellPodcastCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3C3F472A4C7A9B00F0CA90 /* CellPodcastCollectionViewCell.swift */; };
@@ -120,6 +122,8 @@
 		1D187A1B2A2CC8AE00827277 /* BingePodcastUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BingePodcastUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		1D187C922A49C74C00D67271 /* TestTransitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTransitionViewController.swift; sourceTree = "<group>"; };
 		1D187C982A49D98600D67271 /* UIPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPageViewController.swift; sourceTree = "<group>"; };
+		1D3763912A52F9F800294CCE /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		1D3763952A530AF400294CCE /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		1D37D0FD2A4B882E00127BB5 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		1D37D0FF2A4B9BE700127BB5 /* testCollectioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testCollectioView.swift; sourceTree = "<group>"; };
 		1D3C3F472A4C7A9B00F0CA90 /* CellPodcastCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellPodcastCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -308,6 +312,8 @@
 				1D187C922A49C74C00D67271 /* TestTransitionViewController.swift */,
 				1D37D0FD2A4B882E00127BB5 /* CollectionViewController.swift */,
 				1D37D0FF2A4B9BE700127BB5 /* testCollectioView.swift */,
+				1D3763912A52F9F800294CCE /* FavoriteViewController.swift */,
+				1D3763952A530AF400294CCE /* TableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -715,6 +721,7 @@
 				1D187C992A49D98600D67271 /* UIPageViewController.swift in Sources */,
 				1D187A002A2CC8AA00827277 /* BingePodcast.xcdatamodeld in Sources */,
 				1DCA9ECE2A35FD22008ED92E /* PlayerAudioService.swift in Sources */,
+				1D3763962A530AF400294CCE /* TableViewController.swift in Sources */,
 				1D55E2922A409CB000F1A9BD /* UIButton.swift in Sources */,
 				1D55E1E52A3DCF9100F1A9BD /* PlayerViewController.swift in Sources */,
 				1D986AA62A2DFF0E00D26CEB /* Strings.gen.swift in Sources */,
@@ -728,6 +735,7 @@
 				1DA63F1A2A420F660013BB86 /* UIViewController.swift in Sources */,
 				1D1879FA2A2CC8AA00827277 /* ViewController.swift in Sources */,
 				1D973A6D2A3A87800027AC75 /* Delegate.swift in Sources */,
+				1D3763922A52F9F800294CCE /* FavoriteViewController.swift in Sources */,
 				1D187C932A49C74C00D67271 /* TestTransitionViewController.swift in Sources */,
 				1D55E2902A408B2200F1A9BD /* Constants.swift in Sources */,
 				1D1879F62A2CC8AA00827277 /* AppDelegate.swift in Sources */,
