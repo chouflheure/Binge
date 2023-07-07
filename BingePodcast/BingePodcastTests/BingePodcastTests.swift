@@ -1,10 +1,4 @@
-//
-//  BingePodcastTests.swift
-//  BingePodcastTests
-//
-//  Created by charlesCalvignac on 04/06/2023.
-//
-/*
+
 import XCTest
 @testable import BingePodcast
 
@@ -34,4 +28,4 @@ final class BingePodcastTests: XCTestCase {
     }
 
 }
-*/
+

@@ -1,10 +1,4 @@
-//
-//  BingePodcastUITestsLaunchTests.swift
-//  BingePodcastUITests
-//
-//  Created by charlesCalvignac on 04/06/2023.
-//
-/*
+
 import XCTest
 
 final class BingePodcastUITestsLaunchTests: XCTestCase {
@@ -30,4 +24,4 @@ final class BingePodcastUITestsLaunchTests: XCTestCase {
         add(attachment)
     }
 }
-*/
+
