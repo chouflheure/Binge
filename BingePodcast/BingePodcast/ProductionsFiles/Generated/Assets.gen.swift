@@ -14,6 +14,7 @@ internal enum Assets {
     internal static let podcast = ImageAsset(name: "podcast")
   }
   internal static let launchScreen = ImageAsset(name: "launchScreen")
+  internal static let logo = ImageAsset(name: "logo")
   internal enum Picto {
     internal static let arrowRight = ImageAsset(name: "arrow right")
     internal static let favoriteNotSelected = ImageAsset(name: "favorite_not_selected")

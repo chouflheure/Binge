@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D16D3A02A536D1A00E3D8A3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D16D39F2A536D1A00E3D8A3 /* HomeViewController.swift */; };
+		1D16D3E92A5444AA00E3D8A3 /* SwitchPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D16D3E82A5444AA00E3D8A3 /* SwitchPlayer.swift */; };
 		1D1879F62A2CC8AA00827277 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1879F52A2CC8AA00827277 /* AppDelegate.swift */; };
 		1D1879F82A2CC8AA00827277 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1879F72A2CC8AA00827277 /* SceneDelegate.swift */; };
 		1D1879FA2A2CC8AA00827277 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1879F92A2CC8AA00827277 /* ViewController.swift */; };
@@ -96,6 +98,8 @@
 
 /* Begin PBXFileReference section */
 		03B35CF9769C67A9DC79EB55 /* Pods-BingePodcast.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BingePodcast.debug.xcconfig"; path = "Target Support Files/Pods-BingePodcast/Pods-BingePodcast.debug.xcconfig"; sourceTree = "<group>"; };
+		1D16D39F2A536D1A00E3D8A3 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		1D16D3E82A5444AA00E3D8A3 /* SwitchPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchPlayer.swift; sourceTree = "<group>"; };
 		1D1879F22A2CC8AA00827277 /* BingePodcast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BingePodcast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D1879F52A2CC8AA00827277 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1D1879F72A2CC8AA00827277 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -203,6 +207,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D16D3E72A54433900E3D8A3 /* molecule */ = {
+			isa = PBXGroup;
+			children = (
+				1D16D3E82A5444AA00E3D8A3 /* SwitchPlayer.swift */,
+			);
+			path = molecule;
+			sourceTree = "<group>";
+		};
 		1D1879E92A2CC8AA00827277 = {
 			isa = PBXGroup;
 			children = (
@@ -284,10 +296,12 @@
 		1D9869CC2A2D19AC00D26CEB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				1D16D3E72A54433900E3D8A3 /* molecule */,
 				1D1879F92A2CC8AA00827277 /* ViewController.swift */,
 				1DC3F4FF2A3A7A86007F4AC8 /* PlayerViewController.swift */,
 				1D55E1E42A3DCF9100F1A9BD /* TestViewController.swift */,
 				1DD726392A45D86400CD6D16 /* TestTabBarViewController.swift */,
+				1D16D39F2A536D1A00E3D8A3 /* HomeViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -667,11 +681,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D16D3E92A5444AA00E3D8A3 /* SwitchPlayer.swift in Sources */,
 				1DD7263A2A45D86400CD6D16 /* TestTabBarViewController.swift in Sources */,
 				1D55E2962A4119AC00F1A9BD /* UILabel.swift in Sources */,
 				1D973A6B2A3A875F0027AC75 /* PlayerModel.swift in Sources */,
 				1D986AA02A2DEF7600D26CEB /* Assets.gen.swift in Sources */,
 				1D986A9F2A2DEF7600D26CEB /* Colors.gen.swift in Sources */,
+				1D16D3A02A536D1A00E3D8A3 /* HomeViewController.swift in Sources */,
 				1D187A002A2CC8AA00827277 /* BingePodcast.xcdatamodeld in Sources */,
 				1DCA9ECE2A35FD22008ED92E /* PlayerAudioService.swift in Sources */,
 				1D55E2922A409CB000F1A9BD /* UIButton.swift in Sources */,
