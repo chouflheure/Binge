@@ -39,9 +39,11 @@ class SwitchPlayer: UIView {
 
     func initSwitch(view: UIView) {
 
-        view.backgroundColor = .white
-        view.layer.cornerRadius = 50
-
+        //view.backgroundColor = .white
+        // view.layer.cornerRadius = 50
+        
+        
+        /*
         // Image Podcast
         imageRond.image = Assets.aBientotDeTeRevoir.image
         imageRond.translatesAutoresizingMaskIntoConstraints = false
@@ -113,7 +115,7 @@ class SwitchPlayer: UIView {
             line.heightAnchor.constraint(equalToConstant: 1),
             title.heightAnchor.constraint(equalToConstant: 30)
         ].forEach{$0.isActive = true}
-        
+        */
     }
 
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)

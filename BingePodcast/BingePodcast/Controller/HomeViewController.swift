@@ -58,6 +58,20 @@
 import UIKit
 
 class HomeViewController: UIViewController {
+    
+    override func viewDidLoad() {
+
+        super.viewDidLoad()
+                
+        // Créez une instance de InnerShadowView avec des dimensions et une position personnalisées
+        let innerShadowView = InnerShadowView(frame: CGRect(x: 50, y: 50, width: 200, height: 200))
+        // innerShadowView.backgroundColor = UIColor.red
+        let test = CustomField(frame: CGRect(x: 50, y: 50, width: 200, height: 200))
+        // Ajoutez la vue personnalisée à la hiérarchie de vues
+        view.addSubview(test)
+    }
+    
+    /*
     let molecule = SwitchPlayer()
     let molecule2 = SwitchPlayer()
     
@@ -114,5 +128,6 @@ class HomeViewController: UIViewController {
     private func toggleSelectedSwitchPlayer() {
         
     }
-    
+*/
 }
+
