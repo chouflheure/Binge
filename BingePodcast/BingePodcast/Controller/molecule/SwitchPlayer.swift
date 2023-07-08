@@ -10,9 +10,6 @@ import UIKit
 
 class SwitchPlayer: UIView {
 
-    
-    
-    
     var view = UIView()
     let viewBase = UIView()
     let imageRond = UIImageView()
@@ -59,17 +56,23 @@ class SwitchPlayer: UIView {
         // Image Podcast
         imageRond.image = Assets.aBientotDeTeRevoir.image
         imageRond.translatesAutoresizingMaskIntoConstraints = false
-        imageRond.layer.cornerRadius = 45
-        
-        view.addSubview(imageRond)
-        
+        imageRond.clipsToBounds = false
+
+        let containerImageRond = UIView()
+        view.addSubview(containerImageRond)
         [
-            imageRond.widthAnchor.constraint(equalToConstant: 90),
-            imageRond.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 7),
-            imageRond.heightAnchor.constraint(equalToConstant: 90),
-            imageRond.topAnchor.constraint(equalTo: view.topAnchor, constant: 7)
+            containerImageRond.widthAnchor.constraint(equalToConstant: 90),
+            containerImageRond.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 7),
+            containerImageRond.heightAnchor.constraint(equalToConstant: 90),
+            containerImageRond.topAnchor.constraint(equalTo: view.topAnchor, constant: 7)
         ].forEach{$0.isActive = true}
         
+        containerImageRond.layer.shadowColor = UIColor.black.cgColor
+        containerImageRond.layer.shadowOpacity = 0.4
+        containerImageRond.layer.shadowOffset = .zero
+        containerImageRond.layer.shadowRadius = 20
+        
+        containerImageRond.addSubview(imageRond)
         
         // imageRond.layer.masksToBounds = true
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
@@ -78,7 +81,10 @@ class SwitchPlayer: UIView {
         imageRond.addGestureRecognizer(tapGestureRecognizer)
         imageRond.layer.zPosition = 1
 
-
+        imageRond.clipsToBounds = true
+        imageRond.layer.cornerRadius = 45
+        
+        
         // Image player
         playerOnImage.image = Assets.Picto.play.image
         imageRond.addSubview(playerOnImage)
@@ -96,14 +102,12 @@ class SwitchPlayer: UIView {
         text.axis = .vertical
         text.distribution = .fill
         text.alignment = .fill
-        
-        
+
         title.text = "EPISODE 82"
         title.frame.size.height = 20
         title.font = UIFont(name: .fonts.proximaNova_Thin.fontName(), size: 19)
         title.textColor = Colors.darkBlue.color
 
-       
         line.frame.size.height = 3
         line.backgroundColor = Colors.darkBlue.color
 
@@ -123,6 +127,12 @@ class SwitchPlayer: UIView {
         
         
         
+        [
+            imageRond.widthAnchor.constraint(equalToConstant: 90),
+            imageRond.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 7),
+            imageRond.heightAnchor.constraint(equalToConstant: 90),
+            imageRond.topAnchor.constraint(equalTo: view.topAnchor, constant: 7)
+        ].forEach{$0.isActive = true}
         
        
         
@@ -175,7 +185,7 @@ class SwitchPlayer: UIView {
         // Shadow properties
         innerShadowTop.shadowColor = UIColor.black.cgColor
         innerShadowTop.shadowOffset = CGSize(width: 1, height: 4)
-        innerShadowTop.shadowOpacity = 1
+        innerShadowTop.shadowOpacity = 0.8
         innerShadowTop.shadowRadius = 4
         innerShadowTop.cornerRadius = radius
         view.layer.addSublayer(innerShadowTop)
