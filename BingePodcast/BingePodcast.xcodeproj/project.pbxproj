@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1D0D70592A586AD2006431DC /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0D70582A586AD2006431DC /* test.swift */; };
-		1D0D705B2A586B7A006431DC /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0D705A2A586B7A006431DC /* UIView.swift */; };
 		1D16D3A02A536D1A00E3D8A3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D16D39F2A536D1A00E3D8A3 /* HomeViewController.swift */; };
 		1D16D3E92A5444AA00E3D8A3 /* SwitchPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D16D3E82A5444AA00E3D8A3 /* SwitchPlayer.swift */; };
 		1D1879F62A2CC8AA00827277 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1879F52A2CC8AA00827277 /* AppDelegate.swift */; };
@@ -63,7 +62,6 @@
 		1D986AE82A2E151900D26CEB /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 1D986AE72A2E151900D26CEB /* FirebaseStorageCombine-Community */; };
 		1DA63F0E2A41F65B0013BB86 /* UIString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA63F0D2A41F65B0013BB86 /* UIString.swift */; };
 		1DA63F102A41F79D0013BB86 /* UIFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA63F0F2A41F79D0013BB86 /* UIFloat.swift */; };
-		1DA63F1A2A420F660013BB86 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA63F192A420F660013BB86 /* UIViewController.swift */; };
 		1DC25BBB2A4266FD0024CD41 /* ProximaNova-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1DC25BB22A4266FC0024CD41 /* ProximaNova-Thin.otf */; };
 		1DC25BBC2A4266FD0024CD41 /* ProximaNova-Alt-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1DC25BB32A4266FC0024CD41 /* ProximaNova-Alt-Thin.otf */; };
 		1DC25BBD2A4266FD0024CD41 /* ProximaNova-Sbold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1DC25BB42A4266FC0024CD41 /* ProximaNova-Sbold.ttf */; };
@@ -101,7 +99,6 @@
 /* Begin PBXFileReference section */
 		03B35CF9769C67A9DC79EB55 /* Pods-BingePodcast.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BingePodcast.debug.xcconfig"; path = "Target Support Files/Pods-BingePodcast/Pods-BingePodcast.debug.xcconfig"; sourceTree = "<group>"; };
 		1D0D70582A586AD2006431DC /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
-		1D0D705A2A586B7A006431DC /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		1D16D39F2A536D1A00E3D8A3 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		1D16D3E82A5444AA00E3D8A3 /* SwitchPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchPlayer.swift; sourceTree = "<group>"; };
 		1D1879F22A2CC8AA00827277 /* BingePodcast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BingePodcast.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -133,7 +130,6 @@
 		1D986AB02A2E120500D26CEB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "BingePodcast/ProductionsFiles/Plist/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		1DA63F0D2A41F65B0013BB86 /* UIString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIString.swift; sourceTree = "<group>"; };
 		1DA63F0F2A41F79D0013BB86 /* UIFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFloat.swift; sourceTree = "<group>"; };
-		1DA63F192A420F660013BB86 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		1DC25BB22A4266FC0024CD41 /* ProximaNova-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Thin.otf"; sourceTree = "<group>"; };
 		1DC25BB32A4266FC0024CD41 /* ProximaNova-Alt-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Alt-Thin.otf"; sourceTree = "<group>"; };
 		1DC25BB42A4266FC0024CD41 /* ProximaNova-Sbold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Sbold.ttf"; sourceTree = "<group>"; };
@@ -363,8 +359,6 @@
 				1D55E2952A4119AC00F1A9BD /* UILabel.swift */,
 				1DA63F0D2A41F65B0013BB86 /* UIString.swift */,
 				1DA63F0F2A41F79D0013BB86 /* UIFloat.swift */,
-				1DA63F192A420F660013BB86 /* UIViewController.swift */,
-				1D0D705A2A586B7A006431DC /* UIView.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -719,9 +713,7 @@
 				1D55E2942A40B3D400F1A9BD /* UIImage.swift in Sources */,
 				1DC3F5002A3A7A86007F4AC8 /* PlayerViewController.swift in Sources */,
 				1DA63F102A41F79D0013BB86 /* UIFloat.swift in Sources */,
-				1D0D705B2A586B7A006431DC /* UIView.swift in Sources */,
 				1DA63F0E2A41F65B0013BB86 /* UIString.swift in Sources */,
-				1DA63F1A2A420F660013BB86 /* UIViewController.swift in Sources */,
 				1D1879FA2A2CC8AA00827277 /* ViewController.swift in Sources */,
 				1D973A6D2A3A87800027AC75 /* Delegate.swift in Sources */,
 				1D55E2902A408B2200F1A9BD /* Constants.swift in Sources */,

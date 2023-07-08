@@ -1,63 +1,33 @@
 import UIKit
 
-class InnerShadowView: UIView {
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupView()
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setupView()
-    }
-
-    private func setupView() {
-        backgroundColor = UIColor.clear
-    }
-
-    override func draw(_ rect: CGRect) {
-        super.draw(rect)
-
-        guard let context = UIGraphicsGetCurrentContext() else { return }
-
-        let shadowColor = UIColor.black
-        let shadowOffset = CGSize(width: 0, height: 0)
-        let shadowBlurRadius: CGFloat = 10.0
-
-        context.setShadow(offset: shadowOffset, blur: shadowBlurRadius, color: shadowColor.cgColor)
-
-        let contentRect = bounds.insetBy(dx: shadowBlurRadius, dy: shadowBlurRadius)
-        let path = UIBezierPath(rect: contentRect)
-        path.addClip()
-
-        // Dessinez le contenu de votre vue ici
-        // Par exemple, dessinez un rectangle rouge à l'intérieur du chemin clip
-
-        UIColor.red.setFill()
-        path.fill()
-    }
-}
-
-
 class CustomField: UIView {
+    
+    var viewTest = UIView()
 
-    lazy var innerShadow: CALayer = {
-        let innerShadow = CALayer()
-        layer.addSublayer(innerShadow)
-        return innerShadow
-    }()
+    func initTest(view: UIView) {
+        self.viewTest = view
+        
+    }
 
     override func layoutSubviews() {
-        super.layoutSubviews()
+        // super.layoutSubviews()
+        // viewTest.layoutSubviews()
         applyDesign()
     }
 
+
     func applyDesign() {
-        innerShadow.frame = bounds
+    
+        let innerShadow = CALayer()
+        
+        print("@@@ viewTest frame = \(viewTest.frame)")
+        print("@@@ viewTest bounds = \(viewTest.bounds)")
+
+        innerShadow.frame = viewTest.bounds
 
         // Shadow path (1pt ring around bounds)
         let radius = self.frame.size.height/2
+
         let path = UIBezierPath(roundedRect: innerShadow.bounds.insetBy(dx: -1, dy:-1), cornerRadius:radius)
         let cutout = UIBezierPath(roundedRect: innerShadow.bounds, cornerRadius:radius).reversing()
 
@@ -66,10 +36,11 @@ class CustomField: UIView {
         innerShadow.shadowPath = path.cgPath
         innerShadow.masksToBounds = true
         // Shadow properties
-        innerShadow.shadowColor = UIColor.darkGray.cgColor
+        innerShadow.shadowColor = UIColor.black.cgColor
         innerShadow.shadowOffset = CGSize(width: 0, height: 2)
-        innerShadow.shadowOpacity = 0.5
+        innerShadow.shadowOpacity = 0.8
         innerShadow.shadowRadius = 2
         innerShadow.cornerRadius = self.frame.size.height/2
+        viewTest.layer.addSublayer(innerShadow)
     }
 }

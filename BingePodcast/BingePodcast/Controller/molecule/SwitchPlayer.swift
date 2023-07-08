@@ -9,6 +9,11 @@ import Foundation
 import UIKit
 
 class SwitchPlayer: UIView {
+
+    
+    
+    
+    var view = UIView()
     let viewBase = UIView()
     let imageRond = UIImageView()
     let playerOnImage = UIImageView()
@@ -21,7 +26,6 @@ class SwitchPlayer: UIView {
 
     func active() {
         if isActive {
-            self.imageRond.layer.zPosition = 1
             UIView.animate(withDuration: 0.8, delay: 0, options: [.curveEaseOut]) {
                 self.imageRond.frame.origin.x += UIScreen.main.bounds.width - 70 - 100
                 self.text.frame.origin.x -= 70
@@ -36,27 +40,44 @@ class SwitchPlayer: UIView {
         }
         
     }
-
+    override func layoutSubviews() {
+        // super.layoutSubviews()
+        // viewTest.layoutSubviews()
+        applyDesign(view: view)
+    }
+    
     func initSwitch(view: UIView) {
 
-        //view.backgroundColor = .white
-        // view.layer.cornerRadius = 50
+        self.view = view
+        
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 50
         
         
-        /*
+        
+        
         // Image Podcast
         imageRond.image = Assets.aBientotDeTeRevoir.image
         imageRond.translatesAutoresizingMaskIntoConstraints = false
-
+        imageRond.layer.cornerRadius = 45
+        
         view.addSubview(imageRond)
         
-        imageRond.layer.cornerRadius = 45
-        imageRond.layer.masksToBounds = true
+        [
+            imageRond.widthAnchor.constraint(equalToConstant: 90),
+            imageRond.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 7),
+            imageRond.heightAnchor.constraint(equalToConstant: 90),
+            imageRond.topAnchor.constraint(equalTo: view.topAnchor, constant: 7)
+        ].forEach{$0.isActive = true}
+        
+        
+        // imageRond.layer.masksToBounds = true
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
         
         imageRond.isUserInteractionEnabled = true
         imageRond.addGestureRecognizer(tapGestureRecognizer)
-        
+        imageRond.layer.zPosition = 1
+
 
         // Image player
         playerOnImage.image = Assets.Picto.play.image
@@ -100,12 +121,10 @@ class SwitchPlayer: UIView {
 
         view.addSubview(text)
         
-        [
-            imageRond.widthAnchor.constraint(equalToConstant: 90),
-            imageRond.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 5),
-            imageRond.heightAnchor.constraint(equalToConstant: 90),
-            imageRond.topAnchor.constraint(equalTo: view.topAnchor, constant: 5)
-        ].forEach{$0.isActive = true}
+        
+        
+        
+       
         
         [
             text.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
@@ -115,7 +134,7 @@ class SwitchPlayer: UIView {
             line.heightAnchor.constraint(equalToConstant: 1),
             title.heightAnchor.constraint(equalToConstant: 30)
         ].forEach{$0.isActive = true}
-        */
+     
     }
 
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
@@ -127,5 +146,39 @@ class SwitchPlayer: UIView {
         active()
     }
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    func applyDesign(view: UIView) {
+        
+        let innerShadowTop = CALayer()
+        
+        innerShadowTop.frame = view.bounds
+
+        // Shadow path (1pt ring around bounds)
+        let radius = view.frame.size.height/2
+
+        let path = UIBezierPath(roundedRect: innerShadowTop.bounds.insetBy(dx: -1, dy: -1), cornerRadius:radius)
+        let cutout = UIBezierPath(roundedRect: innerShadowTop.bounds, cornerRadius:radius).reversing()
+
+
+        path.append(cutout)
+        innerShadowTop.shadowPath = path.cgPath
+        innerShadowTop.masksToBounds = true
+        
+        // Shadow properties
+        innerShadowTop.shadowColor = UIColor.black.cgColor
+        innerShadowTop.shadowOffset = CGSize(width: 1, height: 4)
+        innerShadowTop.shadowOpacity = 1
+        innerShadowTop.shadowRadius = 4
+        innerShadowTop.cornerRadius = radius
+        view.layer.addSublayer(innerShadowTop)
+    }
     
 }
