@@ -61,11 +61,23 @@ class HomeViewController: UIViewController {
     let molecule = SwitchPlayer()
     let molecule2 = SwitchPlayer()
     
+    let test = SlideToActionButton(title: "EPISODE 78", subtitle: "Cuisines indiennes, clichés en sauce, et ça pique", imageString: Assets.aBientotDeTeRevoir.name)
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = .lightGray
+        view.addSubview(test)
+        test.translatesAutoresizingMaskIntoConstraints = false
+        [
+            test.widthAnchor.constraint(equalToConstant: view.frame.width - 70),
+            test.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 35),
+            test.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -35),
+            test.heightAnchor.constraint(equalToConstant: 102),
+            test.topAnchor.constraint(equalTo: view.topAnchor, constant: 300)
+        ].forEach{$0.isActive = true}
 
+/*
         let image = Assets.logo.image
         let imageView = UIImageView(image: image)
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -89,7 +101,7 @@ class HomeViewController: UIViewController {
             molecule.heightAnchor.constraint(equalToConstant: 102),
             molecule.topAnchor.constraint(equalTo: view.topAnchor, constant: 300)
         ].forEach{$0.isActive = true}
-        molecule.initSwitch(view: molecule)
+        molecule.initSwitch()
         
         view.addSubview(molecule2)
         molecule2.translatesAutoresizingMaskIntoConstraints = false
@@ -100,9 +112,10 @@ class HomeViewController: UIViewController {
             molecule2.heightAnchor.constraint(equalToConstant: 102),
             molecule2.topAnchor.constraint(equalTo: view.topAnchor, constant: 450)
         ].forEach{$0.isActive = true}
-        molecule2.initSwitch(view: molecule2)
+        molecule2.initSwitch()
          
         setGradientBackground()
+*/
     }
     
     func setGradientBackground() {

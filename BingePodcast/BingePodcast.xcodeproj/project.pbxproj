@@ -63,6 +63,7 @@
 		1DA63F0E2A41F65B0013BB86 /* UIString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA63F0D2A41F65B0013BB86 /* UIString.swift */; };
 		1DA63F102A41F79D0013BB86 /* UIFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA63F0F2A41F79D0013BB86 /* UIFloat.swift */; };
 		1DB7B0D72A59B42B000CDEFB /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB7B0D62A59B42B000CDEFB /* UIImageView.swift */; };
+		1DB7B0D92A5B5A7C000CDEFB /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB7B0D82A5B5A7C000CDEFB /* FavoriteViewController.swift */; };
 		1DC25BBB2A4266FD0024CD41 /* ProximaNova-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1DC25BB22A4266FC0024CD41 /* ProximaNova-Thin.otf */; };
 		1DC25BBC2A4266FD0024CD41 /* ProximaNova-Alt-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1DC25BB32A4266FC0024CD41 /* ProximaNova-Alt-Thin.otf */; };
 		1DC25BBD2A4266FD0024CD41 /* ProximaNova-Sbold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1DC25BB42A4266FC0024CD41 /* ProximaNova-Sbold.ttf */; };
@@ -132,6 +133,7 @@
 		1DA63F0D2A41F65B0013BB86 /* UIString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIString.swift; sourceTree = "<group>"; };
 		1DA63F0F2A41F79D0013BB86 /* UIFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFloat.swift; sourceTree = "<group>"; };
 		1DB7B0D62A59B42B000CDEFB /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		1DB7B0D82A5B5A7C000CDEFB /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		1DC25BB22A4266FC0024CD41 /* ProximaNova-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Thin.otf"; sourceTree = "<group>"; };
 		1DC25BB32A4266FC0024CD41 /* ProximaNova-Alt-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Alt-Thin.otf"; sourceTree = "<group>"; };
 		1DC25BB42A4266FC0024CD41 /* ProximaNova-Sbold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Sbold.ttf"; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 				1D55E1E42A3DCF9100F1A9BD /* TestViewController.swift */,
 				1DD726392A45D86400CD6D16 /* TestTabBarViewController.swift */,
 				1D16D39F2A536D1A00E3D8A3 /* HomeViewController.swift */,
+				1DB7B0D82A5B5A7C000CDEFB /* FavoriteViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -722,6 +725,7 @@
 				1DB7B0D72A59B42B000CDEFB /* UIImageView.swift in Sources */,
 				1D55E2902A408B2200F1A9BD /* Constants.swift in Sources */,
 				1D1879F62A2CC8AA00827277 /* AppDelegate.swift in Sources */,
+				1DB7B0D92A5B5A7C000CDEFB /* FavoriteViewController.swift in Sources */,
 				1D1879F82A2CC8AA00827277 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
