@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="31"
+   height="31"
+   viewBox="0 0 31 31"
+   version="1.1"
+   id="svg10"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs14" />
+  <title
+     id="title2">Oval</title>
+  <g
+     id="Homepage"
+     stroke="none"
+     stroke-width="1"
+     fill="none"
+     fill-rule="evenodd">
+    <g
+       id="Homepage_V2"
+       transform="translate(-287,-398)"
+       stroke="#144d93"
+       stroke-width="2">
+      <g
+         id="Group-10"
+         transform="translate(35,363)">
+        <g
+           id="Group-9"
+           transform="translate(220,5)">
+          <g
+             id="Group-6"
+             transform="translate(32,30)">
+            <path
+               d="M 15.5,1 C 19.504064,1 23.129064,2.6229678 25.753048,5.2469517 28.377032,7.8709356 30,11.495936 30,15.5 c 0,3.624407 -1.329684,6.938297 -3.528084,9.480208 -2.228414,2.576616 -5.34901,4.360738 -8.882002,4.870425 C 16.907483,29.949084 16.20969,30 15.5,30 11.495936,30 7.8709356,28.377032 5.2469517,25.753048 2.6229678,23.129064 1,19.504064 1,15.5 1,11.495936 2.6229678,7.8709356 5.2469517,5.2469517 7.8709356,2.6229678 11.495936,1 15.5,1 Z"
+               id="Oval" />
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="Homepage-9"
+     stroke="none"
+     stroke-width="1"
+     fill="none"
+     fill-rule="evenodd"
+     transform="translate(10,10.029661)">
+    <g
+       id="Homepage_V2-0"
+       transform="translate(-297,-408)"
+       fill="#fffa01"
+       stroke="#144d93">
+      <g
+         id="Group-10-5"
+         transform="translate(35,363)">
+        <g
+           id="Group-9-2"
+           transform="translate(220,5)">
+          <g
+             id="Group-6-2"
+             transform="translate(32,30)">
+            <g
+               id="Group-7"
+               transform="translate(10,10)">
+              <rect
+                 id="Rectangle"
+                 x="0.5"
+                 y="0.5"
+                 width="3.2307692"
+                 height="10"
+                 rx="1.6153846" />
+              <rect
+                 id="Rectangle-Copy"
+                 x="7.2692308"
+                 y="0.5"
+                 width="3.2307692"
+                 height="10"
+                 rx="1.6153846" />
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
