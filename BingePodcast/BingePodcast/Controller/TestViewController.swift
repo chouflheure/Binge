@@ -27,7 +27,6 @@ class TestViewController: UIViewController {
     var imageString: String = "play"
     var isFavorite: Bool = true
     var isSmallScreen: Bool = UIScreen.main.bounds.height < 800
-    
 
     internal override func viewWillAppear(_ animated: Bool) {
         
