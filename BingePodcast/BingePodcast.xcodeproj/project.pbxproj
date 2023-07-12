@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D0D70592A586AD2006431DC /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0D70582A586AD2006431DC /* test.swift */; };
 		1D16D3A02A536D1A00E3D8A3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D16D39F2A536D1A00E3D8A3 /* HomeViewController.swift */; };
 		1D16D3E92A5444AA00E3D8A3 /* SwitchPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D16D3E82A5444AA00E3D8A3 /* SwitchPlayer.swift */; };
 		1D1879F62A2CC8AA00827277 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1879F52A2CC8AA00827277 /* AppDelegate.swift */; };
@@ -76,6 +75,7 @@
 		1DC3F5002A3A7A86007F4AC8 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC3F4FF2A3A7A86007F4AC8 /* PlayerViewController.swift */; };
 		1DCA9ECE2A35FD22008ED92E /* PlayerAudioService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCA9ECD2A35FD22008ED92E /* PlayerAudioService.swift */; };
 		1DD7263A2A45D86400CD6D16 /* TestTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD726392A45D86400CD6D16 /* TestTabBarViewController.swift */; };
+		1DE2F9312A5EDDF8002D7073 /* PodcastHomePageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE2F9302A5EDDF8002D7073 /* PodcastHomePageCollectionViewCell.swift */; };
 		1EDD35B0FB92C7A3C47366EF /* Pods_BingePodcast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9BBA30502C47DBBA8D81960 /* Pods_BingePodcast.framework */; };
 		29DAEC475A516448D6CD952D /* Pods_BingePodcastTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78A75B4B4E2FDBC4070B57E7 /* Pods_BingePodcastTests.framework */; };
 		A26896166E47208957C4A86E /* Pods_BingePodcastUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60313659C3135674FC214827 /* Pods_BingePodcastUITests.framework */; };
@@ -100,7 +100,6 @@
 
 /* Begin PBXFileReference section */
 		03B35CF9769C67A9DC79EB55 /* Pods-BingePodcast.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BingePodcast.debug.xcconfig"; path = "Target Support Files/Pods-BingePodcast/Pods-BingePodcast.debug.xcconfig"; sourceTree = "<group>"; };
-		1D0D70582A586AD2006431DC /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		1D16D39F2A536D1A00E3D8A3 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		1D16D3E82A5444AA00E3D8A3 /* SwitchPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchPlayer.swift; sourceTree = "<group>"; };
 		1D1879F22A2CC8AA00827277 /* BingePodcast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BingePodcast.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -146,6 +145,7 @@
 		1DC3F4FF2A3A7A86007F4AC8 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		1DCA9ECD2A35FD22008ED92E /* PlayerAudioService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerAudioService.swift; sourceTree = "<group>"; };
 		1DD726392A45D86400CD6D16 /* TestTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTabBarViewController.swift; sourceTree = "<group>"; };
+		1DE2F9302A5EDDF8002D7073 /* PodcastHomePageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastHomePageCollectionViewCell.swift; sourceTree = "<group>"; };
 		2A27D8FEFED8FFCB2F8383F9 /* Pods-BingePodcastTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BingePodcastTests.release.xcconfig"; path = "Target Support Files/Pods-BingePodcastTests/Pods-BingePodcastTests.release.xcconfig"; sourceTree = "<group>"; };
 		5E7971384F985948960C594D /* Pods-BingePodcastUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BingePodcastUITests.release.xcconfig"; path = "Target Support Files/Pods-BingePodcastUITests/Pods-BingePodcastUITests.release.xcconfig"; sourceTree = "<group>"; };
 		60313659C3135674FC214827 /* Pods_BingePodcastUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BingePodcastUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -215,7 +215,6 @@
 			isa = PBXGroup;
 			children = (
 				1D16D3E82A5444AA00E3D8A3 /* SwitchPlayer.swift */,
-				1D0D70582A586AD2006431DC /* test.swift */,
 			);
 			path = molecule;
 			sourceTree = "<group>";
@@ -308,6 +307,7 @@
 				1DD726392A45D86400CD6D16 /* TestTabBarViewController.swift */,
 				1D16D39F2A536D1A00E3D8A3 /* HomeViewController.swift */,
 				1DB7B0D82A5B5A7C000CDEFB /* FavoriteViewController.swift */,
+				1DE2F9302A5EDDF8002D7073 /* PodcastHomePageCollectionViewCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -708,9 +708,9 @@
 				1D55E2962A4119AC00F1A9BD /* UILabel.swift in Sources */,
 				1D973A6B2A3A875F0027AC75 /* PlayerModel.swift in Sources */,
 				1D986AA02A2DEF7600D26CEB /* Assets.gen.swift in Sources */,
+				1DE2F9312A5EDDF8002D7073 /* PodcastHomePageCollectionViewCell.swift in Sources */,
 				1D986A9F2A2DEF7600D26CEB /* Colors.gen.swift in Sources */,
 				1D16D3A02A536D1A00E3D8A3 /* HomeViewController.swift in Sources */,
-				1D0D70592A586AD2006431DC /* test.swift in Sources */,
 				1D187A002A2CC8AA00827277 /* BingePodcast.xcdatamodeld in Sources */,
 				1DCA9ECE2A35FD22008ED92E /* PlayerAudioService.swift in Sources */,
 				1D55E2922A409CB000F1A9BD /* UIButton.swift in Sources */,
