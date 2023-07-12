@@ -20,13 +20,66 @@
                ReferencedContainer = "container:BingePodcast.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "1D187A0A2A2CC8AE00827277"
+               BuildableName = "BingePodcastTests.xctest"
+               BlueprintName = "BingePodcastTests"
+               ReferencedContainer = "container:BingePodcast.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "1D187A142A2CC8AE00827277"
+               BuildableName = "BingePodcastUITests.xctest"
+               BlueprintName = "BingePodcastUITests"
+               ReferencedContainer = "container:BingePodcast.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      codeCoverageEnabled = "YES"
+      onlyGenerateCoverageForSpecifiedTargets = "YES">
+      <CodeCoverageTargets>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "1D187A0A2A2CC8AE00827277"
+            BuildableName = "BingePodcastTests.xctest"
+            BlueprintName = "BingePodcastTests"
+            ReferencedContainer = "container:BingePodcast.xcodeproj">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "1D187A142A2CC8AE00827277"
+            BuildableName = "BingePodcastUITests.xctest"
+            BlueprintName = "BingePodcastUITests"
+            ReferencedContainer = "container:BingePodcast.xcodeproj">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "1D1879F12A2CC8AA00827277"
+            BuildableName = "BingePodcast.app"
+            BlueprintName = "BingePodcast"
+            ReferencedContainer = "container:BingePodcast.xcodeproj">
+         </BuildableReference>
+      </CodeCoverageTargets>
       <Testables>
          <TestableReference
             skipped = "NO"
