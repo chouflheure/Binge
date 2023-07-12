@@ -122,22 +122,34 @@ class SwitchPlayer: UIView {
         image.image = UIImage(named: Assets.Picto.playHomePage.name)
         return image
     }()
+    
+    var backView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
 
+        return view
+    }()
+
+    var blurEffectView: UIVisualEffectView = {
+        let blurEffect = UIBlurEffect(style: .light)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame.size = CGSize(width: 90, height: 90)
+        blurEffectView.isHidden = true
+        return blurEffectView
+    }()
     func setup() {
 
         // general view
         backgroundColor = .white
         layer.cornerRadius = 50
-        /*
-        layer.shadowColor = UIColor.lightGray.cgColor
-        layer.shadowOpacity = 0
-        layer.shadowOffset = CGSize(width: -1, height: 1)
-        layer.shadowRadius = 20
-        */
-  
 
-        // layer.rasterizationScale = scale ? UIScreen.main.scale : 1
+        backView.frame.size = CGSize(width: 90, height: 90)
+        imageCircle.addSubview(backView)
 
+        // Create a blur effect
+        backView.backgroundColor = UIColor(red: 100/255, green: 100/255, blue: 100/255, alpha: 0)
+        imageCircle.addSubview(blurEffectView)
+        
         // Add view :
         titleLabel.text = title
         subtitleLabel.text = subtitle
@@ -146,7 +158,7 @@ class SwitchPlayer: UIView {
         addSubview(containerCircleImage)
         containerCircleImage.addSubview(imageCircle)
         imageCircle.addSubview(imagePlayer)
-        
+
         addSubview(textStack)
         textStack.addArrangedSubview(titleLabel)
         textStack.addArrangedSubview(lineSeperator)
@@ -176,7 +188,9 @@ class SwitchPlayer: UIView {
             textStack.widthAnchor.constraint(equalTo: widthAnchor, constant: -130),
             leftTextStackViewConstraint!,
             lineSeperator.heightAnchor.constraint(equalToConstant: 1),
-            titleLabel.heightAnchor.constraint(equalToConstant: 30)
+            titleLabel.heightAnchor.constraint(equalToConstant: 30),
+            blurEffectView.topAnchor.constraint(equalTo: imageCircle.topAnchor),
+            blurEffectView.leftAnchor.constraint(equalTo: imageCircle.leftAnchor)
         ])
 
         
@@ -210,6 +224,7 @@ class SwitchPlayer: UIView {
     func reset() {
         isFinished = false
         updateContainerImageCircleXPosition(7)
+        /*
         titleLabel.attributedText = "3ab apple3 3bana".reduce(NSMutableAttributedString()) {
             $0.append(
                 NSAttributedString(
@@ -221,17 +236,19 @@ class SwitchPlayer: UIView {
             )
             return $0
         }
+         */
     }
 
     func active(action: Action) {
+        self.textStack.alpha = 1
         if isFinished {
             UIView.animate(withDuration: 0.8, delay: 0, options: [.curveEaseOut]) {
                 self.updateTextSkatXPosition(self.leftTextMinConstrait)
                 //
                 if action == .tap {
-                    // self.updateContainerImageCircleXPosition(self.xEndingPoint)
                     self.containerCircleImage.frame.origin.x += UIScreen.main.bounds.width - 70 - 107
                 }
+                self.updateContainerImageCircleXPosition(self.xEndingPoint)
                 self.textStack.frame.origin.x -= 70
                 self.titleLabel.font = UIFont(name: .fonts.proximaNova_Alt_Bold.fontName(), size: 19)
                 self.subtitleLabel.font = UIFont(name: .fonts.proximaNova_Alt_Bold.fontName(), size: 14)
@@ -240,8 +257,16 @@ class SwitchPlayer: UIView {
                 self.layer.shadowOpacity = 0.5
                 self.layer.shadowOffset = CGSize(width: -1, height: 3)
                 self.layer.shadowRadius = 5
+                
+                self.blurEffectView.isHidden = false
             }
+
+            
+
+            
+            
             self.innerShadowTop.isHidden = true
+
         } else {
             UIView.animate(withDuration: 1) {
                 self.updateTextSkatXPosition(self.leftTextMaxConstrait)
@@ -251,10 +276,10 @@ class SwitchPlayer: UIView {
                 self.titleLabel.font = UIFont(name: .fonts.proximaNova_Thin.fontName(), size: 19)
                 self.subtitleLabel.font = UIFont(name: .fonts.proximaNova_Thin.fontName(), size: 14)
                 self.imagePlayer.image = Assets.Picto.playHomePage.image
-                
                 self.layer.shadowOpacity = 0
+                
             }
-            
+            self.blurEffectView.isHidden = true
             
             reset()
         }
@@ -286,14 +311,13 @@ extension SwitchPlayer {
                 updateContainerImageCircleXPosition(xEndingPoint)
             } else {
                 updateContainerImageCircleXPosition(translatedPoint)
-                if translatedPoint > 30 {
                     UIView.animate(withDuration: 1) {
-                        self.textStack.isHidden = true
+                        self.textStack.alpha = ( self.xEndingPoint - translatedPoint ) / ( self.xEndingPoint + 30 )
                     }
-                }
             }
         case .ended:
             self.textStack.isHidden = false
+            self.textStack.alpha = 1
             if translatedPoint >= xEndingPoint {
                 self.updateContainerImageCircleXPosition(xEndingPoint)
                 isFinished = true
@@ -302,6 +326,7 @@ extension SwitchPlayer {
             } else {
                 UIView.animate(withDuration: 1) {
                     self.reset()
+                    self.textStack.alpha = 1
                 }
             }
         default:
