@@ -7,12 +7,7 @@
 
 import Foundation
 
-enum Constants {
-    
-}
-
-// PlayerViewController
-extension Constants {
+class Constants {
     static let widthSquarePlayPauseButton: CGFloat = 70
     static let widthSquareSeekLessButton: CGFloat = 50
     static let widthSquareSeekMoreButton: CGFloat = 50
@@ -23,4 +18,16 @@ extension Constants {
     static let verticalSmallSpacer: CGFloat = 20
     static let verticalMediumSpacer: CGFloat = 30
     static let verticalLargeSpacer: CGFloat = 50
+}
+
+class Constants_SwitchPlayer {
+    static let leftTextMinConstrait: CGFloat = 25
+    static let leftTextMaxConstrait: CGFloat = 105
+    static let marginContainerImage: CGFloat = 7
+}
+
+class Constants_HomeViewController {
+    static let imageViewHeight: CGFloat = 260
+    static let horizontalMarginLeftAndRightMolecule: CGFloat = 35
+    static let heightSwipePlayer: CGFloat = 102
 }

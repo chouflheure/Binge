@@ -13,13 +13,11 @@ class SwitchPlayer: UIView {
 
     private var leftContainerImageCircleViewConstraint: NSLayoutConstraint?
     private var leftTextStackViewConstraint: NSLayoutConstraint?
-    private var leftTextMinConstrait: CGFloat = 25
-    private var leftTextMaxConstrait: CGFloat = 105
     
     weak var delegate: SlideToActionButtonDelegate?
     
     private var xEndingPoint: CGFloat {
-        return (bounds.width - containerCircleImage.bounds.width - 7)
+        return (bounds.width - containerCircleImage.bounds.width - Constants_SwitchPlayer.marginContainerImage)
     }
     
     private var isFinished = false
@@ -167,13 +165,13 @@ class SwitchPlayer: UIView {
         
         //MARK: - Constraints
         
-        leftContainerImageCircleViewConstraint = containerCircleImage.leftAnchor.constraint(equalTo: leftAnchor, constant: 7)
+        leftContainerImageCircleViewConstraint = containerCircleImage.leftAnchor.constraint(equalTo: leftAnchor, constant: Constants_SwitchPlayer.marginContainerImage)
         leftTextStackViewConstraint = textStack.leftAnchor.constraint(equalTo: leftAnchor, constant: 105)
 
         NSLayoutConstraint.activate([
             leftContainerImageCircleViewConstraint!,
-            containerCircleImage.topAnchor.constraint(equalTo: topAnchor, constant: 7),
-            containerCircleImage.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 7),
+            containerCircleImage.topAnchor.constraint(equalTo: topAnchor, constant: Constants_SwitchPlayer.marginContainerImage),
+            containerCircleImage.bottomAnchor.constraint(equalTo: bottomAnchor, constant: Constants_SwitchPlayer.marginContainerImage),
             containerCircleImage.widthAnchor.constraint(equalToConstant: 90),
             imageCircle.widthAnchor.constraint(equalToConstant: 90),
             imageCircle.leftAnchor.constraint(equalTo: containerCircleImage.leftAnchor, constant: 0),
@@ -223,7 +221,7 @@ class SwitchPlayer: UIView {
 
     func reset() {
         isFinished = false
-        updateContainerImageCircleXPosition(7)
+        updateContainerImageCircleXPosition(Constants_SwitchPlayer.marginContainerImage)
         /*
         titleLabel.attributedText = "3ab apple3 3bana".reduce(NSMutableAttributedString()) {
             $0.append(
@@ -243,7 +241,7 @@ class SwitchPlayer: UIView {
         self.textStack.alpha = 1
         if isFinished {
             UIView.animate(withDuration: 0.8, delay: 0, options: [.curveEaseOut]) {
-                self.updateTextSkatXPosition(self.leftTextMinConstrait)
+                self.updateTextSkatXPosition(Constants_SwitchPlayer.leftTextMinConstrait)
                 //
                 if action == .tap {
                     self.containerCircleImage.frame.origin.x += UIScreen.main.bounds.width - 70 - 107
@@ -269,7 +267,7 @@ class SwitchPlayer: UIView {
 
         } else {
             UIView.animate(withDuration: 1) {
-                self.updateTextSkatXPosition(self.leftTextMaxConstrait)
+                self.updateTextSkatXPosition(Constants_SwitchPlayer.leftTextMaxConstrait)
                 self.containerCircleImage.frame.origin.x -= UIScreen.main.bounds.width - 70 - 107
                 self.textStack.frame.origin.x += 70
                 self.innerShadowTop.isHidden = false
@@ -305,20 +303,20 @@ extension SwitchPlayer {
 
         switch sender.state {
         case .changed:
-            if translatedPoint <= 7 {
-                updateContainerImageCircleXPosition(7)
+            if translatedPoint <= Constants_SwitchPlayer.marginContainerImage {
+                updateContainerImageCircleXPosition(Constants_SwitchPlayer.marginContainerImage)
             } else if translatedPoint >= xEndingPoint {
                 updateContainerImageCircleXPosition(xEndingPoint)
             } else {
                 updateContainerImageCircleXPosition(translatedPoint)
                     UIView.animate(withDuration: 1) {
-                        self.textStack.alpha = ( self.xEndingPoint - translatedPoint ) / ( self.xEndingPoint + 30 )
+                        self.textStack.alpha = ( self.xEndingPoint - translatedPoint ) / ( self.xEndingPoint + 60 )
                     }
             }
         case .ended:
             self.textStack.isHidden = false
             self.textStack.alpha = 1
-            if translatedPoint >= xEndingPoint {
+            if translatedPoint >= xEndingPoint - 45 {
                 self.updateContainerImageCircleXPosition(xEndingPoint)
                 isFinished = true
                 delegate?.didFinish()
