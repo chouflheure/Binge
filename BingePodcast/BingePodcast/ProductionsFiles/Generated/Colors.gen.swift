@@ -8,6 +8,7 @@ import UIKit
 
 internal enum Colors {
   internal static let darkBlue = ColorAsset(name: "DarkBlue")
+  internal static let lightBlueTabBar = ColorAsset(name: "LightBlueTabBar")
   internal static let ligthBlue = ColorAsset(name: "LigthBlue")
   internal static let white = ColorAsset(name: "White")
   internal static let yellow = ColorAsset(name: "Yellow")
