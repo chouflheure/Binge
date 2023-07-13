@@ -35,10 +35,12 @@ internal enum Assets {
     internal static let fermeture = ImageAsset(name: "fermeture")
     internal static let fullScreen = ImageAsset(name: "fullScreen")
     internal static let pause = ImageAsset(name: "pause")
+    internal static let pauseHomePage = ImageAsset(name: "pauseHomePage")
     internal enum Play {
       internal static let play = ImageAsset(name: "play")
       internal static let playCircle = ImageAsset(name: "playCircle")
     }
+    internal static let playHomePage = ImageAsset(name: "playHomePage")
     internal static let seekLess = ImageAsset(name: "seekLess")
     internal static let seekMore = ImageAsset(name: "seekMore")
     internal static let thumb = ImageAsset(name: "thumb")
