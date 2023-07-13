@@ -35,7 +35,7 @@
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
-            buildForTesting = "YES"
+            buildForTesting = "NO"
             buildForRunning = "NO"
             buildForProfiling = "NO"
             buildForArchiving = "NO"
@@ -89,17 +89,6 @@
                BlueprintIdentifier = "1D187A0A2A2CC8AE00827277"
                BuildableName = "BingePodcastTests.xctest"
                BlueprintName = "BingePodcastTests"
-               ReferencedContainer = "container:BingePodcast.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1D187A142A2CC8AE00827277"
-               BuildableName = "BingePodcastUITests.xctest"
-               BlueprintName = "BingePodcastUITests"
                ReferencedContainer = "container:BingePodcast.xcodeproj">
             </BuildableReference>
          </TestableReference>
