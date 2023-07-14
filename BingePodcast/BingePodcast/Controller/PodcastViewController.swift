@@ -114,8 +114,8 @@ class PodcastViewController: UIViewController {
         swipeGestureRecognizerDownRightToLeft.direction = .left
         swipeGestureRecognizerDownLeftToRight.direction = .right
         
-        // carouselView.addGestureRecognizer(swipeGestureRecognizerDownLeftToRight)
-        // carouselView.addGestureRecognizer(swipeGestureRecognizerDownRightToLeft)
+        carouselView.addGestureRecognizer(swipeGestureRecognizerDownLeftToRight)
+        carouselView.addGestureRecognizer(swipeGestureRecognizerDownRightToLeft)
         
         myCollectionViewPodcast?.isScrollEnabled = false
     }
@@ -237,10 +237,10 @@ class PageVC: UIViewController {
             tableViewEpisode.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
             tableViewEpisode.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20),
             tableViewEpisode.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
-            tableViewEpisode.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 82),
-            viewBottomTableView.topAnchor.constraint(equalTo: tableViewEpisode.bottomAnchor),
-            viewBottomTableView.heightAnchor.constraint(equalToConstant: 50)
+            tableViewEpisode.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 82)
         ].forEach{$0.isActive = true}
+        
+       
         
         initTableView()
     }

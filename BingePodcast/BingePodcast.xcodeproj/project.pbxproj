@@ -305,7 +305,6 @@
 				1D1879F92A2CC8AA00827277 /* ViewController.swift */,
 				1D55E1E42A3DCF9100F1A9BD /* PlayerViewController.swift */,
 				1D0AC2682A605F960029EAAE /* HomeViewController.swift */,
-				1D0AC2662A605DDC0029EAAE /* PodcastHomePageCollectionViewCell.swift */,
 				1DD726392A45D86400CD6D16 /* FloatingTabBarViewController.swift */,
 				1DE5254D2A483391008132B0 /* PodcastViewController.swift */,
 				1D187C922A49C74C00D67271 /* TestTransitionViewController.swift */,
@@ -382,6 +381,7 @@
 		1DE5254F2A483FDD008132B0 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				1D0AC2662A605DDC0029EAAE /* PodcastHomePageCollectionViewCell.swift */,
 				1DE525512A485325008132B0 /* CellEpisodeTabViewCell.swift */,
 				1D3C3F472A4C7A9B00F0CA90 /* CellPodcastCollectionViewCell.swift */,
 			);
