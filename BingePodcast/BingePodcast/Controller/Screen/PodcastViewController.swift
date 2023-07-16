@@ -1,5 +1,10 @@
 
 
+// https://medium.com/@thomsmed/expandable-and-dynamic-sized-table-header-view-and-table-footer-view-6611ce0265b4
+
+// link to resize 
+
+
 import UIKit
 
 enum PagesPodcast: CaseIterable {
@@ -226,12 +231,6 @@ class PageViewControllerPodcast: UIViewController {
         super.viewDidLoad()
         self.view.addSubview(tableViewEpisode)
         
-        let viewBottomTableView = UIView()
-        
-        view.addSubview(viewBottomTableView)
-        viewBottomTableView.backgroundColor = .red
-        viewBottomTableView.translatesAutoresizingMaskIntoConstraints = false
-        
         tableViewEpisode.translatesAutoresizingMaskIntoConstraints = false
         [
             tableViewEpisode.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
@@ -240,6 +239,9 @@ class PageViewControllerPodcast: UIViewController {
             tableViewEpisode.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 82)
         ].forEach{$0.isActive = true}
         
+        let footerView = UIView()
+        footerView.frame.size.height = 90
+        tableViewEpisode.tableFooterView = footerView
        
         
         initTableView()

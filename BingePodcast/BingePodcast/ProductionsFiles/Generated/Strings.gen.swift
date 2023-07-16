@@ -14,6 +14,10 @@ internal enum L10n {
   internal static let allEpisodes = L10n.tr("Strings", "allEpisodes", fallback: "Tous les épisodes")
   /// Description
   internal static let description = L10n.tr("Strings", "description", fallback: "Description")
+  /// Favoris
+  internal static let favorite = L10n.tr("Strings", "favorite", fallback: "Favoris")
+  /// A écouter
+  internal static let seeLater = L10n.tr("Strings", "seeLater", fallback: "A écouter")
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces

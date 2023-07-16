@@ -45,12 +45,6 @@ class HomeViewController: UIViewController {
             // this is important for scrolling
             scrollViewContainer.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
 
-            /*
-            viewBeindImage.topAnchor.constraint(equalTo: view.topAnchor),
-            viewBeindImage.leftAnchor.constraint(equalTo: view.leftAnchor),
-            viewBeindImage.rightAnchor.constraint(equalTo: view.rightAnchor),
-            */
-
             imageView.heightAnchor.constraint(equalToConstant: 260),
 
             titleSwitchPlayer.heightAnchor.constraint(equalToConstant: 23),
