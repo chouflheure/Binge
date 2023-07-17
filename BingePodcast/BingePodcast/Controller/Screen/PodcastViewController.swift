@@ -1,8 +1,13 @@
 
 
+// https://medium.com/@thomsmed/expandable-and-dynamic-sized-table-header-view-and-table-footer-view-6611ce0265b4
+
+// link to resize 
+
+
 import UIKit
 
-enum Pages: CaseIterable {
+enum PagesPodcast: CaseIterable {
     case pageZero
     case pageOne
     case pageTwo
@@ -49,7 +54,7 @@ class PodcastViewController: UIViewController {
     let carouselView = UIView()
     var actualIndexPathRow = 0
     private var pageController: UIPageViewController?
-    private var pages: [Pages] = Pages.allCases
+    private var pages: [PagesPodcast] = PagesPodcast.allCases
     private var currentIndex: Int = 0
     private var myCollectionViewPodcast: UICollectionView?
 
@@ -142,7 +147,7 @@ class PodcastViewController: UIViewController {
         self.addChild(self.pageController!)
         self.view.addSubview(self.pageController!.view)
         
-        let initialVC = PageVC(with: pages[0])
+        let initialVC = PageViewControllerPodcast(with: pages[0])
         
         self.pageController?.setViewControllers([initialVC], direction: .forward, animated: true, completion: nil)
         
@@ -154,7 +159,7 @@ extension PodcastViewController: UIPageViewControllerDataSource, UIPageViewContr
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         
-        guard let currentVC = viewController as? PageVC else {
+        guard let currentVC = viewController as? PageViewControllerPodcast else {
             return nil
         }
         
@@ -166,14 +171,14 @@ extension PodcastViewController: UIPageViewControllerDataSource, UIPageViewContr
         
         index -= 1
         
-        let vc: PageVC = PageVC(with: pages[index])
+        let vc: PageViewControllerPodcast = PageViewControllerPodcast(with: pages[index])
         
         return vc
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         
-        guard let currentVC = viewController as? PageVC else {
+        guard let currentVC = viewController as? PageViewControllerPodcast else {
             return nil
         }
         
@@ -185,20 +190,20 @@ extension PodcastViewController: UIPageViewControllerDataSource, UIPageViewContr
         
         index += 1
         
-        let vc: PageVC = PageVC(with: pages[index])
+        let vc: PageViewControllerPodcast = PageViewControllerPodcast(with: pages[index])
         
         return vc
     }
 }
 
 
-class PageVC: UIViewController {
+class PageViewControllerPodcast: UIViewController {
     
     var titleLabel: UILabel?
     
-    var page: Pages
+    var page: PagesPodcast
     
-    init(with page: Pages) {
+    init(with page: PagesPodcast) {
         self.page = page
         print("@@@ page = \(self.page)")
         super.init(nibName: nil, bundle: nil)
@@ -226,12 +231,6 @@ class PageVC: UIViewController {
         super.viewDidLoad()
         self.view.addSubview(tableViewEpisode)
         
-        let viewBottomTableView = UIView()
-        
-        view.addSubview(viewBottomTableView)
-        viewBottomTableView.backgroundColor = .red
-        viewBottomTableView.translatesAutoresizingMaskIntoConstraints = false
-        
         tableViewEpisode.translatesAutoresizingMaskIntoConstraints = false
         [
             tableViewEpisode.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
@@ -240,6 +239,9 @@ class PageVC: UIViewController {
             tableViewEpisode.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 82)
         ].forEach{$0.isActive = true}
         
+        let footerView = UIView()
+        footerView.frame.size.height = 90
+        tableViewEpisode.tableFooterView = footerView
        
         
         initTableView()
@@ -254,13 +256,13 @@ class PageVC: UIViewController {
     
 }
 
-extension PageVC: UITableViewDelegate {
+extension PageViewControllerPodcast: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             print("@@@ select at \(indexPath)")
         }
 }
 
-extension PageVC: UITableViewDataSource {
+extension PageViewControllerPodcast: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         1

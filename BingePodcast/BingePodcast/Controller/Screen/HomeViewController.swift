@@ -24,9 +24,9 @@ class HomeViewController: UIViewController {
         scrollViewContainer.addArrangedSubview(titleSwitchPlayer)
         scrollViewContainer.addArrangedSubview(spacingImageWithTitle)
         scrollViewContainer.addArrangedSubview(switchPlayerFirst)
-        scrollViewContainer.addArrangedSubview(spacingSwitchWithTitlePodcast)
         scrollViewContainer.addArrangedSubview(spacingBetweenSwith)
         scrollViewContainer.addArrangedSubview(switchPlayerSecond)
+        scrollViewContainer.addArrangedSubview(spacingSwitchWithTitlePodcast)
         scrollViewContainer.addArrangedSubview(titlePodcast)
         scrollViewContainer.addArrangedSubview(spacingTitleWithCollectionView)
         scrollViewContainer.addArrangedSubview(collectionViewPodcast)
@@ -44,12 +44,6 @@ class HomeViewController: UIViewController {
             scrollViewContainer.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             // this is important for scrolling
             scrollViewContainer.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-
-            /*
-            viewBeindImage.topAnchor.constraint(equalTo: view.topAnchor),
-            viewBeindImage.leftAnchor.constraint(equalTo: view.leftAnchor),
-            viewBeindImage.rightAnchor.constraint(equalTo: view.rightAnchor),
-            */
 
             imageView.heightAnchor.constraint(equalToConstant: 260),
 
