@@ -220,7 +220,7 @@ private extension FavoriteViewController {
 
         view.addSubview(tableViewEpisode)
         [
-            tableViewEpisode.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
+            tableViewEpisode.topAnchor.constraint(equalTo: view.topAnchor, constant: 120),
             tableViewEpisode.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20),
             tableViewEpisode.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
             tableViewEpisode.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 82)
