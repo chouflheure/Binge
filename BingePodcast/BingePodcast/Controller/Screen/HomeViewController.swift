@@ -211,7 +211,13 @@ class HomeViewController: UIViewController {
 
 
 extension HomeViewController: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let secondVC = self.storyboard?.instantiateViewController(withIdentifier: "PlayerViewController")
+        secondVC?.modalPresentationStyle = .custom
+        secondVC?.transitioningDelegate = self
+        
+        self.present(secondVC!, animated: true, completion: nil)
+    }
 }
 
 extension HomeViewController: UICollectionViewDataSource {
@@ -227,4 +233,16 @@ extension HomeViewController: UICollectionViewDataSource {
     }
     
     
+}
+
+
+extension HomeViewController: UIViewControllerTransitioningDelegate {
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return PresentTransition()
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return DismissTransition()
+    }
 }

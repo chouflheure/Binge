@@ -1,87 +1,16 @@
 
 import UIKit
 
-
-enum Pages: CaseIterable {
-    case pageZero
-    case pageOne
-    
-    var name: String {
-        switch self {
-        case .pageZero:
-            return "This is page zero"
-        case .pageOne:
-            return "This is page two"
-        }
-    }
-    
-    var index: Int {
-        switch self {
-        case .pageZero:
-            return 0
-        case .pageOne:
-            return 1
-  
-        }
-    }
-}
-
 class FavoriteViewController: UIViewController {
-    
+
     private var pageController: UIPageViewController?
-    private var pages = Pages.allCases
+    private var pages = PagesFavoriteScreen.allCases
     private var currentIndex: Int = 0
     private var leftContainer: NSLayoutConstraint?
+    var podcastSaved = [PodcastSaved]()
+    let tableViewEpisode = UITableView()
+    
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .clear
-        setupTitlePageViewController()
-        setupPageController()
-        setGradientBackground()
-    }
-    
-    private func nextPagePoint() {
-        seeLaterTitle.adjustsFontSizeToFitWidth = true
-        favoriteTitle.adjustsFontSizeToFitWidth = true
-        
-        if currentIndex == 0 {
-            seeLaterTitle.font = UIFont(name: .fonts.proximaNova_Bold.fontName(), size: 24)
-            favoriteTitle.font = UIFont(name: .fonts.proximaNova_Regular.fontName(), size: 24)
-            UIView.animate(withDuration: 0.3) {
-                self.leftContainer!.constant += UIScreen.main.bounds.width - (self.favoriteTitle.intrinsicContentSize.width / 2) - (self.seeLaterTitle.intrinsicContentSize.width / 2) - 80
-                self.view.layoutIfNeeded() // Assurez-vous d'appeler cette méthode pour mettre à jour l'affichage.
-            }
-            currentIndex += 1
-        }
-    }
-    
-    private func previousPagePoint() {
-        if currentIndex == 1 {
-            seeLaterTitle.font = UIFont(name: .fonts.proximaNova_Regular.fontName(), size: 24)
-            favoriteTitle.font = UIFont(name: .fonts.proximaNova_Bold.fontName(), size: 24)
-           
-            UIView.animate(withDuration: 0.3) {
-                self.leftContainer!.constant -= UIScreen.main.bounds.width - (self.favoriteTitle.intrinsicContentSize.width / 2) - (self.seeLaterTitle.intrinsicContentSize.width / 2) - 80
-                self.view.layoutIfNeeded() // Assurez-vous d'appeler cette méthode pour mettre à jour l'affichage.
-            }
-            currentIndex -= 1
-        }
-    }
-    
-    @objc private func nextPageController() {
-        guard let pageController = pageController else {return}
-        pageController.setViewControllers([PageList(with: pages[1])], direction: .forward, animated: true, completion: nil)
-        nextPagePoint()
-    }
-    
-    @objc private func previousPageController() {
-
-        guard let pageController = pageController else {return}
-        pageController.setViewControllers([PageList(with: pages[0])], direction: .reverse, animated: true, completion: nil)
-        previousPagePoint()
-    }
-    
     let favoriteTitle : UILabel = {
         let label = UILabel()
         label.text = L10n.favorite
@@ -105,6 +34,32 @@ class FavoriteViewController: UIViewController {
         return line
     }()
     
+    
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .clear
+        
+        podcastSaved.append(PodcastSaved(titlePocast: "Du Sport", episodeSaved: [
+            EpisodeSaved(titleEpisode: "Episode 1", subtitleEpisode: "Les jeux olympiques sont ils utilent", totalTimeEpisode: "12:45", favorite: true, imageEpisode: Assets.aBientotDeTeRevoir.name),
+            EpisodeSaved(titleEpisode: "Episode 2", subtitleEpisode: "À quoi ca sert de courir ?", totalTimeEpisode: "12:45", favorite: true, imageEpisode: Assets.aBientotDeTeRevoir.name),
+            EpisodeSaved(titleEpisode: "Episode 3", subtitleEpisode: "Peut-on toujours repousser les limites ?", totalTimeEpisode: "12:45", favorite: true, imageEpisode: Assets.aBientotDeTeRevoir.name),
+            EpisodeSaved(titleEpisode: "Episode 4", subtitleEpisode: "Pourquoi les ballons no…", totalTimeEpisode: "12:45", favorite: true, imageEpisode: Assets.aBientotDeTeRevoir.name),
+        ]))
+        
+        podcastSaved.append(PodcastSaved(titlePocast: "Les couilles sur la table", episodeSaved: [
+            EpisodeSaved(titleEpisode: "Episode 1", subtitleEpisode: "Les jeux olympiques sont ils utilent", totalTimeEpisode: "12:45", favorite: true, imageEpisode: Assets.aBientotDeTeRevoir.name),
+            EpisodeSaved(titleEpisode: "Episode 2", subtitleEpisode: "À quoi ca sert de courir ?", totalTimeEpisode: "12:45", favorite: true, imageEpisode: Assets.aBientotDeTeRevoir.name),
+            EpisodeSaved(titleEpisode: "Episode 3", subtitleEpisode: "Peut-on toujours repousser les limites ?", totalTimeEpisode: "12:45", favorite: true, imageEpisode: Assets.aBientotDeTeRevoir.name)
+        ]))
+        
+        setupTitlePageViewController()
+        setupPageController()
+        setGradientBackground()
+        initTableView()
+        
+    }
+
     private func setupTitlePageViewController() {
 
         view.addSubview(favoriteTitle)
@@ -153,8 +108,51 @@ class FavoriteViewController: UIViewController {
                 
         self.view.layer.insertSublayer(gradientLayer, at: 0)
     }
+ 
+}
 
+// MARK: - Extension Page Controller
+extension FavoriteViewController: UIPageViewControllerDelegate {
     
+    private func nextPagePoint() {
+        seeLaterTitle.adjustsFontSizeToFitWidth = true
+        favoriteTitle.adjustsFontSizeToFitWidth = true
+        
+        if currentIndex == 0 {
+            seeLaterTitle.font = UIFont(name: .fonts.proximaNova_Bold.fontName(), size: 24)
+            favoriteTitle.font = UIFont(name: .fonts.proximaNova_Regular.fontName(), size: 24)
+            UIView.animate(withDuration: 0.3) {
+                self.leftContainer!.constant += UIScreen.main.bounds.width - (self.favoriteTitle.intrinsicContentSize.width / 2) - (self.seeLaterTitle.intrinsicContentSize.width / 2) - 80
+                self.view.layoutIfNeeded() // Assurez-vous d'appeler cette méthode pour mettre à jour l'affichage.
+            }
+            currentIndex += 1
+        }
+    }
+    
+    private func previousPagePoint() {
+        if currentIndex == 1 {
+            seeLaterTitle.font = UIFont(name: .fonts.proximaNova_Regular.fontName(), size: 24)
+            favoriteTitle.font = UIFont(name: .fonts.proximaNova_Bold.fontName(), size: 24)
+           
+            UIView.animate(withDuration: 0.3) {
+                self.leftContainer!.constant -= UIScreen.main.bounds.width - (self.favoriteTitle.intrinsicContentSize.width / 2) - (self.seeLaterTitle.intrinsicContentSize.width / 2) - 80
+                self.view.layoutIfNeeded() // Assurez-vous d'appeler cette méthode pour mettre à jour l'affichage.
+            }
+            currentIndex -= 1
+        }
+    }
+    
+    @objc private func nextPageController() {
+        guard let pageController = pageController else {return}
+        pageController.setViewControllers([PageListFavorite(with: tableViewEpisode)], direction: .forward, animated: true, completion: nil)
+        nextPagePoint()
+    }
+    
+    @objc private func previousPageController() {
+        guard let pageController = pageController else {return}
+        pageController.setViewControllers([PageListFavorite(with: tableViewEpisode)], direction: .reverse, animated: true, completion: nil)
+        previousPagePoint()
+    }
     
     private func setupPageController() {
         
@@ -175,16 +173,13 @@ class FavoriteViewController: UIViewController {
         self.view.addSubview(self.pageController!.view)
         
         
-        let initialVC = PageList(with: pages[0])
+        let initialVC = PageListFavorite(with: tableViewEpisode)
         
         self.pageController?.setViewControllers([initialVC], direction: .forward, animated: true, completion: nil)
         
         self.pageController?.didMove(toParent: self)
     }
     
-}
-
-extension FavoriteViewController: UIPageViewControllerDelegate {
     
     func presentationCount(for pageViewController: UIPageViewController) -> Int {
         return self.pages.count
@@ -196,28 +191,141 @@ extension FavoriteViewController: UIPageViewControllerDelegate {
 }
 
 
+// MARK: - Extension Transition
+extension FavoriteViewController: UIViewControllerTransitioningDelegate {
+            
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return PresentTransition()
+    }
+        
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return DismissTransition()
+    }
+
+}
 
 
+// MARK: - Extension TableView
 
+private extension FavoriteViewController {
+   
+    private func initTableView() {
+        tableViewEpisode.delegate = self
+        tableViewEpisode.dataSource = self
+        tableViewEpisode.register(UINib(nibName: "CellEpisodeTabViewCell", bundle: nil), forCellReuseIdentifier: "cellEpisode")
+        tableViewEpisode.backgroundColor = .clear
+        tableViewEpisode.separatorColor = .clear
+        tableViewEpisode.showsVerticalScrollIndicator = false
+        tableViewEpisode.translatesAutoresizingMaskIntoConstraints = false
 
+        view.addSubview(tableViewEpisode)
+        [
+            tableViewEpisode.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
+            tableViewEpisode.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20),
+            tableViewEpisode.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
+            tableViewEpisode.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 82)
+        ].forEach{$0.isActive = true}
 
+        offSetTopSectionTableView()
+        offSetTableviewToTabBar()
+    }
+    
+    private func offSetTopSectionTableView() {
+        if #available(iOS 15.0, *) {
+            tableViewEpisode.sectionHeaderTopPadding = 0
+        }
+    }
+    
+    private func offSetTableviewToTabBar() {
+        let footerView = UIView()
+        footerView.frame.size.height = 90
+        tableViewEpisode.tableFooterView = footerView
+    }
+    
+}
 
+extension FavoriteViewController: UITableViewDelegate {
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let secondVC = self.storyboard?.instantiateViewController(withIdentifier: "PlayerViewController")
+        secondVC?.modalPresentationStyle = .custom
+        secondVC?.transitioningDelegate = self
+        
+        self.present(secondVC!, animated: true, completion: nil)
+    }
 
+}
 
+extension FavoriteViewController: UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        podcastSaved.count
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let view = UIView(frame: CGRect(x: 0,
+                                        y: 0,
+                                        width: tableView.frame.width,
+                                        height:  Constants_FavoritesViewController.heightHeader)
+        )
+        
+        view.backgroundColor = .clear
+        
+        let blurEffect = UIBlurEffect(style: .light)
+        let blurEffectView = UIVisualEffectView()
+        blurEffectView.frame = CGRect(x: view.frame.origin.x,
+                                      y: view.frame.origin.y,
+                                      width: tableView.frame.width,
+                                      height: Constants_FavoritesViewController.heightHeader)
+        
+        blurEffectView.clipsToBounds = true
+        blurEffectView.alpha = 1
+        view.insertSubview(blurEffectView, at: 0)
+        blurEffectView.effect = blurEffect
+        
+        let label = UILabel(frame: CGRect(x: 15,
+                                          y: 0,
+                                          width: view.frame.width - 15,
+                                          height: Constants_FavoritesViewController.heightHeader)
+        )
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        label.font = UIFont(name: .fonts.proximaNova_Regular.fontName(), size: 20)
+        label.text = podcastSaved[section].titlePocast
+        label.textColor = Colors.darkBlue.color
+        view.addSubview(label)
+        
+        return view
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        podcastSaved[section].episodeSaved.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        Constants_FavoritesViewController.heightHeader
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        Constants_FavoritesViewController.heightCell
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let section = indexPath.section
+        let row = indexPath.row
+        
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: "cellEpisode",
+            for: indexPath as IndexPath) as? CellEpisodeTabViewCell
+        
+        guard let cell = cell else {return UITableViewCell()}
+        
+        let episode = podcastSaved[section].episodeSaved[row]
+        
+        cell.setupCell(title: episode.titleEpisode, subtitle: episode.subtitleEpisode, imageEpisode: episode.imageEpisode, time: episode.totalTimeEpisode, favorite: episode.favorite)
+        
+        return cell
+    }
+    
+}

@@ -31,3 +31,8 @@ class Constants_HomeViewController {
     static let horizontalMarginLeftAndRightMolecule: CGFloat = 35
     static let heightSwipePlayer: CGFloat = 102
 }
+
+class Constants_FavoritesViewController {
+    static let heightCell: CGFloat = 100.0
+    static let heightHeader: CGFloat = 40.0
+}
