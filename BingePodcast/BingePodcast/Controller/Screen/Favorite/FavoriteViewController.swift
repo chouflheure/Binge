@@ -269,7 +269,7 @@ extension FavoriteViewController: UITableViewDataSource {
         blurEffectView.alpha = 1
         view.insertSubview(blurEffectView, at: 0)
         blurEffectView.effect = blurEffect
-        
+        blurEffectView.layer.cornerRadius = 10
         let label = UILabel(frame: CGRect(x: 15,
                                           y: 0,
                                           width: view.frame.width - 15,
@@ -290,6 +290,17 @@ extension FavoriteViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         Constants_FavoritesViewController.heightHeader
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let view = UIView(frame: CGRect(x: 0,
+                                        y: 0,
+                                        width: tableView.frame.width,
+                                        height:  Constants_FavoritesViewController.heightHeader)
+        )
+        view.backgroundColor = .clear
+        return view
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

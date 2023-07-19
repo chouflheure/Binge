@@ -16,6 +16,8 @@ internal enum L10n {
   internal static let description = L10n.tr("Strings", "description", fallback: "Description")
   /// Favoris
   internal static let favorite = L10n.tr("Strings", "favorite", fallback: "Favoris")
+  /// Podcasts
+  internal static let podcast = L10n.tr("Strings", "podcast", fallback: "Podcasts")
   /// A écouter
   internal static let seeLater = L10n.tr("Strings", "seeLater", fallback: "A écouter")
 }

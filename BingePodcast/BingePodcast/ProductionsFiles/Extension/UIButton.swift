@@ -15,13 +15,13 @@ extension UIButton {
                          borderColor: UIColor,
                          backGroundColor: UIColor)
     {
-    
+    /*
         button.translatesAutoresizingMaskIntoConstraints = false
         [
             button.widthAnchor.constraint(equalToConstant: width),
             button.heightAnchor.constraint(equalToConstant: height)
         ].forEach{$0.isActive = true}
-        
+      */
         let image = UIImage(named: image)
 
         if isBordering {
