@@ -41,7 +41,7 @@ class HomeViewController: UIViewController {
             scrollViewContainer.leftAnchor.constraint(equalTo: scrollView.leftAnchor),
             scrollViewContainer.rightAnchor.constraint(equalTo: scrollView.rightAnchor),
             scrollViewContainer.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            scrollViewContainer.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            scrollViewContainer.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 10),
             // this is important for scrolling
             scrollViewContainer.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
 
@@ -65,7 +65,7 @@ class HomeViewController: UIViewController {
 
             collectionViewPodcast.heightAnchor.constraint(equalToConstant: 200),
             
-            viewOffsetCollectionnView.heightAnchor.constraint(equalToConstant: 60)
+            viewOffsetCollectionnView.heightAnchor.constraint(equalToConstant: 70)
         ].forEach{$0.isActive = true}
 
         initCollectionView()
@@ -212,11 +212,11 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let secondVC = self.storyboard?.instantiateViewController(withIdentifier: "PlayerViewController")
-        secondVC?.modalPresentationStyle = .custom
-        secondVC?.transitioningDelegate = self
-        
-        self.present(secondVC!, animated: true, completion: nil)
+        let playerVC = self.storyboard?.instantiateViewController(withIdentifier: "PlayerViewController")
+        playerVC?.modalPresentationStyle = .custom
+        playerVC?.transitioningDelegate = self
+        guard let playerVC = playerVC else {return}
+        self.present(playerVC, animated: true, completion: nil)
     }
 }
 
@@ -233,16 +233,4 @@ extension HomeViewController: UICollectionViewDataSource {
     }
     
     
-}
-
-
-extension HomeViewController: UIViewControllerTransitioningDelegate {
-    
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return PresentTransition()
-    }
-    
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return DismissTransition()
-    }
 }

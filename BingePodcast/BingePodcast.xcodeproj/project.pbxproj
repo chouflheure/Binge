@@ -30,6 +30,7 @@
 		1D187A102A2CC8AE00827277 /* BingePodcastTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D187A0F2A2CC8AE00827277 /* BingePodcastTests.swift */; };
 		1D187C932A49C74C00D67271 /* TestTransitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D187C922A49C74C00D67271 /* TestTransitionViewController.swift */; };
 		1D187C992A49D98600D67271 /* UIPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D187C982A49D98600D67271 /* UIPageViewController.swift */; };
+		1D28CA152A673644005AFDF0 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D28CA142A673644005AFDF0 /* UIViewController.swift */; };
 		1D3C3F492A4C7A9B00F0CA90 /* CellPodcastCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3C3F472A4C7A9B00F0CA90 /* CellPodcastCollectionViewCell.swift */; };
 		1D3C3F4A2A4C7A9B00F0CA90 /* CellPodcastCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D3C3F482A4C7A9B00F0CA90 /* CellPodcastCollectionViewCell.xib */; };
 		1D55E1E52A3DCF9100F1A9BD /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D55E1E42A3DCF9100F1A9BD /* PlayerViewController.swift */; };
@@ -138,6 +139,7 @@
 		1D187A152A2CC8AE00827277 /* BingePodcastUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BingePodcastUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D187C922A49C74C00D67271 /* TestTransitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTransitionViewController.swift; sourceTree = "<group>"; };
 		1D187C982A49D98600D67271 /* UIPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPageViewController.swift; sourceTree = "<group>"; };
+		1D28CA142A673644005AFDF0 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		1D3C3F472A4C7A9B00F0CA90 /* CellPodcastCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellPodcastCollectionViewCell.swift; sourceTree = "<group>"; };
 		1D3C3F482A4C7A9B00F0CA90 /* CellPodcastCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CellPodcastCollectionViewCell.xib; sourceTree = "<group>"; };
 		1D55E1E42A3DCF9100F1A9BD /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
@@ -426,6 +428,7 @@
 				1DA63F0F2A41F79D0013BB86 /* UIFloat.swift */,
 				1D187C982A49D98600D67271 /* UIPageViewController.swift */,
 				1D0AC2702A629FE40029EAAE /* CALayer.swift */,
+				1D28CA142A673644005AFDF0 /* UIViewController.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -773,6 +776,7 @@
 				1D18439C2A65469400A5129E /* PageListFavorite.swift in Sources */,
 				1DCA9ECE2A35FD22008ED92E /* PlayerAudioService.swift in Sources */,
 				1D0AC26E2A6198460029EAAE /* FavoriteViewController.swift in Sources */,
+				1D28CA152A673644005AFDF0 /* UIViewController.swift in Sources */,
 				1D55E2922A409CB000F1A9BD /* UIButton.swift in Sources */,
 				1D55E1E52A3DCF9100F1A9BD /* PlayerViewController.swift in Sources */,
 				1D1844892A659CED00A5129E /* PagesFavoriteScreen.swift in Sources */,
@@ -998,7 +1002,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1035,7 +1039,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -1049,7 +1053,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = P72QBKGC25;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.calvignaccharles.BingePodcastTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1073,7 +1077,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = P72QBKGC25;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.calvignaccharles.BingePodcastTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

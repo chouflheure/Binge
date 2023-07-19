@@ -570,6 +570,10 @@ private extension PlayerViewController {
     }
     
     @objc func actionFullScreenButton(_ sender: UIButton) {
-        print("@@@ click fullScreen")
+        let playerVC = self.storyboard?.instantiateViewController(withIdentifier: "DescriptionPlayerViewController")
+        playerVC?.modalPresentationStyle = .custom
+        playerVC?.transitioningDelegate = self
+        guard let playerVC = playerVC else {return}
+        self.present(playerVC, animated: true, completion: nil)
     }
 }

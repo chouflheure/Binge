@@ -3,13 +3,60 @@ import Foundation
 import UIKit
 
 class DescriptionPlayerViewController: UIViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        view.addSubview(scrollView)
+        scrollView.addSubview(scrollViewContainer)
+        
+        headerDescription()
+        scrollView.backgroundColor = Colors.purpleGradientMax.color.withAlphaComponent(0.8)
+        descriptionPart()
+
+        scrollView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        scrollView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+
+        scrollViewContainer.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 30).isActive = true
+        
+        scrollViewContainer.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
+        scrollViewContainer.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
+        // this is important for scrolling
+        scrollViewContainer.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width - 60).isActive = true
+        
+        imageReturn.addTarget(self, action: #selector(actionReturnButton), for: .touchDown)
+    }
+
+    @objc func actionReturnButton() {
+        dismiss(animated: true)
+    }
+    
+    let scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        return scrollView
+    }()
+
+    let scrollViewContainer: UIStackView = {
+        let view = UIStackView()
+
+        view.axis = .vertical
+        view.spacing = 10
+
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
     let titlePodcast: UILabel = {
         let label = UILabel()
         label.textColor = Colors.white.color
-        label.text = "A bientot te revoir"
+        label.text = "À bientôt te revoir"
         label.font = UIFont(name: .fonts.proximaNova_Bold.fontName(), size: 20)
         label.textColor = .white
+        label.backgroundColor = .clear
         return label
     }()
 
@@ -18,6 +65,7 @@ class DescriptionPlayerViewController: UIViewController {
         label.text = "Remi Sourcier"
         label.font = UIFont(name: .fonts.proximaNova_Regular.fontName(), size: 12)
         label.textColor = .white
+        label.sizeToFit()
         return label
     }()
 
@@ -25,25 +73,46 @@ class DescriptionPlayerViewController: UIViewController {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.layer.cornerRadius = 33 / 2
-        btn.backgroundColor = .lightGray
+        btn.backgroundColor = Colors.white.color.withAlphaComponent(0.3)
         btn.setImage(Assets.Picto.chevronDown.image, for: .normal)
-        let image = Assets.Picto.chevronDown.image
         return btn
     }()
     
     let titleDescriptionPodcast : UILabel = {
         let label = UILabel()
-        label.text = "Description"
-        label.font = UIFont(name: .fonts.proximaNova_Regular.fontName(), size: 20)
+        label.text = L10n.description
+        label.font = UIFont(name: .fonts.proximaNova_Alt_Bold.fontName(), size: 18)
+        label.textColor = Colors.yellow.color
         return label
     }()
     
     let descriptionPodcast: UITextView = {
-        let label = UITextView()
-        label.text = """
+        let textView = UITextView()
+        
+        
+        
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.sizeToFit()
+        textView.isScrollEnabled = false
+        textView.isUserInteractionEnabled = false
+
+        let string = """
             Cet été, A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices. Cet été, A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices. Cet été, A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices.
             """
-        return label
+
+        
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 10
+        let attributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.paragraphStyle: paragraphStyle]
+        let attributedString = NSAttributedString(string: string, attributes: attributes)
+        textView.attributedText = attributedString
+        
+        textView.font = UIFont(name: .fonts.proximaNova_Alt_Light.fontName(), size: 18)
+        textView.textColor = Colors.white.color
+        textView.backgroundColor = .clear
+        
+        return textView
     }()
     
     let imageAuthor: UIImageView = {
@@ -54,70 +123,127 @@ class DescriptionPlayerViewController: UIViewController {
         return imageView
     }()
 
+    
+    let stackHeaderSDescription: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .horizontal
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
+    }()
 
-    override func viewDidLoad() {
-        view.backgroundColor = Colors.purpleGradientMax.color.withAlphaComponent(0.8)
-        headerDescription()
-    }
+    
+    let stackImageReturn: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .vertical
+        stack.alignment = .fill
+        stack.distribution = .fill
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
+    }()
+    
+    let stackTitle: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .vertical
+        stack.alignment = .center
+        stack.distribution = .fill
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
+    }()
     
     private func headerDescription() {
-        let stackHeaderSDescription = UIStackView()
-        stackHeaderSDescription.axis = .horizontal
-        stackHeaderSDescription.translatesAutoresizingMaskIntoConstraints = false
+       
+        let viewTopImageButton = UIView()
+        let viewBottomImageButton = UIView()
+        viewTopImageButton.translatesAutoresizingMaskIntoConstraints = false
+        viewBottomImageButton.translatesAutoresizingMaskIntoConstraints = false
         
-
-        let stackImageReturn = UIStackView()
-        stackImageReturn.axis = .vertical
-        stackImageReturn.alignment = .fill
-        stackImageReturn.distribution = .fill
-        
-        let viewTop = UIView()
-        let viewBottom = UIView()
-        
-        
-        
-        stackImageReturn.translatesAutoresizingMaskIntoConstraints = false
-        viewTop.translatesAutoresizingMaskIntoConstraints = false
-        viewBottom.translatesAutoresizingMaskIntoConstraints = false
-        
-        stackImageReturn.addArrangedSubview(viewTop)
+        stackImageReturn.addArrangedSubview(viewTopImageButton)
         stackImageReturn.addArrangedSubview(imageReturn)
-        stackImageReturn.addArrangedSubview(viewBottom)
+        stackImageReturn.addArrangedSubview(viewBottomImageButton)
         
         [
-            viewTop.heightAnchor.constraint(equalToConstant: (50 - 33)/2),
-            viewBottom.heightAnchor.constraint(equalToConstant: (50 - 33)/2),
-            // imageReturn.heightAnchor.constraint(equalToConstant: 50 - ),
-            
-            
+            viewTopImageButton.heightAnchor.constraint(equalToConstant: (50 - 33)/2),
+            viewBottomImageButton.heightAnchor.constraint(equalToConstant: (50 - 33)/2),
         ].forEach{$0.isActive = true}
         
-        let stackTitle = UIStackView()
-        stackTitle.axis = .vertical
-        stackTitle.translatesAutoresizingMaskIntoConstraints = false
         
+        
+        let viewBetweenTitle = UIView()
+        
+        
+        
+        let spaceBeteweenReturnBtnAndTitle = UIView()
+        spaceBeteweenReturnBtnAndTitle.translatesAutoresizingMaskIntoConstraints = false
+        
+        let spaceBeteweenTitleAndImageAuthor = UIView()
+        spaceBeteweenTitleAndImageAuthor.translatesAutoresizingMaskIntoConstraints = false
         
         
         stackHeaderSDescription.addArrangedSubview(stackImageReturn)
-        stackHeaderSDescription.addArrangedSubview(titlePodcast)
+        stackHeaderSDescription.addArrangedSubview(spaceBeteweenReturnBtnAndTitle)
+        stackHeaderSDescription.addArrangedSubview(stackTitle)
+        stackHeaderSDescription.addArrangedSubview(spaceBeteweenTitleAndImageAuthor)
         stackHeaderSDescription.addArrangedSubview(imageAuthor)
         
-        view.addSubview(stackHeaderSDescription)
+        
+
+        stackTitle.addArrangedSubview(titlePodcast)
+        stackTitle.addArrangedSubview(viewBetweenTitle)
+        stackTitle.addArrangedSubview(authorPodcast)
+
+        stackTitle.translatesAutoresizingMaskIntoConstraints = false
+
         [
-            stackHeaderSDescription.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
-            stackHeaderSDescription.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 30),
-            stackHeaderSDescription.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30),
-            stackHeaderSDescription.heightAnchor.constraint(equalToConstant: 50),
+            titlePodcast.topAnchor.constraint(equalTo: stackTitle.topAnchor),
+            authorPodcast.bottomAnchor.constraint(equalTo: stackTitle.bottomAnchor),
             
-            imageAuthor.widthAnchor.constraint(equalToConstant: 50),
+            stackTitle.leftAnchor.constraint(equalTo: spaceBeteweenReturnBtnAndTitle.rightAnchor),
+            stackTitle.rightAnchor.constraint(equalTo: spaceBeteweenTitleAndImageAuthor.leftAnchor),
             
-            imageReturn.widthAnchor.constraint(equalToConstant: 33),
-            
+            spaceBeteweenTitleAndImageAuthor.widthAnchor.constraint(equalToConstant: 10),
+            spaceBeteweenReturnBtnAndTitle.widthAnchor.constraint(equalToConstant: 10),
             
         ].forEach{$0.isActive = true}
         
-        stackHeaderSDescription.backgroundColor = .red
+        
+        let viewTopHeaderDescription = UIView()
+        scrollViewContainer.addArrangedSubview(viewTopHeaderDescription)
+
+        scrollViewContainer.addArrangedSubview(stackHeaderSDescription)
+        stackHeaderSDescription.translatesAutoresizingMaskIntoConstraints = false
+        [
+            viewTopHeaderDescription.heightAnchor.constraint(equalToConstant: 30),
+            stackHeaderSDescription.heightAnchor.constraint(equalToConstant: 50),
+            imageAuthor.widthAnchor.constraint(equalToConstant: 50),
+            imageReturn.widthAnchor.constraint(equalToConstant: 33),
+        ].forEach{$0.isActive = true}
     }
     
+    private func descriptionPart() {
+        
+        let spaceBetweenTitleAndDescription: UIView = {
+            let view = UIView()
+            return view
+        }()
+        
+        let stackDescription: UIStackView = {
+            let stack = UIStackView()
+            stack.axis = .vertical
+            return stack
+        }()
+        let spaceBetweenHeaderAndDescription = UIView()
+        
+        stackDescription.addArrangedSubview(spaceBetweenHeaderAndDescription)
+        stackDescription.addArrangedSubview(titleDescriptionPodcast)
+        stackDescription.addArrangedSubview(spaceBetweenTitleAndDescription)
+        stackDescription.addArrangedSubview(descriptionPodcast)
+
+        scrollViewContainer.addArrangedSubview(stackDescription)
+        
+        [
+            spaceBetweenHeaderAndDescription.heightAnchor.constraint(equalToConstant: 40),
+            spaceBetweenTitleAndDescription.heightAnchor.constraint(equalToConstant: 15),
+        ].forEach{$0.isActive = true}
+    }
     
 }
