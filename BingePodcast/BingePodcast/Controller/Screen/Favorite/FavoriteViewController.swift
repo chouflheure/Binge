@@ -191,20 +191,6 @@ extension FavoriteViewController: UIPageViewControllerDelegate {
 }
 
 
-// MARK: - Extension Transition
-extension FavoriteViewController: UIViewControllerTransitioningDelegate {
-            
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return PresentTransition()
-    }
-        
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return DismissTransition()
-    }
-
-}
-
-
 // MARK: - Extension TableView
 
 private extension FavoriteViewController {

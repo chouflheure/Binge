@@ -26,6 +26,7 @@ internal enum Assets {
   internal static let logo = ImageAsset(name: "logo")
   internal enum Picto {
     internal static let arrowRight = ImageAsset(name: "arrow right")
+    internal static let chevronDown = ImageAsset(name: "chevron_down")
     internal enum Favorite {
       internal static let favoriteSelectedBlue = ImageAsset(name: "favorite_selected_blue")
       internal static let favoriteSelectedWhite = ImageAsset(name: "favorite_selected_white")
