@@ -21,13 +21,7 @@ class HomeViewController: UIViewController {
         scrollView.addSubview(scrollViewContainer)
         scrollViewContainer.addArrangedSubview(imageView)
         scrollViewContainer.addArrangedSubview(spacingImageWithTitle)
-        scrollViewContainer.addArrangedSubview(titleSwitchPlayer)
-        scrollViewContainer.addArrangedSubview(spacingImageWithTitle)
-        scrollViewContainer.addArrangedSubview(switchPlayerFirst)
-        scrollViewContainer.addArrangedSubview(spacingBetweenSwith)
-        scrollViewContainer.addArrangedSubview(switchPlayerSecond)
-        scrollViewContainer.addArrangedSubview(spacingSwitchWithTitlePodcast)
-        scrollViewContainer.addArrangedSubview(titlePodcast)
+        scrollViewContainer.addArrangedSubview(containerMargin())
         scrollViewContainer.addArrangedSubview(spacingTitleWithCollectionView)
         scrollViewContainer.addArrangedSubview(collectionViewPodcast)
         scrollViewContainer.addArrangedSubview(viewOffsetCollectionnView)
@@ -42,29 +36,10 @@ class HomeViewController: UIViewController {
             scrollViewContainer.rightAnchor.constraint(equalTo: scrollView.rightAnchor),
             scrollViewContainer.topAnchor.constraint(equalTo: scrollView.topAnchor),
             scrollViewContainer.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 10),
-            // this is important for scrolling
             scrollViewContainer.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
 
             imageView.heightAnchor.constraint(equalToConstant: 260),
-
-            titleSwitchPlayer.heightAnchor.constraint(equalToConstant: 23),
-            titleSwitchPlayer.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 35),
-            titleSwitchPlayer.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -35),
-
-            switchPlayerFirst.heightAnchor.constraint(equalToConstant: 102),
-            switchPlayerFirst.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 35),
-            switchPlayerFirst.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -35),
-
-            switchPlayerSecond.heightAnchor.constraint(equalToConstant: 102),
-            switchPlayerSecond.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 35),
-            switchPlayerSecond.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -35),
-
-            titlePodcast.heightAnchor.constraint(equalToConstant: 23),
-            titlePodcast.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 35),
-            titlePodcast.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -35),
-
             collectionViewPodcast.heightAnchor.constraint(equalToConstant: 200),
-            
             viewOffsetCollectionnView.heightAnchor.constraint(equalToConstant: 70)
         ].forEach{$0.isActive = true}
 
@@ -86,6 +61,50 @@ class HomeViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    
+    func containerMargin() -> UIStackView {
+        
+        let spacingTitleWithSwitch = UIView()
+        let spacingBetweenSwith = UIView()
+        let spacingSwitchWithTitlePodcast = UIView()
+        
+        let viewVertical = UIStackView()
+        viewVertical.axis = .vertical
+        viewVertical.distribution = .fill
+        viewVertical.translatesAutoresizingMaskIntoConstraints = false
+        viewVertical.addArrangedSubview(titleSwitchPlayer)
+        viewVertical.addArrangedSubview(spacingTitleWithSwitch)
+        viewVertical.addArrangedSubview(switchPlayerFirst)
+        viewVertical.addArrangedSubview(spacingBetweenSwith)
+        viewVertical.addArrangedSubview(switchPlayerSecond)
+        viewVertical.addArrangedSubview(spacingSwitchWithTitlePodcast)
+        viewVertical.addArrangedSubview(titlePodcast)
+        
+        let viewHorizontal = UIStackView()
+        viewHorizontal.axis = .horizontal
+        viewHorizontal.translatesAutoresizingMaskIntoConstraints = false
+        let viewLeft = UIView()
+        let viewRight = UIView()
+        
+        viewHorizontal.addArrangedSubview(viewLeft)
+        viewHorizontal.addArrangedSubview(viewVertical)
+        viewHorizontal.addArrangedSubview(viewRight)
+        
+        [
+            viewLeft.widthAnchor.constraint(equalToConstant: 35),
+            viewRight.widthAnchor.constraint(equalToConstant: 35),
+            
+            titleSwitchPlayer.heightAnchor.constraint(equalToConstant: 23),
+            spacingTitleWithSwitch.heightAnchor.constraint(equalToConstant: 10),
+            switchPlayerFirst.heightAnchor.constraint(equalToConstant: 102),
+            spacingBetweenSwith.heightAnchor.constraint(equalToConstant: 20),
+            switchPlayerSecond.heightAnchor.constraint(equalToConstant: 102),
+            spacingSwitchWithTitlePodcast.heightAnchor.constraint(equalToConstant: 45),
+            titlePodcast.heightAnchor.constraint(equalToConstant: 23),
+        ].forEach{$0.isActive = true}
+       
+        return viewHorizontal
+    }
 
     let imageView: UIImageView = {
         var imageView = UIImageView()
@@ -104,16 +123,10 @@ class HomeViewController: UIViewController {
     let titleSwitchPlayer: UILabel = {
         let label = UILabel()
         label.text = "À écouter"
-        label.font = UIFont(name: .fonts.proximaNova_Alt_Thin.fontName(), size: 22)
+        label.font = UIFont(name: .fonts.proximaNova_Regular.fontName(), size: 22)
         label.textColor = Colors.darkBlue.color
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
-    }()
-
-    let spacingTitleWithSwitch: UIView = {
-        let spacingTitleSwitch = UIView()
-        spacingTitleSwitch.frame.size.height = 10
-        return spacingTitleSwitch
     }()
 
     let switchPlayerFirst: SwitchPlayer = {
@@ -126,12 +139,6 @@ class HomeViewController: UIViewController {
         return switchPlayerFirst
     }()
 
-    let spacingBetweenSwith: UIView = {
-        let spacingTitleSwitch = UIView()
-        spacingTitleSwitch.frame.size.height = 20
-        return spacingTitleSwitch
-    }()
-
     let switchPlayerSecond: SwitchPlayer = {
         let switchPlayerSecond = SwitchPlayer(
             title: "EPISODE 90",
@@ -141,17 +148,11 @@ class HomeViewController: UIViewController {
         switchPlayerSecond.translatesAutoresizingMaskIntoConstraints = false
         return switchPlayerSecond
     }()
-
-    let spacingSwitchWithTitlePodcast: UIView = {
-        let spacingTitleSwitch = UIView()
-        spacingTitleSwitch.frame.size.height = 45
-        return spacingTitleSwitch
-    }()
     
     let titlePodcast: UILabel = {
         let label = UILabel()
         label.text = "Nos Podcasts"
-        label.font = UIFont(name: .fonts.proximaNova_Alt_Thin.fontName(), size: 22)
+        label.font = UIFont(name: .fonts.proximaNova_Regular.fontName(), size: 22)
         label.textColor = Colors.darkBlue.color
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

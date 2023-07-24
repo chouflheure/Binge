@@ -7,11 +7,6 @@
 
 import UIKit
 
-enum SizeScreen {
-    case small
-    case medium
-    case large
-}
 
 class PlayerViewController: UIViewController {
     
@@ -44,7 +39,7 @@ class PlayerViewController: UIViewController {
     private func setupUI() {
         setupGenralView()
         setupScrollView()
-        // TODO: Drag and drop dans un bouton
+        
     }
 
     private func setupGenralView() {
@@ -226,12 +221,12 @@ class PlayerViewController: UIViewController {
         
         let descritpion = UILabel()
         descritpion.text = """
-            Cet été, A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices.
+                        Cet été, A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices. Cet été, A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices. Cet été, A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices.
             """
         descritpion.setLineSpacing(lineSpacing: 8.0)
         descritpion.numberOfLines = 0
         descritpion.font = UIFont(name: .fonts.proximaNova_Alt_Thin.fontName(), size: 16)
-        descritpion.textColor = .white
+        
         
         view.layer.cornerRadius = 33
         view.backgroundColor = Colors.purpleGradientMax.color.withAlphaComponent(0.8)

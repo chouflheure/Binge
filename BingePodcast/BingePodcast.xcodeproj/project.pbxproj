@@ -31,6 +31,7 @@
 		1D187C932A49C74C00D67271 /* TestTransitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D187C922A49C74C00D67271 /* TestTransitionViewController.swift */; };
 		1D187C992A49D98600D67271 /* UIPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D187C982A49D98600D67271 /* UIPageViewController.swift */; };
 		1D28CA152A673644005AFDF0 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D28CA142A673644005AFDF0 /* UIViewController.swift */; };
+		1D30400D2A6805850089C2F7 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D30400C2A6805850089C2F7 /* Test.swift */; };
 		1D3C3F492A4C7A9B00F0CA90 /* CellPodcastCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3C3F472A4C7A9B00F0CA90 /* CellPodcastCollectionViewCell.swift */; };
 		1D3C3F4A2A4C7A9B00F0CA90 /* CellPodcastCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D3C3F482A4C7A9B00F0CA90 /* CellPodcastCollectionViewCell.xib */; };
 		1D55E1E52A3DCF9100F1A9BD /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D55E1E42A3DCF9100F1A9BD /* PlayerViewController.swift */; };
@@ -140,6 +141,7 @@
 		1D187C922A49C74C00D67271 /* TestTransitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTransitionViewController.swift; sourceTree = "<group>"; };
 		1D187C982A49D98600D67271 /* UIPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPageViewController.swift; sourceTree = "<group>"; };
 		1D28CA142A673644005AFDF0 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		1D30400C2A6805850089C2F7 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		1D3C3F472A4C7A9B00F0CA90 /* CellPodcastCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellPodcastCollectionViewCell.swift; sourceTree = "<group>"; };
 		1D3C3F482A4C7A9B00F0CA90 /* CellPodcastCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CellPodcastCollectionViewCell.xib; sourceTree = "<group>"; };
 		1D55E1E42A3DCF9100F1A9BD /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
@@ -370,6 +372,7 @@
 				1D187C922A49C74C00D67271 /* TestTransitionViewController.swift */,
 				1D18439D2A656DD600A5129E /* PresentTransition.swift */,
 				1D18439F2A656DFF00A5129E /* DismissTransition.swift */,
+				1D30400C2A6805850089C2F7 /* Test.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -786,6 +789,7 @@
 				1D0AC2692A605F960029EAAE /* HomeViewController.swift in Sources */,
 				1D55E2942A40B3D400F1A9BD /* UIImage.swift in Sources */,
 				1DE5254E2A483391008132B0 /* PodcastViewController.swift in Sources */,
+				1D30400D2A6805850089C2F7 /* Test.swift in Sources */,
 				1DA63F102A41F79D0013BB86 /* UIFloat.swift in Sources */,
 				1D1843992A6545B600A5129E /* PodcastSaved.swift in Sources */,
 				1D3C3F492A4C7A9B00F0CA90 /* CellPodcastCollectionViewCell.swift in Sources */,
