@@ -28,7 +28,7 @@ class PodcastHomePageCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.numberOfLines = 1
         label.textColor = Colors.darkBlue.color
-        label.font = UIFont(name: .fonts.proximaNova_Alt_Thin.fontName(), size: 17)
+        label.font = UIFont(name: .fonts.proximaNova_Regular.fontName(), size: 17)
         return label
     }()
     
@@ -43,7 +43,7 @@ class PodcastHomePageCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.numberOfLines = 1
         label.textColor = Colors.darkBlue.color
-        label.font = UIFont(name: .fonts.proximaNova_Alt_Thin.fontName(), size: 14)
+        label.font = UIFont(name: .fonts.proximaNova_Thin.fontName(), size: 14)
         return label
     }()
     
