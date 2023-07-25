@@ -28,7 +28,6 @@ class Test: UIViewController {
         return gradient
     }()
     
-    
     let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -144,6 +143,7 @@ class Test: UIViewController {
     // MARK: - Seek Less Button
     let seekLessButton: UIButton = {
         let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
         button.generatedButton(isBordering: true,
                                width: Constants.widthSquareSeekLessButton,
                                height: Constants.widthSquareSeekLessButton,
@@ -159,6 +159,7 @@ class Test: UIViewController {
     // MARK: - Seek More Button
     let seekMoreButton: UIButton = {
         let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
         button.generatedButton(isBordering: true,
                                width: Constants.widthSquareSeekMoreButton,
                                height: Constants.widthSquareSeekMoreButton,
@@ -192,6 +193,7 @@ class Test: UIViewController {
         self.view = view
         setupUI()
         setupAction()
+        setupDescription()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -219,7 +221,6 @@ class Test: UIViewController {
         view.addSubview(scrollView)
         scrollView.addSubview(scrollViewContainer)
         // scrollViewContainer.addArrangedSubview(setupPlayerView())
-        // scrollViewContainer.addArrangedSubview(descriptionView)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollViewContainer.translatesAutoresizingMaskIntoConstraints = false
         [
@@ -232,10 +233,7 @@ class Test: UIViewController {
             scrollViewContainer.topAnchor.constraint(equalTo: scrollView.topAnchor),
             scrollViewContainer.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -10),
             scrollViewContainer.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width - 50),
-            
-            
-            // descriptionView.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant: -20),
-            // descriptionView.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 20)
+
         ].forEach{$0.isActive = true}
         
     }
@@ -270,7 +268,7 @@ class Test: UIViewController {
         scrollViewContainer.addArrangedSubview(stackReturnView)
 
         [
-            marginOnTop.heightAnchor.constraint(equalToConstant: 50),
+            marginOnTop.heightAnchor.constraint(equalToConstant: 20),
             stackReturnView.heightAnchor.constraint(equalToConstant: 21),
             chevronReturn.widthAnchor.constraint(equalToConstant: 12),
             spacingBetweenImageAndTitle.widthAnchor.constraint(equalToConstant: 10)
@@ -281,7 +279,7 @@ class Test: UIViewController {
 
     private func setupPlayerView() {
         
-        var horizontalStackTime: UIStackView = {
+        let horizontalStackTime: UIStackView = {
             var stack = UIStackView()
             stack = stack.horizontalStack()
 
@@ -292,11 +290,12 @@ class Test: UIViewController {
         
         
         // MARK: horizontal Stack Button Player
-        var horizontalStackButtonPlayer: UIStackView = {
-            var stack = UIStackView()
-            stack = stack.horizontalStack()
+        let horizontalStackButtonPlayer: UIStackView = {
+            let stack = UIStackView()
+            stack.axis = .horizontal
             stack.alignment = .center
- 
+            stack.distribution = .fill
+
             let horizontalViewBetweenGeneralViewAndSeekLessButton = UIView()
             let horizontalViewBetweenSeekLessButtonAndPlayPauseButton = UIView()
             let horizontalViewBetweenPlayPauseButtonAndSeekMoreButton = UIView()
@@ -305,15 +304,48 @@ class Test: UIViewController {
             [
                 horizontalViewBetweenGeneralViewAndSeekLessButton.widthAnchor.constraint(equalToConstant: (UIScreen.main.bounds.width-Constants.widthPlayerButton) / 2),
                 horizontalViewBetweenSeekLessButtonAndPlayPauseButton.widthAnchor.constraint(equalToConstant: 35),
-                horizontalViewBetweenPlayPauseButtonAndSeekMoreButton.widthAnchor.constraint(equalToConstant: 35)
+                horizontalViewBetweenPlayPauseButtonAndSeekMoreButton.widthAnchor.constraint(equalToConstant: 35),
+                horizontalViewBetweenGeneralViewAndSeekLessButton.heightAnchor.constraint(equalToConstant: 70)
             ].forEach{$0.isActive = true}
             
+            let stackButtonSeekLess = UIStackView()
+            stackButtonSeekLess.axis = .vertical
+            stackButtonSeekLess.distribution = .fill
+            let view1 = UIView()
+            view1.translatesAutoresizingMaskIntoConstraints = false
+            let view2 = UIView()
+            view2.translatesAutoresizingMaskIntoConstraints = false
+            stackButtonSeekLess.addArrangedSubview(view1)
+            stackButtonSeekLess.addArrangedSubview(seekLessButton)
+            stackButtonSeekLess.addArrangedSubview(view2)
+            view1.heightAnchor.constraint(equalToConstant: (70 - 50)/2 ).isActive = true
+            view2.heightAnchor.constraint(equalToConstant: (70 - 50)/2 ).isActive = true
+            stackButtonSeekLess.widthAnchor.constraint(equalToConstant: 50).isActive = true
+            stackButtonSeekLess.heightAnchor.constraint(equalToConstant: 70).isActive = true
+            
+            let stackButtonSeekMore = UIStackView()
+            stackButtonSeekMore.axis = .vertical
+            stackButtonSeekMore.distribution = .fill
+            let view3 = UIView()
+            view3.translatesAutoresizingMaskIntoConstraints = false
+            
+            let view4 = UIView()
+            view4.translatesAutoresizingMaskIntoConstraints = false
+            
+            stackButtonSeekMore.addArrangedSubview(view3)
+            stackButtonSeekMore.addArrangedSubview(seekMoreButton)
+            stackButtonSeekMore.addArrangedSubview(view4)
+            view3.heightAnchor.constraint(equalToConstant: (70 - 50)/2 ).isActive = true
+            view4.heightAnchor.constraint(equalToConstant: (70 - 50)/2 ).isActive = true
+            stackButtonSeekMore.widthAnchor.constraint(equalToConstant: 50).isActive = true
+            stackButtonSeekMore.heightAnchor.constraint(equalToConstant: 70).isActive = true
+            
             stack.addArrangedSubview(horizontalViewBetweenGeneralViewAndSeekLessButton)
-            stack.addArrangedSubview(seekLessButton)
+            stack.addArrangedSubview(stackButtonSeekLess)
             stack.addArrangedSubview(horizontalViewBetweenSeekLessButtonAndPlayPauseButton)
             stack.addArrangedSubview(playPauseButton)
             stack.addArrangedSubview(horizontalViewBetweenPlayPauseButtonAndSeekMoreButton)
-            stack.addArrangedSubview(seekMoreButton)
+            stack.addArrangedSubview(stackButtonSeekMore)
             stack.addArrangedSubview(horizontalViewBetweenGeneralViewAndSeekMoreButton)
 
             return stack
@@ -354,17 +386,19 @@ class Test: UIViewController {
         stackViewPlayer.addArrangedSubview(imageViewPlayer)
         stackViewPlayer.addArrangedSubview(spaceBetweenImageAndTitle)
         stackViewPlayer.addArrangedSubview(stackViewTitleAndFavorite)
-        stackViewPlayer.addArrangedSubview(subtitlePodcast)
         stackViewPlayer.addArrangedSubview(spaceBetweenTitleAndSubtitle)
+        stackViewPlayer.addArrangedSubview(subtitlePodcast)
+        stackViewPlayer.addArrangedSubview(spaceBetweenSubtitleAndSlider)
         stackViewPlayer.addArrangedSubview(slider)
         stackViewPlayer.addArrangedSubview(spaceBetweenSliderAndTime)
         stackViewPlayer.addArrangedSubview(horizontalStackTime)
         stackViewPlayer.addArrangedSubview(spaceBetweenTimeAndButtonPlayer)
         // horzotal stack player btn
+        stackViewPlayer.addArrangedSubview(horizontalStackButtonPlayer)
         
         [
             // Margin between Stack return and image
-            marginOnTop.heightAnchor.constraint(equalToConstant: 25),
+            marginOnTop.heightAnchor.constraint(equalToConstant: 15),
             
             // Image Podcast
             imageViewPlayer.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width - 50),
@@ -392,22 +426,119 @@ class Test: UIViewController {
             
             
             // Space Title timer Podcast - Button Player
-            spaceBetweenTimeAndButtonPlayer.heightAnchor.constraint(equalToConstant: 10)
+            spaceBetweenTimeAndButtonPlayer.heightAnchor.constraint(equalToConstant: 10),
             
             // Button Player
+            playPauseButton.widthAnchor.constraint(equalToConstant: Constants.widthSquarePlayPauseButton),
+            playPauseButton.heightAnchor.constraint(equalToConstant: Constants.widthSquarePlayPauseButton)
             
         ].forEach{$0.isActive = true}
         
         
         scrollViewContainer.addArrangedSubview(stackViewPlayer)
+        
+    }
+  
+    private func setupDescription() {
+        
+        let view = UIView()
+        view.heightAnchor.constraint(equalToConstant: 300).isActive = true
+        
+        let marginTop = UIView()
+        marginTop.translatesAutoresizingMaskIntoConstraints = false
+        marginTop.heightAnchor.constraint(equalToConstant: Constants.verticalSmallSpacer).isActive = true
+        
+        var stackTitleAndFullScreen = UIStackView()
+        stackTitleAndFullScreen = stackTitleAndFullScreen.horizontalStack()
+        stackTitleAndFullScreen.alignment = .center
+        stackTitleAndFullScreen.distribution = .fill
+        
+        let title = UILabel()
+        title.text = L10n.description
+        title.font = UIFont(name: .fonts.proximaNova_Alt_Bold.fontName(), size: 18)
+        title.textColor = Colors.yellow.color
+
+        let fullScreenButton = UIButton()
+        fullScreenButton.generatedButton(isBordering: true,
+                                         width: 30,
+                                         height: 30,
+                                         button: fullScreenButton,
+                                         image: Assets.Picto.fullScreen.name,
+                                         borderColor: .white.withAlphaComponent(0),
+                                         backGroundColor: .white.withAlphaComponent(0.3)
+        )
+        
+        fullScreenButton.addTarget(self, action: #selector(actionFullScreenButton), for: .touchUpInside)
+        
+        stackTitleAndFullScreen.addArrangedSubview(title)
+        stackTitleAndFullScreen.addArrangedSubview(fullScreenButton)
+        
+        let descritpion = UILabel()
+        descritpion.text = """
+            Cet été, A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices. Cet été, A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices. Cet été, A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices.
+            """
+        descritpion.setLineSpacing(lineSpacing: 8.0)
+        descritpion.numberOfLines = 0
+        descritpion.font = UIFont(name: .fonts.proximaNova_Alt_Thin.fontName(), size: 16)
+
+
+        view.layer.cornerRadius = 33
+        view.backgroundColor = Colors.purpleGradientMax.color.withAlphaComponent(0.8)
+
+        view.addSubview(stackTitleAndFullScreen)
+        view.addSubview(descritpion)
+        
+        view.layer.shadowRadius = 3
+        view.layer.shadowOffset = CGSize(width: -2, height: -2)
+        view.layer.shadowOpacity = 0.3
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.masksToBounds = false
+
+        stackTitleAndFullScreen.translatesAutoresizingMaskIntoConstraints = false
+        [
+            stackTitleAndFullScreen.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
+            stackTitleAndFullScreen.heightAnchor.constraint(equalToConstant: 30),
+            stackTitleAndFullScreen.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
+            stackTitleAndFullScreen.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20),
+            fullScreenButton.widthAnchor.constraint(equalToConstant: 30),
+            fullScreenButton.heightAnchor.constraint(equalToConstant: 30)
+        ].forEach{ $0.isActive = true }
+        
+        descritpion.translatesAutoresizingMaskIntoConstraints = false
+        [
+            descritpion.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 20),
+            descritpion.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
+            descritpion.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
+            descritpion.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20)
+        ].forEach{ $0.isActive = true }
+        
+        scrollViewContainer.addArrangedSubview(marginTop)
+        scrollViewContainer.addArrangedSubview(view)
     }
     
-    
-    
-    
-    
-    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Setup Action
 private extension Test {
@@ -426,18 +557,43 @@ private extension Test {
         slider.addTarget(self, action: #selector(actionSliderValueChanged(_:)), for: .valueChanged)
         
         // Action Button
-        seekLessButton.addTarget(seekLessButton, action: #selector(actionPressButtonLightColor(_:)), for: .touchUpInside)
-        seekLessButton.addTarget(seekLessButton, action: #selector(actionPressMoinsSeekButton(_:)), for: .touchDown)
-        seekLessButton.addTarget(seekLessButton, action: #selector(actionPressButtonLightColor(_:)), for: .allEvents)
-        playPauseButton.addTarget(playPauseButton, action: #selector(actionPressButtonLightColor(_:)), for: .touchUpInside)
-        playPauseButton.addTarget(playPauseButton, action: #selector(actionPressPlayPauseButton(_:)), for: .touchDown)
-        playPauseButton.addTarget(playPauseButton, action: #selector(actionPressButtonLightColor(_:)), for: .allEvents)
-        seekMoreButton.addTarget(seekMoreButton, action: #selector(actionPressButtonLightColor(_:)), for: .touchUpInside)
-        seekMoreButton.addTarget(seekMoreButton, action: #selector(actionPressPlusSeekButton(_:)), for: .touchDown)
-        seekMoreButton.addTarget(seekMoreButton, action: #selector(actionPressButtonLightColor(_:)), for: .allEvents)
+        seekLessButton.addTarget(self, action: #selector(actionPressButtonLightColor(_:)), for: .touchUpInside)
+        seekLessButton.addTarget(self, action: #selector(actionPressMoinsSeekButton(_:)), for: .touchDown)
+        seekLessButton.addTarget(self, action: #selector(actionPressButtonLightColor(_:)), for: .allEvents)
+        playPauseButton.addTarget(self, action: #selector(actionPressButtonLightColor(_:)), for: .touchUpInside)
+        playPauseButton.addTarget(self, action: #selector(actionPressPlayPauseButton(_:)), for: .touchDown)
+        playPauseButton.addTarget(self, action: #selector(actionPressButtonLightColor(_:)), for: .allEvents)
+        seekMoreButton.addTarget(self, action: #selector(actionPressButtonLightColor(_:)), for: .touchUpInside)
+        seekMoreButton.addTarget(self, action: #selector(actionPressPlusSeekButton(_:)), for: .touchDown)
+        seekMoreButton.addTarget(self, action: #selector(actionPressButtonLightColor(_:)), for: .allEvents)
     }
 }
    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // MARK: - Set Up Button
 private extension Test {

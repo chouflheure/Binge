@@ -80,6 +80,7 @@ class PlayerViewController: UIViewController {
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
             scrollView.topAnchor.constraint(equalTo: view.topAnchor, constant: -40),
             scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
 
             scrollViewContainer.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             scrollViewContainer.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
