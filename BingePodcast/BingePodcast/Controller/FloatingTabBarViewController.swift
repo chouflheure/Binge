@@ -252,15 +252,6 @@ class FloatingTabBarViewController: UITabBar {
 
         self.layoutElements(selectedChanged: false)
     }
-    
-    override func prepareForInterfaceBuilder() {
-        self.isTranslucent = true
-        self.backgroundColor = UIColor.clear
-        self.backgroundImage = UIImage()
-        self.shadowImage = UIImage()
-        background.fillColor = UIColor.clear.cgColor
-        circle.fillColor = self.circleBackColor.cgColor
-    }
 
     private func shadow() {
         self.layer.cornerRadius = 40

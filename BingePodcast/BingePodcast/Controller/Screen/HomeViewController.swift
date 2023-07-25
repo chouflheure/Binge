@@ -213,11 +213,7 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let playerVC = self.storyboard?.instantiateViewController(withIdentifier: "PlayerViewController")
-        playerVC?.modalPresentationStyle = .custom
-        playerVC?.transitioningDelegate = self
-        guard let playerVC = playerVC else {return}
-        self.present(playerVC, animated: true, completion: nil)
+        self.tabBarController?.selectedIndex = 1
     }
 }
 

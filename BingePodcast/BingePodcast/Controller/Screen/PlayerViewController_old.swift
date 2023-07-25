@@ -8,7 +8,7 @@
 import UIKit
 
 
-class PlayerViewController: UIViewController {
+class PlayerViewController_old: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -109,14 +109,14 @@ class PlayerViewController: UIViewController {
             equalToConstant: UIScreen.main.bounds.height - UIScreen.main.bounds.height - 100
                 ).isActive = true
 
-        view.addSubview(PlayerViewController.stackViewGeneral)
+        view.addSubview(PlayerViewController_old.stackViewGeneral)
 
-        PlayerViewController.stackViewGeneral.translatesAutoresizingMaskIntoConstraints = false
+        PlayerViewController_old.stackViewGeneral.translatesAutoresizingMaskIntoConstraints = false
         [
-            PlayerViewController.stackViewGeneral.topAnchor.constraint(equalTo: view.topAnchor),
-            PlayerViewController.stackViewGeneral.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            PlayerViewController.stackViewGeneral.leftAnchor.constraint(equalTo: view.leftAnchor),
-            PlayerViewController.stackViewGeneral.rightAnchor.constraint(equalTo: view.rightAnchor)
+            PlayerViewController_old.stackViewGeneral.topAnchor.constraint(equalTo: view.topAnchor),
+            PlayerViewController_old.stackViewGeneral.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            PlayerViewController_old.stackViewGeneral.leftAnchor.constraint(equalTo: view.leftAnchor),
+            PlayerViewController_old.stackViewGeneral.rightAnchor.constraint(equalTo: view.rightAnchor)
         ].forEach{ $0.isActive = true }
         
         let verticalSpacerBetweenImageAndTitle = UIView()
@@ -126,63 +126,63 @@ class PlayerViewController: UIViewController {
         let verticalSpacerBetweenTimeAndPlayer = UIView()
 
         // image view
-        PlayerViewController.stackViewGeneral.addArrangedSubview(PlayerViewController.verticalStackImage)
-        PlayerViewController.verticalStackImage.topAnchor.constraint(equalTo: PlayerViewController.stackViewGeneral.topAnchor, constant: 40.0).isActive = true
+        PlayerViewController_old.stackViewGeneral.addArrangedSubview(PlayerViewController_old.verticalStackImage)
+        PlayerViewController_old.verticalStackImage.topAnchor.constraint(equalTo: PlayerViewController_old.stackViewGeneral.topAnchor, constant: 40.0).isActive = true
 
-        PlayerViewController.stackViewGeneral.addArrangedSubview(verticalSpacerBetweenImageAndTitle)
+        PlayerViewController_old.stackViewGeneral.addArrangedSubview(verticalSpacerBetweenImageAndTitle)
         // title
-        PlayerViewController.stackViewGeneral.addArrangedSubview(PlayerViewController.horizontalStackTitle)
+        PlayerViewController_old.stackViewGeneral.addArrangedSubview(PlayerViewController_old.horizontalStackTitle)
         // vertical spacer
-        PlayerViewController.stackViewGeneral.addArrangedSubview(verticalSpacerBetweenTitleAndSubtitle)
+        PlayerViewController_old.stackViewGeneral.addArrangedSubview(verticalSpacerBetweenTitleAndSubtitle)
         // subtitle
-        PlayerViewController.stackViewGeneral.addArrangedSubview(PlayerViewController.horizontalStackSubtitle)
+        PlayerViewController_old.stackViewGeneral.addArrangedSubview(PlayerViewController_old.horizontalStackSubtitle)
         // vertical spacer
-        PlayerViewController.stackViewGeneral.addArrangedSubview(verticalSpacerBetweenSubtitleAndSlider)
+        PlayerViewController_old.stackViewGeneral.addArrangedSubview(verticalSpacerBetweenSubtitleAndSlider)
         // slider
-        PlayerViewController.stackViewGeneral.addArrangedSubview(PlayerViewController.verticalStackSlider)
+        PlayerViewController_old.stackViewGeneral.addArrangedSubview(PlayerViewController_old.verticalStackSlider)
         // vertical spacer
-        PlayerViewController.stackViewGeneral.addArrangedSubview(verticalSpacerBetweenSliderAndTime)
+        PlayerViewController_old.stackViewGeneral.addArrangedSubview(verticalSpacerBetweenSliderAndTime)
         // time
-        PlayerViewController.stackViewGeneral.addArrangedSubview(PlayerViewController.horizontalStackTime)
+        PlayerViewController_old.stackViewGeneral.addArrangedSubview(PlayerViewController_old.horizontalStackTime)
         // vertical spacer
-        PlayerViewController.stackViewGeneral.addArrangedSubview(verticalSpacerBetweenTimeAndPlayer)
+        PlayerViewController_old.stackViewGeneral.addArrangedSubview(verticalSpacerBetweenTimeAndPlayer)
         // button Player
-        PlayerViewController.stackViewGeneral.addArrangedSubview(PlayerViewController.horizontalStackButtonPlayer)
+        PlayerViewController_old.stackViewGeneral.addArrangedSubview(PlayerViewController_old.horizontalStackButtonPlayer)
 
         [
             // image view
-            PlayerViewController.verticalStackImage.leftAnchor.constraint(equalTo: PlayerViewController.stackViewGeneral.leftAnchor, constant: 0),
-            PlayerViewController.verticalStackImage.widthAnchor.constraint(equalTo: PlayerViewController.stackViewGeneral.widthAnchor, constant: -20),
-            PlayerViewController.verticalStackImage.heightAnchor.constraint(equalTo: PlayerViewController.stackViewGeneral.widthAnchor, constant: -40),
+            PlayerViewController_old.verticalStackImage.leftAnchor.constraint(equalTo: PlayerViewController_old.stackViewGeneral.leftAnchor, constant: 0),
+            PlayerViewController_old.verticalStackImage.widthAnchor.constraint(equalTo: PlayerViewController_old.stackViewGeneral.widthAnchor, constant: -20),
+            PlayerViewController_old.verticalStackImage.heightAnchor.constraint(equalTo: PlayerViewController_old.stackViewGeneral.widthAnchor, constant: -40),
             verticalSpacerBetweenImageAndTitle.heightAnchor.constraint(equalToConstant: isSmallScreen ? Constants.verticalSmallSpacer : Constants.verticalLargeSpacer),
             
             // title
-            PlayerViewController.horizontalStackTitle.leftAnchor.constraint(equalTo: PlayerViewController.stackViewGeneral.leftAnchor, constant: 0),
-            PlayerViewController.horizontalStackTitle.rightAnchor.constraint(equalTo: PlayerViewController.stackViewGeneral.rightAnchor, constant: -20),
+            PlayerViewController_old.horizontalStackTitle.leftAnchor.constraint(equalTo: PlayerViewController_old.stackViewGeneral.leftAnchor, constant: 0),
+            PlayerViewController_old.horizontalStackTitle.rightAnchor.constraint(equalTo: PlayerViewController_old.stackViewGeneral.rightAnchor, constant: -20),
             verticalSpacerBetweenTitleAndSubtitle.heightAnchor.constraint(equalToConstant: 0),
             
             // subtitle
-            PlayerViewController.horizontalStackSubtitle.leftAnchor.constraint(equalTo: PlayerViewController.stackViewGeneral.leftAnchor, constant: 0),
-            PlayerViewController.horizontalStackSubtitle.rightAnchor.constraint(equalTo: PlayerViewController.stackViewGeneral.rightAnchor, constant: -20),
-            PlayerViewController.horizontalStackSubtitle.heightAnchor.constraint(equalToConstant: 25),
+            PlayerViewController_old.horizontalStackSubtitle.leftAnchor.constraint(equalTo: PlayerViewController_old.stackViewGeneral.leftAnchor, constant: 0),
+            PlayerViewController_old.horizontalStackSubtitle.rightAnchor.constraint(equalTo: PlayerViewController_old.stackViewGeneral.rightAnchor, constant: -20),
+            PlayerViewController_old.horizontalStackSubtitle.heightAnchor.constraint(equalToConstant: 25),
             verticalSpacerBetweenSubtitleAndSlider.heightAnchor.constraint(equalToConstant: isSmallScreen ? Constants.verticalSmallSpacer : Constants.verticalMediumSpacer),
             
             // slider
-            PlayerViewController.verticalStackSlider.leftAnchor.constraint(equalTo: PlayerViewController.stackViewGeneral.leftAnchor, constant: 0),
-            PlayerViewController.verticalStackSlider.rightAnchor.constraint(equalTo: PlayerViewController.stackViewGeneral.rightAnchor, constant: -20),
-            PlayerViewController.verticalStackSlider.heightAnchor.constraint(equalToConstant: 20),
+            PlayerViewController_old.verticalStackSlider.leftAnchor.constraint(equalTo: PlayerViewController_old.stackViewGeneral.leftAnchor, constant: 0),
+            PlayerViewController_old.verticalStackSlider.rightAnchor.constraint(equalTo: PlayerViewController_old.stackViewGeneral.rightAnchor, constant: -20),
+            PlayerViewController_old.verticalStackSlider.heightAnchor.constraint(equalToConstant: 20),
             verticalSpacerBetweenSliderAndTime.heightAnchor.constraint(equalToConstant: 0),
             
             // time
-            PlayerViewController.horizontalStackTime.leftAnchor.constraint(equalTo: PlayerViewController.stackViewGeneral.leftAnchor, constant: 0),
-            PlayerViewController.horizontalStackTime.rightAnchor.constraint(equalTo: PlayerViewController.stackViewGeneral.rightAnchor, constant: -20),
-            PlayerViewController.horizontalStackTime.heightAnchor.constraint(equalToConstant: 15),
+            PlayerViewController_old.horizontalStackTime.leftAnchor.constraint(equalTo: PlayerViewController_old.stackViewGeneral.leftAnchor, constant: 0),
+            PlayerViewController_old.horizontalStackTime.rightAnchor.constraint(equalTo: PlayerViewController_old.stackViewGeneral.rightAnchor, constant: -20),
+            PlayerViewController_old.horizontalStackTime.heightAnchor.constraint(equalToConstant: 15),
             verticalSpacerBetweenTimeAndPlayer.heightAnchor.constraint(equalToConstant: 10),
             
             // player
-            PlayerViewController.horizontalStackButtonPlayer.leftAnchor.constraint(equalTo: PlayerViewController.stackViewGeneral.leftAnchor, constant: 0),
-            PlayerViewController.horizontalStackButtonPlayer.rightAnchor.constraint(equalTo: PlayerViewController.stackViewGeneral.rightAnchor, constant: -20),
-            PlayerViewController.horizontalStackButtonPlayer.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: isSmallScreen ? -Constants.verticalSmallSpacer : -Constants.verticalMediumSpacer)
+            PlayerViewController_old.horizontalStackButtonPlayer.leftAnchor.constraint(equalTo: PlayerViewController_old.stackViewGeneral.leftAnchor, constant: 0),
+            PlayerViewController_old.horizontalStackButtonPlayer.rightAnchor.constraint(equalTo: PlayerViewController_old.stackViewGeneral.rightAnchor, constant: -20),
+            PlayerViewController_old.horizontalStackButtonPlayer.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: isSmallScreen ? -Constants.verticalSmallSpacer : -Constants.verticalMediumSpacer)
 
         ].forEach{$0.isActive = true}
         
@@ -281,7 +281,7 @@ extension UIStackView {
 }
 
 // MARK: - Static Var
-private extension PlayerViewController {
+private extension PlayerViewController_old {
 
     // MARK: - stackView General
     static var stackViewGeneral: UIStackView = {
@@ -466,7 +466,7 @@ private extension PlayerViewController {
 
 
 // MARK: - Set Up Button
-private extension PlayerViewController {
+private extension PlayerViewController_old {
     
     // MARK: - Seek Less Button
     static let seekLessButton: UIButton = {
@@ -514,10 +514,10 @@ private extension PlayerViewController {
 
 
 // MARK: - Action
-private extension PlayerViewController {
+private extension PlayerViewController_old {
     
     @objc func actionSliderValueChanged(_ sender: Any) {
-        PlayerViewController.spendTime.text = PlayerViewController.spendTime.text?.secondsToHoursMinutesSecondsToString(Int(PlayerViewController.slider.value))
+        PlayerViewController_old.spendTime.text = PlayerViewController_old.spendTime.text?.secondsToHoursMinutesSecondsToString(Int(PlayerViewController_old.slider.value))
     }
     
     @objc func actionPressButtonLightColor(_ sender: UIButton) {

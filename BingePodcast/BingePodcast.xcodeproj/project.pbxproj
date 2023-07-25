@@ -31,10 +31,10 @@
 		1D187C932A49C74C00D67271 /* TestTransitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D187C922A49C74C00D67271 /* TestTransitionViewController.swift */; };
 		1D187C992A49D98600D67271 /* UIPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D187C982A49D98600D67271 /* UIPageViewController.swift */; };
 		1D28CA152A673644005AFDF0 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D28CA142A673644005AFDF0 /* UIViewController.swift */; };
-		1D30400D2A6805850089C2F7 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D30400C2A6805850089C2F7 /* Test.swift */; };
+		1D30400D2A6805850089C2F7 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D30400C2A6805850089C2F7 /* PlayerViewController.swift */; };
 		1D3C3F492A4C7A9B00F0CA90 /* CellPodcastCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3C3F472A4C7A9B00F0CA90 /* CellPodcastCollectionViewCell.swift */; };
 		1D3C3F4A2A4C7A9B00F0CA90 /* CellPodcastCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D3C3F482A4C7A9B00F0CA90 /* CellPodcastCollectionViewCell.xib */; };
-		1D55E1E52A3DCF9100F1A9BD /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D55E1E42A3DCF9100F1A9BD /* PlayerViewController.swift */; };
+		1D55E1E52A3DCF9100F1A9BD /* PlayerViewController_old.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D55E1E42A3DCF9100F1A9BD /* PlayerViewController_old.swift */; };
 		1D55E2902A408B2200F1A9BD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D55E28F2A408B2200F1A9BD /* Constants.swift */; };
 		1D55E2922A409CB000F1A9BD /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D55E2912A409CB000F1A9BD /* UIButton.swift */; };
 		1D55E2942A40B3D400F1A9BD /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D55E2932A40B3D400F1A9BD /* UIImage.swift */; };
@@ -141,10 +141,10 @@
 		1D187C922A49C74C00D67271 /* TestTransitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTransitionViewController.swift; sourceTree = "<group>"; };
 		1D187C982A49D98600D67271 /* UIPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPageViewController.swift; sourceTree = "<group>"; };
 		1D28CA142A673644005AFDF0 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
-		1D30400C2A6805850089C2F7 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		1D30400C2A6805850089C2F7 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		1D3C3F472A4C7A9B00F0CA90 /* CellPodcastCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellPodcastCollectionViewCell.swift; sourceTree = "<group>"; };
 		1D3C3F482A4C7A9B00F0CA90 /* CellPodcastCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CellPodcastCollectionViewCell.xib; sourceTree = "<group>"; };
-		1D55E1E42A3DCF9100F1A9BD /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
+		1D55E1E42A3DCF9100F1A9BD /* PlayerViewController_old.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController_old.swift; sourceTree = "<group>"; };
 		1D55E28F2A408B2200F1A9BD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		1D55E2912A409CB000F1A9BD /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		1D55E2932A40B3D400F1A9BD /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
@@ -247,7 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				1D18448A2A65A02B00A5129E /* PodcastScreen */,
-				1D55E1E42A3DCF9100F1A9BD /* PlayerViewController.swift */,
+				1D55E1E42A3DCF9100F1A9BD /* PlayerViewController_old.swift */,
 				1D0AC2682A605F960029EAAE /* HomeViewController.swift */,
 				1D18439A2A65467A00A5129E /* Favorite */,
 				1D18448B2A65A06400A5129E /* DescriptionPlayerViewController.swift */,
@@ -372,7 +372,7 @@
 				1D187C922A49C74C00D67271 /* TestTransitionViewController.swift */,
 				1D18439D2A656DD600A5129E /* PresentTransition.swift */,
 				1D18439F2A656DFF00A5129E /* DismissTransition.swift */,
-				1D30400C2A6805850089C2F7 /* Test.swift */,
+				1D30400C2A6805850089C2F7 /* PlayerViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -781,7 +781,7 @@
 				1D0AC26E2A6198460029EAAE /* FavoriteViewController.swift in Sources */,
 				1D28CA152A673644005AFDF0 /* UIViewController.swift in Sources */,
 				1D55E2922A409CB000F1A9BD /* UIButton.swift in Sources */,
-				1D55E1E52A3DCF9100F1A9BD /* PlayerViewController.swift in Sources */,
+				1D55E1E52A3DCF9100F1A9BD /* PlayerViewController_old.swift in Sources */,
 				1D1844892A659CED00A5129E /* PagesFavoriteScreen.swift in Sources */,
 				1D18439E2A656DD600A5129E /* PresentTransition.swift in Sources */,
 				1D986AA62A2DFF0E00D26CEB /* Strings.gen.swift in Sources */,
@@ -789,7 +789,7 @@
 				1D0AC2692A605F960029EAAE /* HomeViewController.swift in Sources */,
 				1D55E2942A40B3D400F1A9BD /* UIImage.swift in Sources */,
 				1DE5254E2A483391008132B0 /* PodcastViewController.swift in Sources */,
-				1D30400D2A6805850089C2F7 /* Test.swift in Sources */,
+				1D30400D2A6805850089C2F7 /* PlayerViewController.swift in Sources */,
 				1DA63F102A41F79D0013BB86 /* UIFloat.swift in Sources */,
 				1D1843992A6545B600A5129E /* PodcastSaved.swift in Sources */,
 				1D3C3F492A4C7A9B00F0CA90 /* CellPodcastCollectionViewCell.swift in Sources */,

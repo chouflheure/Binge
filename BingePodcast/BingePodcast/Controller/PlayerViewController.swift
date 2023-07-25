@@ -1,15 +1,8 @@
 
-//
-//  TestViewController.swift
-//  BingePodcast
-//
-//  Created by charlesCalvignac on 17/06/2023.
-//
-
 import UIKit
 
 
-class Test: UIViewController {
+class PlayerViewController: UIViewController {
     
     let totalTimeTest: String = "01:01"
     var isPlaying: Bool = false
@@ -184,9 +177,6 @@ class Test: UIViewController {
         )
         return button
     }()
-    
-    
-   
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -268,7 +258,7 @@ class Test: UIViewController {
         scrollViewContainer.addArrangedSubview(stackReturnView)
 
         [
-            marginOnTop.heightAnchor.constraint(equalToConstant: 20),
+            marginOnTop.heightAnchor.constraint(equalToConstant: 10),
             stackReturnView.heightAnchor.constraint(equalToConstant: 21),
             chevronReturn.widthAnchor.constraint(equalToConstant: 12),
             spacingBetweenImageAndTitle.widthAnchor.constraint(equalToConstant: 10)
@@ -480,7 +470,7 @@ class Test: UIViewController {
         descritpion.setLineSpacing(lineSpacing: 8.0)
         descritpion.numberOfLines = 0
         descritpion.font = UIFont(name: .fonts.proximaNova_Alt_Thin.fontName(), size: 16)
-
+        descritpion.textColor = Colors.white.color
 
         view.layer.cornerRadius = 33
         view.backgroundColor = Colors.purpleGradientMax.color.withAlphaComponent(0.8)
@@ -518,30 +508,8 @@ class Test: UIViewController {
     
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Setup Action
-private extension Test {
+private extension PlayerViewController {
     
     func setupAction() {
         
@@ -568,42 +536,9 @@ private extension Test {
         seekMoreButton.addTarget(self, action: #selector(actionPressButtonLightColor(_:)), for: .allEvents)
     }
 }
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// MARK: - Set Up Button
-private extension Test {
-    
-
-}
-
 
 // MARK: - Action
-private extension Test {
+private extension PlayerViewController {
     
     @objc func actionSliderValueChanged(_ sender: Any) {
         print("@@@ actionnSlider")

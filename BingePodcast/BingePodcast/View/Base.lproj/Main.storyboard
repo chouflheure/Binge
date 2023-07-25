@@ -27,10 +27,10 @@
             </objects>
             <point key="canvasLocation" x="3982" y="2014"/>
         </scene>
-        <!--Test-->
+        <!--Player View Controller-->
         <scene sceneID="tdZ-bj-yva">
             <objects>
-                <viewController storyboardIdentifier="PlayerViewController" id="eRR-uA-dfF" customClass="Test" customModule="BingePodcast" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PlayerViewController" id="eRR-uA-dfF" customClass="PlayerViewController" customModule="BingePodcast" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DzE-fP-xoB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
