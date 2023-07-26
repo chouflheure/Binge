@@ -1,10 +1,3 @@
-//
-//  RollingPitTabBar.swift
-//  VBRRollingPit
-//
-//  Created by Viktor Braun on 27.07.2018.
-//  Copyright © 2018 Viktor Braun - Software Development. All rights reserved.
-//
 
 import UIKit
 
@@ -18,19 +11,19 @@ extension CGFloat {
 }
 
 class FloatingTabBarViewController: UITabBar {
-    
-    public var barBackColor : UIColor = .white.withAlphaComponent(0.5)
-    public var barHeight : CGFloat = 65
-    public var barTopRadius : CGFloat = 27
-    public var barBottomRadius : CGFloat = 27
-    public var circleBackColor : UIColor = .white
-    public var circleRadius : CGFloat = 40
-    var marginBottom : CGFloat = 20
-    var marginTop : CGFloat = 0
-    let marginLeft : CGFloat = 15
-    let marginRight : CGFloat = 15
-    let pitCornerRad : CGFloat = 0
-    let pitCircleDistanceOffset : CGFloat = 0
+
+    private var barBackColor : UIColor = .white.withAlphaComponent(0.5)
+    private var barHeight : CGFloat = 65
+    private var barTopRadius : CGFloat = 27
+    private var barBottomRadius : CGFloat = 27
+    private var circleBackColor : UIColor = .white
+    private var circleRadius : CGFloat = 40
+    private var marginBottom : CGFloat = 20
+    private var marginTop : CGFloat = 70
+    private let marginLeft : CGFloat = 15
+    private let marginRight : CGFloat = 15
+    private let pitCornerRad : CGFloat = 0
+    private let pitCircleDistanceOffset : CGFloat = 0
 
     private var barRect : CGRect{
         get{
@@ -64,7 +57,6 @@ class FloatingTabBarViewController: UITabBar {
         return result.cgPath
     }
     
-    
     private func getCircleCenter() -> CGFloat{
         let totalWidth = self.bounds.width
         var x = totalWidth / 2
@@ -90,7 +82,7 @@ class FloatingTabBarViewController: UITabBar {
         
         let path = UIBezierPath()
         path.move(to: CGPoint(x: rect.minX + topLeftRadius, y: rect.minY))
-        path.addLine(to: CGPoint(x: rect.maxX - topLeftRadius, y:rect.minY))
+        path.addLine(to: CGPoint(x: rect.maxX - topLeftRadius, y: rect.minY))
         path.addArc(withCenter: CGPoint(x: rect.maxX - topRightRadius, y: rect.minY + topRightRadius), radius: topRightRadius, startAngle:3 * pi2, endAngle: 0, clockwise: true)
         path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY - bottomRigtRadius))
         path.addArc(withCenter: CGPoint(x: rect.maxX - bottomRigtRadius, y: rect.maxY - bottomRigtRadius), radius: bottomRigtRadius, startAngle: 0, endAngle: pi2, clockwise: true)
@@ -103,7 +95,7 @@ class FloatingTabBarViewController: UITabBar {
     }
     
     private lazy var background: CAShapeLayer = {
-        let result = CAShapeLayer();
+        let result = CAShapeLayer()
         result.fillColor = self.barBackColor.cgColor
         result.mask = self.backgroundMask
         return result
@@ -252,19 +244,26 @@ class FloatingTabBarViewController: UITabBar {
 
         self.layoutElements(selectedChanged: false)
     }
-
+    
     private func shadow() {
-        self.layer.cornerRadius = 40
-        self.layer.shadowRadius = 3
-        self.layer.shadowOffset = CGSize(width: 0, height: -2)
-        self.layer.shadowOpacity = 0.1
-        self.layer.shadowColor = UIColor.black.cgColor
+        background.cornerRadius = 40
+        background.shadowRadius = 3
+        background.shadowOffset = CGSize(width: 0, height: -2)
+        background.shadowOpacity = 0.4
+        background.shadowColor = UIColor.black.cgColor
+        
+        viewTest.layer.cornerRadius = 40
+        viewTest.layer.shadowRadius = 3
+        viewTest.layer.shadowOffset = CGSize(width: 0, height: -2)
+        viewTest.layer.shadowOpacity = 0.2
+        viewTest.layer.shadowColor = UIColor.black.cgColor
     }
     
     private func blur() {
         let blurEffect = UIBlurEffect(style: .light)
         let blurEffectView = UIVisualEffectView()
-        blurEffectView.frame = CGRect(x: self.background.frame.origin.x + marginLeft, y: self.background.frame.origin.y , width: UIScreen.main.bounds.width - (marginLeft + marginRight), height: barHeight )
+        blurEffectView.frame = CGRect(x: self.background.frame.origin.x + marginLeft, y: self.background.frame.origin.y , width: UIScreen.main.bounds.width - (marginLeft + marginRight), height: 130 )
+
         blurEffectView.layer.cornerRadius = barTopRadius
         blurEffectView.clipsToBounds = true
         blurEffectView.alpha = 1
@@ -276,9 +275,15 @@ class FloatingTabBarViewController: UITabBar {
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: Colors.darkBlue.color], for: .selected)
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: Colors.lightBlueTabBar.color], for: .normal)
     }
+    let viewTest = UIView()
 
     private func setup(){
 
+        viewTest.frame = CGRect(x: self.background.frame.origin.x + marginLeft, y: self.background.frame.origin.y , width: UIScreen.main.bounds.width - (marginLeft + marginRight), height: 130 )
+        viewTest.backgroundColor = .white.withAlphaComponent(0.5)
+        viewTest.layer.cornerRadius = barTopRadius
+        // self.addSubview(viewTest)
+        
         self.isTranslucent = true
         self.backgroundColor = UIColor.clear
         self.backgroundImage = UIImage()
@@ -288,6 +293,15 @@ class FloatingTabBarViewController: UITabBar {
         self.layer.insertSublayer(circle, at: 0)
         self.layer.insertSublayer(background, at: 0)
 
+        let tapGestureRecognizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(imageTapped(tapGestureRecognizer:))
+        )
+        
+        viewTest.isUserInteractionEnabled = true
+        viewTest.addGestureRecognizer(tapGestureRecognizer)
+        
+        
         self.tintColor = Colors.darkBlue.color
 
         shadow()
@@ -295,6 +309,15 @@ class FloatingTabBarViewController: UITabBar {
         setUpTitleColor()
     }
  
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
+        print("@@@ click")
+        viewTest.frame = CGRect(x: self.background.frame.origin.x + marginLeft, y: self.background.frame.origin.y + barHeight, width: UIScreen.main.bounds.width - (marginLeft + marginRight), height: 10 )
+    }
+    
+    private func playerView() {
+        
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()

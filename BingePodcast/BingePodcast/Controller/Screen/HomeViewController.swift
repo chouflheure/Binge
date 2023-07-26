@@ -46,6 +46,8 @@ class HomeViewController: UIViewController {
         initCollectionView()
         setGradientBackground()
 
+        // PlayerObserver.sharedInstance.getPodcastPlayingData()
+
     }
 
     let scrollView: UIScrollView = {

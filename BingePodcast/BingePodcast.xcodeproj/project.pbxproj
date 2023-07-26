@@ -85,6 +85,7 @@
 		1DC25BC12A4266FD0024CD41 /* ProximaNova-Alt-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1DC25BB82A4266FC0024CD41 /* ProximaNova-Alt-Light.otf */; };
 		1DC25BC22A4266FD0024CD41 /* ProximaNova-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1DC25BB92A4266FC0024CD41 /* ProximaNova-Black.otf */; };
 		1DC25BC32A4266FD0024CD41 /* ProximaNova-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1DC25BBA2A4266FD0024CD41 /* ProximaNova-Bold.otf */; };
+		1DCA33BD2A711EEC00120500 /* PlayerObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCA33BC2A711EEC00120500 /* PlayerObserver.swift */; };
 		1DCA9ECE2A35FD22008ED92E /* PlayerAudioService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCA9ECD2A35FD22008ED92E /* PlayerAudioService.swift */; };
 		1DD7263A2A45D86400CD6D16 /* FloatingTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD726392A45D86400CD6D16 /* FloatingTabBarViewController.swift */; };
 		1DE5254E2A483391008132B0 /* PodcastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE5254D2A483391008132B0 /* PodcastViewController.swift */; };
@@ -169,6 +170,7 @@
 		1DC25BB82A4266FC0024CD41 /* ProximaNova-Alt-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Alt-Light.otf"; sourceTree = "<group>"; };
 		1DC25BB92A4266FC0024CD41 /* ProximaNova-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Black.otf"; sourceTree = "<group>"; };
 		1DC25BBA2A4266FD0024CD41 /* ProximaNova-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Bold.otf"; sourceTree = "<group>"; };
+		1DCA33BC2A711EEC00120500 /* PlayerObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerObserver.swift; sourceTree = "<group>"; };
 		1DCA9ECD2A35FD22008ED92E /* PlayerAudioService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerAudioService.swift; sourceTree = "<group>"; };
 		1DD726392A45D86400CD6D16 /* FloatingTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingTabBarViewController.swift; sourceTree = "<group>"; };
 		1DE5254D2A483391008132B0 /* PodcastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastViewController.swift; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 			children = (
 				1D1843962A65458A00A5129E /* EpisodeSaved.swift */,
 				1D1843982A6545B600A5129E /* PodcastSaved.swift */,
+				1DCA33BC2A711EEC00120500 /* PlayerObserver.swift */,
 			);
 			path = "New Group";
 			sourceTree = "<group>";
@@ -778,6 +781,7 @@
 				1D187A002A2CC8AA00827277 /* BingePodcast.xcdatamodeld in Sources */,
 				1D18439C2A65469400A5129E /* PageListFavorite.swift in Sources */,
 				1DCA9ECE2A35FD22008ED92E /* PlayerAudioService.swift in Sources */,
+				1DCA33BD2A711EEC00120500 /* PlayerObserver.swift in Sources */,
 				1D0AC26E2A6198460029EAAE /* FavoriteViewController.swift in Sources */,
 				1D28CA152A673644005AFDF0 /* UIViewController.swift in Sources */,
 				1D55E2922A409CB000F1A9BD /* UIButton.swift in Sources */,
