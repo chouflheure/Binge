@@ -2,6 +2,18 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>ProximaNova-Alt-Bold.otf</string>
+		<string>ProximaNova-Alt-Light.otf</string>
+		<string>ProximaNova-Alt-Thin.otf</string>
+		<string>ProximaNova-Black.otf</string>
+		<string>ProximaNova-Bold.otf</string>
+		<string>ProximaNova-Extrabold.otf</string>
+		<string>ProximaNova-Thin.otf</string>
+		<string>ProximaNova-Regular.otf</string>
+		<string>ProximaNova-Sbold.ttf</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -21,5 +33,7 @@
 			</array>
 		</dict>
 	</dict>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<true/>
 </dict>
 </plist>
