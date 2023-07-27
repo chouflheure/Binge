@@ -4,9 +4,6 @@ import UIKit
 
 extension UIButton {
     
-    // J'ai créé cette extension car sinon en faisant une méthode dans le ViewController j'avais cette erreur
-    // "Cannot use instance member 'setUpButton' within property initializer; property initializers run before 'self' is available"
-    
     func generatedButton(isBordering: Bool,
                          width: CGFloat,
                          height: CGFloat,
@@ -15,13 +12,6 @@ extension UIButton {
                          borderColor: UIColor,
                          backGroundColor: UIColor)
     {
-    /*
-        button.translatesAutoresizingMaskIntoConstraints = false
-        [
-            button.widthAnchor.constraint(equalToConstant: width),
-            button.heightAnchor.constraint(equalToConstant: height)
-        ].forEach{$0.isActive = true}
-      */
         let image = UIImage(named: image)
 
         if isBordering {

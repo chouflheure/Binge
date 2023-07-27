@@ -9,7 +9,8 @@ class PlayerViewController: UIViewController {
     var imageString: String = "play"
     var isFavorite: Bool = true
     var isSmallScreen: Bool = UIScreen.main.bounds.height < 800
-    
+    var isReturnButtonChevronLeft: Bool = false
+
     let gradient: CAGradientLayer = {
         let gradient = CAGradientLayer()
         gradient.type = .axial
@@ -98,7 +99,6 @@ class PlayerViewController: UIViewController {
     
     var slider: UISlider = {
         let slider = UISlider()
-        // slider.addTarget(self, action: #selector(actionSliderValueChanged(_:)), for: .valueChanged)
 
         slider.value = 0
         slider.minimumValue = 0
@@ -210,7 +210,6 @@ class PlayerViewController: UIViewController {
     private func setupScrollView() {
         view.addSubview(scrollView)
         scrollView.addSubview(scrollViewContainer)
-        // scrollViewContainer.addArrangedSubview(setupPlayerView())
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollViewContainer.translatesAutoresizingMaskIntoConstraints = false
         [
@@ -230,31 +229,36 @@ class PlayerViewController: UIViewController {
     
     
     private func returnView() {
-        
-        let marginOnTop = UIView()
-        marginOnTop.translatesAutoresizingMaskIntoConstraints = false
-        
-        let chevronReturn = UIImageView(image: UIImage(named: Assets.Picto.chevronReturn.name))
-        chevronReturn.translatesAutoresizingMaskIntoConstraints = false
 
         let spacingBetweenImageAndTitle = UIView()
         spacingBetweenImageAndTitle.translatesAutoresizingMaskIntoConstraints = false
-        
-        let titleReturn: UILabel = {
-            let label = UILabel()
-            label.translatesAutoresizingMaskIntoConstraints = false
-            label.text = L10n.podcast
-            label.textColor = Colors.white.color
-            label.font = UIFont(name: .fonts.proximaNova_Alt_Light.fontName(), size: 20)
-            return label
-        }()
-        
-        stackReturnView.addArrangedSubview(chevronReturn)
-        stackReturnView.addArrangedSubview(spacingBetweenImageAndTitle)
-        stackReturnView.addArrangedSubview(titleReturn)
-        
-        
+        let chevronReturn = UIImageView(image: UIImage(named: Assets.Picto.chevronReturn.name))
+        chevronReturn.translatesAutoresizingMaskIntoConstraints = false
+
+        let marginOnTop = UIView()
+        marginOnTop.translatesAutoresizingMaskIntoConstraints = false
         scrollViewContainer.addArrangedSubview(marginOnTop)
+
+        if isReturnButtonChevronLeft {
+            let titleReturn: UILabel = {
+                let label = UILabel()
+                label.translatesAutoresizingMaskIntoConstraints = false
+                label.text = L10n.podcast
+                label.textColor = Colors.white.color
+                label.font = UIFont(name: .fonts.proximaNova_Alt_Light.fontName(), size: 20)
+                return label
+            }()
+            stackReturnView.addArrangedSubview(chevronReturn)
+            stackReturnView.addArrangedSubview(spacingBetweenImageAndTitle)
+            stackReturnView.addArrangedSubview(titleReturn)
+        } else {
+            let view = UIView()
+            view.translatesAutoresizingMaskIntoConstraints = false
+            chevronReturn.transform = chevronReturn.transform.rotated(by: .pi * 1.5)
+            stackReturnView.addArrangedSubview(chevronReturn)
+            stackReturnView.addArrangedSubview(view)
+        }
+
         scrollViewContainer.addArrangedSubview(stackReturnView)
 
         [

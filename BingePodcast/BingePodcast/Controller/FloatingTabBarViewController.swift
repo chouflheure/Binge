@@ -12,7 +12,8 @@ extension CGFloat {
 
 class FloatingTabBarViewController: UITabBar {
 
-    private var barBackColor : UIColor = .white.withAlphaComponent(0.5)
+    // MARK: - Variables
+    private var barBackColor : UIColor = .white.withAlphaComponent(0.7)
     private var barHeight : CGFloat = 65
     private var barTopRadius : CGFloat = 27
     private var barBottomRadius : CGFloat = 27
@@ -24,7 +25,9 @@ class FloatingTabBarViewController: UITabBar {
     private let marginRight : CGFloat = 15
     private let pitCornerRad : CGFloat = 0
     private let pitCircleDistanceOffset : CGFloat = 0
-
+    private var tabBarPlayerShow = Bool()
+    private let viewPlayerData = UIView()
+    
     private var barRect : CGRect{
         get{
             let h = self.barHeight
@@ -36,7 +39,7 @@ class FloatingTabBarViewController: UITabBar {
             return rect
         }
     }
-    
+
     private func createCircleRect() -> CGRect{
 
         let backRect = barRect
@@ -238,35 +241,48 @@ class FloatingTabBarViewController: UITabBar {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        background.fillColor = self.barBackColor.cgColor
-        circle.backgroundColor = self.circleBackColor.cgColor
-        circle.borderColor = Colors.yellow.color.cgColor
+        circle.borderColor     = Colors.yellow.color.cgColor
+        background.fillColor   = barBackColor.cgColor
+        circle.backgroundColor = circleBackColor.cgColor
 
-        self.layoutElements(selectedChanged: false)
+        self.layoutElements(selectedChanged: true)
     }
     
     private func shadow() {
-        background.cornerRadius = 40
-        background.shadowRadius = 3
-        background.shadowOffset = CGSize(width: 0, height: -2)
-        background.shadowOpacity = 0.4
-        background.shadowColor = UIColor.black.cgColor
-        
-        viewTest.layer.cornerRadius = 40
-        viewTest.layer.shadowRadius = 3
-        viewTest.layer.shadowOffset = CGSize(width: 0, height: -2)
-        viewTest.layer.shadowOpacity = 0.2
-        viewTest.layer.shadowColor = UIColor.black.cgColor
+
+        //background.shadowPath = UIBezierPath(rect: background.bounds).cgPath
+        background.shadowRadius = 2
+        background.shadowOffset = CGSize(width: 0, height: 0)
+        background.shadowOpacity = 1
+        background.shadowColor = UIColor.lightGray.withAlphaComponent(0.6).cgColor
+        /*
+        let shadowPath = UIBezierPath(rect: CGRect(x: 0, y: 30, width: 19, height: 1))
+        background.shadowPath = shadowPath.cgPath
+        background.shadowOffset = .zero
+        background.shadowRadius = 1
+        background.shadowOpacity = 1
+        background.shadowColor = UIColor.black.withAlphaComponent(0.4).cgColor
+*/
+        let contactRect2 = CGRect(x: 0, y: 0, width: viewPlayerData.frame.width, height: -1)
+        viewPlayerData.layer.shadowPath = UIBezierPath(ovalIn: contactRect2).cgPath
+        viewPlayerData.layer.shadowRadius = 4
+        viewPlayerData.layer.shadowOpacity = 0.8
     }
+    
+    var blurEffectView: UIVisualEffectView = {
+        let blurEffectView = UIVisualEffectView()
+        return blurEffectView
+    }()
     
     private func blur() {
         let blurEffect = UIBlurEffect(style: .light)
-        let blurEffectView = UIVisualEffectView()
-        blurEffectView.frame = CGRect(x: self.background.frame.origin.x + marginLeft, y: self.background.frame.origin.y , width: UIScreen.main.bounds.width - (marginLeft + marginRight), height: 130 )
+        blurEffectView = UIVisualEffectView()
+        blurEffectView.frame = CGRect(x: self.background.frame.origin.x + marginLeft, y: self.background.frame.origin.y , width: UIScreen.main.bounds.width - (marginLeft + marginRight), height: barHeight + marginTop )
 
         blurEffectView.layer.cornerRadius = barTopRadius
         blurEffectView.clipsToBounds = true
         blurEffectView.alpha = 1
+        blurEffectView.layer.cornerRadius = 27
         self.insertSubview(blurEffectView, at: 0)
         blurEffectView.effect = blurEffect
     }
@@ -275,49 +291,146 @@ class FloatingTabBarViewController: UITabBar {
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: Colors.darkBlue.color], for: .selected)
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: Colors.lightBlueTabBar.color], for: .normal)
     }
-    let viewTest = UIView()
+    
+    @objc func topTabBarTap(tapGestureRecognizer: UITapGestureRecognizer) {
+        tabBarPlayerShow.toggle()
+        stackPlayerInformation.isHidden = !tabBarPlayerShow
+        if tabBarPlayerShow {
+            viewPlayerData.frame = CGRect(x: self.background.frame.origin.x + marginLeft, y: self.background.frame.origin.y , width: UIScreen.main.bounds.width - (marginLeft + marginRight), height: barHeight + marginTop )
 
+            blurEffectView.frame = CGRect(x: self.background.frame.origin.x + marginLeft, y: self.background.frame.origin.y , width: UIScreen.main.bounds.width - (marginLeft + marginRight), height: barHeight + marginTop )
+        } else {
+            viewPlayerData.frame = CGRect(x: self.background.frame.origin.x + marginLeft, y: self.background.frame.origin.y + barHeight - 20, width: UIScreen.main.bounds.width - (marginLeft + marginRight), height: barHeight + 25)
+
+            blurEffectView.frame = CGRect(x: self.background.frame.origin.x + marginLeft, y: self.background.frame.origin.y + barHeight - 20, width: UIScreen.main.bounds.width - (marginLeft + marginRight), height: barHeight + 25)
+        }
+       
+    }
+    
+    var stackPlayerInformation = UIStackView()
+    
+    private func playerView() {
+
+        viewPlayerData.frame = CGRect(x: self.background.frame.origin.x + marginLeft, y: self.background.frame.origin.y , width: UIScreen.main.bounds.width - (marginLeft + marginRight), height: barHeight + marginTop )
+        viewPlayerData.backgroundColor = barBackColor
+        viewPlayerData.layer.cornerRadius = barTopRadius
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(topTabBarTap(tapGestureRecognizer:))
+        )
+
+        viewPlayerData.isUserInteractionEnabled = true
+        viewPlayerData.addGestureRecognizer(tapGestureRecognizer)
+        
+        let barre = UIView()
+        barre.translatesAutoresizingMaskIntoConstraints = false
+        barre.backgroundColor = Colors.darkBlue.color
+        barre.layer.cornerRadius = 2
+
+        viewPlayerData.addSubview(barre)
+
+        stackPlayerInformation.axis = .horizontal
+        stackPlayerInformation.distribution = .fill
+        stackPlayerInformation.alignment = .fill
+        stackPlayerInformation.translatesAutoresizingMaskIntoConstraints = false
+
+        let imageView = UIImageView(image: Assets.aBientotDeTeRevoir.image)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.layer.masksToBounds = true
+        imageView.layer.cornerRadius = 20
+        
+        let titlePodcastPlay = UILabel()
+        titlePodcastPlay.text = "À bientôt de te revoir"
+        titlePodcastPlay.numberOfLines = 1
+        titlePodcastPlay.font = UIFont(name: .fonts.proximaNova_Regular.fontName(), size: 18)
+        titlePodcastPlay.textColor = Colors.darkBlue.color
+
+        let subtitlePodcastPlay = UILabel()
+        subtitlePodcastPlay.text = "Episode 1"
+        subtitlePodcastPlay.numberOfLines = 1
+        subtitlePodcastPlay.font = UIFont(name: .fonts.proximaNova_Thin.fontName(), size: 15)
+        subtitlePodcastPlay.textColor = Colors.darkBlue.color
+
+        let verticalStackTitleAndSubtitle = UIStackView()
+        verticalStackTitleAndSubtitle.translatesAutoresizingMaskIntoConstraints = false
+        verticalStackTitleAndSubtitle.axis = .vertical
+        verticalStackTitleAndSubtitle.distribution = .fill
+        
+        verticalStackTitleAndSubtitle.addArrangedSubview(titlePodcastPlay)
+        verticalStackTitleAndSubtitle.addArrangedSubview(subtitlePodcastPlay)
+        
+        let spacingBetweenImageAndLabels = UIView()
+        let spacingBetweenLabelsAndShowPlayer = UIView()
+        
+        let buttonShowPlayer = UIButton()
+        buttonShowPlayer.contentMode = .scaleAspectFit
+        buttonShowPlayer.setImage(
+            Assets.Picto.chevronUp.image.withRenderingMode(.alwaysTemplate),
+            for: .normal
+        )
+        
+        buttonShowPlayer.addTarget(self, action: #selector(openPlayer), for: .touchUpInside)
+        
+        stackPlayerInformation.addArrangedSubview(imageView)
+        stackPlayerInformation.addArrangedSubview(spacingBetweenImageAndLabels)
+        stackPlayerInformation.addArrangedSubview(verticalStackTitleAndSubtitle)
+        stackPlayerInformation.addArrangedSubview(spacingBetweenLabelsAndShowPlayer)
+        stackPlayerInformation.addArrangedSubview(buttonShowPlayer)
+
+        viewPlayerData.addSubview(stackPlayerInformation)
+        
+        [
+            barre.widthAnchor.constraint(equalToConstant: 80),
+            barre.heightAnchor.constraint(equalToConstant: 4),
+            barre.centerXAnchor.constraint(equalTo: viewPlayerData.centerXAnchor),
+            barre.topAnchor.constraint(equalTo: viewPlayerData.topAnchor, constant: 8),
+
+            imageView.widthAnchor.constraint(equalToConstant: 40),
+            imageView.heightAnchor.constraint(equalToConstant: 40),
+            
+            spacingBetweenImageAndLabels.widthAnchor.constraint(equalToConstant: 15),
+            
+            stackPlayerInformation.heightAnchor.constraint(equalToConstant: 40),
+            stackPlayerInformation.topAnchor.constraint(equalTo: viewPlayerData.topAnchor, constant: 15),
+            stackPlayerInformation.leftAnchor.constraint(equalTo: viewPlayerData.leftAnchor, constant: 15),
+            stackPlayerInformation.rightAnchor.constraint(equalTo: viewPlayerData.rightAnchor, constant: -15),
+            
+            spacingBetweenLabelsAndShowPlayer.widthAnchor.constraint(equalToConstant: 15),
+            
+            buttonShowPlayer.widthAnchor.constraint(equalToConstant: 40),
+            buttonShowPlayer.rightAnchor.constraint(equalTo: stackPlayerInformation.rightAnchor)
+
+        ].forEach{$0.isActive = true}
+
+        self.insertSubview(viewPlayerData, at: 0)
+    }
+    
+    
+    @objc func openPlayer() {
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let setViewController = mainStoryboard.instantiateViewController(withIdentifier: "PlayerViewController")
+        let rootViewController = self.window!.rootViewController
+        rootViewController?.present(setViewController, animated: true, completion: nil)
+    }
+    
     private func setup(){
 
-        viewTest.frame = CGRect(x: self.background.frame.origin.x + marginLeft, y: self.background.frame.origin.y , width: UIScreen.main.bounds.width - (marginLeft + marginRight), height: 130 )
-        viewTest.backgroundColor = .white.withAlphaComponent(0.5)
-        viewTest.layer.cornerRadius = barTopRadius
-        // self.addSubview(viewTest)
-        
+        playerView()
+
         self.isTranslucent = true
         self.backgroundColor = UIColor.clear
         self.backgroundImage = UIImage()
         self.shadowImage = UIImage()
-
-        self.layer.frame.size.height = 0
-        self.layer.insertSublayer(circle, at: 0)
-        self.layer.insertSublayer(background, at: 0)
-
-        let tapGestureRecognizer = UITapGestureRecognizer(
-            target: self,
-            action: #selector(imageTapped(tapGestureRecognizer:))
-        )
-        
-        viewTest.isUserInteractionEnabled = true
-        viewTest.addGestureRecognizer(tapGestureRecognizer)
-        
-        
+        self.layer.insertSublayer(circle, at: 1)
+        self.layer.insertSublayer(background, at: 1)
         self.tintColor = Colors.darkBlue.color
 
         shadow()
         blur()
         setUpTitleColor()
     }
- 
-    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
-        print("@@@ click")
-        viewTest.frame = CGRect(x: self.background.frame.origin.x + marginLeft, y: self.background.frame.origin.y + barHeight, width: UIScreen.main.bounds.width - (marginLeft + marginRight), height: 10 )
-    }
-    
-    private func playerView() {
-        
-    }
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
