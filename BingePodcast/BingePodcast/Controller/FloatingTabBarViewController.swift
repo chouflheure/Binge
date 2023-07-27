@@ -20,7 +20,7 @@ class FloatingTabBarViewController: UITabBar {
     private var circleBackColor : UIColor = .white
     private var circleRadius : CGFloat = 40
     private var marginBottom : CGFloat = 20
-    private var marginTop : CGFloat = 70
+    private var marginTop : CGFloat = 90
     private let marginLeft : CGFloat = 15
     private let marginRight : CGFloat = 15
     private let pitCornerRad : CGFloat = 0
@@ -250,21 +250,13 @@ class FloatingTabBarViewController: UITabBar {
     
     private func shadow() {
 
-        //background.shadowPath = UIBezierPath(rect: background.bounds).cgPath
         background.shadowRadius = 2
         background.shadowOffset = CGSize(width: 0, height: 0)
         background.shadowOpacity = 1
         background.shadowColor = UIColor.lightGray.withAlphaComponent(0.6).cgColor
-        /*
-        let shadowPath = UIBezierPath(rect: CGRect(x: 0, y: 30, width: 19, height: 1))
-        background.shadowPath = shadowPath.cgPath
-        background.shadowOffset = .zero
-        background.shadowRadius = 1
-        background.shadowOpacity = 1
-        background.shadowColor = UIColor.black.withAlphaComponent(0.4).cgColor
-*/
-        let contactRect2 = CGRect(x: 0, y: 0, width: viewPlayerData.frame.width, height: -1)
-        viewPlayerData.layer.shadowPath = UIBezierPath(ovalIn: contactRect2).cgPath
+
+        let contactRect = CGRect(x: 0, y: 0, width: viewPlayerData.frame.width, height: -1)
+        viewPlayerData.layer.shadowPath = UIBezierPath(ovalIn: contactRect).cgPath
         viewPlayerData.layer.shadowRadius = 4
         viewPlayerData.layer.shadowOpacity = 0.8
     }
@@ -292,6 +284,10 @@ class FloatingTabBarViewController: UITabBar {
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: Colors.lightBlueTabBar.color], for: .normal)
     }
     
+    
+    // TODO:
+    // - Add transition
+    // - Add resize element 
     @objc func topTabBarTap(tapGestureRecognizer: UITapGestureRecognizer) {
         tabBarPlayerShow.toggle()
         stackPlayerInformation.isHidden = !tabBarPlayerShow
@@ -300,9 +296,9 @@ class FloatingTabBarViewController: UITabBar {
 
             blurEffectView.frame = CGRect(x: self.background.frame.origin.x + marginLeft, y: self.background.frame.origin.y , width: UIScreen.main.bounds.width - (marginLeft + marginRight), height: barHeight + marginTop )
         } else {
-            viewPlayerData.frame = CGRect(x: self.background.frame.origin.x + marginLeft, y: self.background.frame.origin.y + barHeight - 20, width: UIScreen.main.bounds.width - (marginLeft + marginRight), height: barHeight + 25)
+            viewPlayerData.frame = CGRect(x: self.background.frame.origin.x + marginLeft, y: self.background.frame.origin.y + barHeight, width: UIScreen.main.bounds.width - (marginLeft + marginRight), height: barHeight + 25)
 
-            blurEffectView.frame = CGRect(x: self.background.frame.origin.x + marginLeft, y: self.background.frame.origin.y + barHeight - 20, width: UIScreen.main.bounds.width - (marginLeft + marginRight), height: barHeight + 25)
+            blurEffectView.frame = CGRect(x: self.background.frame.origin.x + marginLeft, y: self.background.frame.origin.y + barHeight, width: UIScreen.main.bounds.width - (marginLeft + marginRight), height: barHeight + 25)
         }
        
     }
@@ -384,7 +380,7 @@ class FloatingTabBarViewController: UITabBar {
             barre.widthAnchor.constraint(equalToConstant: 80),
             barre.heightAnchor.constraint(equalToConstant: 4),
             barre.centerXAnchor.constraint(equalTo: viewPlayerData.centerXAnchor),
-            barre.topAnchor.constraint(equalTo: viewPlayerData.topAnchor, constant: 8),
+            barre.topAnchor.constraint(equalTo: viewPlayerData.topAnchor, constant: 12),
 
             imageView.widthAnchor.constraint(equalToConstant: 40),
             imageView.heightAnchor.constraint(equalToConstant: 40),
@@ -392,7 +388,7 @@ class FloatingTabBarViewController: UITabBar {
             spacingBetweenImageAndLabels.widthAnchor.constraint(equalToConstant: 15),
             
             stackPlayerInformation.heightAnchor.constraint(equalToConstant: 40),
-            stackPlayerInformation.topAnchor.constraint(equalTo: viewPlayerData.topAnchor, constant: 15),
+            stackPlayerInformation.topAnchor.constraint(equalTo: viewPlayerData.topAnchor, constant: 30),
             stackPlayerInformation.leftAnchor.constraint(equalTo: viewPlayerData.leftAnchor, constant: 15),
             stackPlayerInformation.rightAnchor.constraint(equalTo: viewPlayerData.rightAnchor, constant: -15),
             
