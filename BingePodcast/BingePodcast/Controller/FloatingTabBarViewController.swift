@@ -269,7 +269,7 @@ class FloatingTabBarViewController: UITabBar {
     private func blur() {
         let blurEffect = UIBlurEffect(style: .light)
         blurEffectView = UIVisualEffectView()
-        blurEffectView.frame = CGRect(x: self.background.frame.origin.x + marginLeft, y: self.background.frame.origin.y , width: UIScreen.main.bounds.width - (marginLeft + marginRight), height: barHeight + marginTop )
+        blurEffectView.frame = CGRect(x: self.background.frame.origin.x + marginLeft, y: self.background.frame.origin.y + barHeight, width: UIScreen.main.bounds.width - (marginLeft + marginRight), height: barHeight + 25)
 
         blurEffectView.layer.cornerRadius = barTopRadius
         blurEffectView.clipsToBounds = true
@@ -287,7 +287,7 @@ class FloatingTabBarViewController: UITabBar {
     
     // TODO:
     // - Add transition
-    // - Add resize element 
+    // - Add resize element
     @objc func topTabBarTap(tapGestureRecognizer: UITapGestureRecognizer) {
         tabBarPlayerShow.toggle()
         stackPlayerInformation.isHidden = !tabBarPlayerShow
@@ -295,10 +295,17 @@ class FloatingTabBarViewController: UITabBar {
             viewPlayerData.frame = CGRect(x: self.background.frame.origin.x + marginLeft, y: self.background.frame.origin.y , width: UIScreen.main.bounds.width - (marginLeft + marginRight), height: barHeight + marginTop )
 
             blurEffectView.frame = CGRect(x: self.background.frame.origin.x + marginLeft, y: self.background.frame.origin.y , width: UIScreen.main.bounds.width - (marginLeft + marginRight), height: barHeight + marginTop )
+            
+//            marginTop = 90
+
         } else {
             viewPlayerData.frame = CGRect(x: self.background.frame.origin.x + marginLeft, y: self.background.frame.origin.y + barHeight, width: UIScreen.main.bounds.width - (marginLeft + marginRight), height: barHeight + 25)
 
             blurEffectView.frame = CGRect(x: self.background.frame.origin.x + marginLeft, y: self.background.frame.origin.y + barHeight, width: UIScreen.main.bounds.width - (marginLeft + marginRight), height: barHeight + 25)
+
+  //          marginTop = 0
+    //        self.frame.size = self.sizeThatFits(CGSize(width: UIScreen.main.bounds.width - (marginLeft + marginRight), height: barHeight))
+            
         }
        
     }
@@ -307,7 +314,7 @@ class FloatingTabBarViewController: UITabBar {
     
     private func playerView() {
 
-        viewPlayerData.frame = CGRect(x: self.background.frame.origin.x + marginLeft, y: self.background.frame.origin.y , width: UIScreen.main.bounds.width - (marginLeft + marginRight), height: barHeight + marginTop )
+        viewPlayerData.frame = CGRect(x: self.background.frame.origin.x + marginLeft, y: self.background.frame.origin.y + barHeight, width: UIScreen.main.bounds.width - (marginLeft + marginRight), height: barHeight + 25)
         viewPlayerData.backgroundColor = barBackColor
         viewPlayerData.layer.cornerRadius = barTopRadius
         
@@ -398,7 +405,7 @@ class FloatingTabBarViewController: UITabBar {
             buttonShowPlayer.rightAnchor.constraint(equalTo: stackPlayerInformation.rightAnchor)
 
         ].forEach{$0.isActive = true}
-
+        stackPlayerInformation.isHidden = !tabBarPlayerShow
         self.insertSubview(viewPlayerData, at: 0)
     }
     
@@ -408,6 +415,10 @@ class FloatingTabBarViewController: UITabBar {
         let setViewController = mainStoryboard.instantiateViewController(withIdentifier: "PlayerViewController")
         let rootViewController = self.window!.rootViewController
         rootViewController?.present(setViewController, animated: true, completion: nil)
+    }
+    
+    private func testSize() {
+        
     }
     
     private func setup(){
@@ -421,6 +432,7 @@ class FloatingTabBarViewController: UITabBar {
         self.layer.insertSublayer(circle, at: 1)
         self.layer.insertSublayer(background, at: 1)
         self.tintColor = Colors.darkBlue.color
+        // self.backgroundColor = .red
 
         shadow()
         blur()
