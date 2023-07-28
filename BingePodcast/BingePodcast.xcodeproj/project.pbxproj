@@ -31,10 +31,10 @@
 		1D187C932A49C74C00D67271 /* TestTransitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D187C922A49C74C00D67271 /* TestTransitionViewController.swift */; };
 		1D187C992A49D98600D67271 /* UIPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D187C982A49D98600D67271 /* UIPageViewController.swift */; };
 		1D28CA152A673644005AFDF0 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D28CA142A673644005AFDF0 /* UIViewController.swift */; };
+		1D2A2E4A2A73D16000ABD880 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2A2E492A73D16000ABD880 /* UIStackView.swift */; };
 		1D30400D2A6805850089C2F7 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D30400C2A6805850089C2F7 /* PlayerViewController.swift */; };
 		1D3C3F492A4C7A9B00F0CA90 /* CellPodcastCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3C3F472A4C7A9B00F0CA90 /* CellPodcastCollectionViewCell.swift */; };
 		1D3C3F4A2A4C7A9B00F0CA90 /* CellPodcastCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D3C3F482A4C7A9B00F0CA90 /* CellPodcastCollectionViewCell.xib */; };
-		1D55E1E52A3DCF9100F1A9BD /* PlayerViewController_old.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D55E1E42A3DCF9100F1A9BD /* PlayerViewController_old.swift */; };
 		1D55E2902A408B2200F1A9BD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D55E28F2A408B2200F1A9BD /* Constants.swift */; };
 		1D55E2922A409CB000F1A9BD /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D55E2912A409CB000F1A9BD /* UIButton.swift */; };
 		1D55E2942A40B3D400F1A9BD /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D55E2932A40B3D400F1A9BD /* UIImage.swift */; };
@@ -85,6 +85,7 @@
 		1DC25BC12A4266FD0024CD41 /* ProximaNova-Alt-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1DC25BB82A4266FC0024CD41 /* ProximaNova-Alt-Light.otf */; };
 		1DC25BC22A4266FD0024CD41 /* ProximaNova-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1DC25BB92A4266FC0024CD41 /* ProximaNova-Black.otf */; };
 		1DC25BC32A4266FD0024CD41 /* ProximaNova-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1DC25BBA2A4266FD0024CD41 /* ProximaNova-Bold.otf */; };
+		1DCA33BD2A711EEC00120500 /* PlayerObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCA33BC2A711EEC00120500 /* PlayerObserver.swift */; };
 		1DCA9ECE2A35FD22008ED92E /* PlayerAudioService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCA9ECD2A35FD22008ED92E /* PlayerAudioService.swift */; };
 		1DD7263A2A45D86400CD6D16 /* FloatingTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD726392A45D86400CD6D16 /* FloatingTabBarViewController.swift */; };
 		1DE5254E2A483391008132B0 /* PodcastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE5254D2A483391008132B0 /* PodcastViewController.swift */; };
@@ -134,17 +135,17 @@
 		1D1879FC2A2CC8AA00827277 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1D1879FF2A2CC8AA00827277 /* BingePodcast.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BingePodcast.xcdatamodel; sourceTree = "<group>"; };
 		1D187A042A2CC8AD00827277 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		1D187A062A2CC8AD00827277 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = BingePodcast/Info.plist; sourceTree = SOURCE_ROOT; };
+		1D187A062A2CC8AD00827277 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = BingePodcast/ProductionsFiles/Plist/Info.plist; sourceTree = SOURCE_ROOT; };
 		1D187A0B2A2CC8AE00827277 /* BingePodcastTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BingePodcastTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D187A0F2A2CC8AE00827277 /* BingePodcastTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BingePodcastTests.swift; sourceTree = "<group>"; };
 		1D187A152A2CC8AE00827277 /* BingePodcastUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BingePodcastUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D187C922A49C74C00D67271 /* TestTransitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTransitionViewController.swift; sourceTree = "<group>"; };
 		1D187C982A49D98600D67271 /* UIPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPageViewController.swift; sourceTree = "<group>"; };
 		1D28CA142A673644005AFDF0 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		1D2A2E492A73D16000ABD880 /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 		1D30400C2A6805850089C2F7 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		1D3C3F472A4C7A9B00F0CA90 /* CellPodcastCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellPodcastCollectionViewCell.swift; sourceTree = "<group>"; };
 		1D3C3F482A4C7A9B00F0CA90 /* CellPodcastCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CellPodcastCollectionViewCell.xib; sourceTree = "<group>"; };
-		1D55E1E42A3DCF9100F1A9BD /* PlayerViewController_old.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController_old.swift; sourceTree = "<group>"; };
 		1D55E28F2A408B2200F1A9BD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		1D55E2912A409CB000F1A9BD /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		1D55E2932A40B3D400F1A9BD /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
@@ -169,6 +170,7 @@
 		1DC25BB82A4266FC0024CD41 /* ProximaNova-Alt-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Alt-Light.otf"; sourceTree = "<group>"; };
 		1DC25BB92A4266FC0024CD41 /* ProximaNova-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Black.otf"; sourceTree = "<group>"; };
 		1DC25BBA2A4266FD0024CD41 /* ProximaNova-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Bold.otf"; sourceTree = "<group>"; };
+		1DCA33BC2A711EEC00120500 /* PlayerObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerObserver.swift; sourceTree = "<group>"; };
 		1DCA9ECD2A35FD22008ED92E /* PlayerAudioService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerAudioService.swift; sourceTree = "<group>"; };
 		1DD726392A45D86400CD6D16 /* FloatingTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingTabBarViewController.swift; sourceTree = "<group>"; };
 		1DE5254D2A483391008132B0 /* PodcastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastViewController.swift; sourceTree = "<group>"; };
@@ -246,8 +248,8 @@
 		1D0AC26F2A619A810029EAAE /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				1D30400C2A6805850089C2F7 /* PlayerViewController.swift */,
 				1D18448A2A65A02B00A5129E /* PodcastScreen */,
-				1D55E1E42A3DCF9100F1A9BD /* PlayerViewController_old.swift */,
 				1D0AC2682A605F960029EAAE /* HomeViewController.swift */,
 				1D18439A2A65467A00A5129E /* Favorite */,
 				1D18448B2A65A06400A5129E /* DescriptionPlayerViewController.swift */,
@@ -268,6 +270,7 @@
 			children = (
 				1D1843962A65458A00A5129E /* EpisodeSaved.swift */,
 				1D1843982A6545B600A5129E /* PodcastSaved.swift */,
+				1DCA33BC2A711EEC00120500 /* PlayerObserver.swift */,
 			);
 			path = "New Group";
 			sourceTree = "<group>";
@@ -315,7 +318,6 @@
 		1D1879F42A2CC8AA00827277 /* BingePodcast */ = {
 			isa = PBXGroup;
 			children = (
-				1D187A062A2CC8AD00827277 /* Info.plist */,
 				1D9869CD2A2D19BE00D26CEB /* ProductionsFiles */,
 				1D9869CB2A2D19A500D26CEB /* Model */,
 				1D9869CC2A2D19AC00D26CEB /* Controller */,
@@ -372,7 +374,6 @@
 				1D187C922A49C74C00D67271 /* TestTransitionViewController.swift */,
 				1D18439D2A656DD600A5129E /* PresentTransition.swift */,
 				1D18439F2A656DFF00A5129E /* DismissTransition.swift */,
-				1D30400C2A6805850089C2F7 /* PlayerViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -432,6 +433,7 @@
 				1D187C982A49D98600D67271 /* UIPageViewController.swift */,
 				1D0AC2702A629FE40029EAAE /* CALayer.swift */,
 				1D28CA142A673644005AFDF0 /* UIViewController.swift */,
+				1D2A2E492A73D16000ABD880 /* UIStackView.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -439,6 +441,7 @@
 		1DDF70052A3CC84B00EC2294 /* Plist */ = {
 			isa = PBXGroup;
 			children = (
+				1D187A062A2CC8AD00827277 /* Info.plist */,
 				1D986AB02A2E120500D26CEB /* GoogleService-Info.plist */,
 			);
 			name = Plist;
@@ -778,10 +781,10 @@
 				1D187A002A2CC8AA00827277 /* BingePodcast.xcdatamodeld in Sources */,
 				1D18439C2A65469400A5129E /* PageListFavorite.swift in Sources */,
 				1DCA9ECE2A35FD22008ED92E /* PlayerAudioService.swift in Sources */,
+				1DCA33BD2A711EEC00120500 /* PlayerObserver.swift in Sources */,
 				1D0AC26E2A6198460029EAAE /* FavoriteViewController.swift in Sources */,
 				1D28CA152A673644005AFDF0 /* UIViewController.swift in Sources */,
 				1D55E2922A409CB000F1A9BD /* UIButton.swift in Sources */,
-				1D55E1E52A3DCF9100F1A9BD /* PlayerViewController_old.swift in Sources */,
 				1D1844892A659CED00A5129E /* PagesFavoriteScreen.swift in Sources */,
 				1D18439E2A656DD600A5129E /* PresentTransition.swift in Sources */,
 				1D986AA62A2DFF0E00D26CEB /* Strings.gen.swift in Sources */,
@@ -803,6 +806,7 @@
 				1D18448C2A65A06400A5129E /* DescriptionPlayerViewController.swift in Sources */,
 				1D55E2902A408B2200F1A9BD /* Constants.swift in Sources */,
 				1D1879F62A2CC8AA00827277 /* AppDelegate.swift in Sources */,
+				1D2A2E4A2A73D16000ABD880 /* UIStackView.swift in Sources */,
 				1D1879F82A2CC8AA00827277 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -907,7 +911,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "${SRCROOT}/BingePodcast/Info.plist";
+				INFOPLIST_FILE = "${SRCROOT}/BingePodcast/ProductionsFiles/Plist/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -962,7 +966,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "${SRCROOT}/BingePodcast/Info.plist";
+				INFOPLIST_FILE = "${SRCROOT}/BingePodcast/ProductionsFiles/Plist/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -985,7 +989,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = P72QBKGC25;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "${SRCROOT}/BingePodcast/Info.plist";
+				INFOPLIST_FILE = "${SRCROOT}/BingePodcast/ProductionsFiles/Plist/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
@@ -1022,7 +1026,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = P72QBKGC25;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "${SRCROOT}/BingePodcast/Info.plist";
+				INFOPLIST_FILE = "${SRCROOT}/BingePodcast/ProductionsFiles/Plist/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
