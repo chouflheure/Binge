@@ -9,6 +9,7 @@ class PlayerViewController: UIViewController {
     var imageString: String = "play"
     var isFavorite: Bool = true
     var isSmallScreen: Bool = UIScreen.main.bounds.height < 800
+    
     var isReturnButtonChevronLeft: Bool = false
 
     let gradient: CAGradientLayer = {
@@ -41,6 +42,20 @@ class PlayerViewController: UIViewController {
         let stack = UIStackView()
         stack.axis = .horizontal
         stack.distribution = .fill
+        return stack
+    }()
+    
+    let stackTopViewPlayer: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .horizontal
+        stack.distribution = .fill
+        return stack
+    }()
+    
+    let stackThreePoint:  UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .horizontal
+        stack.distribution = .fillProportionally
         return stack
     }()
     
@@ -193,7 +208,25 @@ class PlayerViewController: UIViewController {
     override var prefersStatusBarHidden: Bool {
         return true
     }
-    
+
+    // MARK: - Init
+    /*
+    init(isFavorite: Bool, isReturnButtonChevronLeft: Bool, imageViewPlayer: UIStackView, slider: UISlider, spendTime: UILabel, totalTime: UILabel) {
+        self.isFavorite = isFavorite
+        self.isReturnButtonChevronLeft = isReturnButtonChevronLeft
+        self.imageViewPlayer = imageViewPlayer
+        self.slider = slider
+        self.spendTime = spendTime
+        self.totalTime = totalTime
+        super.init(nibName: nil, bundle: nil)
+    }
+    */
+    /*/
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    */
+
     private func setupUI() {
         setupGradient()
         setupScrollView()
@@ -224,12 +257,9 @@ class PlayerViewController: UIViewController {
             scrollViewContainer.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width - 50),
 
         ].forEach{$0.isActive = true}
-        
     }
-    
-    
-    private func returnView() {
 
+    private func returnView() {
         let spacingBetweenImageAndTitle = UIView()
         spacingBetweenImageAndTitle.translatesAutoresizingMaskIntoConstraints = false
         let chevronReturn = UIImageView(image: UIImage(named: Assets.Picto.chevronReturn.name))
@@ -259,17 +289,34 @@ class PlayerViewController: UIViewController {
             stackReturnView.addArrangedSubview(view)
         }
 
-        scrollViewContainer.addArrangedSubview(stackReturnView)
+        let stackVerticalForThreePointHeight5 = UIStackView()
+        stackVerticalForThreePointHeight5.axis = .vertical
+        stackVerticalForThreePointHeight5.distribution = .fill
+        
+        stackVerticalForThreePointHeight5.addArrangedSubview(generateVerticalSpace(height: 8))
+        stackVerticalForThreePointHeight5.addArrangedSubview(setupMenuIndicator())
+        stackVerticalForThreePointHeight5.addArrangedSubview(generateVerticalSpace(height: 8))
+
+        let spacingBetweenReturnAndMenu = UIView()
+        spacingBetweenReturnAndMenu.translatesAutoresizingMaskIntoConstraints = false
+        
+        stackTopViewPlayer.addArrangedSubview(stackReturnView)
+        stackTopViewPlayer.addArrangedSubview(spacingBetweenReturnAndMenu)
+        stackReturnView.addArrangedSubview(stackVerticalForThreePointHeight5)
+        
+        scrollViewContainer.addArrangedSubview(stackTopViewPlayer)
 
         [
             marginOnTop.heightAnchor.constraint(equalToConstant: 10),
-            stackReturnView.heightAnchor.constraint(equalToConstant: 21),
             chevronReturn.widthAnchor.constraint(equalToConstant: 12),
-            spacingBetweenImageAndTitle.widthAnchor.constraint(equalToConstant: 10)
+            spacingBetweenImageAndTitle.widthAnchor.constraint(equalToConstant: 10),
+            stackVerticalForThreePointHeight5.widthAnchor.constraint(equalToConstant: 25),
+            stackThreePoint.rightAnchor.constraint(equalTo: stackTopViewPlayer.rightAnchor),
+            stackTopViewPlayer.heightAnchor.constraint(equalToConstant: 21),
+            
         ].forEach{$0.isActive = true}
         
     }
-
 
     private func setupPlayerView() {
         
@@ -512,16 +559,21 @@ class PlayerViewController: UIViewController {
     
 }
 
-// Setup Action
+// MARK: - Action
 private extension PlayerViewController {
     
     func setupAction() {
         
-        // Tap gesture Return n
-        let tap = UITapGestureRecognizer(target: self, action: #selector(tapStackReturn(_:)))
+        // Tap gesture Return
+        let tapDismiss = UITapGestureRecognizer(target: self, action: #selector(tapStackReturn(_:)))
         stackReturnView.isUserInteractionEnabled = true
-        stackReturnView.addGestureRecognizer(tap)
-        
+        stackReturnView.addGestureRecognizer(tapDismiss)
+
+        // Tap gesture menu 3 points
+        let tapMenu = UITapGestureRecognizer(target: self, action: #selector(shareAll(_:)))
+        stackThreePoint.isUserInteractionEnabled = true
+        stackThreePoint.addGestureRecognizer(tapMenu)
+
         // Favorite button
         heartButton.addTarget(self, action: #selector(actionPressFavoriteButton(_:)), for: .touchUpInside)
         
@@ -605,5 +657,60 @@ private extension PlayerViewController {
     @objc func tapStackReturn(_ sender: UITapGestureRecognizer) {
         dismiss(animated: true)
     }
+    
+    @objc func shareAll(_ sender: UITapGestureRecognizer) {
+        let text = "This is the text...."
+        let myWebsite = NSURL(string:"https://stackoverflow.com/users/4600136/mr-javed-multani?tab=profile")
+        let shareAll = [text, myWebsite!] as [Any]
+        let activityViewController = UIActivityViewController(activityItems: shareAll, applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view
+        self.present(activityViewController, animated: true, completion: nil)
+    }
 
+}
+
+private extension PlayerViewController {
+    
+    func setupMenuIndicator() -> UIStackView {
+        let point1 = UIView()
+        let point2 = UIView()
+        let point3 = UIView()
+        let spacingBetweenPoint1 = UIView()
+        let spacingBetweenPoint2 = UIView()
+        
+        [
+            stackThreePoint, point1, point2, point3, spacingBetweenPoint1, spacingBetweenPoint2
+        ].forEach{$0.translatesAutoresizingMaskIntoConstraints = false}
+
+        stackThreePoint.addArrangedSubview(generatePoint(width: 5))
+        stackThreePoint.addArrangedSubview(generateHorizontalSpace(width: 5))
+        stackThreePoint.addArrangedSubview(generatePoint(width: 5))
+        stackThreePoint.addArrangedSubview(generateHorizontalSpace(width: 5))
+        stackThreePoint.addArrangedSubview(generatePoint(width: 5))
+
+        stackThreePoint.widthAnchor.constraint(equalToConstant: 25).isActive = true
+        stackThreePoint.heightAnchor.constraint(equalToConstant: 5).isActive = true
+
+        return stackThreePoint
+    }
+    
+    func generatePoint(width: CGFloat = 10) -> UIView {
+        let view = UIView()
+        view.widthAnchor.constraint(equalToConstant: width).isActive = true
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 2.5
+        return view
+    }
+    
+    func generateHorizontalSpace(width: CGFloat = 10) -> UIView {
+        let view = UIView()
+        view.widthAnchor.constraint(equalToConstant: width).isActive = true
+        return view
+    }
+    
+    func generateVerticalSpace(height: CGFloat = 10 ) -> UIView {
+        let view = UIView()
+        view.heightAnchor.constraint(equalToConstant: height).isActive = true
+        return view
+    }
 }
