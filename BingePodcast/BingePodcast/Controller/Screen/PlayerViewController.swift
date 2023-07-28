@@ -52,10 +52,10 @@ class PlayerViewController: UIViewController {
         return stack
     }()
     
-    let stackThreePoint:  UIStackView = {
+    let stackVerticalMenu:  UIStackView = {
         let stack = UIStackView()
-        stack.axis = .horizontal
-        stack.distribution = .fillProportionally
+        stack.axis = .vertical
+        stack.distribution = .fill
         return stack
     }()
     
@@ -288,21 +288,18 @@ class PlayerViewController: UIViewController {
             stackReturnView.addArrangedSubview(chevronReturn)
             stackReturnView.addArrangedSubview(view)
         }
-
-        let stackVerticalForThreePointHeight5 = UIStackView()
-        stackVerticalForThreePointHeight5.axis = .vertical
-        stackVerticalForThreePointHeight5.distribution = .fill
         
-        stackVerticalForThreePointHeight5.addArrangedSubview(generateVerticalSpace(height: 8))
-        stackVerticalForThreePointHeight5.addArrangedSubview(setupMenuIndicator())
-        stackVerticalForThreePointHeight5.addArrangedSubview(generateVerticalSpace(height: 8))
+        stackVerticalMenu.addArrangedSubview(generateVerticalSpace(height: 8))
+        stackVerticalMenu.addArrangedSubview(setupMenuIndicator())
+        stackVerticalMenu.addArrangedSubview(generateVerticalSpace(height: 8))
 
         let spacingBetweenReturnAndMenu = UIView()
         spacingBetweenReturnAndMenu.translatesAutoresizingMaskIntoConstraints = false
         
+    
         stackTopViewPlayer.addArrangedSubview(stackReturnView)
         stackTopViewPlayer.addArrangedSubview(spacingBetweenReturnAndMenu)
-        stackReturnView.addArrangedSubview(stackVerticalForThreePointHeight5)
+        stackReturnView.addArrangedSubview(stackVerticalMenu)
         
         scrollViewContainer.addArrangedSubview(stackTopViewPlayer)
 
@@ -310,8 +307,8 @@ class PlayerViewController: UIViewController {
             marginOnTop.heightAnchor.constraint(equalToConstant: 10),
             chevronReturn.widthAnchor.constraint(equalToConstant: 12),
             spacingBetweenImageAndTitle.widthAnchor.constraint(equalToConstant: 10),
-            stackVerticalForThreePointHeight5.widthAnchor.constraint(equalToConstant: 25),
-            stackThreePoint.rightAnchor.constraint(equalTo: stackTopViewPlayer.rightAnchor),
+            stackVerticalMenu.widthAnchor.constraint(equalToConstant: 25),
+            stackVerticalMenu.rightAnchor.constraint(equalTo: stackTopViewPlayer.rightAnchor),
             stackTopViewPlayer.heightAnchor.constraint(equalToConstant: 21),
             
         ].forEach{$0.isActive = true}
@@ -571,8 +568,8 @@ private extension PlayerViewController {
 
         // Tap gesture menu 3 points
         let tapMenu = UITapGestureRecognizer(target: self, action: #selector(shareAll(_:)))
-        stackThreePoint.isUserInteractionEnabled = true
-        stackThreePoint.addGestureRecognizer(tapMenu)
+        stackVerticalMenu.isUserInteractionEnabled = true
+        stackVerticalMenu.addGestureRecognizer(tapMenu)
 
         // Favorite button
         heartButton.addTarget(self, action: #selector(actionPressFavoriteButton(_:)), for: .touchUpInside)
@@ -647,11 +644,22 @@ private extension PlayerViewController {
     }
     
     @objc func actionFullScreenButton(_ sender: UIButton) {
+        let view = UIView()
+        view.backgroundColor = .red
+        view.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(view)
+        [
+            view.topAnchor.constraint(equalTo: self.view.topAnchor),
+            view.heightAnchor.constraint(equalToConstant: 100),
+            view.widthAnchor.constraint(equalToConstant: 100),
+        ].forEach{$0.isActive = true}
+        /*
         let playerVC = self.storyboard?.instantiateViewController(withIdentifier: "DescriptionPlayerViewController")
         playerVC?.modalPresentationStyle = .custom
         playerVC?.transitioningDelegate = self
         guard let playerVC = playerVC else {return}
         self.present(playerVC, animated: true, completion: nil)
+         */
     }
 
     @objc func tapStackReturn(_ sender: UITapGestureRecognizer) {
@@ -672,6 +680,11 @@ private extension PlayerViewController {
 private extension PlayerViewController {
     
     func setupMenuIndicator() -> UIStackView {
+        
+        let stackThreePoint = UIStackView()
+        stackThreePoint.axis = .horizontal
+        stackThreePoint.distribution = .fill
+
         let point1 = UIView()
         let point2 = UIView()
         let point3 = UIView()
