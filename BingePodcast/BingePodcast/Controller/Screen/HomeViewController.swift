@@ -1,10 +1,3 @@
-//
-//  FavoriteViewController.swift
-//  BingePodcast
-//
-//  Created by charlesCalvignac on 09/07/2023.
-//
-
 import UIKit
 
 class HomeViewController: UIViewController {

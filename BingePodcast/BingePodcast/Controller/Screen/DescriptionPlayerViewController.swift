@@ -23,7 +23,6 @@ class DescriptionPlayerViewController: UIViewController {
         
         scrollViewContainer.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
         scrollViewContainer.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
-        // this is important for scrolling
         scrollViewContainer.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width - 60).isActive = true
         
         imageReturn.addTarget(self, action: #selector(actionReturnButton), for: .touchDown)
