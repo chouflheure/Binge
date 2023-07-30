@@ -10,6 +10,8 @@ class FavoriteViewController: UIViewController {
     var podcastSaved = [PodcastSaved]()
     let tableViewEpisode = UITableView()
     
+    // 15
+    var animator: PresentTransition?
 
     let favoriteTitle : UILabel = {
         let label = UILabel()
@@ -230,14 +232,29 @@ private extension FavoriteViewController {
     
 }
 
+
+extension FavoriteViewController: UIViewControllerTransitioningDelegate {
+    
+    public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return PresentTransition()
+    }
+    
+    public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return DismissTransition()
+    }
+
+}
+
+
 extension FavoriteViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let secondVC = self.storyboard?.instantiateViewController(withIdentifier: "PlayerViewController")
-        secondVC?.modalPresentationStyle = .custom
-        secondVC?.transitioningDelegate = self
-        
-        self.present(secondVC!, animated: true, completion: nil)
+        guard let secondVC = secondVC else {return}
+        secondVC.modalPresentationStyle = .custom
+        secondVC.transitioningDelegate = self
+
+        self.present(secondVC, animated: true, completion: nil)
     }
 
 }

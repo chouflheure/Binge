@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+/*
 extension UIViewController: UIViewControllerTransitioningDelegate {
     
     public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
@@ -17,5 +18,6 @@ extension UIViewController: UIViewControllerTransitioningDelegate {
     public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return DismissTransition()
     }
-    
+
 }
+*/

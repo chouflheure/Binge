@@ -9,8 +9,8 @@ class PlayerViewController: UIViewController {
     var imageString: String = "play"
     var isFavorite: Bool = true
     var isSmallScreen: Bool = UIScreen.main.bounds.height < 800
-    
     var isReturnButtonChevronLeft: Bool = false
+    let descriptionView = UIView()
 
     let gradient: CAGradientLayer = {
         let gradient = CAGradientLayer()
@@ -478,9 +478,8 @@ class PlayerViewController: UIViewController {
     }
   
     private func setupDescription() {
-        
-        let view = UIView()
-        view.heightAnchor.constraint(equalToConstant: 300).isActive = true
+
+        descriptionView.heightAnchor.constraint(equalToConstant: 300).isActive = true
         
         let marginTop = UIView()
         marginTop.translatesAutoresizingMaskIntoConstraints = false
@@ -520,24 +519,24 @@ class PlayerViewController: UIViewController {
         descritpion.font = UIFont(name: .fonts.proximaNova_Alt_Thin.fontName(), size: 16)
         descritpion.textColor = Colors.white.color
 
-        view.layer.cornerRadius = 33
-        view.backgroundColor = Colors.purpleGradientMax.color.withAlphaComponent(0.8)
+        descriptionView.layer.cornerRadius = 33
+        descriptionView.backgroundColor = Colors.purpleGradientMax.color.withAlphaComponent(0.8)
 
-        view.addSubview(stackTitleAndFullScreen)
-        view.addSubview(descritpion)
+        descriptionView.addSubview(stackTitleAndFullScreen)
+        descriptionView.addSubview(descritpion)
         
-        view.layer.shadowRadius = 3
-        view.layer.shadowOffset = CGSize(width: -2, height: -2)
-        view.layer.shadowOpacity = 0.3
-        view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.masksToBounds = false
+        descriptionView.layer.shadowRadius = 3
+        descriptionView.layer.shadowOffset = CGSize(width: -2, height: -2)
+        descriptionView.layer.shadowOpacity = 0.3
+        descriptionView.layer.shadowColor = UIColor.black.cgColor
+        descriptionView.layer.masksToBounds = false
 
         stackTitleAndFullScreen.translatesAutoresizingMaskIntoConstraints = false
         [
-            stackTitleAndFullScreen.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
+            stackTitleAndFullScreen.topAnchor.constraint(equalTo: descriptionView.topAnchor, constant: 20),
             stackTitleAndFullScreen.heightAnchor.constraint(equalToConstant: 30),
-            stackTitleAndFullScreen.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
-            stackTitleAndFullScreen.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20),
+            stackTitleAndFullScreen.leftAnchor.constraint(equalTo: descriptionView.leftAnchor, constant: 20),
+            stackTitleAndFullScreen.rightAnchor.constraint(equalTo: descriptionView.rightAnchor, constant: -20),
             fullScreenButton.widthAnchor.constraint(equalToConstant: 30),
             fullScreenButton.heightAnchor.constraint(equalToConstant: 30)
         ].forEach{ $0.isActive = true }
@@ -545,13 +544,13 @@ class PlayerViewController: UIViewController {
         descritpion.translatesAutoresizingMaskIntoConstraints = false
         [
             descritpion.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 20),
-            descritpion.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
-            descritpion.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
-            descritpion.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20)
+            descritpion.bottomAnchor.constraint(equalTo: descriptionView.bottomAnchor, constant: -20),
+            descritpion.leftAnchor.constraint(equalTo: descriptionView.leftAnchor, constant: 20),
+            descritpion.rightAnchor.constraint(equalTo: descriptionView.rightAnchor, constant: -20)
         ].forEach{ $0.isActive = true }
         
         scrollViewContainer.addArrangedSubview(marginTop)
-        scrollViewContainer.addArrangedSubview(view)
+        scrollViewContainer.addArrangedSubview(descriptionView)
     }
     
 }
@@ -644,22 +643,16 @@ private extension PlayerViewController {
     }
     
     @objc func actionFullScreenButton(_ sender: UIButton) {
-        let view = UIView()
-        view.backgroundColor = .red
-        view.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(view)
-        [
-            view.topAnchor.constraint(equalTo: self.view.topAnchor),
-            view.heightAnchor.constraint(equalToConstant: 100),
-            view.widthAnchor.constraint(equalToConstant: 100),
-        ].forEach{$0.isActive = true}
-        /*
+
         let playerVC = self.storyboard?.instantiateViewController(withIdentifier: "DescriptionPlayerViewController")
         playerVC?.modalPresentationStyle = .custom
         playerVC?.transitioningDelegate = self
         guard let playerVC = playerVC else {return}
         self.present(playerVC, animated: true, completion: nil)
-         */
+        
+        print("@@@ positio full screen btn origin.y = \(sender.frame.origin.y)")
+        print("@@@ positio full screen btn origin.x = \(sender.frame.origin.x)")
+        print("@@@ positio full screen btn size = \(sender.frame.size)")
     }
 
     @objc func tapStackReturn(_ sender: UITapGestureRecognizer) {
@@ -667,8 +660,8 @@ private extension PlayerViewController {
     }
     
     @objc func shareAll(_ sender: UITapGestureRecognizer) {
-        let text = "This is the text...."
-        let myWebsite = NSURL(string:"https://stackoverflow.com/users/4600136/mr-javed-multani?tab=profile")
+        let text = "Écoute ce podcast sur Binge Audio"
+        let myWebsite = NSURL(string:"https://www.binge.audio/podcast/le-coeur-sur-la-table/romance-et-soumission-premiere-partie")
         let shareAll = [text, myWebsite!] as [Any]
         let activityViewController = UIActivityViewController(activityItems: shareAll, applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view
@@ -676,6 +669,19 @@ private extension PlayerViewController {
     }
 
 }
+
+extension PlayerViewController: UIViewControllerTransitioningDelegate {
+    
+    public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return AnimationPlayerDescriptionPresent(firstViewController: self, secondViewController: DescriptionPlayerViewController())
+    }
+    
+    public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return AnimationPlayerDescriptionDismiss()
+    }
+
+}
+
 
 private extension PlayerViewController {
     
