@@ -32,6 +32,12 @@
 		1D187C992A49D98600D67271 /* UIPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D187C982A49D98600D67271 /* UIPageViewController.swift */; };
 		1D28CA152A673644005AFDF0 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D28CA142A673644005AFDF0 /* UIViewController.swift */; };
 		1D2A2E4A2A73D16000ABD880 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2A2E492A73D16000ABD880 /* UIStackView.swift */; };
+		1D2A2EA32A76CAA800ABD880 /* PlayerViewController+Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2A2EA22A76CAA800ABD880 /* PlayerViewController+Transition.swift */; };
+		1D2A2EA52A76CAE700ABD880 /* PlayerViewController+ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2A2EA42A76CAE700ABD880 /* PlayerViewController+ActionButton.swift */; };
+		1D2A2EA72A76CEA300ABD880 /* PlayerViewController_Description.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2A2EA62A76CEA300ABD880 /* PlayerViewController_Description.swift */; };
+		1D2A2EA92A76CF2F00ABD880 /* ReturnViewForPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2A2EA82A76CF2F00ABD880 /* ReturnViewForPlayerViewController.swift */; };
+		1D2A2EAB2A76CF8B00ABD880 /* PlayerViewForPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2A2EAA2A76CF8B00ABD880 /* PlayerViewForPlayerViewController.swift */; };
+		1D2A2EAE2A76D03900ABD880 /* HomeViewController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2A2EAD2A76D03900ABD880 /* HomeViewController+CollectionView.swift */; };
 		1D30400D2A6805850089C2F7 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D30400C2A6805850089C2F7 /* PlayerViewController.swift */; };
 		1D3C3F492A4C7A9B00F0CA90 /* CellPodcastCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3C3F472A4C7A9B00F0CA90 /* CellPodcastCollectionViewCell.swift */; };
 		1D3C3F4A2A4C7A9B00F0CA90 /* CellPodcastCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D3C3F482A4C7A9B00F0CA90 /* CellPodcastCollectionViewCell.xib */; };
@@ -143,6 +149,12 @@
 		1D187C982A49D98600D67271 /* UIPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPageViewController.swift; sourceTree = "<group>"; };
 		1D28CA142A673644005AFDF0 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		1D2A2E492A73D16000ABD880 /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
+		1D2A2EA22A76CAA800ABD880 /* PlayerViewController+Transition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlayerViewController+Transition.swift"; sourceTree = "<group>"; };
+		1D2A2EA42A76CAE700ABD880 /* PlayerViewController+ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlayerViewController+ActionButton.swift"; sourceTree = "<group>"; };
+		1D2A2EA62A76CEA300ABD880 /* PlayerViewController_Description.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController_Description.swift; sourceTree = "<group>"; };
+		1D2A2EA82A76CF2F00ABD880 /* ReturnViewForPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReturnViewForPlayerViewController.swift; sourceTree = "<group>"; };
+		1D2A2EAA2A76CF8B00ABD880 /* PlayerViewForPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewForPlayerViewController.swift; sourceTree = "<group>"; };
+		1D2A2EAD2A76D03900ABD880 /* HomeViewController+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+CollectionView.swift"; sourceTree = "<group>"; };
 		1D30400C2A6805850089C2F7 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		1D3C3F472A4C7A9B00F0CA90 /* CellPodcastCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellPodcastCollectionViewCell.swift; sourceTree = "<group>"; };
 		1D3C3F482A4C7A9B00F0CA90 /* CellPodcastCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CellPodcastCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -248,11 +260,12 @@
 		1D0AC26F2A619A810029EAAE /* Screen */ = {
 			isa = PBXGroup;
 			children = (
-				1D30400C2A6805850089C2F7 /* PlayerViewController.swift */,
+				1D2A2EB02A76D11300ABD880 /* Animation */,
+				1D2A2EAF2A76D0EA00ABD880 /* DescriptionPlayerViewController */,
+				1D2A2EAC2A76D00300ABD880 /* HomeViewController */,
+				1D2A2EA12A76CA7900ABD880 /* PlayerViewController */,
 				1D18448A2A65A02B00A5129E /* PodcastScreen */,
-				1D0AC2682A605F960029EAAE /* HomeViewController.swift */,
 				1D18439A2A65467A00A5129E /* Favorite */,
-				1D18448B2A65A06400A5129E /* DescriptionPlayerViewController.swift */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -334,6 +347,45 @@
 			path = BingePodcastTests;
 			sourceTree = "<group>";
 		};
+		1D2A2EA12A76CA7900ABD880 /* PlayerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1D30400C2A6805850089C2F7 /* PlayerViewController.swift */,
+				1D2A2EA22A76CAA800ABD880 /* PlayerViewController+Transition.swift */,
+				1D2A2EA42A76CAE700ABD880 /* PlayerViewController+ActionButton.swift */,
+				1D2A2EA62A76CEA300ABD880 /* PlayerViewController_Description.swift */,
+				1D2A2EA82A76CF2F00ABD880 /* ReturnViewForPlayerViewController.swift */,
+				1D2A2EAA2A76CF8B00ABD880 /* PlayerViewForPlayerViewController.swift */,
+			);
+			path = PlayerViewController;
+			sourceTree = "<group>";
+		};
+		1D2A2EAC2A76D00300ABD880 /* HomeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1D0AC2682A605F960029EAAE /* HomeViewController.swift */,
+				1D2A2EAD2A76D03900ABD880 /* HomeViewController+CollectionView.swift */,
+			);
+			path = HomeViewController;
+			sourceTree = "<group>";
+		};
+		1D2A2EAF2A76D0EA00ABD880 /* DescriptionPlayerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1D18448B2A65A06400A5129E /* DescriptionPlayerViewController.swift */,
+			);
+			path = DescriptionPlayerViewController;
+			sourceTree = "<group>";
+		};
+		1D2A2EB02A76D11300ABD880 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				1D18439F2A656DFF00A5129E /* DismissTransition.swift */,
+				1D18439D2A656DD600A5129E /* PresentTransition.swift */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
 		1D973A692A3A873F0027AC75 /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -365,15 +417,13 @@
 		1D9869CC2A2D19AC00D26CEB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				1DD726392A45D86400CD6D16 /* FloatingTabBarViewController.swift */,
 				1D1843952A65457D00A5129E /* New Group */,
 				1D0AC26F2A619A810029EAAE /* Screen */,
 				1D0AC26A2A6060250029EAAE /* Molecule */,
 				1DE5254F2A483FDD008132B0 /* Cell */,
 				1D1879F92A2CC8AA00827277 /* ViewController.swift */,
-				1DD726392A45D86400CD6D16 /* FloatingTabBarViewController.swift */,
 				1D187C922A49C74C00D67271 /* TestTransitionViewController.swift */,
-				1D18439D2A656DD600A5129E /* PresentTransition.swift */,
-				1D18439F2A656DFF00A5129E /* DismissTransition.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -773,24 +823,29 @@
 				1D0AC2672A605DDC0029EAAE /* PodcastHomePageCollectionViewCell.swift in Sources */,
 				1D55E2962A4119AC00F1A9BD /* UILabel.swift in Sources */,
 				1D973A6B2A3A875F0027AC75 /* PlayerModel.swift in Sources */,
+				1D2A2EA92A76CF2F00ABD880 /* ReturnViewForPlayerViewController.swift in Sources */,
 				1DE525532A485325008132B0 /* CellEpisodeTabViewCell.swift in Sources */,
 				1D986AA02A2DEF7600D26CEB /* Assets.gen.swift in Sources */,
 				1D986A9F2A2DEF7600D26CEB /* Colors.gen.swift in Sources */,
 				1D0AC2712A629FE50029EAAE /* CALayer.swift in Sources */,
 				1D187C992A49D98600D67271 /* UIPageViewController.swift in Sources */,
+				1D2A2EA52A76CAE700ABD880 /* PlayerViewController+ActionButton.swift in Sources */,
 				1D187A002A2CC8AA00827277 /* BingePodcast.xcdatamodeld in Sources */,
 				1D18439C2A65469400A5129E /* PageListFavorite.swift in Sources */,
 				1DCA9ECE2A35FD22008ED92E /* PlayerAudioService.swift in Sources */,
 				1DCA33BD2A711EEC00120500 /* PlayerObserver.swift in Sources */,
+				1D2A2EA72A76CEA300ABD880 /* PlayerViewController_Description.swift in Sources */,
 				1D0AC26E2A6198460029EAAE /* FavoriteViewController.swift in Sources */,
 				1D28CA152A673644005AFDF0 /* UIViewController.swift in Sources */,
 				1D55E2922A409CB000F1A9BD /* UIButton.swift in Sources */,
+				1D2A2EAE2A76D03900ABD880 /* HomeViewController+CollectionView.swift in Sources */,
 				1D1844892A659CED00A5129E /* PagesFavoriteScreen.swift in Sources */,
 				1D18439E2A656DD600A5129E /* PresentTransition.swift in Sources */,
 				1D986AA62A2DFF0E00D26CEB /* Strings.gen.swift in Sources */,
 				1D0AC26C2A61982A0029EAAE /* FavoriteTableViewCell.swift in Sources */,
 				1D0AC2692A605F960029EAAE /* HomeViewController.swift in Sources */,
 				1D55E2942A40B3D400F1A9BD /* UIImage.swift in Sources */,
+				1D2A2EAB2A76CF8B00ABD880 /* PlayerViewForPlayerViewController.swift in Sources */,
 				1DE5254E2A483391008132B0 /* PodcastViewController.swift in Sources */,
 				1D30400D2A6805850089C2F7 /* PlayerViewController.swift in Sources */,
 				1DA63F102A41F79D0013BB86 /* UIFloat.swift in Sources */,
@@ -803,6 +858,7 @@
 				1D973A6D2A3A87800027AC75 /* Delegate.swift in Sources */,
 				1D187C932A49C74C00D67271 /* TestTransitionViewController.swift in Sources */,
 				1D0AC2632A605CFC0029EAAE /* SwitchPlayer.swift in Sources */,
+				1D2A2EA32A76CAA800ABD880 /* PlayerViewController+Transition.swift in Sources */,
 				1D18448C2A65A06400A5129E /* DescriptionPlayerViewController.swift in Sources */,
 				1D55E2902A408B2200F1A9BD /* Constants.swift in Sources */,
 				1D1879F62A2CC8AA00827277 /* AppDelegate.swift in Sources */,
