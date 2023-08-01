@@ -17,12 +17,8 @@ class PlayerAudioService {
             testAudio = AVPlayer(playerItem: playerItem)
             testAudio.volume = 0
             testAudio.play()
-
-
         } catch let error as NSError {
             print("@@@ player = \(error.localizedDescription)")
-        } catch {
-            print("AVAudioPlayer init failed")
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(playerDidFinishPlaying), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: testAudio.currentItem)
@@ -36,8 +32,6 @@ class PlayerAudioService {
 
         } catch let error as NSError {
             print("@@@ player = \(error.localizedDescription)")
-        } catch {
-            print("AVAudioPlayer init failed")
         }
     }
     

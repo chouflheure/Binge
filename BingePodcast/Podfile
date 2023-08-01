@@ -8,6 +8,7 @@ target 'BingePodcast' do
 	pod 'VBRRollingPit'
 	pod 'lottie-ios', '~> 3.1'
 	pod 'SwiftGen', '~> 6.0'
+	pod 'Alamofire'
 
 
   # Pods for BingePodcast

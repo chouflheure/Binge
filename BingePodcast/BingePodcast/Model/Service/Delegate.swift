@@ -1,11 +1,9 @@
 import Foundation
+import UIKit
 
-protocol SearchDelegate: AnyObject {
+protocol HomePageDelegate: AnyObject {
 
-    func messageErrorServerConnexionDelegate()
-    func addAlimentsInList(ingredient: String)
-    func togglePressButton()
-    func messageErrorEmptyIngredient()
+    func test(result: [Podcast])
 }
 
 protocol ListRecipeDelegate: AnyObject {

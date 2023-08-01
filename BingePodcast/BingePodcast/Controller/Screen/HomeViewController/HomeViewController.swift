@@ -1,48 +1,39 @@
 import UIKit
+import Firebase
+import Alamofire
 
-class HomeViewController: UIViewController {
-
-    let authorArray = ["Sophie-Marie Larrouy", "Anne-Cécile Genre", "Victoire Tuaillon", "Victoire Tuaillon", "", "Thomas Rozec" ]
-    let titleArray = ["À bientôt de te revoir", "Du Sport", "Le Coeur Sur La Table", "Les couilles sur la table", "Panier Piano", "Programme B"]
+class HomeViewController: UIViewController, HomePageDelegate {
+    
+    var podcast = [Podcast]()
+    var image = [UIImage]()
+    
     let cellPodcast = "cellPodcast"
+    private let homePageModel = HomePageModel()
+    
+    
+    func test(result: [Podcast]) {
+        podcast = result
+        collectionViewPodcast.reloadData()
+    }
+    
+    var imageViewTest = UIImageView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        view.addSubview(scrollView)
         
-        scrollView.addSubview(scrollViewContainer)
-        scrollViewContainer.addArrangedSubview(imageView)
-        scrollViewContainer.addArrangedSubview(spacingImageWithTitle)
-        scrollViewContainer.addArrangedSubview(containerMargin())
-        scrollViewContainer.addArrangedSubview(spacingTitleWithCollectionView)
-        scrollViewContainer.addArrangedSubview(collectionViewPodcast)
-        scrollViewContainer.addArrangedSubview(viewOffsetCollectionnView)
-
-        [
-            scrollView.leftAnchor.constraint(equalTo: view.leftAnchor),
-            scrollView.rightAnchor.constraint(equalTo: view.rightAnchor),
-            scrollView.topAnchor.constraint(equalTo: view.topAnchor, constant: -45),
-            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-
-            scrollViewContainer.leftAnchor.constraint(equalTo: scrollView.leftAnchor),
-            scrollViewContainer.rightAnchor.constraint(equalTo: scrollView.rightAnchor),
-            scrollViewContainer.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            scrollViewContainer.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 10),
-            scrollViewContainer.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-
-            imageView.heightAnchor.constraint(equalToConstant: 260),
-            collectionViewPodcast.heightAnchor.constraint(equalToConstant: 200),
-            viewOffsetCollectionnView.heightAnchor.constraint(equalToConstant: 70)
-        ].forEach{$0.isActive = true}
-
+        setupScrollView()
         initCollectionView()
         setGradientBackground()
+        homePageModel.homePageDelegate = self
+        homePageModel.fetchAllPodcast()
+        // HomePageModel().test()
+        
+        print("@@@ Podcast = \(podcast)")
 
         // PlayerObserver.sharedInstance.getPodcastPlayingData()
-        
     }
-
+    
+    
     let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -180,6 +171,35 @@ class HomeViewController: UIViewController {
         view.backgroundColor = .clear
         return view
     }()
+    
+    private func setupScrollView() {
+        view.addSubview(scrollView)
+        
+        scrollView.addSubview(scrollViewContainer)
+        scrollViewContainer.addArrangedSubview(imageView)
+        scrollViewContainer.addArrangedSubview(spacingImageWithTitle)
+        scrollViewContainer.addArrangedSubview(containerMargin())
+        scrollViewContainer.addArrangedSubview(spacingTitleWithCollectionView)
+        scrollViewContainer.addArrangedSubview(collectionViewPodcast)
+        scrollViewContainer.addArrangedSubview(viewOffsetCollectionnView)
+
+        [
+            scrollView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            scrollView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor, constant: -45),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+
+            scrollViewContainer.leftAnchor.constraint(equalTo: scrollView.leftAnchor),
+            scrollViewContainer.rightAnchor.constraint(equalTo: scrollView.rightAnchor),
+            scrollViewContainer.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            scrollViewContainer.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 10),
+            scrollViewContainer.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+
+            imageView.heightAnchor.constraint(equalToConstant: 260),
+            collectionViewPodcast.heightAnchor.constraint(equalToConstant: 200),
+            viewOffsetCollectionnView.heightAnchor.constraint(equalToConstant: 70)
+        ].forEach{$0.isActive = true}
+    }
     
     private func initCollectionView() {
         collectionViewPodcast.register(PodcastHomePageCollectionViewCell.self, forCellWithReuseIdentifier: cellPodcast)

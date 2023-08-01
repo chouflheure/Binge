@@ -1,4 +1,4 @@
-
+/*
 
 // https://medium.com/@thomsmed/expandable-and-dynamic-sized-table-header-view-and-table-footer-view-6611ce0265b4
 
@@ -381,5 +381,34 @@ extension PodcastViewController: UICollectionViewDelegate {
     private func cellDeselected(indexPath: IndexPath) {
         guard let cell = myCollectionViewPodcast?.cellForItem(at: indexPath) as? CellPodcastCollectionViewCell else {return}
         cell.imageViewPodcast.isHidden = true
+    }
+}
+*/
+
+import Lottie
+
+class PodcastViewController: UIViewController {
+    
+    private var animationView: AnimationView?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        animationView = .init(name: "workinProgress")
+
+        animationView!.frame = view.bounds
+
+        animationView!.contentMode = .scaleAspectFit
+
+        animationView!.loopMode = .loop
+
+        animationView!.animationSpeed = 0.5
+
+        view.addSubview(animationView!)
+
+        animationView!.play()
+
+        view.backgroundColor = Colors.bluePodcastPage.color
+
     }
 }

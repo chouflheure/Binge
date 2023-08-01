@@ -1,9 +1,3 @@
-//
-//  HomeViewController+CollectionView.swift
-//  BingePodcast
-//
-//  Created by charlesCalvignac on 30/07/2023.
-//
 
 import Foundation
 import UIKit
@@ -17,13 +11,16 @@ extension HomeViewController: UICollectionViewDelegate {
 
 extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        5
+        podcast.count
     }
         
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: cellPodcast, for: indexPath) as? PodcastHomePageCollectionViewCell
         guard let myCell = myCell else {return UICollectionViewCell()}
-        myCell.setup(imagePodcastName:Assets.aBientotDeTeRevoir.name, titlePodcast: titleArray[indexPath.row], authorPodcast: authorArray[indexPath.row])
+        myCell.setup(imagePodcastName: podcast[indexPath.row].image ?? "",
+                    titlePodcast: podcast[indexPath.row].title ?? "",
+                    authorPodcast: podcast[indexPath.row].author ?? "")
+        
         return myCell
     }
 }

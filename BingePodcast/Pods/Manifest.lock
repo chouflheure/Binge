@@ -1,4 +1,5 @@
 PODS:
+  - Alamofire (5.7.1)
   - Firebase (10.10.0):
     - Firebase/Core (= 10.10.0)
   - Firebase/Core (10.10.0):
@@ -85,6 +86,7 @@ PODS:
   - VBRRollingPit (1.0.1)
 
 DEPENDENCIES:
+  - Alamofire
   - Firebase
   - lottie-ios (~> 3.1)
   - SwiftGen (~> 6.0)
@@ -92,6 +94,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
+    - Alamofire
     - Firebase
     - FirebaseAnalytics
     - FirebaseCore
@@ -106,6 +109,7 @@ SPEC REPOS:
     - VBRRollingPit
 
 SPEC CHECKSUMS:
+  Alamofire: 0123a34370cb170936ae79a8df46cc62b2edeb88
   Firebase: facd334e557a979bd03a0b58d90fd56b52b8aba0
   FirebaseAnalytics: 7bc7de519111dae802f5bc0c9c083918f8b8870d
   FirebaseCore: d027ff503d37edb78db98429b11f580a24a7df2a
@@ -119,6 +123,6 @@ SPEC CHECKSUMS:
   SwiftGen: 1366a7f71aeef49954ca5a63ba4bef6b0f24138c
   VBRRollingPit: 62a79cc663aeea6a196878b3a907056617f96b6a
 
-PODFILE CHECKSUM: 349c92b2c4b80cc7606b16df021281abfd4cfd60
+PODFILE CHECKSUM: 2ed014c571bd1288be98c5c6a38e93d8420ff1b4
 
 COCOAPODS: 1.11.3
