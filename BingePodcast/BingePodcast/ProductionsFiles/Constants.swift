@@ -15,7 +15,7 @@ class Constants {
     static let spacerBetweenButton: CGFloat = 35
     static let borderRadiusButton: CGFloat = 2.5
     static let widthPlayerButton: CGFloat = widthSquarePlayPauseButton + widthSquareSeekLessButton + widthSquareSeekMoreButton + spacerBetweenButton + spacerBetweenButton + verticalGeneralMargin
-    static let verticalSmallSpacer: CGFloat = 20
+    static let verticalSmallSpacer: CGFloat = 10
     static let verticalMediumSpacer: CGFloat = 30
     static let verticalLargeSpacer: CGFloat = 50
 }

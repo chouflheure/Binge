@@ -6,7 +6,7 @@
 ##   - To know which params are supported for a template, use `swiftgen template doc xcassets swift5` to open the template documentation on GitHub.
 
  xcassets:
-    - inputs: ../BingePodcast/ProductionsFiles/Colors.xcassets
+    - inputs: ../BingePodcast/ProductionsFiles/Assets/Colors.xcassets
       outputs:
         - templatePath: template_disable_swiftFormat.stencil
           params:
@@ -14,7 +14,7 @@
             enumName: Colors
           output: ../BingePodcast/ProductionsFiles/Generated/Colors.gen.swift
 
-    - inputs: ../BingePodcast/ProductionsFiles/Assets.xcassets
+    - inputs: ../BingePodcast/ProductionsFiles/Assets/Assets.xcassets
       outputs:
         - templatePath: template_disable_swiftFormat.stencil
           params:
@@ -22,7 +22,7 @@
             enumName: Assets
           output: ../BingePodcast/ProductionsFiles/Generated/Assets.gen.swift
 
-    - inputs: ../BingePodcast/ProductionsFiles/Strings.strings
+    - inputs: ../BingePodcast/ProductionsFiles/Assets/Strings.strings
       outputs:
         - templatePath: ../Pods/SwiftGen/strings/structured-swift5
           params:

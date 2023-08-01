@@ -412,8 +412,10 @@ class FloatingTabBarViewController: UITabBar {
     
     @objc func openPlayer() {
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let setViewController = mainStoryboard.instantiateViewController(withIdentifier: "PlayerViewController")
+        let setViewController = mainStoryboard.instantiateViewController(withIdentifier: "PlayerViewController") as? PlayerViewController
+        setViewController?.isReturnButtonChevronLeft = false
         let rootViewController = self.window!.rootViewController
+        guard let setViewController = setViewController else {return}
         rootViewController?.present(setViewController, animated: true, completion: nil)
     }
     

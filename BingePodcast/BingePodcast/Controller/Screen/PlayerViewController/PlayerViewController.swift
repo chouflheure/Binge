@@ -213,31 +213,6 @@ class PlayerViewController: UIViewController {
         setupDescription()
     }
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .darkContent
-    }
-    
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
-
-    // MARK: - Init
-    /*
-    init(isFavorite: Bool, isReturnButtonChevronLeft: Bool, imageViewPlayer: UIStackView, slider: UISlider, spendTime: UILabel, totalTime: UILabel) {
-        self.isFavorite = isFavorite
-        self.isReturnButtonChevronLeft = isReturnButtonChevronLeft
-        self.imageViewPlayer = imageViewPlayer
-        self.slider = slider
-        self.spendTime = spendTime
-        self.totalTime = totalTime
-        super.init(nibName: nil, bundle: nil)
-    }
-    */
-    /*/
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    */
 
     private func setupUI() {
         setupGradient()

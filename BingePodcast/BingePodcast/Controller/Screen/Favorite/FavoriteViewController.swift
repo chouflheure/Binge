@@ -249,8 +249,10 @@ extension FavoriteViewController: UIViewControllerTransitioningDelegate {
 extension FavoriteViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let secondVC = self.storyboard?.instantiateViewController(withIdentifier: "PlayerViewController")
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let secondVC = mainStoryboard.instantiateViewController(withIdentifier: "PlayerViewController") as? PlayerViewController
         guard let secondVC = secondVC else {return}
+        secondVC.isReturnButtonChevronLeft = true
         secondVC.modalPresentationStyle = .custom
         secondVC.transitioningDelegate = self
 
