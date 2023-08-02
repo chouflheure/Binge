@@ -27,14 +27,14 @@ class HomePageModel {
             case .success(let data):
                 guard let data = data else {return}
                 print("@@@ data = \(data)")
-                self.homePageDelegate?.test(result: data)
+                self.homePageDelegate?.fetchPodcastListAndShowOnHomePage(result: data)
             case .failure(let error):
                 print(error.localizedDescription)
             }
         }
     }
 
-    func fetchDataOnPosdcastFirebase() {
+    func testfetchDataOnPosdcastFirebase() {
         firebaseService.fetchDataOnPosdcastFirebase { result in
             print("@@@ ==============")
 
@@ -42,6 +42,12 @@ class HomePageModel {
                 print("@@@ data episode = \(podcast)")
             }
         }
+    }
+    
+    func test() {
+        firebaseService.fetchRandomPodcast(onCompletion: { result in
+            print("@@@ number = \(result)")
+        })
     }
 
 }

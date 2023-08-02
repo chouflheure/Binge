@@ -101,6 +101,7 @@
 		1DCAD9A02A793A630048C87D /* PresentDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCAD99F2A793A630048C87D /* PresentDescription.swift */; };
 		1DCAD9A22A793A8F0048C87D /* DismissDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCAD9A12A793A8F0048C87D /* DismissDescription.swift */; };
 		1DD7263A2A45D86400CD6D16 /* FloatingTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD726392A45D86400CD6D16 /* FloatingTabBarViewController.swift */; };
+		1DE2E5322A79B1D80031F55F /* HomeViewCotroller+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE2E5312A79B1D80031F55F /* HomeViewCotroller+Delegate.swift */; };
 		1DE5254E2A483391008132B0 /* PodcastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE5254D2A483391008132B0 /* PodcastViewController.swift */; };
 		1DE525532A485325008132B0 /* CellEpisodeTabViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE525512A485325008132B0 /* CellEpisodeTabViewCell.swift */; };
 		1DE525542A485325008132B0 /* CellEpisodeTabViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DE525522A485325008132B0 /* CellEpisodeTabViewCell.xib */; };
@@ -199,6 +200,7 @@
 		1DCAD99F2A793A630048C87D /* PresentDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentDescription.swift; sourceTree = "<group>"; };
 		1DCAD9A12A793A8F0048C87D /* DismissDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissDescription.swift; sourceTree = "<group>"; };
 		1DD726392A45D86400CD6D16 /* FloatingTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingTabBarViewController.swift; sourceTree = "<group>"; };
+		1DE2E5312A79B1D80031F55F /* HomeViewCotroller+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewCotroller+Delegate.swift"; sourceTree = "<group>"; };
 		1DE5254D2A483391008132B0 /* PodcastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastViewController.swift; sourceTree = "<group>"; };
 		1DE525512A485325008132B0 /* CellEpisodeTabViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellEpisodeTabViewCell.swift; sourceTree = "<group>"; };
 		1DE525522A485325008132B0 /* CellEpisodeTabViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CellEpisodeTabViewCell.xib; sourceTree = "<group>"; };
@@ -378,6 +380,7 @@
 			children = (
 				1D0AC2682A605F960029EAAE /* HomeViewController.swift */,
 				1D2A2EAD2A76D03900ABD880 /* HomeViewController+CollectionView.swift */,
+				1DE2E5312A79B1D80031F55F /* HomeViewCotroller+Delegate.swift */,
 			);
 			path = HomeViewController;
 			sourceTree = "<group>";
@@ -871,6 +874,7 @@
 				1D2A2EA52A76CAE700ABD880 /* PlayerViewController+ActionButton.swift in Sources */,
 				1D187A002A2CC8AA00827277 /* BingePodcast.xcdatamodeld in Sources */,
 				1D18439C2A65469400A5129E /* PageListFavorite.swift in Sources */,
+				1DE2E5322A79B1D80031F55F /* HomeViewCotroller+Delegate.swift in Sources */,
 				1DCA9ECE2A35FD22008ED92E /* PlayerAudioService.swift in Sources */,
 				1DCA33BD2A711EEC00120500 /* PlayerObserver.swift in Sources */,
 				1D2A2EA72A76CEA300ABD880 /* PlayerViewController_Description.swift in Sources */,

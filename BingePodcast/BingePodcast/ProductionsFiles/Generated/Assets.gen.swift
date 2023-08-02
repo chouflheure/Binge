@@ -49,6 +49,7 @@ internal enum Assets {
     internal static let thumb = ImageAsset(name: "thumb")
     internal static let timer = ImageAsset(name: "timer")
   }
+  internal static let placeholderImage = ImageAsset(name: "placeholderImage")
 }
 
 // MARK: - Implementation Details

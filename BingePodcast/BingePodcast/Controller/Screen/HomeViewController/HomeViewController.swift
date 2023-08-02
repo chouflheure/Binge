@@ -2,19 +2,13 @@ import UIKit
 import Firebase
 import Alamofire
 
-class HomeViewController: UIViewController, HomePageDelegate {
+class HomeViewController: UIViewController {
     
     var podcast = [Podcast]()
     var image = [UIImage]()
     
     let cellPodcast = "cellPodcast"
     private let homePageModel = HomePageModel()
-    
-    
-    func test(result: [Podcast]) {
-        podcast = result
-        collectionViewPodcast.reloadData()
-    }
     
     var imageViewTest = UIImageView()
     
@@ -26,6 +20,7 @@ class HomeViewController: UIViewController, HomePageDelegate {
         setGradientBackground()
         homePageModel.homePageDelegate = self
         homePageModel.fetchAllPodcast()
+        homePageModel.test()
         // HomePageModel().test()
         
         print("@@@ Podcast = \(podcast)")
@@ -116,25 +111,25 @@ class HomeViewController: UIViewController, HomePageDelegate {
     }()
 
     let switchPlayerFirst: SwitchPlayer = {
+        let episode1 = Episode(title: "EPISODE 16", subtitle: "Romance et soumission Deuxième partie", description: "", totalTime: "", imageUrl: Assets.aBientotDeTeRevoir.name, playerUrl: "")
+
         let switchPlayerFirst = SwitchPlayer(
-            title: "EPISODE 78",
-            subtitle: "Cuisines indiennes, clichés en sauce, et ça pique",
-            imageString: Assets.aBientotDeTeRevoir.name
+            episode: episode1
         )
         switchPlayerFirst.translatesAutoresizingMaskIntoConstraints = false
         return switchPlayerFirst
     }()
-
+    
     let switchPlayerSecond: SwitchPlayer = {
+        let episode2 = Episode(title: "EPISODE 82", subtitle: "Cuisines indiennes, clichés en sauce", description: "", totalTime: "", imageUrl: "https://back.bingeaudio.fr/wp-content/uploads/2019/07/Channel_itunes_logo_v2-768x768.png", playerUrl: "")
+
         let switchPlayerSecond = SwitchPlayer(
-            title: "EPISODE 90",
-            subtitle: "Cuisines indiennes",
-            imageString: Assets.aBientotDeTeRevoir.name
+            episode: episode2
         )
         switchPlayerSecond.translatesAutoresizingMaskIntoConstraints = false
         return switchPlayerSecond
     }()
-    
+
     let titlePodcast: UILabel = {
         let label = UILabel()
         label.text = "Nos Podcasts"
@@ -174,7 +169,7 @@ class HomeViewController: UIViewController, HomePageDelegate {
     
     private func setupScrollView() {
         view.addSubview(scrollView)
-        
+
         scrollView.addSubview(scrollViewContainer)
         scrollViewContainer.addArrangedSubview(imageView)
         scrollViewContainer.addArrangedSubview(spacingImageWithTitle)

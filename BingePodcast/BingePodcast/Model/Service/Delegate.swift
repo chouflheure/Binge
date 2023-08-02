@@ -3,7 +3,7 @@ import UIKit
 
 protocol HomePageDelegate: AnyObject {
 
-    func test(result: [Podcast])
+    func fetchPodcastListAndShowOnHomePage(result: [Podcast])
 }
 
 protocol ListRecipeDelegate: AnyObject {

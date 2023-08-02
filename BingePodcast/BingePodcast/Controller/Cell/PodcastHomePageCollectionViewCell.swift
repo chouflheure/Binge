@@ -89,16 +89,17 @@ class PodcastHomePageCollectionViewCell: UICollectionViewCell {
         self.author.text = authorPodcast
         
         // configure(urlString: imagePodcastName)
-        
+        imagePodcast.image = Assets.placeholderImage.image
+
         downloadImage(imagePodcastName) {
-              image, urlString in
-                 if let imageObject = image {
+            image, urlString in
+                if let imageObject = image {
                     // performing UI operation on main thread
                     DispatchQueue.main.async {
                         self.imagePodcast.image = imageObject
                     }
-                 }
-              }
+                }
+        }
         // imagePodcast.image = UIImage(named: imagePodcastName)
 
         // color
