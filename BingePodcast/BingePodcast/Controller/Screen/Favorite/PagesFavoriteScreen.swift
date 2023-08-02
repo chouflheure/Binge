@@ -1,10 +1,3 @@
-//
-//  PagesFavoriteScreen.swift
-//  BingePodcast
-//
-//  Created by charlesCalvignac on 17/07/2023.
-//
-
 import Foundation
 
 enum PagesFavoriteScreen: CaseIterable {

@@ -1,10 +1,3 @@
-//
-//  EpisodeCell.swift
-//  BingePodcast
-//
-//  Created by charlesCalvignac on 25/06/2023.
-//
-
 import UIKit
 
 class CellEpisodeTabViewCell: UITableViewCell {

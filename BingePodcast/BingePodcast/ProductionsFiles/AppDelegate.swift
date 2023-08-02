@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  BingePodcast
-//
-//  Created by charlesCalvignac on 04/06/2023.
-//
-
 import UIKit
 import CoreData
 import Firebase

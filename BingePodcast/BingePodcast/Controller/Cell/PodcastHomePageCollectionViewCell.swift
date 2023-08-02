@@ -1,10 +1,3 @@
-//
-//  PodcastHomePageCollectionViewCell.swift
-//  BingePodcast
-//
-//  Created by charlesCalvignac on 12/07/2023.
-//
-
 import UIKit
 import Alamofire
 

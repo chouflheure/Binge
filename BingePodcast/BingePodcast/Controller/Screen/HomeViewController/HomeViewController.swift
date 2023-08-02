@@ -19,8 +19,8 @@ class HomeViewController: UIViewController {
         initCollectionView()
         setGradientBackground()
         homePageModel.homePageDelegate = self
-        homePageModel.fetchAllPodcast()
-        homePageModel.test()
+        // homePageModel.fetchAllPodcast()
+        // homePageModel.test()
         // HomePageModel().test()
         
         print("@@@ Podcast = \(podcast)")

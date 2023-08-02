@@ -1,10 +1,3 @@
-//
-//  Constants.swift
-//  BingePodcast
-//
-//  Created by charlesCalvignac on 19/06/2023.
-//
-
 import Foundation
 
 class Constants {

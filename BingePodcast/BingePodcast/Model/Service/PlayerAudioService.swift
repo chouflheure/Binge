@@ -1,4 +1,3 @@
-
 import Foundation
 import AVFoundation
 
@@ -15,7 +14,7 @@ class PlayerAudioService {
             let playerItem = AVPlayerItem(url: url)
 
             testAudio = AVPlayer(playerItem: playerItem)
-            testAudio.volume = 0
+            testAudio.volume = 1
             testAudio.play()
         } catch let error as NSError {
             print("@@@ player = \(error.localizedDescription)")
