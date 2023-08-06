@@ -173,11 +173,9 @@ class SwitchPlayer: UIView {
         titleLabel.text = episode.title
         subtitleLabel.text = episode.subtitle
         imageCircle.image = Assets.placeholderImage.image
-        print("@@@  episode.imageUrl = \(episode.imageUrl)")
         guard let imageUrl = episode.imageUrl else {return}
         downloadImage(imageUrl) {
             image, imageUrl  in
-            print("@@@ image = \(imageUrl)")
                 if let imageObject = image {
                     // performing UI operation on main thread
                     print("@@@ imageObject = \(imageObject)")

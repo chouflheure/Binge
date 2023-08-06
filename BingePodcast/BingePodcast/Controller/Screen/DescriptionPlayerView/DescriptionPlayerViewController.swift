@@ -1,50 +1,31 @@
-
 import Foundation
 import UIKit
 
 class DescriptionPlayerViewController: UIViewController {
 
+    var titleText = String()
+    var authorName = String()
+    var imageAuthorName = String()
+    var descriptionText = String()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        view.addSubview(scrollView)
-        scrollView.addSubview(scrollViewContainer)
-        
-        headerDescription()
-        scrollView.backgroundColor = Colors.purpleGradientMax.color.withAlphaComponent(0.8)
-        descriptionPart()
-
-        scrollView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        scrollView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-
-        scrollViewContainer.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 30).isActive = true
-        
-        scrollViewContainer.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
-        scrollViewContainer.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
-        scrollViewContainer.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width - 60).isActive = true
-        
-        imageReturn.addTarget(self, action: #selector(actionReturnButton), for: .touchDown)
+        setupScrollView()
+        setupTextView(descriptionText: descriptionText)
+        setupHeader(title: titleText, author: authorName, imageName: imageAuthorName)
     }
 
-    @objc func actionReturnButton() {
-        dismiss(animated: true)
-    }
-    
     let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
-
+        scrollView.showsVerticalScrollIndicator = false
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
     }()
 
     let scrollViewContainer: UIStackView = {
         let view = UIStackView()
-
         view.axis = .vertical
         view.spacing = 10
-
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -52,7 +33,6 @@ class DescriptionPlayerViewController: UIViewController {
     let titlePodcast: UILabel = {
         let label = UILabel()
         label.textColor = Colors.white.color
-        label.text = "À bientôt te revoir"
         label.font = UIFont(name: .fonts.proximaNova_Bold.fontName(), size: 20)
         label.textColor = .white
         label.backgroundColor = .clear
@@ -61,7 +41,6 @@ class DescriptionPlayerViewController: UIViewController {
 
     let authorPodcast: UILabel = {
         let label = UILabel()
-        label.text = "Remi Sourcier"
         label.font = UIFont(name: .fonts.proximaNova_Regular.fontName(), size: 12)
         label.textColor = .white
         label.sizeToFit()
@@ -87,30 +66,11 @@ class DescriptionPlayerViewController: UIViewController {
     
     let descriptionPodcast: UITextView = {
         let textView = UITextView()
-        
-        
-        
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.sizeToFit()
         textView.isScrollEnabled = false
         textView.isUserInteractionEnabled = false
-
-        let string = """
-            Cet été, A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices. Cet été, A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices. Cet été, A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices.
-            """
-
-        
-        
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineSpacing = 10
-        let attributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.paragraphStyle: paragraphStyle]
-        let attributedString = NSAttributedString(string: string, attributes: attributes)
-        textView.attributedText = attributedString
-        
-        textView.font = UIFont(name: .fonts.proximaNova_Alt_Light.fontName(), size: 18)
-        textView.textColor = Colors.white.color
         textView.backgroundColor = .clear
-        
         return textView
     }()
     
@@ -149,6 +109,27 @@ class DescriptionPlayerViewController: UIViewController {
         return stack
     }()
     
+    private func setupScrollView() {
+        view.addSubview(scrollView)
+        scrollView.addSubview(scrollViewContainer)
+        
+        headerDescription()
+        scrollView.backgroundColor = Colors.purpleGradientMax.color.withAlphaComponent(1)
+        descriptionPart()
+
+        scrollView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        scrollView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+
+        scrollViewContainer.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 30).isActive = true
+        scrollViewContainer.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
+        scrollViewContainer.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
+        scrollViewContainer.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width - 60).isActive = true
+
+        imageReturn.addTarget(self, action: #selector(actionReturnButton), for: .touchDown)
+    }
+
     private func headerDescription() {
        
         let viewTopImageButton = UIView()
@@ -164,34 +145,26 @@ class DescriptionPlayerViewController: UIViewController {
             viewTopImageButton.heightAnchor.constraint(equalToConstant: (50 - 33)/2),
             viewBottomImageButton.heightAnchor.constraint(equalToConstant: (50 - 33)/2),
         ].forEach{$0.isActive = true}
-        
-        
-        
+
         let viewBetweenTitle = UIView()
-        
-        
-        
+
         let spaceBeteweenReturnBtnAndTitle = UIView()
         spaceBeteweenReturnBtnAndTitle.translatesAutoresizingMaskIntoConstraints = false
         
         let spaceBeteweenTitleAndImageAuthor = UIView()
         spaceBeteweenTitleAndImageAuthor.translatesAutoresizingMaskIntoConstraints = false
-        
-        
+
         stackHeaderSDescription.addArrangedSubview(stackImageReturn)
         stackHeaderSDescription.addArrangedSubview(spaceBeteweenReturnBtnAndTitle)
         stackHeaderSDescription.addArrangedSubview(stackTitle)
         stackHeaderSDescription.addArrangedSubview(spaceBeteweenTitleAndImageAuthor)
         stackHeaderSDescription.addArrangedSubview(imageAuthor)
-        
-        
 
         stackTitle.addArrangedSubview(titlePodcast)
         stackTitle.addArrangedSubview(viewBetweenTitle)
         stackTitle.addArrangedSubview(authorPodcast)
 
         stackTitle.translatesAutoresizingMaskIntoConstraints = false
-
         [
             titlePodcast.topAnchor.constraint(equalTo: stackTitle.topAnchor),
             authorPodcast.bottomAnchor.constraint(equalTo: stackTitle.bottomAnchor),
@@ -203,8 +176,7 @@ class DescriptionPlayerViewController: UIViewController {
             spaceBeteweenReturnBtnAndTitle.widthAnchor.constraint(equalToConstant: 10),
             
         ].forEach{$0.isActive = true}
-        
-        
+
         let viewTopHeaderDescription = UIView()
         scrollViewContainer.addArrangedSubview(viewTopHeaderDescription)
 
@@ -243,6 +215,26 @@ class DescriptionPlayerViewController: UIViewController {
             spaceBetweenHeaderAndDescription.heightAnchor.constraint(equalToConstant: 40),
             spaceBetweenTitleAndDescription.heightAnchor.constraint(equalToConstant: 15),
         ].forEach{$0.isActive = true}
+    }
+    
+    @objc private func actionReturnButton() {
+        dismiss(animated: true)
+    }
+    
+    private func setupTextView(descriptionText: String) {
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 10
+        let attributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.paragraphStyle: paragraphStyle]
+        let attributedString = NSAttributedString(string: descriptionText, attributes: attributes)
+        descriptionPodcast.attributedText = attributedString
+        descriptionPodcast.font = UIFont(name: .fonts.proximaNova_Alt_Light.fontName(), size: 18)
+        descriptionPodcast.textColor = Colors.white.color
+    }
+    
+    private func setupHeader(title: String, author: String, imageName: String) {
+        titlePodcast.text = title
+        authorPodcast.text = author
+        imageAuthor.image = UIImage(named: imageName)
     }
     
 }

@@ -28,8 +28,7 @@ class AnimationPlayerDescriptionDismiss: NSObject, UIViewControllerAnimatedTrans
         let fromView = fromVC.view!
         let toView = transitionContext.viewController(forKey: .to)!.view!
         
-        var toViewInitialFrame = fromViewInitialFrame
-        toViewInitialFrame.origin.y = -toView.frame.size.height
+        let toViewInitialFrame = fromViewInitialFrame
         
         toView.frame = toViewInitialFrame
            

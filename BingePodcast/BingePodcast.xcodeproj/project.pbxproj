@@ -30,11 +30,10 @@
 		1D187A102A2CC8AE00827277 /* BingePodcastTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D187A0F2A2CC8AE00827277 /* BingePodcastTests.swift */; };
 		1D187C932A49C74C00D67271 /* TestTransitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D187C922A49C74C00D67271 /* TestTransitionViewController.swift */; };
 		1D187C992A49D98600D67271 /* UIPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D187C982A49D98600D67271 /* UIPageViewController.swift */; };
-		1D28CA152A673644005AFDF0 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D28CA142A673644005AFDF0 /* UIViewController.swift */; };
 		1D2A2E4A2A73D16000ABD880 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2A2E492A73D16000ABD880 /* UIStackView.swift */; };
 		1D2A2EA32A76CAA800ABD880 /* PlayerViewController+Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2A2EA22A76CAA800ABD880 /* PlayerViewController+Transition.swift */; };
 		1D2A2EA52A76CAE700ABD880 /* PlayerViewController+ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2A2EA42A76CAE700ABD880 /* PlayerViewController+ActionButton.swift */; };
-		1D2A2EA72A76CEA300ABD880 /* PlayerViewController_Description.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2A2EA62A76CEA300ABD880 /* PlayerViewController_Description.swift */; };
+		1D2A2EA72A76CEA300ABD880 /* PlayerViewControllerDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2A2EA62A76CEA300ABD880 /* PlayerViewControllerDescription.swift */; };
 		1D2A2EA92A76CF2F00ABD880 /* ReturnViewForPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2A2EA82A76CF2F00ABD880 /* ReturnViewForPlayerViewController.swift */; };
 		1D2A2EAB2A76CF8B00ABD880 /* PlayerViewForPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2A2EAA2A76CF8B00ABD880 /* PlayerViewForPlayerViewController.swift */; };
 		1D2A2EAE2A76D03900ABD880 /* HomeViewController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2A2EAD2A76D03900ABD880 /* HomeViewController+CollectionView.swift */; };
@@ -155,11 +154,10 @@
 		1D187A152A2CC8AE00827277 /* BingePodcastUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BingePodcastUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D187C922A49C74C00D67271 /* TestTransitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTransitionViewController.swift; sourceTree = "<group>"; };
 		1D187C982A49D98600D67271 /* UIPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPageViewController.swift; sourceTree = "<group>"; };
-		1D28CA142A673644005AFDF0 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		1D2A2E492A73D16000ABD880 /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 		1D2A2EA22A76CAA800ABD880 /* PlayerViewController+Transition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlayerViewController+Transition.swift"; sourceTree = "<group>"; };
 		1D2A2EA42A76CAE700ABD880 /* PlayerViewController+ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlayerViewController+ActionButton.swift"; sourceTree = "<group>"; };
-		1D2A2EA62A76CEA300ABD880 /* PlayerViewController_Description.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController_Description.swift; sourceTree = "<group>"; };
+		1D2A2EA62A76CEA300ABD880 /* PlayerViewControllerDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewControllerDescription.swift; sourceTree = "<group>"; };
 		1D2A2EA82A76CF2F00ABD880 /* ReturnViewForPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReturnViewForPlayerViewController.swift; sourceTree = "<group>"; };
 		1D2A2EAA2A76CF8B00ABD880 /* PlayerViewForPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewForPlayerViewController.swift; sourceTree = "<group>"; };
 		1D2A2EAD2A76D03900ABD880 /* HomeViewController+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+CollectionView.swift"; sourceTree = "<group>"; };
@@ -276,11 +274,11 @@
 		1D0AC26F2A619A810029EAAE /* Screen */ = {
 			isa = PBXGroup;
 			children = (
-				1D2A2EAF2A76D0EA00ABD880 /* DescriptionPlayerViewController */,
-				1D2A2EAC2A76D00300ABD880 /* HomeViewController */,
-				1D2A2EA12A76CA7900ABD880 /* PlayerViewController */,
+				1D2A2EAF2A76D0EA00ABD880 /* DescriptionPlayerView */,
+				1D2A2EAC2A76D00300ABD880 /* HomeView */,
+				1D2A2EA12A76CA7900ABD880 /* PlayerView */,
 				1D18448A2A65A02B00A5129E /* PodcastScreen */,
-				1D18439A2A65467A00A5129E /* Favorite */,
+				1D18439A2A65467A00A5129E /* FavoriteScreen */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -303,14 +301,14 @@
 			path = "New Group";
 			sourceTree = "<group>";
 		};
-		1D18439A2A65467A00A5129E /* Favorite */ = {
+		1D18439A2A65467A00A5129E /* FavoriteScreen */ = {
 			isa = PBXGroup;
 			children = (
 				1D0AC26D2A6198460029EAAE /* FavoriteViewController.swift */,
 				1D18439B2A65469400A5129E /* PageListFavorite.swift */,
 				1D1844882A659CED00A5129E /* PagesFavoriteScreen.swift */,
 			);
-			path = Favorite;
+			path = FavoriteScreen;
 			sourceTree = "<group>";
 		};
 		1D18448A2A65A02B00A5129E /* PodcastScreen */ = {
@@ -362,35 +360,35 @@
 			path = BingePodcastTests;
 			sourceTree = "<group>";
 		};
-		1D2A2EA12A76CA7900ABD880 /* PlayerViewController */ = {
+		1D2A2EA12A76CA7900ABD880 /* PlayerView */ = {
 			isa = PBXGroup;
 			children = (
 				1D30400C2A6805850089C2F7 /* PlayerViewController.swift */,
 				1D2A2EA22A76CAA800ABD880 /* PlayerViewController+Transition.swift */,
 				1D2A2EA42A76CAE700ABD880 /* PlayerViewController+ActionButton.swift */,
-				1D2A2EA62A76CEA300ABD880 /* PlayerViewController_Description.swift */,
+				1D2A2EA62A76CEA300ABD880 /* PlayerViewControllerDescription.swift */,
 				1D2A2EA82A76CF2F00ABD880 /* ReturnViewForPlayerViewController.swift */,
 				1D2A2EAA2A76CF8B00ABD880 /* PlayerViewForPlayerViewController.swift */,
 			);
-			path = PlayerViewController;
+			path = PlayerView;
 			sourceTree = "<group>";
 		};
-		1D2A2EAC2A76D00300ABD880 /* HomeViewController */ = {
+		1D2A2EAC2A76D00300ABD880 /* HomeView */ = {
 			isa = PBXGroup;
 			children = (
 				1D0AC2682A605F960029EAAE /* HomeViewController.swift */,
 				1D2A2EAD2A76D03900ABD880 /* HomeViewController+CollectionView.swift */,
 				1DE2E5312A79B1D80031F55F /* HomeViewCotroller+Delegate.swift */,
 			);
-			path = HomeViewController;
+			path = HomeView;
 			sourceTree = "<group>";
 		};
-		1D2A2EAF2A76D0EA00ABD880 /* DescriptionPlayerViewController */ = {
+		1D2A2EAF2A76D0EA00ABD880 /* DescriptionPlayerView */ = {
 			isa = PBXGroup;
 			children = (
 				1D18448B2A65A06400A5129E /* DescriptionPlayerViewController.swift */,
 			);
-			path = DescriptionPlayerViewController;
+			path = DescriptionPlayerView;
 			sourceTree = "<group>";
 		};
 		1D2A2EB02A76D11300ABD880 /* Animation */ = {
@@ -407,6 +405,7 @@
 		1D2A2EB92A78787800ABD880 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				1D55E28F2A408B2200F1A9BD /* Constants.swift */,
 				1D986AA32A2DF33F00D26CEB /* Strings.strings */,
 				1D986AA92A2E089C00D26CEB /* CustomFonts */,
 				1D18448D2A65B66600A5129E /* Assets.xcassets */,
@@ -450,6 +449,7 @@
 		1D9869CC2A2D19AC00D26CEB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				1DC460CE2A7BEF0F00D63CB3 /* FloatingTabBar */,
 				1DD726392A45D86400CD6D16 /* FloatingTabBarViewController.swift */,
 				1D2A2EB02A76D11300ABD880 /* Animation */,
 				1D1843952A65457D00A5129E /* New Group */,
@@ -472,7 +472,6 @@
 				1D1879F72A2CC8AA00827277 /* SceneDelegate.swift */,
 				1D1879F52A2CC8AA00827277 /* AppDelegate.swift */,
 				1D1879FE2A2CC8AA00827277 /* BingePodcast.xcdatamodeld */,
-				1D55E28F2A408B2200F1A9BD /* Constants.swift */,
 			);
 			path = ProductionsFiles;
 			sourceTree = "<group>";
@@ -503,6 +502,13 @@
 			path = CustomFonts;
 			sourceTree = "<group>";
 		};
+		1DC460CE2A7BEF0F00D63CB3 /* FloatingTabBar */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FloatingTabBar;
+			sourceTree = "<group>";
+		};
 		1DCAD99E2A7934EA0048C87D /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
@@ -522,7 +528,6 @@
 				1DA63F0F2A41F79D0013BB86 /* UIFloat.swift */,
 				1D187C982A49D98600D67271 /* UIPageViewController.swift */,
 				1D0AC2702A629FE40029EAAE /* CALayer.swift */,
-				1D28CA142A673644005AFDF0 /* UIViewController.swift */,
 				1D2A2E492A73D16000ABD880 /* UIStackView.swift */,
 			);
 			path = Extension;
@@ -877,9 +882,8 @@
 				1DE2E5322A79B1D80031F55F /* HomeViewCotroller+Delegate.swift in Sources */,
 				1DCA9ECE2A35FD22008ED92E /* PlayerAudioService.swift in Sources */,
 				1DCA33BD2A711EEC00120500 /* PlayerObserver.swift in Sources */,
-				1D2A2EA72A76CEA300ABD880 /* PlayerViewController_Description.swift in Sources */,
+				1D2A2EA72A76CEA300ABD880 /* PlayerViewControllerDescription.swift in Sources */,
 				1D0AC26E2A6198460029EAAE /* FavoriteViewController.swift in Sources */,
-				1D28CA152A673644005AFDF0 /* UIViewController.swift in Sources */,
 				1D55E2922A409CB000F1A9BD /* UIButton.swift in Sources */,
 				1D2A2EAE2A76D03900ABD880 /* HomeViewController+CollectionView.swift in Sources */,
 				1D1844892A659CED00A5129E /* PagesFavoriteScreen.swift in Sources */,

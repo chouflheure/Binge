@@ -1,10 +1,3 @@
-//
-//  CALayer.swift
-//  BingePodcast
-//
-//  Created by charlesCalvignac on 15/07/2023.
-//
-
 import Foundation
 import QuartzCore
 import UIKit

@@ -1,10 +1,3 @@
-//
-//  Decode.swift
-//  BingePodcast
-//
-//  Created by charlesCalvignac on 31/07/2023.
-//
-
 import Foundation
 
 public struct Author {

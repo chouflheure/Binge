@@ -1,10 +1,3 @@
-//
-//  FavoriteTableViewCell.swift
-//  BingePodcast
-//
-//  Created by charlesCalvignac on 14/07/2023.
-//
-
 import UIKit
 
 class FavoriteTableViewCell: UITableViewCell {

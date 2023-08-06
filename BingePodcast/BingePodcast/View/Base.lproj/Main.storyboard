@@ -5,7 +5,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -35,7 +34,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="INh-yi-Cd5"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="2Z5-bt-55d"/>
                 </viewController>
@@ -51,7 +49,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="O8P-hs-rAm"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W4r-Wi-yyg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -62,11 +59,10 @@
         <scene sceneID="uo4-sw-gL4">
             <objects>
                 <viewController id="YsL-op-ptH" customClass="PodcastViewController" customModule="BingePodcast" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="kDD-2r-wMl">
+                    <view key="view" contentMode="scaleToFill" id="kDD-2r-wMl" customClass="PodcastHomePage">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="NWm-zX-B8Z"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Podcast" image="tab_bar_icon_podcast_unselected" selectedImage="tab_bar_icon_podcast_selected" id="dqK-0d-Doz"/>
                 </viewController>
@@ -82,7 +78,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="9fS-Ni-1ny"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Accueil" image="tab_bar_icon_home_unselected" selectedImage="tab_bar_icon_home_selected" id="HSg-rc-y5S"/>
                 </viewController>
@@ -120,8 +115,5 @@
         <image name="tab_bar_icon_home_unselected" width="21.999998092651367" height="22.003536224365234"/>
         <image name="tab_bar_icon_podcast_selected" width="22.999988555908203" height="23"/>
         <image name="tab_bar_icon_podcast_unselected" width="21.999998092651367" height="22.601316452026367"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>
