@@ -8,13 +8,13 @@ class ViewController: UIViewController {
     var testAudio = PlayerAudioService()
     var leftOffPlaybackTime = CMTime()
     let urlString = "https://sphinx.acast.com/a-bientot-de-te-revoir/la-presque-100eme/media.mp3"
-
-
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        testAudio.play(url: URL(string: urlString)!)
+        let url = URL(string: urlString)!
+        testAudio.play(url: url)
+        
     }
 
     @IBAction func playBtn(_ sender: Any) {

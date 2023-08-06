@@ -1,11 +1,17 @@
 import Foundation
+import CoreMedia
 import UIKit
 
 extension PlayerViewController {
     
     @objc func actionSliderValueChanged(_ sender: Any) {
-        print("@@@ actionnSlider")
+        player.pause()
         spendTime.text = spendTime.text?.secondsToHoursMinutesSecondsToString(Int(slider.value))
+    }
+    
+    @objc func sliderDidEndSliding(_ sender: Any) {
+        print("@@@ action Slider, spendTime = \(spendTime.text)")
+        print("@@@ sliderValue = \(slider.value)")
     }
     
     @objc func actionPressButtonLightColor(_ sender: UIButton) {
@@ -15,8 +21,6 @@ extension PlayerViewController {
     }
     
     @objc func actionPressFavoriteButton(_ sender: UIButton) {
-        print("@@@ click favorite")
-
         var imageString = String()
         if isFavorite {
             imageString = Assets.Picto.Favorite.favoriteSelectedWhite.name
@@ -30,7 +34,16 @@ extension PlayerViewController {
     
     @objc func actionPressMoinsSeekButton(_ sender: UIButton) {
         sender.layer.borderColor = Colors.darkBlue.color.withAlphaComponent(0.3).cgColor
-        print("@@@ click moins seek")
+        /*
+        player.pause()
+        let timescale = player.leftOffPlaybackTime.timescale
+        if player.leftOffPlaybackTime.value > player.leftOffPlaybackTime.timescale {
+            player.leftOffPlaybackTime.value -= (10 * Int64(timescale))
+        } else {
+            player.leftOffPlaybackTime.value = 0
+        }
+        player.playResume()
+         */
     }
     
     @objc func actionPressPlayPauseButton(_ sender: UIButton) {
@@ -39,25 +52,41 @@ extension PlayerViewController {
         var imageString = String()
         if isPlaying {
             imageString = Assets.Picto.pause.name
+            //player.playResume()
         } else {
             imageString = Assets.Picto.Play.play.name
+            player.pause()
         }
         isPlaying = !isPlaying
 
-        sender.changeSizeButton(button: sender, imageWidth: Constants.widthSquarePlayPauseButton / 2, imageString: imageString)
-        print("@@@ click play pause")
+        sender.changeSizeButton(button: sender,
+                                imageWidth: Constants.widthSquarePlayPauseButton / 2,
+                                imageString: imageString
+        )
+
     }
     
     @objc func actionPressPlusSeekButton(_ sender: UIButton) {
         sender.layer.borderColor = Colors.darkBlue.color.withAlphaComponent(0.3).cgColor
-        print("@@@ click plus seek")
+        player.pause()
+       /*
+        let timescale = player.leftOffPlaybackTime.timescale
+        player.leftOffPlaybackTime.value += (10 * Int64(timescale))
+        player.playResume()
+        */
     }
     
     @objc func actionFullScreenButton(_ sender: UIButton) {
-
-        let playerVC = self.storyboard?.instantiateViewController(withIdentifier: "DescriptionPlayerViewController")
+        let playerVC = self.storyboard?.instantiateViewController(withIdentifier: "DescriptionPlayerViewController") as? DescriptionPlayerViewController
         playerVC?.modalPresentationStyle = .custom
         playerVC?.transitioningDelegate = self
+        playerVC?.descriptionText = """
+        Cet été, A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices. Cet été, A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices. Cet été, A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices.<3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3
+        """
+        playerVC?.titleText = "A bietot de te revoir"
+        playerVC?.authorName = "Remi Sourcier"
+        playerVC?.imageAuthorName = Assets.aBientotDeTeRevoir.name
+
         guard let playerVC = playerVC else {return}
         self.present(playerVC, animated: true, completion: nil)
     }
@@ -68,11 +97,14 @@ extension PlayerViewController {
     
     @objc func shareAll(_ sender: UITapGestureRecognizer) {
         let text = "Écoute ce podcast sur Binge Audio"
-        let myWebsite = NSURL(string:"https://www.binge.audio/podcast/le-coeur-sur-la-table/romance-et-soumission-premiere-partie")
-        let shareAll = [text, myWebsite!] as [Any]
-        let activityViewController = UIActivityViewController(activityItems: shareAll, applicationActivities: nil)
-        activityViewController.popoverPresentationController?.sourceView = self.view
-        self.present(activityViewController, animated: true, completion: nil)
+        let linkPodcast = URL(string:"https://www.binge.audio/podcast/le-coeur-sur-la-table/romance-et-soumission-premiere-partie")
+        if let linkPodcast = linkPodcast {
+            let shareAll = [text, linkPodcast] as [Any]
+            let activityViewController = UIActivityViewController(activityItems: shareAll, applicationActivities: nil)
+            activityViewController.popoverPresentationController?.sourceView = self.view
+            self.present(activityViewController, animated: true, completion: nil)
+        }
+        // MARK: - Add message error to open
     }
 
     func setupAction() {
@@ -91,7 +123,11 @@ extension PlayerViewController {
         heartButton.addTarget(self, action: #selector(actionPressFavoriteButton(_:)), for: .touchUpInside)
         
         // Slider
+        /*
         slider.addTarget(self, action: #selector(actionSliderValueChanged(_:)), for: .valueChanged)
+        slider.addTarget(self, action: #selector(sliderDidEndSliding(_:)), for: .touchUpInside)
+         */
+        slider.addTarget(self, action: #selector(audioPlaybackSlider), for: .touchUpInside)
         
         // Action Button
         seekLessButton.addTarget(self, action: #selector(actionPressButtonLightColor(_:)), for: .touchUpInside)

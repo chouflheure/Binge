@@ -30,7 +30,7 @@ class AnimationPlayerDescriptionPresent: NSObject, UIViewControllerAnimatedTrans
         let fromVC = transitionContext.viewController(forKey: .from)!
         
         let fromViewInitialFrame = transitionContext.initialFrame(for: fromVC)
-        var fromViewFinalFrame = fromViewInitialFrame
+        let fromViewFinalFrame = fromViewInitialFrame
         
         let fromView = fromVC.view!
         let toView = transitionContext.view(forKey: .to)!

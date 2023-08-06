@@ -58,46 +58,11 @@
         <!--Podcast-->
         <scene sceneID="uo4-sw-gL4">
             <objects>
-                <viewController id="YsL-op-ptH" customClass="ViewController" customModule="BingePodcast" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="kDD-2r-wMl">
+                <viewController id="YsL-op-ptH" customClass="PodcastViewController" customModule="BingePodcast" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kDD-2r-wMl" customClass="PodcastHomePage">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ElW-5Z-Ob0">
-                                <rect key="frame" x="39" y="316" width="71" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="71" id="iRx-pe-liW"/>
-                                    <constraint firstAttribute="height" constant="35" id="iaU-s6-iz9"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Pause"/>
-                                <connections>
-                                    <action selector="pauseBtn:" destination="YsL-op-ptH" eventType="touchUpInside" id="EoE-w1-cya"/>
-                                    <action selector="pauseBtn:" destination="Shy-jg-DFi" eventType="touchUpInside" id="wpq-0w-fl9"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8VB-P4-Mtl">
-                                <rect key="frame" x="280" y="316" width="56" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="56" id="8AQ-35-7xV"/>
-                                    <constraint firstAttribute="height" constant="35" id="flA-pY-e1I"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Play"/>
-                                <connections>
-                                    <action selector="playBtn:" destination="YsL-op-ptH" eventType="touchUpInside" id="NeI-Z5-awb"/>
-                                    <action selector="playBtn:" destination="Shy-jg-DFi" eventType="touchUpInside" id="Vd6-03-aUa"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="NWm-zX-B8Z"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="NWm-zX-B8Z" firstAttribute="trailing" secondItem="8VB-P4-Mtl" secondAttribute="trailing" constant="39" id="30Y-8H-vTs"/>
-                            <constraint firstItem="ElW-5Z-Ob0" firstAttribute="leading" secondItem="NWm-zX-B8Z" secondAttribute="leading" constant="39" id="IeK-qb-qXL"/>
-                            <constraint firstItem="8VB-P4-Mtl" firstAttribute="centerY" secondItem="kDD-2r-wMl" secondAttribute="centerY" id="Pjj-yl-Vk7"/>
-                            <constraint firstItem="ElW-5Z-Ob0" firstAttribute="centerY" secondItem="kDD-2r-wMl" secondAttribute="centerY" id="iUw-Dw-BeF"/>
-                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Podcast" image="tab_bar_icon_podcast_unselected" selectedImage="tab_bar_icon_podcast_selected" id="dqK-0d-Doz"/>
                 </viewController>
@@ -117,7 +82,6 @@
                     <tabBarItem key="tabBarItem" title="Accueil" image="tab_bar_icon_home_unselected" selectedImage="tab_bar_icon_home_selected" id="HSg-rc-y5S"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EWr-pv-tkV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="Shy-jg-DFi" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2105" y="2014"/>
         </scene>
