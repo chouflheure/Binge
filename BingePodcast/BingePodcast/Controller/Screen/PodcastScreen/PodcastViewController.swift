@@ -1,49 +1,10 @@
 /*
-
 // https://medium.com/@thomsmed/expandable-and-dynamic-sized-table-header-view-and-table-footer-view-6611ce0265b4
 
 // link to resize 
 
 
 import UIKit
-
-enum PagesPodcast: CaseIterable {
-    case pageZero
-    case pageOne
-    case pageTwo
-    case pageThree
-    case pageFour
-    
-    var name: String {
-        switch self {
-        case .pageZero:
-            return "This is page zero"
-        case .pageOne:
-            return "This is page one"
-        case .pageTwo:
-            return "This is page two"
-        case .pageThree:
-            return "This is page three"
-        case .pageFour:
-            return "This is page Four"
-        }
-    }
-    
-    var index: Int {
-        switch self {
-        case .pageZero:
-            return 0
-        case .pageOne:
-            return 1
-        case .pageTwo:
-            return 2
-        case .pageThree:
-            return 3
-        case .pageFour:
-            return 4
-        }
-    }
-}
 
 class PodcastViewController: UIViewController {
 
@@ -54,7 +15,7 @@ class PodcastViewController: UIViewController {
     let carouselView = UIView()
     var actualIndexPathRow = 0
     private var pageController: UIPageViewController?
-    private var pages: [PagesPodcast] = PagesPodcast.allCases
+    private var pages: [PagePodcast] = PagePodcast.allCases
     private var currentIndex: Int = 0
     private var myCollectionViewPodcast: UICollectionView?
 
@@ -197,13 +158,26 @@ extension PodcastViewController: UIPageViewControllerDataSource, UIPageViewContr
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 class PageViewControllerPodcast: UIViewController {
     
     var titleLabel: UILabel?
     
-    var page: PagesPodcast
+    var page: PagePodcast
     
-    init(with page: PagesPodcast) {
+    init(with page: PagePodcast) {
         self.page = page
         print("@@@ page = \(self.page)")
         super.init(nibName: nil, bundle: nil)
@@ -383,6 +357,7 @@ extension PodcastViewController: UICollectionViewDelegate {
         cell.imageViewPodcast.isHidden = true
     }
 }
+
 */
 
 import Lottie
@@ -412,3 +387,4 @@ class PodcastViewController: UIViewController {
 
     }
 }
+

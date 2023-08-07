@@ -9,9 +9,6 @@ class FavoriteViewController: UIViewController {
     private var leftContainer: NSLayoutConstraint?
     var podcastSaved = [PodcastSaved]()
     let tableViewEpisode = UITableView()
-    
-    // 15
-    var animator: PresentTransition?
 
     let favoriteTitle : UILabel = {
         let label = UILabel()

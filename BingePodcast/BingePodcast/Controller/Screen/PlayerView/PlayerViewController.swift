@@ -15,7 +15,6 @@ class PlayerViewController: UIViewController {
     let descriptionView = UIView()
     // var player = PlayerAudioService()
     var player = AVPlayer()
-    let urlString = "https://sphinx.acast.com/a-bientot-de-te-revoir/la-presque-100eme/media.mp3"
 
     // MARK: Gradient Color
     let gradient: CAGradientLayer = {
@@ -224,7 +223,6 @@ class PlayerViewController: UIViewController {
         let url = URL(string: "https://sphinx.acast.com/a-bientot-de-te-revoir/la-presque-100eme/media.mp3")
         let playerItem = AVPlayerItem(url: url!)
         player = AVPlayer(playerItem:playerItem)
-        slider.tintColor = UIColor.green
         player.play()
 
         NotificationCenter.default.addObserver(self, selector: #selector(playerDidFinishPlaying), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: player.currentItem)

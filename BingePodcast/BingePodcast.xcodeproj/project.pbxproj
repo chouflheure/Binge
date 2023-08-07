@@ -48,6 +48,7 @@
 		1D55E2922A409CB000F1A9BD /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D55E2912A409CB000F1A9BD /* UIButton.swift */; };
 		1D55E2942A40B3D400F1A9BD /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D55E2932A40B3D400F1A9BD /* UIImage.swift */; };
 		1D55E2962A4119AC00F1A9BD /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D55E2952A4119AC00F1A9BD /* UILabel.swift */; };
+		1D72B3A02A80028D0033F355 /* PagePodcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D72B39F2A80028D0033F355 /* PagePodcast.swift */; };
 		1D973A6B2A3A875F0027AC75 /* PlayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D973A6A2A3A875F0027AC75 /* PlayerModel.swift */; };
 		1D973A6D2A3A87800027AC75 /* Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D973A6C2A3A87800027AC75 /* Delegate.swift */; };
 		1D986A962A2DEB0100D26CEB /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D986A952A2DEB0100D26CEB /* Colors.xcassets */; };
@@ -172,6 +173,7 @@
 		1D55E2912A409CB000F1A9BD /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		1D55E2932A40B3D400F1A9BD /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		1D55E2952A4119AC00F1A9BD /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
+		1D72B39F2A80028D0033F355 /* PagePodcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagePodcast.swift; sourceTree = "<group>"; };
 		1D973A6A2A3A875F0027AC75 /* PlayerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerModel.swift; sourceTree = "<group>"; };
 		1D973A6C2A3A87800027AC75 /* Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delegate.swift; sourceTree = "<group>"; };
 		1D986A952A2DEB0100D26CEB /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -315,6 +317,7 @@
 			isa = PBXGroup;
 			children = (
 				1DE5254D2A483391008132B0 /* PodcastViewController.swift */,
+				1D72B39F2A80028D0033F355 /* PagePodcast.swift */,
 			);
 			path = PodcastScreen;
 			sourceTree = "<group>";
@@ -896,6 +899,7 @@
 				1DCAD9A02A793A630048C87D /* PresentDescription.swift in Sources */,
 				1DE5254E2A483391008132B0 /* PodcastViewController.swift in Sources */,
 				1D30400D2A6805850089C2F7 /* PlayerViewController.swift in Sources */,
+				1D72B3A02A80028D0033F355 /* PagePodcast.swift in Sources */,
 				1DA63F102A41F79D0013BB86 /* UIFloat.swift in Sources */,
 				1D1843992A6545B600A5129E /* PodcastSaved.swift in Sources */,
 				1DCAD9A22A793A8F0048C87D /* DismissDescription.swift in Sources */,
