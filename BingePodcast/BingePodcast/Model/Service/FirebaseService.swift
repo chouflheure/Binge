@@ -1,6 +1,5 @@
 import Foundation
 import Firebase
-import Alamofire
 
 public class FirebaseService {
     

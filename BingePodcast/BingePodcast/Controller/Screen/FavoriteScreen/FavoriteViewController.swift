@@ -1,3 +1,11 @@
+// https://github.com/cjlarsen/Tutorials/tree/master
+
+
+// TODO: init page avec le premier element soit le favorite
+// Aujourd'hui il génère un favorite object qui ne va pas
+// Empècher de régénerer les élements à chaque fois
+// Peut être un tableau de view controller ?
+
 
 import UIKit
 
@@ -8,6 +16,7 @@ class FavoriteViewController: UIViewController {
     private var currentIndex: Int = 0
     private var leftContainer: NSLayoutConstraint?
     var podcastSaved = [PodcastSaved]()
+    var seeLater = [PodcastSaved]()
     let tableViewEpisode = UITableView()
 
     let favoriteTitle : UILabel = {
@@ -32,30 +41,33 @@ class FavoriteViewController: UIViewController {
         line.layer.cornerRadius = 2
         return line
     }()
-    
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .clear
         
-        podcastSaved.append(PodcastSaved(titlePocast: "Du Sport", episodeSaved: [
-            EpisodeSaved(titleEpisode: "Episode 1", subtitleEpisode: "Les jeux olympiques sont ils utilent", totalTimeEpisode: "12:45", favorite: true, imageEpisode: Assets.aBientotDeTeRevoir.name),
-            EpisodeSaved(titleEpisode: "Episode 2", subtitleEpisode: "À quoi ca sert de courir ?", totalTimeEpisode: "12:45", favorite: true, imageEpisode: Assets.aBientotDeTeRevoir.name),
-            EpisodeSaved(titleEpisode: "Episode 3", subtitleEpisode: "Peut-on toujours repousser les limites ?", totalTimeEpisode: "12:45", favorite: true, imageEpisode: Assets.aBientotDeTeRevoir.name),
-            EpisodeSaved(titleEpisode: "Episode 4", subtitleEpisode: "Pourquoi les ballons no…", totalTimeEpisode: "12:45", favorite: true, imageEpisode: Assets.aBientotDeTeRevoir.name),
-        ]))
+        view.addSubview(tableViewEpisode)
         
-        podcastSaved.append(PodcastSaved(titlePocast: "Les couilles sur la table", episodeSaved: [
-            EpisodeSaved(titleEpisode: "Episode 1", subtitleEpisode: "Les jeux olympiques sont ils utilent", totalTimeEpisode: "12:45", favorite: true, imageEpisode: Assets.aBientotDeTeRevoir.name),
-            EpisodeSaved(titleEpisode: "Episode 2", subtitleEpisode: "À quoi ca sert de courir ?", totalTimeEpisode: "12:45", favorite: true, imageEpisode: Assets.aBientotDeTeRevoir.name),
-            EpisodeSaved(titleEpisode: "Episode 3", subtitleEpisode: "Peut-on toujours repousser les limites ?", totalTimeEpisode: "12:45", favorite: true, imageEpisode: Assets.aBientotDeTeRevoir.name)
+        podcastSaved.append(PodcastSaved(titlePocast: "Du Sport", episodeSaved: [
+            EpisodeSaved_test(titleEpisode: "Episode 1", subtitleEpisode: "Les jeux olympiques sont ils utilent", totalTimeEpisode: "12:45", favorite: true, imageEpisode: Assets.aBientotDeTeRevoir.name),
+            EpisodeSaved_test(titleEpisode: "Episode 2", subtitleEpisode: "À quoi ca sert de courir ?", totalTimeEpisode: "12:45", favorite: true, imageEpisode: Assets.aBientotDeTeRevoir.name),
+            EpisodeSaved_test(titleEpisode: "Episode 3", subtitleEpisode: "Peut-on toujours repousser les limites ?", totalTimeEpisode: "12:45", favorite: true, imageEpisode: Assets.aBientotDeTeRevoir.name),
+            EpisodeSaved_test(titleEpisode: "Episode 4", subtitleEpisode: "Pourquoi les ballons no…", totalTimeEpisode: "12:45", favorite: true, imageEpisode: Assets.aBientotDeTeRevoir.name),
         ]))
+
+        podcastSaved.append(PodcastSaved(titlePocast: "Les couilles sur la table", episodeSaved: [
+            EpisodeSaved_test(titleEpisode: "Episode 1", subtitleEpisode: "Les jeux olympiques sont ils utilent", totalTimeEpisode: "12:45", favorite: true, imageEpisode: Assets.aBientotDeTeRevoir.name),
+            EpisodeSaved_test(titleEpisode: "Episode 2", subtitleEpisode: "À quoi ca sert de courir ?", totalTimeEpisode: "12:45", favorite: true, imageEpisode: Assets.aBientotDeTeRevoir.name),
+            EpisodeSaved_test(titleEpisode: "Episode 3", subtitleEpisode: "Peut-on toujours repousser les limites ?", totalTimeEpisode: "12:45", favorite: true, imageEpisode: Assets.aBientotDeTeRevoir.name)
+        ]))
+
+        seeLater.append(PodcastSaved(titlePocast: "Du Sport", episodeSaved: [
+            EpisodeSaved_test(titleEpisode: "Episode 1", subtitleEpisode: "Les jeux olympiques sont ils utilent", totalTimeEpisode: "12:45", favorite: true, imageEpisode: Assets.aBientotDeTeRevoir.name)]))
         
         setupTitlePageViewController()
         setupPageController()
         setGradientBackground()
-        initTableView()
+        // initTableView()
         
     }
 
@@ -143,13 +155,13 @@ extension FavoriteViewController: UIPageViewControllerDelegate {
     
     @objc private func nextPageController() {
         guard let pageController = pageController else {return}
-        pageController.setViewControllers([PageListFavorite(with: tableViewEpisode)], direction: .forward, animated: true, completion: nil)
+        pageController.setViewControllers([PageListFavorite(with: seeLater)], direction: .forward, animated: true, completion: nil)
         nextPagePoint()
     }
     
     @objc private func previousPageController() {
         guard let pageController = pageController else {return}
-        pageController.setViewControllers([PageListFavorite(with: tableViewEpisode)], direction: .reverse, animated: true, completion: nil)
+        pageController.setViewControllers([PageListFavorite(with: podcastSaved)], direction: .reverse, animated: true, completion: nil)
         previousPagePoint()
     }
     
@@ -172,7 +184,7 @@ extension FavoriteViewController: UIPageViewControllerDelegate {
         self.view.addSubview(self.pageController!.view)
         
         
-        let initialVC = PageListFavorite(with: tableViewEpisode)
+        let initialVC = PageListFavorite(with: podcastSaved)
         
         self.pageController?.setViewControllers([initialVC], direction: .forward, animated: true, completion: nil)
         

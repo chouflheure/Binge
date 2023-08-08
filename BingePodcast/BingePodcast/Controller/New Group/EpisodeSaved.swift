@@ -1,6 +1,6 @@
 import Foundation
 
-class EpisodeSaved {
+class EpisodeSaved_test {
     var titleEpisode = String()
     var subtitleEpisode = String()
     var totalTimeEpisode = String()

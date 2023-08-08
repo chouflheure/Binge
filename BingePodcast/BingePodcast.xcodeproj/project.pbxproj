@@ -49,6 +49,8 @@
 		1D55E2942A40B3D400F1A9BD /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D55E2932A40B3D400F1A9BD /* UIImage.swift */; };
 		1D55E2962A4119AC00F1A9BD /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D55E2952A4119AC00F1A9BD /* UILabel.swift */; };
 		1D72B3A02A80028D0033F355 /* PagePodcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D72B39F2A80028D0033F355 /* PagePodcast.swift */; };
+		1D72B3AA2A81216F0033F355 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D72B3A92A81216F0033F355 /* CoreDataStack.swift */; };
+		1D72B3AC2A8121A90033F355 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D72B3AB2A8121A90033F355 /* CoreDataManager.swift */; };
 		1D973A6B2A3A875F0027AC75 /* PlayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D973A6A2A3A875F0027AC75 /* PlayerModel.swift */; };
 		1D973A6D2A3A87800027AC75 /* Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D973A6C2A3A87800027AC75 /* Delegate.swift */; };
 		1D986A962A2DEB0100D26CEB /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D986A952A2DEB0100D26CEB /* Colors.xcassets */; };
@@ -174,6 +176,8 @@
 		1D55E2932A40B3D400F1A9BD /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		1D55E2952A4119AC00F1A9BD /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		1D72B39F2A80028D0033F355 /* PagePodcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagePodcast.swift; sourceTree = "<group>"; };
+		1D72B3A92A81216F0033F355 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		1D72B3AB2A8121A90033F355 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		1D973A6A2A3A875F0027AC75 /* PlayerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerModel.swift; sourceTree = "<group>"; };
 		1D973A6C2A3A87800027AC75 /* Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delegate.swift; sourceTree = "<group>"; };
 		1D986A952A2DEB0100D26CEB /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -418,6 +422,15 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
+		1D72B3A82A81212F0033F355 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				1D72B3A92A81216F0033F355 /* CoreDataStack.swift */,
+				1D72B3AB2A8121A90033F355 /* CoreDataManager.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		1D973A692A3A873F0027AC75 /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -441,6 +454,7 @@
 		1D9869CB2A2D19A500D26CEB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1D72B3A82A81212F0033F355 /* CoreData */,
 				1D973A6A2A3A875F0027AC75 /* PlayerModel.swift */,
 				1D973A692A3A873F0027AC75 /* Service */,
 				1D2A2EB32A77DF5900ABD880 /* HomePageModel.swift */,
@@ -874,6 +888,7 @@
 				1D973A6B2A3A875F0027AC75 /* PlayerModel.swift in Sources */,
 				1D2A2EA92A76CF2F00ABD880 /* ReturnViewForPlayerViewController.swift in Sources */,
 				1D2A2EB22A76E3FA00ABD880 /* FirebaseService.swift in Sources */,
+				1D72B3AC2A8121A90033F355 /* CoreDataManager.swift in Sources */,
 				1DE525532A485325008132B0 /* CellEpisodeTabViewCell.swift in Sources */,
 				1D986AA02A2DEF7600D26CEB /* Assets.gen.swift in Sources */,
 				1D986A9F2A2DEF7600D26CEB /* Colors.gen.swift in Sources */,
@@ -883,6 +898,7 @@
 				1D187A002A2CC8AA00827277 /* BingePodcast.xcdatamodeld in Sources */,
 				1D18439C2A65469400A5129E /* PageListFavorite.swift in Sources */,
 				1DE2E5322A79B1D80031F55F /* HomeViewCotroller+Delegate.swift in Sources */,
+				1D72B3AA2A81216F0033F355 /* CoreDataStack.swift in Sources */,
 				1DCA9ECE2A35FD22008ED92E /* PlayerAudioService.swift in Sources */,
 				1DCA33BD2A711EEC00120500 /* PlayerObserver.swift in Sources */,
 				1D2A2EA72A76CEA300ABD880 /* PlayerViewControllerDescription.swift in Sources */,
