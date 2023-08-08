@@ -155,13 +155,13 @@ extension FavoriteViewController: UIPageViewControllerDelegate {
     
     @objc private func nextPageController() {
         guard let pageController = pageController else {return}
-        pageController.setViewControllers([PageListFavorite(with: podcastSaved)], direction: .forward, animated: true, completion: nil)
+        pageController.setViewControllers([PageListFavorite(with: seeLater)], direction: .forward, animated: true, completion: nil)
         nextPagePoint()
     }
     
     @objc private func previousPageController() {
         guard let pageController = pageController else {return}
-        pageController.setViewControllers([PageListFavorite(with: seeLater)], direction: .reverse, animated: true, completion: nil)
+        pageController.setViewControllers([PageListFavorite(with: podcastSaved)], direction: .reverse, animated: true, completion: nil)
         previousPagePoint()
     }
     

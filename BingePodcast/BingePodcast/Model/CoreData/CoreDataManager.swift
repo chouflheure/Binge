@@ -5,8 +5,8 @@ import UIKit
 
 class CoreDataManager {
 
-    private let coreDataStack = CoreDataStack(modelName: "BigePodcast")
-    private let request = NSFetchRequest<NSFetchRequestResult>(entityName: "RecipeSaved")
+    private let coreDataStack = CoreDataStack(modelName: "BingePodcast")
+    private let request = NSFetchRequest<NSFetchRequestResult>(entityName: "EpisodeSaved")
     private let context: NSManagedObjectContext
 
     public init() {
@@ -21,7 +21,6 @@ class CoreDataManager {
 
     // This method is to check if the recipe is in favorite / in Core Data
     func checkIfRecipeIsFavorite(label: String) async -> Bool {
-
         do {
             let result = try context.fetch(request)
             for r in result as! [NSManagedObject] {
@@ -30,34 +29,34 @@ class CoreDataManager {
                 }
             }
         } catch { return false}
-
         return false
     }
 
-    // This method is to save a recipe on core data
-    func newRecipeSaved(label: String, yield: Int, image: String, url: String, totalTime: Int, ingredients: String, ingredientLines: [String]) async {
-/*
-        let newRecipe = NSEntityDescription.insertNewObject(forEntityName: "EpisodeSaved", into: coreDataStack.mainContext) as? Episode
 
-        newRecipe?.setValue(label, forKey: "label")
-        newRecipe?.setValue(url, forKey: "url")
-        newRecipe?.setValue(yield, forKey: "yield")
-        newRecipe?.setValue(image, forKey: "image")
-        newRecipe?.setValue(totalTime, forKey: "totalTime")
-        newRecipe?.setValue(ingredients, forKey: "ingredients")
-        newRecipe?.setValue(ingredientLines, forKey: "ingredientLines")
+    // This method is to save a recipe on core data
+    func playerUrl(title: String, subtitle: String, description: String, totalTime: String, imageUrl: String, ingredients: String, playerUrl: String, channel: String = "Du sport") async {
+
+        let newEpisode = NSEntityDescription.insertNewObject(forEntityName: "EpisodeSaved", into: coreDataStack.mainContext)
+        
+        newEpisode.setValue(title, forKey: "titleEpisode")
+        newEpisode.setValue(description, forKey: "descriptionEpisode")
+        newEpisode.setValue(title, forKey: "titleEpisode")
+        newEpisode.setValue(totalTime, forKey: "totalTimeEpisode")
+        newEpisode.setValue(imageUrl, forKey: "imageUrlEpisode")
+        newEpisode.setValue(playerUrl, forKey: "playerUrlEpisode")
+        newEpisode.setValue(channel, forKey: "channel")
 
         coreDataStack.saveContext()
- */
     }
 
     // This method is to remove a recipe on core data
-    func removeRecipeFromFavorite(label: String) async {
+    func removeRecipeFromFavorite(titlePodcast: String) async {
 
         do {
             let result = try context.fetch(request)
             for r in result as! [NSManagedObject] {
-                if r.value(forKey: "label") as! String == label || r.value(forKey: "label") as! String == "" {
+                if r.value(forKey: "titleEpisode") as! String == titlePodcast
+                    || r.value(forKey: "titleEpisode") as! String == "" {
                     coreDataStack.mainContext.delete(r)
                 }
             }
@@ -67,7 +66,7 @@ class CoreDataManager {
     
     // This method is to fectch all recipes from core data
     func fetchFavoriteRecipe() -> [Episode] {
-        var recipeList = [Episode]()
+        var episodeFavoriteList = [Episode]()
 
         do {
             let result = try context.fetch(request)
@@ -86,6 +85,6 @@ class CoreDataManager {
             }
  */
         } catch {}
-        return recipeList
+        return episodeFavoriteList
     }
 }
