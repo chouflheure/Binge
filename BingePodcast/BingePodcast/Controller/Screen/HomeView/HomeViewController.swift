@@ -1,5 +1,6 @@
 import UIKit
 import Firebase
+import ListPlaceholder
 
 class HomeViewController: UIViewController {
     
@@ -26,7 +27,6 @@ class HomeViewController: UIViewController {
 
         // PlayerObserver.sharedInstance.getPodcastPlayingData()
     }
-    
     
     let scrollView: UIScrollView = {
         let scrollView = UIScrollView()

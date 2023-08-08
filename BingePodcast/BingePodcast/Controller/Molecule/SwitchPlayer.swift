@@ -14,6 +14,11 @@ class SwitchPlayer: UIView {
     
     weak var delegate: SlideToActionButtonDelegate?
     
+    
+    @objc func removeLoader() {
+        self.hideLoader()
+    }
+    
     private var xEndingPoint: CGFloat {
         return (bounds.width - containerCircleImage.bounds.width - Constants_SwitchPlayer.marginContainerImage)
     }
@@ -24,6 +29,8 @@ class SwitchPlayer: UIView {
         super.init(frame: .zero)
         self.episode = episode
         setup()
+        self.showLoader()
+        Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(removeLoader), userInfo: nil, repeats: false)
     }
     
     required init?(coder: NSCoder) {
@@ -119,7 +126,6 @@ class SwitchPlayer: UIView {
     var backView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-
         return view
     }()
 
@@ -163,6 +169,7 @@ class SwitchPlayer: UIView {
         layer.cornerRadius = 50
 
         backView.frame.size = CGSize(width: 90, height: 90)
+        
         imageCircle.addSubview(backView)
 
         // Create a blur effect
