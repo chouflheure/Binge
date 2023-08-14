@@ -2,6 +2,10 @@ import UIKit
 import Firebase
 import ListPlaceholder
 
+
+// TODO: Add a stack view with load element
+// TODO: Download file to edit the lib
+
 class HomeViewController: UIViewController {
     
     var podcast = [Podcast]()
@@ -19,9 +23,13 @@ class HomeViewController: UIViewController {
         initCollectionView()
         setGradientBackground()
         homePageModel.homePageDelegate = self
+        
         // homePageModel.fetchAllPodcast()
         // homePageModel.test()
         // HomePageModel().test()
+        
+        
+        switchPlayerFirst.showLoader()
         
         print("@@@ Podcast = \(podcast)")
 
@@ -198,7 +206,9 @@ class HomeViewController: UIViewController {
     private func initCollectionView() {
         collectionViewPodcast.register(PodcastHomePageCollectionViewCell.self, forCellWithReuseIdentifier: cellPodcast)
         collectionViewPodcast.dataSource = self
-        collectionViewPodcast.delegate = self
+        collectionViewPodcast.showLoader()
+        // collectionViewPodcast.showAnimatedGradientSkeleton()
+        // collectionViewPodcast.delegate = self
     }
     
     private func setGradientBackground() {

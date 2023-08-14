@@ -7,7 +7,5 @@ extension HomeViewController: HomePageDelegate {
         podcast = result
         collectionViewPodcast.reloadData()
     }
-    
-    
-    
+
 }

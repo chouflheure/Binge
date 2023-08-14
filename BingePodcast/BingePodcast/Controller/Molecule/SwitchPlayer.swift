@@ -13,12 +13,7 @@ class SwitchPlayer: UIView {
     private var leftTextStackViewConstraint: NSLayoutConstraint?
     
     weak var delegate: SlideToActionButtonDelegate?
-    
-    
-    @objc func removeLoader() {
-        self.hideLoader()
-    }
-    
+
     private var xEndingPoint: CGFloat {
         return (bounds.width - containerCircleImage.bounds.width - Constants_SwitchPlayer.marginContainerImage)
     }
@@ -29,8 +24,6 @@ class SwitchPlayer: UIView {
         super.init(frame: .zero)
         self.episode = episode
         setup()
-        self.showLoader()
-        Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(removeLoader), userInfo: nil, repeats: false)
     }
     
     required init?(coder: NSCoder) {

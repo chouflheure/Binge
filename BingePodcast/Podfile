@@ -9,6 +9,7 @@ target 'BingePodcast' do
 	pod 'SwiftGen', '~> 6.0'
 	pod 'SwiftEntryKit', '~> 2.0'
 	pod 'ListPlaceholder'
+
   # Pods for BingePodcast
 
   target 'BingePodcastTests' do

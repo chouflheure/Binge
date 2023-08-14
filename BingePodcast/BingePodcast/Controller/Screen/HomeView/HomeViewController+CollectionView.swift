@@ -19,7 +19,7 @@ extension HomeViewController: UICollectionViewDataSource {
         myCell.setup(imagePodcastName: podcast[indexPath.row].image ?? "",
                     titlePodcast: podcast[indexPath.row].title ?? "",
                     authorPodcast: podcast[indexPath.row].author ?? "")
-        
+
         return myCell
     }
 }
