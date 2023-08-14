@@ -8,7 +8,6 @@
 
 
 import UIKit
-import ListPlaceholder
 
 class FavoriteViewController: UIViewController {
 

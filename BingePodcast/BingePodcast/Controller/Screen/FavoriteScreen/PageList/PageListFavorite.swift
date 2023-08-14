@@ -1,7 +1,6 @@
 import Foundation
 import UIKit
 import Lottie
-import ListPlaceholder
 
 class PageListFavorite: UIViewController {
     

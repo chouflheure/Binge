@@ -1,6 +1,5 @@
 import UIKit
 import Firebase
-import ListPlaceholder
 
 
 // TODO: Add a stack view with load element
@@ -23,10 +22,9 @@ class HomeViewController: UIViewController {
         initCollectionView()
         setGradientBackground()
         homePageModel.homePageDelegate = self
-        
-        // homePageModel.fetchAllPodcast()
-        // homePageModel.test()
-        // HomePageModel().test()
+        loadPodcast()
+        homePageModel.fetchAllPodcast()
+        homePageModel.test()
         
         
         switchPlayerFirst.showLoader()
@@ -206,9 +204,8 @@ class HomeViewController: UIViewController {
     private func initCollectionView() {
         collectionViewPodcast.register(PodcastHomePageCollectionViewCell.self, forCellWithReuseIdentifier: cellPodcast)
         collectionViewPodcast.dataSource = self
-        collectionViewPodcast.showLoader()
-        // collectionViewPodcast.showAnimatedGradientSkeleton()
-        // collectionViewPodcast.delegate = self
+        collectionViewPodcast.delegate = self
+        
     }
     
     private func setGradientBackground() {
@@ -225,5 +222,79 @@ class HomeViewController: UIViewController {
 
     private func toggleSelectedSwitchPlayer() {
         
+    }
+
+    let stackViewLoaderCollectionView: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .horizontal
+        stack.distribution = .fill
+        return stack
+    }()
+    
+    private func loadPodcast() {
+
+        let imageViewPlaceHolderFirst = UIView()
+        imageViewPlaceHolderFirst.layer.cornerRadius = 20
+
+        let imageViewPlaceHolderSecond = UIView()
+        imageViewPlaceHolderSecond.layer.cornerRadius = 20
+
+        let labelPlaceHolderFirst = UIView()
+        let labelPlaceHolderSecond = UIView()
+        
+        let spacingBetweenStackPlaceholder = UIView()
+        
+        let stackPodcastPlaceholderFirst = UIStackView()
+        stackPodcastPlaceholderFirst.axis = .vertical
+        stackPodcastPlaceholderFirst.distribution = .fill
+        stackPodcastPlaceholderFirst.spacing = 10
+
+        let stackPodcastPlaceholderSecond = UIStackView()
+        stackPodcastPlaceholderSecond.axis = .vertical
+        stackPodcastPlaceholderSecond.distribution = .fill
+        stackPodcastPlaceholderSecond.spacing = 10
+        
+        scrollViewContainer.addArrangedSubview(stackViewLoaderCollectionView)
+        [
+            stackViewLoaderCollectionView.leftAnchor.constraint(equalTo: scrollViewContainer.leftAnchor, constant: 30),
+            stackViewLoaderCollectionView.heightAnchor.constraint(equalToConstant: 200),
+            stackViewLoaderCollectionView.topAnchor.constraint(equalTo: titlePodcast.bottomAnchor, constant: 20),
+            stackViewLoaderCollectionView.rightAnchor.constraint(equalTo: scrollViewContainer.rightAnchor, constant: -30)
+        ].forEach{$0.isActive = true}
+        
+        
+        stackViewLoaderCollectionView.addArrangedSubview(stackPodcastPlaceholderFirst)
+        stackViewLoaderCollectionView.addArrangedSubview(spacingBetweenStackPlaceholder)
+        stackViewLoaderCollectionView.addArrangedSubview(stackPodcastPlaceholderSecond)
+        
+        [
+            stackPodcastPlaceholderFirst.widthAnchor.constraint(equalToConstant: 130),
+            stackPodcastPlaceholderFirst.heightAnchor.constraint(equalToConstant: 200),
+            stackPodcastPlaceholderSecond.widthAnchor.constraint(equalToConstant: 130),
+            stackPodcastPlaceholderSecond.heightAnchor.constraint(equalToConstant: 200),
+        ].forEach{$0.isActive = true}
+        
+        stackPodcastPlaceholderFirst.addArrangedSubview(imageViewPlaceHolderFirst)
+        stackPodcastPlaceholderFirst.addArrangedSubview(labelPlaceHolderFirst)
+        stackPodcastPlaceholderSecond.addArrangedSubview(imageViewPlaceHolderSecond)
+        stackPodcastPlaceholderSecond.addArrangedSubview(labelPlaceHolderSecond)
+
+        [
+            imageViewPlaceHolderFirst.widthAnchor.constraint(equalToConstant: 130),
+            imageViewPlaceHolderFirst.heightAnchor.constraint(equalToConstant: 130),
+            labelPlaceHolderFirst.widthAnchor.constraint(equalToConstant: 130),
+            labelPlaceHolderFirst.heightAnchor.constraint(equalToConstant: 30),
+            imageViewPlaceHolderSecond.widthAnchor.constraint(equalToConstant: 130),
+            imageViewPlaceHolderSecond.heightAnchor.constraint(equalToConstant: 130),
+            labelPlaceHolderSecond.widthAnchor.constraint(equalToConstant: 130),
+            labelPlaceHolderSecond.heightAnchor.constraint(equalToConstant: 30)
+        ].forEach{$0.isActive = true}
+
+        
+        stackPodcastPlaceholderFirst.showLoader()
+        stackPodcastPlaceholderFirst.ld_addLoader(corerRadiusGradient: 25)
+        
+        stackPodcastPlaceholderSecond.showLoader()
+        stackPodcastPlaceholderSecond.ld_addLoader(corerRadiusGradient: 25)
     }
 }

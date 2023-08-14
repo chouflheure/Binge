@@ -1,6 +1,5 @@
 import Foundation
 import UIKit
-import ListPlaceholder
 
 extension PageListFavorite: UITableViewDataSource {
     

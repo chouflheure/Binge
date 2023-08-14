@@ -100,7 +100,7 @@ extension CGFloat
     static func addLoaderToViews(_ views : [UIView])
     {
         CATransaction.begin()
-        views.forEach { $0.ld_addLoader() }
+        views.forEach { $0.ld_addLoader(corerRadiusGradient: 0) }
         CATransaction.commit()
     }
     
@@ -128,7 +128,7 @@ extension CGFloat
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         let context = UIGraphicsGetCurrentContext()
-        context?.setFillColor(UIColor.white.cgColor)
+        context?.setFillColor(UIColor.clear.cgColor)
         context?.fill(self.bounds)
         
         for view in (self.superview?.subviews)! {
@@ -203,10 +203,11 @@ var gradientFirstStop           = 0.1
         return objc_setAssociatedObject(self, &gradientHandle, aLayer, .OBJC_ASSOCIATION_RETAIN)
     }
     
-    fileprivate func ld_addLoader()
+    public func ld_addLoader(corerRadiusGradient: CGFloat)
     {
         let gradient: CAGradientLayer = CAGradientLayer()
         gradient.frame = CGRect(x: 0, y: 0, width: self.bounds.size.width , height: self.bounds.size.height)
+        gradient.cornerRadius = corerRadiusGradient
         self.layer.insertSublayer(gradient, at:0)
         
         self.configureAndAddAnimationToGradient(gradient)

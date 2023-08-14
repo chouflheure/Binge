@@ -8,7 +8,6 @@ target 'BingePodcast' do
 	pod 'lottie-ios', '~> 3.1'
 	pod 'SwiftGen', '~> 6.0'
 	pod 'SwiftEntryKit', '~> 2.0'
-	pod 'ListPlaceholder'
 
   # Pods for BingePodcast
 
