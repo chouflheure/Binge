@@ -23,6 +23,7 @@ class HomeViewController: UIViewController {
         setGradientBackground()
         homePageModel.homePageDelegate = self
         loadPodcast()
+
         homePageModel.fetchAllPodcast()
         homePageModel.test()
         

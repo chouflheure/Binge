@@ -13,6 +13,7 @@
 		1D0AC26C2A61982A0029EAAE /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0AC26B2A61982A0029EAAE /* FavoriteTableViewCell.swift */; };
 		1D0AC26E2A6198460029EAAE /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0AC26D2A6198460029EAAE /* FavoriteViewController.swift */; };
 		1D0AC2712A629FE50029EAAE /* CALayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0AC2702A629FE40029EAAE /* CALayer.swift */; };
+		1D15181E2A8BC0F000F6F4A2 /* PageViewControllerPodcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D15181D2A8BC0F000F6F4A2 /* PageViewControllerPodcast.swift */; };
 		1D1843972A65458A00A5129E /* EpisodeSaved.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1843962A65458A00A5129E /* EpisodeSaved.swift */; };
 		1D1843992A6545B600A5129E /* PodcastSaved.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1843982A6545B600A5129E /* PodcastSaved.swift */; };
 		1D18439C2A65469400A5129E /* PageListFavorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D18439B2A65469400A5129E /* PageListFavorite.swift */; };
@@ -142,6 +143,7 @@
 		1D0AC26B2A61982A0029EAAE /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
 		1D0AC26D2A6198460029EAAE /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		1D0AC2702A629FE40029EAAE /* CALayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CALayer.swift; sourceTree = "<group>"; };
+		1D15181D2A8BC0F000F6F4A2 /* PageViewControllerPodcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewControllerPodcast.swift; sourceTree = "<group>"; };
 		1D1843962A65458A00A5129E /* EpisodeSaved.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeSaved.swift; sourceTree = "<group>"; };
 		1D1843982A6545B600A5129E /* PodcastSaved.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastSaved.swift; sourceTree = "<group>"; };
 		1D18439B2A65469400A5129E /* PageListFavorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageListFavorite.swift; sourceTree = "<group>"; };
@@ -309,6 +311,14 @@
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
+		1D15181C2A8BC0DF00F6F4A2 /* PageViewControllerPodcast */ = {
+			isa = PBXGroup;
+			children = (
+				1D15181D2A8BC0F000F6F4A2 /* PageViewControllerPodcast.swift */,
+			);
+			path = PageViewControllerPodcast;
+			sourceTree = "<group>";
+		};
 		1D1843952A65457D00A5129E /* New Group */ = {
 			isa = PBXGroup;
 			children = (
@@ -332,6 +342,7 @@
 		1D18448A2A65A02B00A5129E /* PodcastScreen */ = {
 			isa = PBXGroup;
 			children = (
+				1D15181C2A8BC0DF00F6F4A2 /* PageViewControllerPodcast */,
 				1DE5254D2A483391008132B0 /* PodcastViewController.swift */,
 				1D72B39F2A80028D0033F355 /* PagePodcast.swift */,
 			);
@@ -939,6 +950,7 @@
 				1D2A2EA72A76CEA300ABD880 /* PlayerViewControllerDescription.swift in Sources */,
 				1D0AC26E2A6198460029EAAE /* FavoriteViewController.swift in Sources */,
 				1D55E2922A409CB000F1A9BD /* UIButton.swift in Sources */,
+				1D15181E2A8BC0F000F6F4A2 /* PageViewControllerPodcast.swift in Sources */,
 				1D2A2EAE2A76D03900ABD880 /* HomeViewController+CollectionView.swift in Sources */,
 				1D85504A2A8A322D00001A4C /* FavoriteViewController+UIViewControllerTransitioningDelegate.swift in Sources */,
 				1D1844892A659CED00A5129E /* PagesFavoriteScreen.swift in Sources */,
