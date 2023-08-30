@@ -449,6 +449,7 @@
 		1D72B3A82A81212F0033F355 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				1D1879FE2A2CC8AA00827277 /* BingePodcast.xcdatamodeld */,
 				1D72B3A92A81216F0033F355 /* CoreDataStack.swift */,
 				1D72B3AB2A8121A90033F355 /* CoreDataManager.swift */,
 			);
@@ -533,7 +534,6 @@
 				1D986A932A2DE66100D26CEB /* Generated */,
 				1D1879F72A2CC8AA00827277 /* SceneDelegate.swift */,
 				1D1879F52A2CC8AA00827277 /* AppDelegate.swift */,
-				1D1879FE2A2CC8AA00827277 /* BingePodcast.xcdatamodeld */,
 			);
 			path = ProductionsFiles;
 			sourceTree = "<group>";
