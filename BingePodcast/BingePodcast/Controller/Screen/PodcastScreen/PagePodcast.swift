@@ -1,3 +1,4 @@
+/*
 import Foundation
 
 enum PagePodcast: CaseIterable {
@@ -22,4 +23,15 @@ enum PagePodcast: CaseIterable {
             return 4
         }
     }
+    
+    func catchData() {
+        
+    }
 }
+
+class PagePodcastTest {
+    
+    var tab = ["","","","","",""]
+    
+}
+*/

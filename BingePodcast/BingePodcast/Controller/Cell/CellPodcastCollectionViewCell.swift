@@ -14,7 +14,21 @@ class CellPodcastCollectionViewCell: UICollectionViewCell {
 
     func setUpUI(title: String, subtitlePodcast: String, imagePodcastString: String) {
         
-        imageViewPodcast = UIImageView(image: UIImage(named: subtitlePodcast))
+        // imageViewPodcast = UIImageView(image: UIImage(named: subtitlePodcast))
+        
+        imageViewPodcast.image = Assets.placeholderImage.image
+
+        downloadImage("https://back.bingeaudio.fr/wp-content/uploads/2019/07/Channel_itunes_logo_v2-768x768.png") {
+            image, urlString in
+                if let imageObject = image {
+                    // performing UI operation on main thread
+                    DispatchQueue.main.async {
+                        self.imageViewPodcast.image = imageObject
+                    }
+                }
+        }
+        
+        
         imageViewPodcast.translatesAutoresizingMaskIntoConstraints = false
         imageViewPodcast.layer.cornerRadius = 24
         self.imageViewPodcast.layer.masksToBounds = true
@@ -43,4 +57,35 @@ class CellPodcastCollectionViewCell: UICollectionViewCell {
      */
     }
 
+    
+    func downloadImage(_ urlString: String, completion: ((_ _image: UIImage?, _ urlString: String?) -> ())?) {
+           guard let url = URL(string: urlString) else {
+              completion?(nil, urlString)
+              return
+          }
+          URLSession.shared.dataTask(with: url) { (data, response,error) in
+             if let error = error {
+                print("error in downloading image: \(error)")
+                completion?(nil, urlString)
+                return
+             }
+             guard let httpResponse = response as? HTTPURLResponse,(200...299).contains(httpResponse.statusCode) else {
+                completion?(nil, urlString)
+                return
+             }
+             if let data = data, let image = UIImage(data: data) {
+                completion?(image, urlString)
+                return
+             }
+             completion?(nil, urlString)
+          }.resume()
+       }
+    
+    
+    
+    
+    
 }
+
+
+

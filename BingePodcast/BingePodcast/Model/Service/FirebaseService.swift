@@ -10,11 +10,12 @@ public class FirebaseService {
     func fetchAllPodcastFirebase(onCompletion: @escaping (Result<[Podcast]?,Error>) -> Void) {
         callFirebase(collectionName: "Podcast").getDocuments() { (querySnapshot, err) in
             var podcast = [Podcast]()
+            guard let querySnapshot = querySnapshot else {return}
             if let err = err {
                 print("@@@ Error getting: \(err)")
                 onCompletion(.failure(err))
             } else {
-                for document in querySnapshot!.documents {
+                for document in querySnapshot.documents {
                     podcast.append(Podcast(title: document.data()["title"] as? String,
                                            image: document.data()["image"] as? String,
                                            author: document.data()["author"] as? String)

@@ -1,10 +1,6 @@
 import UIKit
 import Firebase
 
-
-// TODO: Add a stack view with load element
-// TODO: Download file to edit the lib
-
 class HomeViewController: UIViewController {
     
     var podcast = [Podcast]()
@@ -25,8 +21,6 @@ class HomeViewController: UIViewController {
         loadPodcast()
 
         homePageModel.fetchAllPodcast()
-        homePageModel.test()
-        
         
         switchPlayerFirst.showLoader()
         

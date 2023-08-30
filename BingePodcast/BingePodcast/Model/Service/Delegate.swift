@@ -6,8 +6,8 @@ protocol HomePageDelegate: AnyObject {
     func fetchPodcastListAndShowOnHomePage(result: [Podcast])
 }
 
-protocol ListRecipeDelegate: AnyObject {
-    func inAppDelegateFavorite()
+protocol PodcastPageDelegate: AnyObject {
+    func fetchPodcastList(result: [Podcast])
 }
 
 protocol DetailRecipeDelegate: AnyObject {

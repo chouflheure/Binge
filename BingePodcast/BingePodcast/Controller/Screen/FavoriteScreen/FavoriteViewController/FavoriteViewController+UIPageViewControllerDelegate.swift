@@ -59,7 +59,8 @@ extension FavoriteViewController: UIPageViewControllerDelegate {
         self.pageController = UIPageViewController(transitionStyle: .scroll,
                                                    navigationOrientation: .horizontal,
                                                    options: nil)
-        // nil dataSour to disable the swipe gesture on PageController
+
+        // nil dataSource to disable the swipe gesture on PageController
         self.pageController?.dataSource = nil
         self.pageController?.delegate = self
         self.pageController?.view.backgroundColor = .clear
@@ -86,10 +87,10 @@ extension FavoriteViewController: UIPageViewControllerDelegate {
     
     
     func presentationCount(for pageViewController: UIPageViewController) -> Int {
-        return self.pages.count
+        2
     }
     
     func presentationIndex(for pageViewController: UIPageViewController) -> Int {
-        return self.currentIndex
+        self.currentIndex
     }
 }

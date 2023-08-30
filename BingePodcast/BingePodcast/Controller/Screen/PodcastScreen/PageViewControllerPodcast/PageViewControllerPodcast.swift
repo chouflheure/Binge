@@ -5,11 +5,11 @@ class PageViewControllerPodcast: UIViewController {
     
     var titleLabel: UILabel?
     
-    var page: PagePodcast
+    // var page: PagePodcast
+    let episode: [EpisodeSaved_test]
     
-    init(with page: PagePodcast) {
-        self.page = page
-        print("@@@ page = \(self.page)")
+    init(episode: [EpisodeSaved_test]) {
+        self.episode = episode
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -18,14 +18,8 @@ class PageViewControllerPodcast: UIViewController {
     }
     
     let cellSpacingHeight: CGFloat = 5
-        
-    let episodeArray = ["Episode 1", "Episode 2", "Episode 3", "Episode 4", "Episode 5", "Episode 6", "Episode 7", "Episode 8"]
-        
-    let titleEpisode = ["Les jeux olympiques sont ils utilent", "À quoi ca sert de courir ?", "Peut-on toujours repous…", "Pourquoi les ballons no…", "Les jeux olympiques s…", "À quoi ca sert de courir ?", "Peut-on toujours repous…", "Pourquoi les ballons no…"]
-        
-    let favorite = [true, false, false, true, false, true, true, true]
 
-    let time = ["12:45", "12:45", "12:45", "12:45", "12:45", "12:45", "12:45", "12:45"]
+    let favorite = [true, false, false, true, false, true, true, true]
     
     let imagePodcastString = Assets.aBientotDeTeRevoir.name
     
@@ -54,7 +48,8 @@ class PageViewControllerPodcast: UIViewController {
     private func initTableView() {
         tableViewEpisode.delegate = self
         tableViewEpisode.dataSource = self
-        tableViewEpisode.register(UINib(nibName: "CellEpisodeTabViewCell", bundle: nil), forCellReuseIdentifier: "cellEpisode")
+        tableViewEpisode.register(UINib(nibName: "CellEpisodeTabViewCell", bundle: nil),
+                                  forCellReuseIdentifier: "cellEpisode")
         tableViewEpisode.backgroundColor = .clear
     }
     
@@ -73,7 +68,8 @@ extension PageViewControllerPodcast: UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        episodeArray.count
+        // episodeArray.count
+        episode.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -86,8 +82,13 @@ extension PageViewControllerPodcast: UITableViewDataSource {
         
         guard let cell = cell else {return UITableViewCell()}
         
-        cell.setupCell(title: episodeArray[index], subtitle: titleEpisode[index], imageEpisode: imagePodcastString, time: time[index], favorite: favorite[index])
-        
+        cell.setupCell(title: episode[index].titleEpisode ?? "",
+                       subtitle: episode[index].subtitleEpisode ?? "",
+                       imageEpisode: imagePodcastString,
+                       time: episode[index].totalTimeEpisode ?? "",
+                       favorite: favorite[index]
+        )
+
         return cell
     }
     

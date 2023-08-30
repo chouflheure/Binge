@@ -12,7 +12,6 @@ import UIKit
 class FavoriteViewController: UIViewController {
 
     var pageController: UIPageViewController?
-    var pages = PagesFavoriteScreen.allCases
     var currentIndex: Int = 0
     var leftContainer: NSLayoutConstraint?
     var podcastSaved = [PodcastSaved]()

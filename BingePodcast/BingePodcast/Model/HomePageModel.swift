@@ -16,13 +16,14 @@ class HomePageModel {
     
     func fetchAllPodcast() {
         firebaseService.fetchAllPodcastFirebase { result in
+            print("@@@ result = \(result)")
             switch result {
             case .success(let data):
                 guard let data = data else {return}
-                print("@@@ data = \(data)")
+                print("@@@ data fetchAllPodcast = \(data)")
                 self.homePageDelegate?.fetchPodcastListAndShowOnHomePage(result: data)
             case .failure(let error):
-                print(error.localizedDescription)
+                print("@@@ error = \(error)")
             }
         }
     }
