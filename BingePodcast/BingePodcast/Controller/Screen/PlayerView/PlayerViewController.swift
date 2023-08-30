@@ -9,11 +9,14 @@ class PlayerViewController: UIViewController {
     let totalTimeTest: String = "01:01"
     var isPlaying: Bool = false
     var imageString: String = "play"
-    var isFavorite: Bool = true
+    var isFavorite: Bool = false
     var isSmallScreen: Bool = UIScreen.main.bounds.height < 800
     var isReturnButtonChevronLeft: Bool = false
     let descriptionView = UIView()
     // var player = PlayerAudioService()
+    var favoriteEpisode = false
+    let coreDataManager = CoreDataManager()
+    
     var player = AVPlayer()
 
     // MARK: Gradient Color
@@ -205,7 +208,19 @@ class PlayerViewController: UIViewController {
         )
         return button
     }()
-
+    
+    var descriptionPodcast: UILabel = {
+        var description = UILabel()
+        description.text = """
+            Cet été, A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices. Cet été, A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices. Cet été, A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices.<3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3
+            """
+        description.setLineSpacing(lineSpacing: 8.0)
+        description.numberOfLines = 0
+        description.font = UIFont(name: .fonts.proximaNova_Alt_Thin.fontName(), size: 16)
+        description.textColor = Colors.white.color
+        return description
+    }()
+    
     // MARK: ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -218,6 +233,18 @@ class PlayerViewController: UIViewController {
         setupAudioPlayer()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        Task {
+            if await coreDataManager.checkIfEpisodeIsFavorite(titleEpisode: titlePodcast.text ?? "") {
+                heartButton.changeSizeButton(button: heartButton, imageWidth: 25, imageString: Assets.Picto.Favorite.favoriteSelectedWhite.name)
+                isFavorite = true
+            } else {
+                heartButton.changeSizeButton(button: heartButton, imageWidth: 25, imageString: Assets.Picto.Favorite.favoriteUnselectedWhite.name)
+                isFavorite = false
+            }
+        }
+    }
+
     func setupAudioPlayer(){
 
         let url = URL(string: "https://sphinx.acast.com/a-bientot-de-te-revoir/la-presque-100eme/media.mp3")
@@ -239,7 +266,6 @@ class PlayerViewController: UIViewController {
     }
     
     func updateSlider(time:CMTime){
-
         let duration = CMTimeGetSeconds(player.currentItem!.asset.duration)
         self.slider.value = Float(CMTimeGetSeconds(time)) / Float(duration)
         spendTime.text = "\(self.slider.value)"

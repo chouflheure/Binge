@@ -6,22 +6,30 @@ open class CoreDataStack {
 
     // MARK: - Properties
     var favorite = false
+    var useInMemoryStore = false
     private let modelName: String
 
     // MARK: - Initializer
 
-    public init(modelName: String) {
+    public init(modelName: String, useInMemoryStore: Bool) {
         self.modelName = modelName
+        self.useInMemoryStore = useInMemoryStore
     }
     
     // MARK: - Core Data stack
-    public lazy var persistentContainer: NSPersistentCloudKitContainer = {
-        let container = NSPersistentCloudKitContainer(name: modelName)
+    public lazy var persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: modelName)
+        if useInMemoryStore {
+            let description = NSPersistentStoreDescription()
+            description.type = NSInMemoryStoreType
+            container.persistentStoreDescriptions = [description]
+        }
         container.loadPersistentStores(completionHandler: { (_, error) in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
+
         return container
     }()
 

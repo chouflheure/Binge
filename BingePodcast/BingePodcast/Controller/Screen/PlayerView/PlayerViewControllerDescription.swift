@@ -37,21 +37,12 @@ extension PlayerViewController {
         
         stackTitleAndFullScreen.addArrangedSubview(title)
         stackTitleAndFullScreen.addArrangedSubview(fullScreenButton)
-        
-        let descritpion = UILabel()
-        descritpion.text = """
-            Cet été, A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices. Cet été, A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices. Cet été, A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices.<3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3
-            """
-        descritpion.setLineSpacing(lineSpacing: 8.0)
-        descritpion.numberOfLines = 0
-        descritpion.font = UIFont(name: .fonts.proximaNova_Alt_Thin.fontName(), size: 16)
-        descritpion.textColor = Colors.white.color
 
         descriptionView.layer.cornerRadius = 33
         descriptionView.backgroundColor = Colors.purpleGradientMax.color.withAlphaComponent(0.8)
 
         descriptionView.addSubview(stackTitleAndFullScreen)
-        descriptionView.addSubview(descritpion)
+        descriptionView.addSubview(descriptionPodcast)
         
         descriptionView.layer.shadowRadius = 3
         descriptionView.layer.shadowOffset = CGSize(width: -2, height: -2)
@@ -69,12 +60,12 @@ extension PlayerViewController {
             fullScreenButton.heightAnchor.constraint(equalToConstant: 30)
         ].forEach{ $0.isActive = true }
         
-        descritpion.translatesAutoresizingMaskIntoConstraints = false
+        descriptionPodcast.translatesAutoresizingMaskIntoConstraints = false
         [
-            descritpion.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 20),
-            descritpion.bottomAnchor.constraint(equalTo: descriptionView.bottomAnchor, constant: -20),
-            descritpion.leftAnchor.constraint(equalTo: descriptionView.leftAnchor, constant: 20),
-            descritpion.rightAnchor.constraint(equalTo: descriptionView.rightAnchor, constant: -20)
+            descriptionPodcast.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 20),
+            descriptionPodcast.bottomAnchor.constraint(equalTo: descriptionView.bottomAnchor, constant: -20),
+            descriptionPodcast.leftAnchor.constraint(equalTo: descriptionView.leftAnchor, constant: 20),
+            descriptionPodcast.rightAnchor.constraint(equalTo: descriptionView.rightAnchor, constant: -20)
         ].forEach{ $0.isActive = true }
         
         scrollViewContainer.addArrangedSubview(marginTop)

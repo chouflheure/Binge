@@ -33,7 +33,7 @@ class FavoriteViewController: UIViewController {
         label.textColor = Colors.darkBlue.color
         return label
     }()
-    
+
     let line : UIView = {
         let line = UIView()
         line.backgroundColor = Colors.yellow.color
@@ -46,21 +46,58 @@ class FavoriteViewController: UIViewController {
         view.backgroundColor = .clear
         
         podcastSaved.append(PodcastSaved(titlePocast: "Du Sport", episodeSaved: [
-            EpisodeSaved_test(titleEpisode: "Episode 1", subtitleEpisode: "Les jeux olympiques sont ils utilent", totalTimeEpisode: "12:45", favorite: true, imageEpisode: Assets.aBientotDeTeRevoir.name),
-            EpisodeSaved_test(titleEpisode: "Episode 2", subtitleEpisode: "À quoi ca sert de courir ?", totalTimeEpisode: "12:45", favorite: true, imageEpisode: Assets.aBientotDeTeRevoir.name),
-            EpisodeSaved_test(titleEpisode: "Episode 3", subtitleEpisode: "Peut-on toujours repousser les limites ?", totalTimeEpisode: "12:45", favorite: true, imageEpisode: Assets.aBientotDeTeRevoir.name),
-            EpisodeSaved_test(titleEpisode: "Episode 4", subtitleEpisode: "Pourquoi les ballons no…", totalTimeEpisode: "12:45", favorite: true, imageEpisode: Assets.aBientotDeTeRevoir.name),
+            EpisodeSaved_test(titleEpisode: "Episode 1",
+                              subtitleEpisode: "Les jeux olympiques sont ils utilent",
+                              totalTimeEpisode: "12:45",
+                              favorite: true,
+                              imageEpisode: Assets.aBientotDeTeRevoir.name),
+            
+            EpisodeSaved_test(titleEpisode: "Episode 2",
+                              subtitleEpisode: "À quoi ca sert de courir ?",
+                              totalTimeEpisode: "12:45",
+                              favorite: true,
+                              imageEpisode: Assets.aBientotDeTeRevoir.name),
+            
+            EpisodeSaved_test(titleEpisode: "Episode 3",
+                              subtitleEpisode: "Peut-on toujours repousser les limites ?",
+                              totalTimeEpisode: "12:45",
+                              favorite: true,
+                              imageEpisode: Assets.aBientotDeTeRevoir.name),
+            
+            EpisodeSaved_test(titleEpisode: "Episode 4",
+                              subtitleEpisode: "Pourquoi les ballons no…",
+                              totalTimeEpisode: "12:45",
+                              favorite: true,
+                              imageEpisode: Assets.aBientotDeTeRevoir.name),
         ]))
 
         podcastSaved.append(PodcastSaved(titlePocast: "Les couilles sur la table", episodeSaved: [
-            EpisodeSaved_test(titleEpisode: "Episode 1", subtitleEpisode: "Les jeux olympiques sont ils utilent", totalTimeEpisode: "12:45", favorite: true, imageEpisode: Assets.aBientotDeTeRevoir.name),
-            EpisodeSaved_test(titleEpisode: "Episode 2", subtitleEpisode: "À quoi ca sert de courir ?", totalTimeEpisode: "12:45", favorite: true, imageEpisode: Assets.aBientotDeTeRevoir.name),
-            EpisodeSaved_test(titleEpisode: "Episode 3", subtitleEpisode: "Peut-on toujours repousser les limites ?", totalTimeEpisode: "12:45", favorite: true, imageEpisode: Assets.aBientotDeTeRevoir.name)
+            EpisodeSaved_test(titleEpisode: "Episode 1",
+                              subtitleEpisode: "Les jeux olympiques sont ils utilent",
+                              totalTimeEpisode: "12:45",
+                              favorite: true,
+                              imageEpisode: Assets.aBientotDeTeRevoir.name),
+
+            EpisodeSaved_test(titleEpisode: "Episode 2",
+                              subtitleEpisode: "À quoi ca sert de courir ?",
+                              totalTimeEpisode: "12:45",
+                              favorite: true,
+                              imageEpisode: Assets.aBientotDeTeRevoir.name),
+
+            EpisodeSaved_test(titleEpisode: "Episode 3",
+                              subtitleEpisode: "Peut-on toujours repousser les limites ?",
+                              totalTimeEpisode: "12:45",
+                              favorite: true,
+                              imageEpisode: Assets.aBientotDeTeRevoir.name)
         ]))
 
         seeLater.append(PodcastSaved(titlePocast: "Du Sport", episodeSaved: [
-            EpisodeSaved_test(titleEpisode: "Episode 1", subtitleEpisode: "Les jeux olympiques sont ils utilent", totalTimeEpisode: "12:45", favorite: true, imageEpisode: Assets.aBientotDeTeRevoir.name)]))
-        
+            EpisodeSaved_test(titleEpisode: "Episode 1",
+                              subtitleEpisode: "Les jeux olympiques sont ils utilent",
+                              totalTimeEpisode: "12:45",
+                              favorite: true,
+                              imageEpisode: Assets.aBientotDeTeRevoir.name)]))
+
         setupTitlePageViewController()
         setupPageController()
         setGradientBackground()

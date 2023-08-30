@@ -21,13 +21,19 @@ extension PlayerViewController {
     }
     
     @objc func actionPressFavoriteButton(_ sender: UIButton) {
+        Task {
+            await favoriteButtonClick(sender: sender)
+        }
+    }
+    
+    private func toggleFavoriteButton(sender: UIButton) {
         var imageString = String()
         if isFavorite {
             imageString = Assets.Picto.Favorite.favoriteSelectedWhite.name
         } else {
             imageString = Assets.Picto.Favorite.favoriteUnselectedWhite.name
         }
-        isFavorite = !isFavorite
+        
         
         sender.changeSizeButton(button: sender, imageWidth: 25, imageString: imageString)
     }
@@ -139,5 +145,23 @@ extension PlayerViewController {
         seekMoreButton.addTarget(self, action: #selector(actionPressButtonLightColor(_:)), for: .touchUpInside)
         seekMoreButton.addTarget(self, action: #selector(actionPressPlusSeekButton(_:)), for: .touchDown)
         seekMoreButton.addTarget(self, action: #selector(actionPressButtonLightColor(_:)), for: .allEvents)
+    }
+
+    func favoriteButtonClick(sender: UIButton) async {
+        let favorite = isFavorite
+        if !favorite {
+            await coreDataManager.addEpisodeIFavorite(title: titlePodcast.text ?? "",
+                                                      subtitle: subtitlePodcast.text ?? "",
+                                                      description: descriptionPodcast.text ?? "",
+                                                      totalTime: "",
+                                                      imageUrl: imageString,
+                                                      playerUrl: "")
+        } else {
+            await coreDataManager.removeEpisodeFromFavorite(titlePodcast: titlePodcast.text ?? "")
+        }
+
+        coreDataManager.fetchFavoriteEpisode()
+        isFavorite = !favorite
+        toggleFavoriteButton(sender: sender )
     }
 }
