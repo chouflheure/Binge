@@ -19,3 +19,9 @@ public struct Episode {
     let imageUrl: String?
     let playerUrl: String?
 }
+
+public struct PodcastEpisode {
+    let podcast: Podcast
+    let episode: [Episode]
+    
+}

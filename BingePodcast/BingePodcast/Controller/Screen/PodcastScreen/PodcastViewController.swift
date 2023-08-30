@@ -18,7 +18,7 @@ class PodcastViewController: UIViewController {
     private var currentIndex: Int = 0
     private var myCollectionViewPodcast: UICollectionView?
 
-    var podcast = [PodcastSaved]()
+    var podcastEpisode = [PodcastEpisode]()
 
     let podcastPageModel = PodcastPageModel()
 
@@ -27,62 +27,8 @@ class PodcastViewController: UIViewController {
         self.view.backgroundColor = .lightGray
         
         podcastPageModel.podcastPageDelegate = self
-        
         setupCarousel()
-        
-        
-        
-        podcast.append(PodcastSaved(titlePocast: "Du Sport", episodeSaved: [
-            EpisodeSaved_test(titleEpisode: "Episode 1",
-                              subtitleEpisode: "Les jeux olympiques sont ils utilent",
-                              totalTimeEpisode: "12:45",
-                              favorite: true,
-                              imageEpisode: Assets.aBientotDeTeRevoir.name),
-            
-            EpisodeSaved_test(titleEpisode: "Episode 2",
-                              subtitleEpisode: "À quoi ca sert de courir ?",
-                              totalTimeEpisode: "12:45",
-                              favorite: true,
-                              imageEpisode: Assets.aBientotDeTeRevoir.name),
-            
-            EpisodeSaved_test(titleEpisode: "Episode 3",
-                              subtitleEpisode: "Peut-on toujours repousser les limites ?",
-                              totalTimeEpisode: "12:45",
-                              favorite: true,
-                              imageEpisode: Assets.aBientotDeTeRevoir.name),
-            
-            EpisodeSaved_test(titleEpisode: "Episode 4",
-                              subtitleEpisode: "Pourquoi les ballons no…",
-                              totalTimeEpisode: "12:45",
-                              favorite: true,
-                              imageEpisode: Assets.aBientotDeTeRevoir.name),
-        ]))
-
-        podcast.append(PodcastSaved(titlePocast: "Les couilles sur la table", episodeSaved: [
-            EpisodeSaved_test(titleEpisode: "Episode 1",
-                              subtitleEpisode: "Test",
-                              totalTimeEpisode: "12:45",
-                              favorite: true,
-                              imageEpisode: Assets.aBientotDeTeRevoir.name),
-
-            EpisodeSaved_test(titleEpisode: "Episode 2",
-                              subtitleEpisode: "Test",
-                              totalTimeEpisode: "12:45",
-                              favorite: true,
-                              imageEpisode: Assets.aBientotDeTeRevoir.name),
-
-            EpisodeSaved_test(titleEpisode: "Episode 3",
-                              subtitleEpisode: "Peut-on toujours repousser les limites ?",
-                              totalTimeEpisode: "12:45",
-                              favorite: true,
-                              imageEpisode: Assets.aBientotDeTeRevoir.name)
-        ]))
-        
-        print("@@@@@ Podcast = \(podcast)")
-        print("@@@@@ Podcast count = \(podcast.count)")
-        
-        setupPageController()
-        
+        // setupPageController()
         podcastPageModel.fetchAllPodcast()
         
     }
@@ -111,7 +57,7 @@ class PodcastViewController: UIViewController {
     
     @objc private func swipeRightToLeft(_ sender: UISwipeGestureRecognizer) {
         print("@@@ swipe right to left")
-        if actualIndexPathRow != podcast.count {
+        if actualIndexPathRow != podcastEpisode.count {
             positionCellWithIdexPath(indexCell: actualIndexPathRow + 1)
         }
     }
@@ -179,9 +125,12 @@ class PodcastViewController: UIViewController {
         self.addChild(pageController)
         self.view.addSubview(pageController.view)
         
-        let initialVC = PageViewControllerPodcast(episode: podcast[currentIndex].episodeSaved) //with: pages[0])
+        if !podcastEpisode.isEmpty {
+            let initialVC = PageViewControllerPodcast(episode: podcastEpisode[currentIndex].episode)
+            
+            self.pageController?.setViewControllers([initialVC], direction: .forward, animated: true, completion: nil)
+        }
         
-        self.pageController?.setViewControllers([initialVC], direction: .forward, animated: true, completion: nil)
         
         self.pageController?.didMove(toParent: self)
     }
@@ -194,25 +143,26 @@ extension PodcastViewController: UIPageViewControllerDataSource, UIPageViewContr
         guard let currentVC = viewController as? PageViewControllerPodcast else {return nil}
         if currentIndex == 0 {return nil}
         currentIndex -= 1
-
-        let vc: PageViewControllerPodcast = PageViewControllerPodcast(episode: podcast[currentIndex].episodeSaved)
+        
+        // let vc: PageViewControllerPodcast = PageViewControllerPodcast(episode: podcast[currentIndex].episodeSaved)
+        let vc: PageViewControllerPodcast = PageViewControllerPodcast(episode: podcastEpisode[currentIndex].episode)
         return vc
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         
         guard let currentVC = viewController as? PageViewControllerPodcast else {return nil}
-        if currentIndex >= podcast.count - 1 {return nil}
+        if currentIndex >= podcastEpisode.count - 1 {return nil}
         currentIndex += 1
         
-        let vc: PageViewControllerPodcast = PageViewControllerPodcast(episode: podcast[currentIndex].episodeSaved)
+        let vc: PageViewControllerPodcast = PageViewControllerPodcast(episode: podcastEpisode[currentIndex].episode)
         return vc
     }
 }
 
 extension PodcastViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        podcast.count // How many cells to display
+        podcastEpisode.count // How many cells to display
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -220,15 +170,15 @@ extension PodcastViewController: UICollectionViewDataSource {
         let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: cellPodcast, for: indexPath) as? CellPodcastCollectionViewCell
         
         guard let myCell = myCell else {return UICollectionViewCell()}
-        myCell.setUpUI(title: "", subtitlePodcast: Assets.aBientotDeTeRevoir.name, imagePodcastString: podcast[indexPath.row].episodeSaved.first?.imageEpisode ?? "")
+        myCell.setUpUI(title: "", subtitlePodcast: "", imagePodcastString: podcastEpisode[indexPath.row].podcast.image ?? "")
 
         switch indexPath.row {
-        case 0:  myCell.backgroundColor = .gray
-        case 1:  myCell.backgroundColor = .blue
-        case 2:  myCell.backgroundColor = .green
-        case 3:  myCell.backgroundColor = .brown
-        case 4:  myCell.backgroundColor = .black
-        default: myCell.backgroundColor = UIColor.gray
+            case 0:  myCell.backgroundColor = .gray
+            case 1:  myCell.backgroundColor = .blue
+            case 2:  myCell.backgroundColor = .green
+            case 3:  myCell.backgroundColor = .brown
+            case 4:  myCell.backgroundColor = .black
+            default: myCell.backgroundColor = UIColor.gray
         }
 
         return myCell
@@ -292,7 +242,20 @@ extension PodcastViewController: UICollectionViewDelegate {
 }
 
 extension PodcastViewController: PodcastPageDelegate {
+    func showPodcastAnEpisode(podcastEpisode: PodcastEpisode) {
+        self.podcastEpisode.append(podcastEpisode)
+        myCollectionViewPodcast?.reloadData()
+        setupPageController()
+    }
+
     func fetchPodcastList(result: [Podcast]) {
         print("@@@ result func = \(result)")
+        // podcastPageModel.fetchEpisodePodcast(podcast: result[0])
+        
+        result.enumerated().forEach { podcast in
+            podcastPageModel.fetchEpisodePodcast(podcast: podcast.element)
+        }
+         
     }
+
 }

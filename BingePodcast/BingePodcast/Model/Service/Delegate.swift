@@ -8,6 +8,7 @@ protocol HomePageDelegate: AnyObject {
 
 protocol PodcastPageDelegate: AnyObject {
     func fetchPodcastList(result: [Podcast])
+    func showPodcastAnEpisode(podcastEpisode : PodcastEpisode)
 }
 
 protocol DetailRecipeDelegate: AnyObject {

@@ -6,9 +6,9 @@ class PageViewControllerPodcast: UIViewController {
     var titleLabel: UILabel?
     
     // var page: PagePodcast
-    let episode: [EpisodeSaved_test]
+    let episode: [Episode]
     
-    init(episode: [EpisodeSaved_test]) {
+    init(episode: [Episode]) {
         self.episode = episode
         super.init(nibName: nil, bundle: nil)
     }
@@ -19,7 +19,7 @@ class PageViewControllerPodcast: UIViewController {
     
     let cellSpacingHeight: CGFloat = 5
 
-    let favorite = [true, false, false, true, false, true, true, true]
+    let favorite = [true, false, false, true, false, true, true, true,true, false, false, true, false, true, true, true,true, false, false, true, false, true, true, true,true, false, false, true, false, true, true, true,true, false, false, true, false, true, true, true,true, false, false, true, false, true, true, true]
     
     let imagePodcastString = Assets.aBientotDeTeRevoir.name
     
@@ -82,10 +82,10 @@ extension PageViewControllerPodcast: UITableViewDataSource {
         
         guard let cell = cell else {return UITableViewCell()}
         
-        cell.setupCell(title: episode[index].titleEpisode ?? "",
-                       subtitle: episode[index].subtitleEpisode ?? "",
+        cell.setupCell(title: episode[index].title ?? "",
+                       subtitle: episode[index].subtitle ?? "",
                        imageEpisode: imagePodcastString,
-                       time: episode[index].totalTimeEpisode ?? "",
+                       time: episode[index].totalTime ?? "",
                        favorite: favorite[index]
         )
 

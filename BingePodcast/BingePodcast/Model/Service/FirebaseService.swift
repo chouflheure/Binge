@@ -49,12 +49,12 @@ public class FirebaseService {
     }
     
     
-    func fetchDataOnPosdcastFirebase(onCompletion: @escaping ([Episode]?) -> Void) {
-        callFirebase(collectionName: "Du Sport").getDocuments() { (querySnapshot, err) in
+    func fetchEpisodeOnPosdcastFirebase(podcastName: String, onCompletion: @escaping (Result<[Episode]?,Error> ) -> Void) {
+        callFirebase(collectionName: podcastName).getDocuments() { (querySnapshot, err) in
             var episode = [Episode]()
             if let err = err {
                 print("@@@ Error getting: \(err)")
-                onCompletion(nil)
+                onCompletion(.failure(err))
             } else {
                 for document in querySnapshot!.documents {
                     episode.append(Episode(title: document.data()["title"] as? String,
@@ -65,7 +65,7 @@ public class FirebaseService {
                                            playerUrl: document.data()["playerUrl"] as? String)
                     )
                 }
-                onCompletion(episode)
+                    onCompletion(.success(episode))
             }
         }
     }

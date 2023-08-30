@@ -27,7 +27,7 @@ class HomePageModel {
             }
         }
     }
-
+/*
     func testfetchDataOnPosdcastFirebase() {
         firebaseService.fetchDataOnPosdcastFirebase { result in
             print("@@@ ==============")
@@ -37,7 +37,8 @@ class HomePageModel {
             }
         }
     }
-    
+*/
+
     func test() {
         firebaseService.fetchRandomPodcast(onCompletion: { result in
             print("@@@ number = \(result)")

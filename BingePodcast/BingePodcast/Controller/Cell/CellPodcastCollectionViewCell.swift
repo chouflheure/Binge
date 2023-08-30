@@ -18,7 +18,7 @@ class CellPodcastCollectionViewCell: UICollectionViewCell {
         
         imageViewPodcast.image = Assets.placeholderImage.image
 
-        downloadImage("https://back.bingeaudio.fr/wp-content/uploads/2019/07/Channel_itunes_logo_v2-768x768.png") {
+        downloadImage(imagePodcastString) {
             image, urlString in
                 if let imageObject = image {
                     // performing UI operation on main thread
