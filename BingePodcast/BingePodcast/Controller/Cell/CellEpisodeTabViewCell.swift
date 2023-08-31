@@ -4,32 +4,21 @@ class CellEpisodeTabViewCell: UITableViewCell {
     
     @IBOutlet weak var episodeImageView: UIImageView!
     @IBOutlet weak var playButtonImageView: UIImageView!
-    
     @IBOutlet weak var titleEpisode: UILabel!
-    
     @IBOutlet weak var subtitleEpisode: UILabel!
-    
     @IBOutlet weak var favorisImageView: UIImageView!
-
     @IBOutlet weak var totalTimeEpisode: UILabel!
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         self.backgroundColor = .clear
-        // Configure the view for the selected state
     }
     
-    func setupCell(title: String,
-                       subtitle: String,
-                       imageEpisode: String,
-                       time: String,
-                       favorite: Bool) {
+    func setupCell(title: String, subtitle: String, imageEpisode: String, time: String, favorite: Bool) {
             
         self.titleEpisode.text = title
         self.titleEpisode.numberOfLines = 1

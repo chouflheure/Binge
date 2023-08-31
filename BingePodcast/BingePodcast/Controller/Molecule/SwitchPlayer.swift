@@ -178,10 +178,8 @@ class SwitchPlayer: UIView {
             image, imageUrl  in
                 if let imageObject = image {
                     // performing UI operation on main thread
-                    print("@@@ imageObject = \(imageObject)")
                     DispatchQueue.main.async {
                         self.imageCircle.image = imageObject
-                        print("@@@ == fiish")
                         self.reloadInputViews()
                     }
                 }

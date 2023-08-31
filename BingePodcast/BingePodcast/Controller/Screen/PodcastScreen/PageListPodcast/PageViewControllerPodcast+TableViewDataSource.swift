@@ -8,7 +8,6 @@ extension PageListPodcast: UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-
         episode.count
     }
     
@@ -39,10 +38,10 @@ extension PageListPodcast: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        cellSpacingHeight
+        ConstantPageListPodcast.cellSpacingHeightHeaderInSection
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        82
+        ConstantPageListPodcast.cellRowSpacingHeight
     }
 }

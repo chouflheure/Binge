@@ -7,7 +7,6 @@ class HomePageModel {
     
     func fetchAllAuthor() {
         firebaseService.fetchAllAuthorFirebase { result in
-            print("@@@ ==============")
             result?.forEach{ author in
                 print("@@@ data author = \(author)")
             }
@@ -16,11 +15,9 @@ class HomePageModel {
     
     func fetchAllPodcast() {
         firebaseService.fetchAllPodcastFirebase { result in
-            print("@@@ result = \(result)")
             switch result {
             case .success(let data):
                 guard let data = data else {return}
-                print("@@@ data fetchAllPodcast = \(data)")
                 self.homePageDelegate?.fetchPodcastListAndShowOnHomePage(result: data)
             case .failure(let error):
                 print("@@@ error = \(error)")

@@ -20,7 +20,7 @@ class PodcastViewController: UIViewController {
         self.view.backgroundColor = .lightGray
         podcastPageModel.podcastPageDelegate = self
         setupCarousel()
-        setupPageController()
+        setupPageController(test: PageListPodcast(episode: [Episode(title: "", subtitle: "", description: "", totalTime: "", imageUrl: "", playerUrl: "")]))
         podcastPageModel.fetchAllPodcast()
         
     }
@@ -56,7 +56,7 @@ class PodcastViewController: UIViewController {
     private func setupCollectionViewPodcast() {
  
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 30, left: 0, bottom: 10, right: 20)
+        layout.sectionInset = UIEdgeInsets(top: 30, left: 100, bottom: 10, right: 20)
         layout.itemSize = CGSize(width: UIScreen.main.bounds.width - 200, height: 300)
         layout.scrollDirection = .horizontal
 
@@ -96,26 +96,27 @@ class PodcastViewController: UIViewController {
         pageController?.goToPreviousPage()
     }
     
-    func setupPageController() {
+    
+    
+    func setupPageController(test: PageListPodcast) {
         
         pageController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
 
-        // dataSource at nil to remove the swipe
         pageController?.dataSource = self
         pageController?.delegate = self
         pageController?.view.backgroundColor = .clear
         pageController?.view.frame = CGRect(x: 0,
-                                                 y: 300,
-                                                 width: self.view.frame.width,
-                                                 height: UIScreen.main.bounds.height - 300)
+                                            y: 300,
+                                            width: self.view.frame.width,
+                                            height: UIScreen.main.bounds.height - 300)
         
+        // pageController?.view.backgroundColor = .red
         guard let pageController = pageController else {return}
-            self.addChild(pageController)
-            self.view.addSubview(pageController.view)
+        self.addChild(pageController)
+        self.view.addSubview(pageController.view)
 
-            let initialVC = PageListPodcast(episode: [Episode(title: "", subtitle: "", description: "", totalTime: "", imageUrl: "", playerUrl: "")])
-            
-            pageController.setViewControllers([initialVC], direction: .forward, animated: true, completion: nil)
-            pageController.didMove(toParent: self)
+        let initialVC = test
+        pageController.setViewControllers([initialVC], direction: .forward, animated: true, completion: nil)
+        pageController.didMove(toParent: self)
     }
 }
