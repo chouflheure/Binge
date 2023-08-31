@@ -12,9 +12,8 @@ class PodcastViewController: UIViewController {
     private var currentIndex: Int = 0
     private var myCollectionViewPodcast: UICollectionView?
 
-    var podcastEpisode = [PodcastEpisode]()
-
-    let podcastPageModel = PodcastPageModel()
+    private var podcastEpisode = [PodcastEpisode]()
+    private let podcastPageModel = PodcastPageModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,14 +41,12 @@ class PodcastViewController: UIViewController {
     }
     
     @objc private func swipeLeftToRight(_ sender: UISwipeGestureRecognizer) {
-        print("@@@ swipe left to right")
         if actualIndexPathRow != 0 {
             positionCellWithIdexPath(indexCell: actualIndexPathRow - 1)
         }
     }
     
     @objc private func swipeRightToLeft(_ sender: UISwipeGestureRecognizer) {
-        print("@@@ swipe right to left")
         if actualIndexPathRow != podcastEpisode.count {
             positionCellWithIdexPath(indexCell: actualIndexPathRow + 1)
         }
@@ -92,12 +89,10 @@ class PodcastViewController: UIViewController {
     
     
     private func next() {
-        print("@@@ click next")
         pageController?.goToNextPage()
     }
     
     private func previous() {
-        print("@@@ click previous")
         pageController?.goToPreviousPage()
     }
     
@@ -115,45 +110,44 @@ class PodcastViewController: UIViewController {
                                                  height: UIScreen.main.bounds.height - 300)
         
         guard let pageController = pageController else {return}
-        //if !podcastEpisode.isEmpty {
             self.addChild(pageController)
             self.view.addSubview(pageController.view)
 
-            let initialVC = PageViewControllerPodcast(episode: [Episode(title: "", subtitle: "", description: "", totalTime: "", imageUrl: "", playerUrl: "")])
+            let initialVC = PageListPodcast(episode: [Episode(title: "", subtitle: "", description: "", totalTime: "", imageUrl: "", playerUrl: "")])
             
             pageController.setViewControllers([initialVC], direction: .forward, animated: true, completion: nil)
             pageController.didMove(toParent: self)
-        // }
     }
 }
 
 extension PodcastViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        
-        guard let currentVC = viewController as? PageViewControllerPodcast else {return nil}
+
         if currentIndex == 0 {return nil}
         currentIndex -= 1
-        
-        // let vc: PageViewControllerPodcast = PageViewControllerPodcast(episode: podcast[currentIndex].episodeSaved)
-        let vc: PageViewControllerPodcast = PageViewControllerPodcast(episode: podcastEpisode[currentIndex].episode)
+
+        let vc: PageListPodcast = PageListPodcast(
+            episode:podcastEpisode[currentIndex].episode
+        )
         return vc
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         
-        guard let currentVC = viewController as? PageViewControllerPodcast else {return nil}
         if currentIndex >= podcastEpisode.count - 1 {return nil}
         currentIndex += 1
         
-        let vc: PageViewControllerPodcast = PageViewControllerPodcast(episode: podcastEpisode[currentIndex].episode)
+        let vc: PageListPodcast = PageListPodcast(
+            episode: podcastEpisode[currentIndex].episode
+        )
         return vc
     }
 }
 
 extension PodcastViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        podcastEpisode.count // How many cells to display
+        podcastEpisode.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -217,7 +211,6 @@ extension PodcastViewController: UICollectionViewDelegate {
     }
 
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-       print("@@@ didDeselect ")
         cellDeselected(indexPath: indexPath)
     }
 
