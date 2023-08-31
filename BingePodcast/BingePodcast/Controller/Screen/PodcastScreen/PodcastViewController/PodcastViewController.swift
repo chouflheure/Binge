@@ -2,18 +2,18 @@ import UIKit
 
 class PodcastViewController: UIViewController {
 
-    private let cellPodcast = "cellPodcast"
-    private let cellEpisodeTableView = "cellEpisodeTableView"
-    private let cellEpisodeTabViewCell = "CellEpisodeTabViewCell"
+    let cellPodcast = "cellPodcast"
+    let cellEpisodeTableView = "cellEpisodeTableView"
+    let cellEpisodeTabViewCell = "CellEpisodeTabViewCell"
 
     let carouselView = UIView()
     var actualIndexPathRow = 0
-    private var pageController: UIPageViewController?
-    private var currentIndex: Int = 0
-    private var myCollectionViewPodcast: UICollectionView?
+    var pageController: UIPageViewController?
+    var currentIndex: Int = 0
+    var myCollectionViewPodcast: UICollectionView?
 
-    private var podcastEpisode = [PodcastEpisode]()
-    private let podcastPageModel = PodcastPageModel()
+    var podcastEpisode = [PodcastEpisode]()
+    let podcastPageModel = PodcastPageModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,15 +88,15 @@ class PodcastViewController: UIViewController {
     
     
     
-    private func next() {
+    func next() {
         pageController?.goToNextPage()
     }
     
-    private func previous() {
+    func previous() {
         pageController?.goToPreviousPage()
     }
     
-    private func setupPageController() {
+    func setupPageController() {
         
         pageController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
 
@@ -118,124 +118,4 @@ class PodcastViewController: UIViewController {
             pageController.setViewControllers([initialVC], direction: .forward, animated: true, completion: nil)
             pageController.didMove(toParent: self)
     }
-}
-
-extension PodcastViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
-    
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-
-        if currentIndex == 0 {return nil}
-        currentIndex -= 1
-
-        let vc: PageListPodcast = PageListPodcast(
-            episode:podcastEpisode[currentIndex].episode
-        )
-        return vc
-    }
-    
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        
-        if currentIndex >= podcastEpisode.count - 1 {return nil}
-        currentIndex += 1
-        
-        let vc: PageListPodcast = PageListPodcast(
-            episode: podcastEpisode[currentIndex].episode
-        )
-        return vc
-    }
-}
-
-extension PodcastViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        podcastEpisode.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: cellPodcast, for: indexPath) as? CellPodcastCollectionViewCell
-        
-        guard let myCell = myCell else {return UICollectionViewCell()}
-        myCell.setUpUI(title: "", subtitlePodcast: "", imagePodcastString: podcastEpisode[indexPath.row].podcast.image ?? "")
-
-        switch indexPath.row {
-            case 0:  myCell.backgroundColor = .gray
-            case 1:  myCell.backgroundColor = .blue
-            case 2:  myCell.backgroundColor = .green
-            case 3:  myCell.backgroundColor = .brown
-            case 4:  myCell.backgroundColor = .black
-            default: myCell.backgroundColor = UIColor.gray
-        }
-
-        return myCell
-    }
-}
-
-
-extension PodcastViewController: UICollectionViewDelegate {
- 
-    private func positionCellWithIdexPath(indexCell: Int) {
-        
-        let attributesCollectionViewPodcast = myCollectionViewPodcast?.layoutAttributesForItem(
-            at: IndexPath(row: indexCell, section: 0)
-        )
-        
-        var height: CGFloat? = 0.0
-        var width: CGFloat? = 0.0
-
-        if attributesCollectionViewPodcast != nil {
-            width = attributesCollectionViewPodcast!.frame.origin.x - attributesCollectionViewPodcast!.frame.width/2 - 10
-            height = 0
-        }
-
-        let position = CGPoint(x: width ?? 0, y: height ?? 0)
-
-        myCollectionViewPodcast?.setContentOffset(position, animated: true)
-
-        
-        if indexCell < actualIndexPathRow {
-            previous()
-        }
-        if indexCell > actualIndexPathRow {
-            next()
-        }
-
-        actualIndexPathRow = indexCell
-    }
-
-    // Methode qui permet de changer la tronche de la cell ( cacher le text, enlever le blur ... )
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        cellSelected(indexPath: indexPath)
-        // TODO : ajouter une animation to blur
-
-        positionCellWithIdexPath(indexCell: indexPath.row)
-    }
-
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        cellDeselected(indexPath: indexPath)
-    }
-
-    private func cellSelected(indexPath: IndexPath) {
-        guard let cell = myCollectionViewPodcast?.cellForItem(at: indexPath) as? CellPodcastCollectionViewCell else {return}
-        cell.imageViewPodcast.isHidden = false
-    }
-    
-    private func cellDeselected(indexPath: IndexPath) {
-        guard let cell = myCollectionViewPodcast?.cellForItem(at: indexPath) as? CellPodcastCollectionViewCell else {return}
-        cell.imageViewPodcast.isHidden = true
-    }
-}
-
-extension PodcastViewController: PodcastPageDelegate {
-    func showPodcastAnEpisode(podcastEpisode: PodcastEpisode) {
-        self.podcastEpisode.append(podcastEpisode)
-        myCollectionViewPodcast?.reloadData()
-    }
-
-    func fetchPodcastList(result: [Podcast]) {
-        result.enumerated().forEach { podcast in
-            podcastPageModel.fetchEpisodePodcast(podcast: podcast.element)
-        }
-         
-    }
-
 }
