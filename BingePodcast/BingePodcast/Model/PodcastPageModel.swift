@@ -24,7 +24,6 @@ class PodcastPageModel {
             case .success(let data):
                 guard let data = data else {return}
                 print("@@@ episode = \(data)")
-                // self.podcastPageDelegate?.fetchPodcastList(result: data)
                 let test = PodcastEpisode(podcast: podcast, episode: data)
                 self.podcastPageDelegate?.showPodcastAnEpisode(podcastEpisode: test)
                 print("@@@ test Data = \(test)")

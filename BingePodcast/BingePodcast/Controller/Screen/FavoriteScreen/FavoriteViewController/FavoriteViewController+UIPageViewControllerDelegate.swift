@@ -71,18 +71,19 @@ extension FavoriteViewController: UIPageViewControllerDelegate {
             width: self.view.frame.width,
             height: self.view.frame.height - 120
         )
-        
-        self.addChild(self.pageController!)
-        self.view.addSubview(self.pageController!.view)
+        guard let pageController = pageController else {return}
+
+        self.addChild(pageController)
+        self.view.addSubview(pageController.view)
         
         
         let initialVC = PageListFavorite(with: podcastSaved)
         
-        self.pageController?.setViewControllers([initialVC], direction: .forward,
+        pageController.setViewControllers([initialVC], direction: .forward,
                                                 animated: true,
                                                 completion: nil)
         
-        self.pageController?.didMove(toParent: self)
+        pageController.didMove(toParent: self)
     }
     
     

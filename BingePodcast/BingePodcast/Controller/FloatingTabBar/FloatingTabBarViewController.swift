@@ -294,16 +294,11 @@ class FloatingTabBarViewController: UITabBar {
             viewPlayerData.frame = CGRect(x: self.background.frame.origin.x + marginLeft, y: self.background.frame.origin.y , width: UIScreen.main.bounds.width - (marginLeft + marginRight), height: barHeight + marginTop )
 
             blurEffectView.frame = CGRect(x: self.background.frame.origin.x + marginLeft, y: self.background.frame.origin.y , width: UIScreen.main.bounds.width - (marginLeft + marginRight), height: barHeight + marginTop )
-            
-//            marginTop = 90
 
         } else {
             viewPlayerData.frame = CGRect(x: self.background.frame.origin.x + marginLeft, y: self.background.frame.origin.y + barHeight, width: UIScreen.main.bounds.width - (marginLeft + marginRight), height: barHeight + 25)
 
             blurEffectView.frame = CGRect(x: self.background.frame.origin.x + marginLeft, y: self.background.frame.origin.y + barHeight, width: UIScreen.main.bounds.width - (marginLeft + marginRight), height: barHeight + 25)
-
-  //          marginTop = 0
-    //        self.frame.size = self.sizeThatFits(CGSize(width: UIScreen.main.bounds.width - (marginLeft + marginRight), height: barHeight))
             
         }
        

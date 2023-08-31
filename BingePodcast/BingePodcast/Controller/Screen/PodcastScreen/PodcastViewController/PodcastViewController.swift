@@ -1,9 +1,3 @@
-
-// https://medium.com/@thomsmed/expandable-and-dynamic-sized-table-header-view-and-table-footer-view-6611ce0265b4
-
-// link to resize 
-
-
 import UIKit
 
 class PodcastViewController: UIViewController {
@@ -18,17 +12,15 @@ class PodcastViewController: UIViewController {
     private var currentIndex: Int = 0
     private var myCollectionViewPodcast: UICollectionView?
 
-    var podcastEpisode = [PodcastEpisode]()
-
-    let podcastPageModel = PodcastPageModel()
+    private var podcastEpisode = [PodcastEpisode]()
+    private let podcastPageModel = PodcastPageModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .lightGray
-        
         podcastPageModel.podcastPageDelegate = self
         setupCarousel()
-        // setupPageController()
+        setupPageController()
         podcastPageModel.fetchAllPodcast()
         
     }
@@ -49,14 +41,12 @@ class PodcastViewController: UIViewController {
     }
     
     @objc private func swipeLeftToRight(_ sender: UISwipeGestureRecognizer) {
-        print("@@@ swipe left to right")
         if actualIndexPathRow != 0 {
             positionCellWithIdexPath(indexCell: actualIndexPathRow - 1)
         }
     }
     
     @objc private func swipeRightToLeft(_ sender: UISwipeGestureRecognizer) {
-        print("@@@ swipe right to left")
         if actualIndexPathRow != podcastEpisode.count {
             positionCellWithIdexPath(indexCell: actualIndexPathRow + 1)
         }
@@ -99,70 +89,65 @@ class PodcastViewController: UIViewController {
     
     
     private func next() {
-        print("@@@ click next")
         pageController?.goToNextPage()
     }
     
     private func previous() {
-        print("@@@ click previous")
         pageController?.goToPreviousPage()
     }
     
     private func setupPageController() {
-        self.pageController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+        
+        pageController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
 
         // dataSource at nil to remove the swipe
-        self.pageController?.dataSource = self
-        self.pageController?.delegate = self
-        self.pageController?.view.backgroundColor = .clear
-        self.pageController?.view.frame = CGRect(x: 0,
+        pageController?.dataSource = self
+        pageController?.delegate = self
+        pageController?.view.backgroundColor = .clear
+        pageController?.view.frame = CGRect(x: 0,
                                                  y: 300,
                                                  width: self.view.frame.width,
                                                  height: UIScreen.main.bounds.height - 300)
         
         guard let pageController = pageController else {return}
-        
-        self.addChild(pageController)
-        self.view.addSubview(pageController.view)
-        
-        if !podcastEpisode.isEmpty {
-            let initialVC = PageViewControllerPodcast(episode: podcastEpisode[currentIndex].episode)
+            self.addChild(pageController)
+            self.view.addSubview(pageController.view)
+
+            let initialVC = PageListPodcast(episode: [Episode(title: "", subtitle: "", description: "", totalTime: "", imageUrl: "", playerUrl: "")])
             
-            self.pageController?.setViewControllers([initialVC], direction: .forward, animated: true, completion: nil)
-        }
-        
-        
-        self.pageController?.didMove(toParent: self)
+            pageController.setViewControllers([initialVC], direction: .forward, animated: true, completion: nil)
+            pageController.didMove(toParent: self)
     }
 }
 
 extension PodcastViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        
-        guard let currentVC = viewController as? PageViewControllerPodcast else {return nil}
+
         if currentIndex == 0 {return nil}
         currentIndex -= 1
-        
-        // let vc: PageViewControllerPodcast = PageViewControllerPodcast(episode: podcast[currentIndex].episodeSaved)
-        let vc: PageViewControllerPodcast = PageViewControllerPodcast(episode: podcastEpisode[currentIndex].episode)
+
+        let vc: PageListPodcast = PageListPodcast(
+            episode:podcastEpisode[currentIndex].episode
+        )
         return vc
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         
-        guard let currentVC = viewController as? PageViewControllerPodcast else {return nil}
         if currentIndex >= podcastEpisode.count - 1 {return nil}
         currentIndex += 1
         
-        let vc: PageViewControllerPodcast = PageViewControllerPodcast(episode: podcastEpisode[currentIndex].episode)
+        let vc: PageListPodcast = PageListPodcast(
+            episode: podcastEpisode[currentIndex].episode
+        )
         return vc
     }
 }
 
 extension PodcastViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        podcastEpisode.count // How many cells to display
+        podcastEpisode.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -226,7 +211,6 @@ extension PodcastViewController: UICollectionViewDelegate {
     }
 
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-       print("@@@ didDeselect ")
         cellDeselected(indexPath: indexPath)
     }
 
@@ -245,13 +229,9 @@ extension PodcastViewController: PodcastPageDelegate {
     func showPodcastAnEpisode(podcastEpisode: PodcastEpisode) {
         self.podcastEpisode.append(podcastEpisode)
         myCollectionViewPodcast?.reloadData()
-        setupPageController()
     }
 
     func fetchPodcastList(result: [Podcast]) {
-        print("@@@ result func = \(result)")
-        // podcastPageModel.fetchEpisodePodcast(podcast: result[0])
-        
         result.enumerated().forEach { podcast in
             podcastPageModel.fetchEpisodePodcast(podcast: podcast.element)
         }
