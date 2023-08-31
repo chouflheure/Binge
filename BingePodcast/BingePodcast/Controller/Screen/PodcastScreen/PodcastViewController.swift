@@ -1,9 +1,3 @@
-
-// https://medium.com/@thomsmed/expandable-and-dynamic-sized-table-header-view-and-table-footer-view-6611ce0265b4
-
-// link to resize 
-
-
 import UIKit
 
 class PodcastViewController: UIViewController {
@@ -25,10 +19,9 @@ class PodcastViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .lightGray
-        
         podcastPageModel.podcastPageDelegate = self
         setupCarousel()
-        // setupPageController()
+        setupPageController()
         podcastPageModel.fetchAllPodcast()
         
     }
@@ -109,30 +102,28 @@ class PodcastViewController: UIViewController {
     }
     
     private func setupPageController() {
-        self.pageController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+        
+        pageController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
 
         // dataSource at nil to remove the swipe
-        self.pageController?.dataSource = self
-        self.pageController?.delegate = self
-        self.pageController?.view.backgroundColor = .clear
-        self.pageController?.view.frame = CGRect(x: 0,
+        pageController?.dataSource = self
+        pageController?.delegate = self
+        pageController?.view.backgroundColor = .clear
+        pageController?.view.frame = CGRect(x: 0,
                                                  y: 300,
                                                  width: self.view.frame.width,
                                                  height: UIScreen.main.bounds.height - 300)
         
         guard let pageController = pageController else {return}
-        
-        self.addChild(pageController)
-        self.view.addSubview(pageController.view)
-        
-        if !podcastEpisode.isEmpty {
-            let initialVC = PageViewControllerPodcast(episode: podcastEpisode[currentIndex].episode)
+        //if !podcastEpisode.isEmpty {
+            self.addChild(pageController)
+            self.view.addSubview(pageController.view)
+
+            let initialVC = PageViewControllerPodcast(episode: [Episode(title: "", subtitle: "", description: "", totalTime: "", imageUrl: "", playerUrl: "")])
             
-            self.pageController?.setViewControllers([initialVC], direction: .forward, animated: true, completion: nil)
-        }
-        
-        
-        self.pageController?.didMove(toParent: self)
+            pageController.setViewControllers([initialVC], direction: .forward, animated: true, completion: nil)
+            pageController.didMove(toParent: self)
+        // }
     }
 }
 
@@ -245,13 +236,9 @@ extension PodcastViewController: PodcastPageDelegate {
     func showPodcastAnEpisode(podcastEpisode: PodcastEpisode) {
         self.podcastEpisode.append(podcastEpisode)
         myCollectionViewPodcast?.reloadData()
-        setupPageController()
     }
 
     func fetchPodcastList(result: [Podcast]) {
-        print("@@@ result func = \(result)")
-        // podcastPageModel.fetchEpisodePodcast(podcast: result[0])
-        
         result.enumerated().forEach { podcast in
             podcastPageModel.fetchEpisodePodcast(podcast: podcast.element)
         }
