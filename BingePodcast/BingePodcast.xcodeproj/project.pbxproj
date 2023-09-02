@@ -111,6 +111,10 @@
 		1DD76B8F2AA09DEC00EA1FFA /* PageViewControllerPodcast+TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD76B8E2AA09DEC00EA1FFA /* PageViewControllerPodcast+TableViewDelegate.swift */; };
 		1DD76B922AA0B7E700EA1FFA /* PageViewControllerPodcast+TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD76B912AA0B7E700EA1FFA /* PageViewControllerPodcast+TableViewDataSource.swift */; };
 		1DD76B942AA0B81B00EA1FFA /* PageViewControllerPodcast+Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD76B932AA0B81B00EA1FFA /* PageViewControllerPodcast+Transition.swift */; };
+		1DD76B972AA0C16D00EA1FFA /* PodcastViewController+PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD76B962AA0C16D00EA1FFA /* PodcastViewController+PageViewController.swift */; };
+		1DD76B992AA0C1A900EA1FFA /* PodcastViewController+CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD76B982AA0C1A900EA1FFA /* PodcastViewController+CollectionViewDataSource.swift */; };
+		1DD76B9B2AA0C1D300EA1FFA /* PodcastViewController+CollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD76B9A2AA0C1D300EA1FFA /* PodcastViewController+CollectionViewDelegate.swift */; };
+		1DD76B9D2AA0C22600EA1FFA /* PodcastViewController+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD76B9C2AA0C22600EA1FFA /* PodcastViewController+Delegate.swift */; };
 		1DE2E5322A79B1D80031F55F /* HomeViewCotroller+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE2E5312A79B1D80031F55F /* HomeViewCotroller+Delegate.swift */; };
 		1DE5254E2A483391008132B0 /* PodcastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE5254D2A483391008132B0 /* PodcastViewController.swift */; };
 		1DE525532A485325008132B0 /* CellEpisodeTabViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE525512A485325008132B0 /* CellEpisodeTabViewCell.swift */; };
@@ -220,6 +224,10 @@
 		1DD76B8E2AA09DEC00EA1FFA /* PageViewControllerPodcast+TableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PageViewControllerPodcast+TableViewDelegate.swift"; sourceTree = "<group>"; };
 		1DD76B912AA0B7E700EA1FFA /* PageViewControllerPodcast+TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PageViewControllerPodcast+TableViewDataSource.swift"; sourceTree = "<group>"; };
 		1DD76B932AA0B81B00EA1FFA /* PageViewControllerPodcast+Transition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PageViewControllerPodcast+Transition.swift"; sourceTree = "<group>"; };
+		1DD76B962AA0C16D00EA1FFA /* PodcastViewController+PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PodcastViewController+PageViewController.swift"; sourceTree = "<group>"; };
+		1DD76B982AA0C1A900EA1FFA /* PodcastViewController+CollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PodcastViewController+CollectionViewDataSource.swift"; sourceTree = "<group>"; };
+		1DD76B9A2AA0C1D300EA1FFA /* PodcastViewController+CollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PodcastViewController+CollectionViewDelegate.swift"; sourceTree = "<group>"; };
+		1DD76B9C2AA0C22600EA1FFA /* PodcastViewController+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PodcastViewController+Delegate.swift"; sourceTree = "<group>"; };
 		1DE2E5312A79B1D80031F55F /* HomeViewCotroller+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewCotroller+Delegate.swift"; sourceTree = "<group>"; };
 		1DE5254D2A483391008132B0 /* PodcastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastViewController.swift; sourceTree = "<group>"; };
 		1DE525512A485325008132B0 /* CellEpisodeTabViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellEpisodeTabViewCell.swift; sourceTree = "<group>"; };
@@ -586,6 +594,10 @@
 			isa = PBXGroup;
 			children = (
 				1DE5254D2A483391008132B0 /* PodcastViewController.swift */,
+				1DD76B962AA0C16D00EA1FFA /* PodcastViewController+PageViewController.swift */,
+				1DD76B982AA0C1A900EA1FFA /* PodcastViewController+CollectionViewDataSource.swift */,
+				1DD76B9A2AA0C1D300EA1FFA /* PodcastViewController+CollectionViewDelegate.swift */,
+				1DD76B9C2AA0C22600EA1FFA /* PodcastViewController+Delegate.swift */,
 			);
 			path = PodcastViewController;
 			sourceTree = "<group>";
@@ -953,6 +965,7 @@
 				1DD76B922AA0B7E700EA1FFA /* PageViewControllerPodcast+TableViewDataSource.swift in Sources */,
 				1D0AC2712A629FE50029EAAE /* CALayer.swift in Sources */,
 				1D187C992A49D98600D67271 /* UIPageViewController.swift in Sources */,
+				1DD76B972AA0C16D00EA1FFA /* PodcastViewController+PageViewController.swift in Sources */,
 				1D2A2EA52A76CAE700ABD880 /* PlayerViewController+ActionButton.swift in Sources */,
 				1D187A002A2CC8AA00827277 /* BingePodcast.xcdatamodeld in Sources */,
 				1D18439C2A65469400A5129E /* PageListFavorite.swift in Sources */,
@@ -960,11 +973,14 @@
 				1D72B3AA2A81216F0033F355 /* CoreDataStack.swift in Sources */,
 				1DCA9ECE2A35FD22008ED92E /* PlayerAudioService.swift in Sources */,
 				1DCA33BD2A711EEC00120500 /* PlayerObserver.swift in Sources */,
+				1DD76B9B2AA0C1D300EA1FFA /* PodcastViewController+CollectionViewDelegate.swift in Sources */,
 				1D2A2EA72A76CEA300ABD880 /* PlayerViewControllerDescription.swift in Sources */,
 				1D0AC26E2A6198460029EAAE /* FavoriteViewController.swift in Sources */,
+				1DD76B992AA0C1A900EA1FFA /* PodcastViewController+CollectionViewDataSource.swift in Sources */,
 				1D55E2922A409CB000F1A9BD /* UIButton.swift in Sources */,
 				1D15181E2A8BC0F000F6F4A2 /* PageViewControllerPodcast.swift in Sources */,
 				1D2A2EAE2A76D03900ABD880 /* HomeViewController+CollectionView.swift in Sources */,
+				1DD76B9D2AA0C22600EA1FFA /* PodcastViewController+Delegate.swift in Sources */,
 				1D85504A2A8A322D00001A4C /* FavoriteViewController+UIViewControllerTransitioningDelegate.swift in Sources */,
 				1D18439E2A656DD600A5129E /* PresentTransition.swift in Sources */,
 				1D986AA62A2DFF0E00D26CEB /* Strings.gen.swift in Sources */,

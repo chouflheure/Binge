@@ -2,72 +2,85 @@ import UIKit
 
 class PodcastViewController: UIViewController {
 
-    private let cellPodcast = "cellPodcast"
-    private let cellEpisodeTableView = "cellEpisodeTableView"
-    private let cellEpisodeTabViewCell = "CellEpisodeTabViewCell"
+    let cellPodcast = "cellPodcast"
+    let cellEpisodeTableView = "cellEpisodeTableView"
+    let cellEpisodeTabViewCell = "CellEpisodeTabViewCell"
 
     let carouselView = UIView()
-    var actualIndexPathRow = 0
-    private var pageController: UIPageViewController?
-    private var currentIndex: Int = 0
-    private var myCollectionViewPodcast: UICollectionView?
+    // var actualIndexPathRow = 0
+    var pageController: UIPageViewController?
+    var pageControl: UIPageControl?
+    var myCollectionViewPodcast: UICollectionView?
 
-    private var podcastEpisode = [PodcastEpisode]()
-    private let podcastPageModel = PodcastPageModel()
+    var podcastEpisode = [PodcastEpisode]()
+    let podcastPageModel = PodcastPageModel()
+    
+    var currentIndex: Int = 0
+    let sizeCarousel: CGFloat = UIScreen.main.bounds.width - 200
+    var offsetCell = CGFloat()
+    let centerPageController: CGFloat = (UIScreen.main.bounds.width - 200) / 2
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .lightGray
         podcastPageModel.podcastPageDelegate = self
-        setupCarousel()
-        setupPageController()
         podcastPageModel.fetchAllPodcast()
-        
+        initVar()
+        setupCarousel()
+        setGradientBackground()
+        setupPageController()
+        configurePageControl()
+    }
+    
+    private func initVar() {
+        offsetCell = (UIScreen.main.bounds.width - sizeCarousel) / 2
     }
     
     private func setupCarousel() {
         view.addSubview(carouselView)
         carouselView.translatesAutoresizingMaskIntoConstraints = false
         [
-            carouselView.heightAnchor.constraint(equalToConstant: 300),
+            carouselView.heightAnchor.constraint(equalToConstant: sizeCarousel),
             carouselView.leftAnchor.constraint(equalTo: view.leftAnchor),
             carouselView.rightAnchor.constraint(equalTo: view.rightAnchor),
             carouselView.topAnchor.constraint(equalTo: view.topAnchor)
-
         ].forEach{$0.isActive = true}
         
-        carouselView.backgroundColor = .clear
+        carouselView.backgroundColor = Colors.yellow.color.withAlphaComponent(0.5)
         setupCollectionViewPodcast()
     }
     
     @objc private func swipeLeftToRight(_ sender: UISwipeGestureRecognizer) {
-        if actualIndexPathRow != 0 {
-            positionCellWithIdexPath(indexCell: actualIndexPathRow - 1)
+        if currentIndex != 0 {
+            positionCellWithIdexPath(indexCell: currentIndex - 1)
         }
     }
     
     @objc private func swipeRightToLeft(_ sender: UISwipeGestureRecognizer) {
-        if actualIndexPathRow != podcastEpisode.count {
-            positionCellWithIdexPath(indexCell: actualIndexPathRow + 1)
+        if currentIndex != podcastEpisode.count - 1 {
+            positionCellWithIdexPath(indexCell: currentIndex + 1)
         }
     }
     
-    
     private func setupCollectionViewPodcast() {
- 
+
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 30, left: 0, bottom: 10, right: 20)
-        layout.itemSize = CGSize(width: UIScreen.main.bounds.width - 200, height: 300)
+        layout.sectionInset = UIEdgeInsets(top: 0,
+                                           left: offsetCell,
+                                           bottom: 0,
+                                           right: 0)
+        layout.itemSize = CGSize(width: sizeCarousel, height: sizeCarousel)
         layout.scrollDirection = .horizontal
 
         myCollectionViewPodcast?.showsVerticalScrollIndicator = false
         myCollectionViewPodcast?.showsHorizontalScrollIndicator = false
 
         myCollectionViewPodcast = UICollectionView(
-            frame: CGRect( x: 0, y: 0, width: UIScreen.main.bounds.width, height: 300),
+            frame: CGRect(x: 0, y: 40, width: UIScreen.main.bounds.width, height: sizeCarousel),
             collectionViewLayout: layout)
         
-        myCollectionViewPodcast?.register(CellPodcastCollectionViewCell.self, forCellWithReuseIdentifier: cellPodcast)
+        myCollectionViewPodcast?.register(CellPodcastCollectionViewCell.self,
+                                          forCellWithReuseIdentifier: cellPodcast)
+
         myCollectionViewPodcast?.backgroundColor = .clear
         
         myCollectionViewPodcast?.dataSource = self
@@ -75,8 +88,14 @@ class PodcastViewController: UIViewController {
 
         carouselView.addSubview(myCollectionViewPodcast ?? UICollectionView())
 
-        let swipeGestureRecognizerDownLeftToRight = UISwipeGestureRecognizer(target: self, action: #selector(swipeLeftToRight(_:)))
-        let swipeGestureRecognizerDownRightToLeft = UISwipeGestureRecognizer(target: self, action: #selector(swipeRightToLeft(_:)))
+        let swipeGestureRecognizerDownLeftToRight = UISwipeGestureRecognizer(
+            target: self, action: #selector(swipeLeftToRight(_:))
+        )
+        
+        let swipeGestureRecognizerDownRightToLeft = UISwipeGestureRecognizer(
+            target: self, action: #selector(swipeRightToLeft(_:))
+        )
+        
         swipeGestureRecognizerDownRightToLeft.direction = .left
         swipeGestureRecognizerDownLeftToRight.direction = .right
         
@@ -86,156 +105,65 @@ class PodcastViewController: UIViewController {
         myCollectionViewPodcast?.isScrollEnabled = false
     }
     
+    func configurePageControl() {
+        self.pageControl = UIPageControl(frame: CGRectMake(centerPageController,
+                                                           (sizeCarousel + 50),
+                                                           200,
+                                                           20))
+        guard let pageControl = pageControl else {return}
+        pageControl.isUserInteractionEnabled = false
+        pageControl.numberOfPages = 6
+        pageControl.currentPage = 0
+        pageControl.pageIndicatorTintColor = .lightGray
+        pageControl.currentPageIndicatorTintColor = Colors.yellow.color
+        self.view.addSubview(pageControl)
+     }
     
-    
-    private func next() {
+    func next() {
         pageController?.goToNextPage()
     }
     
-    private func previous() {
+    func previous() {
         pageController?.goToPreviousPage()
     }
     
-    private func setupPageController() {
+    private func setGradientBackground() {
+        let colorTop = Colors.ligthBlue.color.cgColor
+        let colorBottom = Colors.white.color.cgColor
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [colorTop, colorBottom]
+        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.frame = self.view.bounds
+        self.view.layer.insertSublayer(gradientLayer, at: 0)
+
+    }
+    
+    
+    func setupPageController() {
         
         pageController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
 
-        // dataSource at nil to remove the swipe
         pageController?.dataSource = self
         pageController?.delegate = self
         pageController?.view.backgroundColor = .clear
         pageController?.view.frame = CGRect(x: 0,
-                                                 y: 300,
-                                                 width: self.view.frame.width,
-                                                 height: UIScreen.main.bounds.height - 300)
+                                            y: myCollectionViewPodcast?.frame.height ?? 300,
+                                            width: self.view.frame.width,
+                                            height: UIScreen.main.bounds.height - (myCollectionViewPodcast?.frame.height ?? 300))
         
         guard let pageController = pageController else {return}
-            self.addChild(pageController)
-            self.view.addSubview(pageController.view)
-
-            let initialVC = PageListPodcast(episode: [Episode(title: "", subtitle: "", description: "", totalTime: "", imageUrl: "", playerUrl: "")])
-            
-            pageController.setViewControllers([initialVC], direction: .forward, animated: true, completion: nil)
-            pageController.didMove(toParent: self)
-    }
-}
-
-extension PodcastViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
+        self.addChild(pageController)
+        self.view.addSubview(pageController.view)
     
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        let initialVC = PageListPodcast(episode: [Episode(title: "",
+                                                          subtitle: "",
+                                                          description: "",
+                                                          totalTime: "",
+                                                          imageUrl: "",
+                                                          playerUrl: "")])
 
-        if currentIndex == 0 {return nil}
-        currentIndex -= 1
-
-        let vc: PageListPodcast = PageListPodcast(
-            episode:podcastEpisode[currentIndex].episode
-        )
-        return vc
+        pageController.setViewControllers([initialVC], direction: .forward, animated: true, completion: nil)
+        pageController.didMove(toParent: self)
     }
-    
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        
-        if currentIndex >= podcastEpisode.count - 1 {return nil}
-        currentIndex += 1
-        
-        let vc: PageListPodcast = PageListPodcast(
-            episode: podcastEpisode[currentIndex].episode
-        )
-        return vc
-    }
-}
-
-extension PodcastViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        podcastEpisode.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: cellPodcast, for: indexPath) as? CellPodcastCollectionViewCell
-        
-        guard let myCell = myCell else {return UICollectionViewCell()}
-        myCell.setUpUI(title: "", subtitlePodcast: "", imagePodcastString: podcastEpisode[indexPath.row].podcast.image ?? "")
-
-        switch indexPath.row {
-            case 0:  myCell.backgroundColor = .gray
-            case 1:  myCell.backgroundColor = .blue
-            case 2:  myCell.backgroundColor = .green
-            case 3:  myCell.backgroundColor = .brown
-            case 4:  myCell.backgroundColor = .black
-            default: myCell.backgroundColor = UIColor.gray
-        }
-
-        return myCell
-    }
-}
-
-
-extension PodcastViewController: UICollectionViewDelegate {
- 
-    private func positionCellWithIdexPath(indexCell: Int) {
-        
-        let attributesCollectionViewPodcast = myCollectionViewPodcast?.layoutAttributesForItem(
-            at: IndexPath(row: indexCell, section: 0)
-        )
-        
-        var height: CGFloat? = 0.0
-        var width: CGFloat? = 0.0
-
-        if attributesCollectionViewPodcast != nil {
-            width = attributesCollectionViewPodcast!.frame.origin.x - attributesCollectionViewPodcast!.frame.width/2 - 10
-            height = 0
-        }
-
-        let position = CGPoint(x: width ?? 0, y: height ?? 0)
-
-        myCollectionViewPodcast?.setContentOffset(position, animated: true)
-
-        
-        if indexCell < actualIndexPathRow {
-            previous()
-        }
-        if indexCell > actualIndexPathRow {
-            next()
-        }
-
-        actualIndexPathRow = indexCell
-    }
-
-    // Methode qui permet de changer la tronche de la cell ( cacher le text, enlever le blur ... )
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        cellSelected(indexPath: indexPath)
-        // TODO : ajouter une animation to blur
-
-        positionCellWithIdexPath(indexCell: indexPath.row)
-    }
-
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        cellDeselected(indexPath: indexPath)
-    }
-
-    private func cellSelected(indexPath: IndexPath) {
-        guard let cell = myCollectionViewPodcast?.cellForItem(at: indexPath) as? CellPodcastCollectionViewCell else {return}
-        cell.imageViewPodcast.isHidden = false
-    }
-    
-    private func cellDeselected(indexPath: IndexPath) {
-        guard let cell = myCollectionViewPodcast?.cellForItem(at: indexPath) as? CellPodcastCollectionViewCell else {return}
-        cell.imageViewPodcast.isHidden = true
-    }
-}
-
-extension PodcastViewController: PodcastPageDelegate {
-    func showPodcastAnEpisode(podcastEpisode: PodcastEpisode) {
-        self.podcastEpisode.append(podcastEpisode)
-        myCollectionViewPodcast?.reloadData()
-    }
-
-    func fetchPodcastList(result: [Podcast]) {
-        result.enumerated().forEach { podcast in
-            podcastPageModel.fetchEpisodePodcast(podcast: podcast.element)
-        }
-         
-    }
-
 }

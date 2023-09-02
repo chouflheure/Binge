@@ -23,10 +23,8 @@ class PodcastPageModel {
             switch result {
             case .success(let data):
                 guard let data = data else {return}
-                print("@@@ episode = \(data)")
                 let test = PodcastEpisode(podcast: podcast, episode: data)
                 self.podcastPageDelegate?.showPodcastAnEpisode(podcastEpisode: test)
-                print("@@@ test Data = \(test)")
             case .failure(let error):
                 print("@@@ error = \(error)")
             }

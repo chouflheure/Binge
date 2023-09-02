@@ -3,7 +3,6 @@ import UIKit
 
 extension PageListPodcast: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            //print("@@@ select at \(indexPath)")
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let secondVC = mainStoryboard.instantiateViewController(withIdentifier: "PlayerViewController")
             as? PlayerViewController
