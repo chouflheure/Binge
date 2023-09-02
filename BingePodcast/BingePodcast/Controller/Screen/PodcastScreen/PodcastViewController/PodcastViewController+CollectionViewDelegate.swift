@@ -11,7 +11,7 @@ extension PodcastViewController: UICollectionViewDelegate {
         var width: CGFloat? = 0.0
 
         if attributesCollectionViewPodcast != nil {
-            width = attributesCollectionViewPodcast!.frame.origin.x - attributesCollectionViewPodcast!.frame.width/2 - 10
+            width = attributesCollectionViewPodcast!.frame.origin.x - offsetCell
             height = 0
         }
 
@@ -19,17 +19,16 @@ extension PodcastViewController: UICollectionViewDelegate {
 
         myCollectionViewPodcast?.setContentOffset(position, animated: true)
 
-        if indexCell < actualIndexPathRow {previous()}
-        if indexCell > actualIndexPathRow {next()}
+        if indexCell < currentIndex {previous()}
+        if indexCell > currentIndex {next()}
 
-        actualIndexPathRow = indexCell
+        currentIndex = indexCell
     }
 
     // Methode qui permet de changer la tronche de la cell ( cacher le text, enlever le blur ... )
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         cellSelected(indexPath: indexPath)
         // TODO : ajouter une animation to blur
-
         positionCellWithIdexPath(indexCell: indexPath.row)
     }
 
@@ -44,6 +43,7 @@ extension PodcastViewController: UICollectionViewDelegate {
     
     private func cellDeselected(indexPath: IndexPath) {
         guard let cell = myCollectionViewPodcast?.cellForItem(at: indexPath) as? CellPodcastCollectionViewCell else {return}
-        cell.imageViewPodcast.isHidden = true
+        print("@@@ size cell = \(cell.frame.size)")
+        // cell.imageViewPodcast.isHidden = true
     }
 }

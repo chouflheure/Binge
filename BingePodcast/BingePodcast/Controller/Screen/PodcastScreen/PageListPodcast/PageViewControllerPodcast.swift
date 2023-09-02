@@ -31,6 +31,17 @@ class PageListPodcast: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initTableView()
+        initTableViewFooter()
+    }
+    
+    private func initTableView() {
+        tableViewEpisode.delegate = self
+        tableViewEpisode.dataSource = self
+        tableViewEpisode.register(UINib(nibName: "CellEpisodeTabViewCell", bundle: nil),
+                                  forCellReuseIdentifier: "cellEpisode")
+        tableViewEpisode.backgroundColor = .clear
+
         self.view.addSubview(tableViewEpisode)
         
         tableViewEpisode.translatesAutoresizingMaskIntoConstraints = false
@@ -53,19 +64,13 @@ class PageListPodcast: UIViewController {
             )
         ].forEach{$0.isActive = true}
         
+        tableViewEpisode.separatorColor = .clear
+    }
+    
+    private func initTableViewFooter() {
         let footerView = UIView()
         footerView.frame.size.height = 90
         tableViewEpisode.tableFooterView = footerView
-
-        initTableView()
-    }
-    
-    private func initTableView() {
-        tableViewEpisode.delegate = self
-        tableViewEpisode.dataSource = self
-        tableViewEpisode.register(UINib(nibName: "CellEpisodeTabViewCell", bundle: nil),
-                                  forCellReuseIdentifier: "cellEpisode")
-        tableViewEpisode.backgroundColor = .clear
     }
     
 }

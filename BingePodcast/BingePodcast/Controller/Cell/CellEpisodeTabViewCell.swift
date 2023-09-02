@@ -35,10 +35,45 @@ class CellEpisodeTabViewCell: UITableViewCell {
         self.totalTimeEpisode.font = UIFont(name: .fonts.proximaNova_Alt_Thin.fontName(), size: 15)
         self.totalTimeEpisode.textColor = Colors.darkBlue.color
         
-        self.episodeImageView.image = UIImage(named: imageEpisode)
-        self.episodeImageView.layer.cornerRadius = 10
-        
         self.favorisImageView.image = favorite ? Assets.Picto.Favorite.favoriteSelectedBlue.image : Assets.Picto.Favorite.favoriteUnselectedBlue.image
+        
+        self.episodeImageView.image = Assets.placeholderImage.image
+        self.episodeImageView.layer.cornerRadius = 10
+        downloadImage(imageEpisode) { image, urlString in
+            if let imageObject = image {
+                // performing UI operation on main thread
+                DispatchQueue.main.async {
+                self.episodeImageView.image = imageObject
+                }
+            }
         }
-    
+
+    }
+            
+    func downloadImage(_ urlString: String, completion: ((_ _image: UIImage?, _ urlString: String?) -> ())?) {
+        if let image = imageCache.object(forKey: urlString as NSString) as? UIImage {
+            completion?(image, urlString)
+            return
+        }
+        guard let url = URL(string: urlString) else {
+            completion?(nil, urlString)
+            return
+        }
+        URLSession.shared.dataTask(with: url) { (data, response,error) in
+            if let error = error {
+                print("error in downloading image: \(error)")
+                completion?(nil, urlString)
+                return
+            }
+            guard let httpResponse = response as? HTTPURLResponse,(200...299).contains(httpResponse.statusCode) else {
+                    completion?(nil, urlString)
+                    return
+                }
+                if let data = data, let image = UIImage(data: data) {
+                    completion?(image, urlString)
+                    return
+                }
+                completion?(nil, urlString)
+            }.resume()
+    }
 }

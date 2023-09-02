@@ -11,6 +11,8 @@ extension PodcastViewController: UIPageViewControllerDataSource, UIPageViewContr
         let vc: PageListPodcast = PageListPodcast(
             episode:podcastEpisode[currentIndex].episode
         )
+        
+        pageControl?.currentPage = currentIndex
         return vc
     }
     
@@ -23,11 +25,8 @@ extension PodcastViewController: UIPageViewControllerDataSource, UIPageViewContr
             episode: podcastEpisode[currentIndex].episode
         )
         
-        pageViewController.viewControllers?.first?.removeFromParent()
+        pageControl?.currentPage = currentIndex
         return vc
     }
-    
-    func reloadDataTest() {
-        
-    }
+
 }

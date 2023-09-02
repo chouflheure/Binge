@@ -11,6 +11,10 @@ class CellPodcastCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    override func select(_ sender: Any?) {
+        print("@@@ selected ")
+    }
 
     func setUpUI(title: String, subtitlePodcast: String, imagePodcastString: String) {
         
@@ -40,9 +44,19 @@ class CellPodcastCollectionViewCell: UICollectionViewCell {
             imageViewPodcast.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1),
             imageViewPodcast.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1),
         ].forEach{$0.isActive = true}
-        
+        /*
         imageViewPodcast.isHidden = true
         
+        titlePodcast.text = "Le coeur sur la table"
+        titlePodcast.textAlignment = .center
+        titlePodcast.translatesAutoresizingMaskIntoConstraints = false
+        imageViewPodcast.addSubview(titlePodcast)
+        [
+            titlePodcast.heightAnchor.constraint(equalToConstant: 20.0),
+            titlePodcast.widthAnchor.constraint(equalTo: imageViewPodcast.widthAnchor),
+            titlePodcast.bottomAnchor.constraint(equalTo: imageViewPodcast.bottomAnchor)
+        ].forEach{$0.isActive = true}
+*/
             /*
         self.addSubview(titlePodcast)
         titlePodcast.text = title
