@@ -12,10 +12,13 @@ class ConstantPageListPodcast {
 class PageListPodcast: UIViewController {
     
     var titleLabel: UILabel?
-    let episode: [Episode]
-    
-    init(episode: [Episode]) {
-        self.episode = episode
+    // var episode: [Episode]
+    var podcastEpisode: PodcastEpisode
+    let podcastPageModel = PodcastPageModel()
+
+    init(podcastEpisode: PodcastEpisode /*episode: [Episode]*/) {
+        // self.episode = episode
+        self.podcastEpisode = podcastEpisode
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -74,4 +77,3 @@ class PageListPodcast: UIViewController {
     }
     
 }
-

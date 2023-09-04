@@ -48,9 +48,80 @@ public class FirebaseService {
         }
     }
     
+    var limit: Int = 5 // Limite initiale
+    var lastDocument: DocumentSnapshot? = nil
+    var isLoading: Bool = false
     
-    func fetchEpisodeOnPosdcastFirebase(podcastName: String, onCompletion: @escaping (Result<[Episode]?,Error> ) -> Void) {
-        callFirebase(collectionName: podcastName).getDocuments() { (querySnapshot, err) in
+    func fetchEpisodeOnPosdcastFirebase(podcastName: String, onCompletion: @escaping (Result<[Episode]?,Error>) -> Void) {
+        // edit name
+        callFirebase(collectionName: "Panier Piano").limit(to: limit).getDocuments() { (querySnapshot, err) in
+            var episode = [Episode]()
+            if let err = err {
+                print("@@@ Error getting: \(err)")
+                onCompletion(.failure(err))
+            } else {
+                guard let documents = querySnapshot?.documents else {return}
+                for document in documents {
+                    episode.append(Episode(title: document.data()["title"] as? String,
+                                           subtitle: document.data()["subtitle"] as? String,
+                                           description: document.data()["description"] as? String,
+                                           totalTime: document.data()["totalTime"] as? String,
+                                           imageUrl: document.data()["imageUrl"] as? String,
+                                           playerUrl: document.data()["playerUrl"] as? String)
+                    )
+                }
+                self.lastDocument = documents.last
+                onCompletion(.success(episode))
+            }
+        }
+    }
+    
+    func loadMoreData(podcastName: String, onCompletion: @escaping (Result<[Episode]?,Error>) -> Void) {
+            guard let lastDocument = self.lastDocument, !isLoading else {
+                return
+            }
+            
+            isLoading = true
+            
+            
+            
+            callFirebase(collectionName: "Panier Piano").start(afterDocument: lastDocument).limit(to: limit).getDocuments { (querySnapshot, error) in
+                self.isLoading = false
+                if let error = error {
+                    print("Erreur lors du chargement des données suivantes : \(error.localizedDescription)")
+                    onCompletion(.failure(error))
+                } else {
+                    var episode = [Episode]()
+                    if let documents = querySnapshot?.documents {
+                        self.lastDocument = documents.last // Mettre à jour la dernière référence
+                        
+                        for document in documents {
+                            episode.append(Episode(title: document.data()["title"] as? String,
+                                                   subtitle: document.data()["subtitle"] as? String,
+                                                   description:"",// document.data()["description"] as? String,
+                                                   totalTime: document.data()["totalTime"] as? String,
+                                                   imageUrl: document.data()["imageUrl"] as? String,
+                                                   playerUrl: document.data()["playerUrl"] as? String)
+                            )
+                        }
+                        episode.enumerated().forEach { e in
+                            print("@@@ episode fetch = \(e.element.subtitle)")
+                        }
+                    }
+                    onCompletion(.success(episode))
+                }
+            }
+        }
+    
+    
+    func fetchEpisodeMore(podcastName: String, onCompletion: @escaping (Result<[Episode]?,Error>) -> Void) {
+        guard let lastDocument = self.lastDocument, !isLoading else {
+            return
+        }
+                
+        isLoading = true
+           
+        callFirebase(collectionName: podcastName).start(afterDocument: lastDocument).limit(to: limit).getDocuments() { (querySnapshot, err) in
             var episode = [Episode]()
             if let err = err {
                 print("@@@ Error getting: \(err)")
@@ -65,7 +136,7 @@ public class FirebaseService {
                                            playerUrl: document.data()["playerUrl"] as? String)
                     )
                 }
-                    onCompletion(.success(episode))
+                onCompletion(.success(episode))
             }
         }
     }

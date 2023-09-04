@@ -8,9 +8,12 @@ extension PodcastViewController: UIPageViewControllerDataSource, UIPageViewContr
         if currentIndex == 0 {return nil}
         currentIndex -= 1
 
+        let vc: PageListPodcast = arrayPageListPodcast[currentIndex]
+        /*
         let vc: PageListPodcast = PageListPodcast(
-            episode:podcastEpisode[currentIndex].episode
+            episode: podcastEpisode[currentIndex].episode
         )
+         */
         
         pageControl?.currentPage = currentIndex
         return vc
@@ -21,9 +24,7 @@ extension PodcastViewController: UIPageViewControllerDataSource, UIPageViewContr
         if currentIndex >= podcastEpisode.count - 1 {return nil}
         currentIndex += 1
         
-        let vc: PageListPodcast = PageListPodcast(
-            episode: podcastEpisode[currentIndex].episode
-        )
+        let vc: PageListPodcast = arrayPageListPodcast[currentIndex]
         
         pageControl?.currentPage = currentIndex
         return vc

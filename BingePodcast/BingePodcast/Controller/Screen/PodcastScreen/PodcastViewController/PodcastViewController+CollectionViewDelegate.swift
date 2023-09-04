@@ -43,7 +43,5 @@ extension PodcastViewController: UICollectionViewDelegate {
     
     private func cellDeselected(indexPath: IndexPath) {
         guard let cell = myCollectionViewPodcast?.cellForItem(at: indexPath) as? CellPodcastCollectionViewCell else {return}
-        print("@@@ size cell = \(cell.frame.size)")
-        // cell.imageViewPodcast.isHidden = true
     }
 }

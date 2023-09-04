@@ -39,11 +39,18 @@ class CellEpisodeTabViewCell: UITableViewCell {
         
         self.episodeImageView.image = Assets.placeholderImage.image
         self.episodeImageView.layer.cornerRadius = 10
+        
         downloadImage(imageEpisode) { image, urlString in
             if let imageObject = image {
                 // performing UI operation on main thread
                 DispatchQueue.main.async {
-                self.episodeImageView.image = imageObject
+                    guard let urlString = urlString else {return}
+                    
+                    if imageEpisode == urlString {
+                        self.episodeImageView.image = imageObject
+                    } else {
+                    }
+                //self.episodeImageView.image = imageObject
                 }
             }
         }
