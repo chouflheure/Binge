@@ -72,7 +72,7 @@ class PodcastHomePageCollectionViewCell: UICollectionViewCell {
           }.resume()
        }
     
-    
+    // static var shared = NetworkManager()
     
     func setup(imagePodcastName: String, titlePodcast: String, authorPodcast: String) {
         
@@ -88,7 +88,12 @@ class PodcastHomePageCollectionViewCell: UICollectionViewCell {
                 if let imageObject = image {
                     // performing UI operation on main thread
                     DispatchQueue.main.async {
-                        self.imagePodcast.image = imageObject
+                        guard let urlString = urlString else {return}
+                        
+                        if self.imageName == urlString {
+                            self.imagePodcast.image = imageObject
+                        } else {
+                        }
                     }
                 }
         }

@@ -12,10 +12,14 @@ class ConstantPageListPodcast {
 class PageListPodcast: UIViewController {
     
     var titleLabel: UILabel?
-    let episode: [Episode]
-    
-    init(episode: [Episode]) {
-        self.episode = episode
+    // var episode: [Episode]
+    var podcastEpisode: PodcastEpisode
+    let podcastPageModel: PodcastPageModel
+
+    init(podcastEpisode: PodcastEpisode, podcastPageModel: PodcastPageModel /*episode: [Episode]*/) {
+        // self.episode = episode
+        self.podcastPageModel = podcastPageModel
+        self.podcastEpisode = podcastEpisode
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -41,7 +45,7 @@ class PageListPodcast: UIViewController {
         tableViewEpisode.register(UINib(nibName: "CellEpisodeTabViewCell", bundle: nil),
                                   forCellReuseIdentifier: "cellEpisode")
         tableViewEpisode.backgroundColor = .clear
-
+        tableViewEpisode.showsVerticalScrollIndicator = false
         self.view.addSubview(tableViewEpisode)
         
         tableViewEpisode.translatesAutoresizingMaskIntoConstraints = false
@@ -74,4 +78,3 @@ class PageListPodcast: UIViewController {
     }
     
 }
-

@@ -22,6 +22,6 @@ public struct Episode {
 
 public struct PodcastEpisode {
     let podcast: Podcast
-    let episode: [Episode]
+    var episode: [Episode]
     
 }

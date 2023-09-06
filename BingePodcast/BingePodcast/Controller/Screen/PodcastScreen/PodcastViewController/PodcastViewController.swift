@@ -7,13 +7,14 @@ class PodcastViewController: UIViewController {
     let cellEpisodeTabViewCell = "CellEpisodeTabViewCell"
 
     let carouselView = UIView()
-    // var actualIndexPathRow = 0
     var pageController: UIPageViewController?
     var pageControl: UIPageControl?
     var myCollectionViewPodcast: UICollectionView?
 
     var podcastEpisode = [PodcastEpisode]()
     let podcastPageModel = PodcastPageModel()
+    
+    var arrayPageListPodcast = [PageListPodcast]()
     
     var currentIndex: Int = 0
     let sizeCarousel: CGFloat = UIScreen.main.bounds.width - 200
@@ -139,10 +140,10 @@ class PodcastViewController: UIViewController {
 
     }
     
-    
     func setupPageController() {
-        
-        pageController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+        pageController = UIPageViewController(transitionStyle: .scroll,
+                                              navigationOrientation: .horizontal,
+                                              options: nil)
 
         pageController?.dataSource = self
         pageController?.delegate = self
@@ -155,14 +156,30 @@ class PodcastViewController: UIViewController {
         guard let pageController = pageController else {return}
         self.addChild(pageController)
         self.view.addSubview(pageController.view)
-    
+
+        
+        let initialVC = PageListPodcast(
+            podcastEpisode: PodcastEpisode(
+                podcast: Podcast(title: "",
+                                 image: "",
+                                 author: ""
+                                ),
+                episode: [Episode(title: "",
+                                  subtitle: "",
+                                  description: "",
+                                  totalTime: "",
+                                  imageUrl: "",
+                                  playerUrl: "")]),
+            podcastPageModel: podcastPageModel
+        )
+        /*
         let initialVC = PageListPodcast(episode: [Episode(title: "",
                                                           subtitle: "",
                                                           description: "",
                                                           totalTime: "",
                                                           imageUrl: "",
                                                           playerUrl: "")])
-
+         */
         pageController.setViewControllers([initialVC], direction: .forward, animated: true, completion: nil)
         pageController.didMove(toParent: self)
     }

@@ -47,8 +47,6 @@ class CoreDataManager {
         newEpisode.setValue(imageUrl, forKey: "imageUrlEpisode")
         newEpisode.setValue(playerUrl, forKey: "playerUrlEpisode")
         newEpisode.setValue(channel, forKey: "channel")
-        
-        print("@@@ here ")
 
         coreDataStack.saveContext()
     }
