@@ -5,11 +5,10 @@ class HomeViewController: UIViewController {
     
     var podcast = [Podcast]()
     var image = [UIImage]()
-    
+    var imageViewTest = UIImageView()
+
     let cellPodcast = "cellPodcast"
     private let homePageModel = HomePageModel()
-    
-    var imageViewTest = UIImageView()
     
     override func viewDidLoad() {
         super.viewDidLoad()

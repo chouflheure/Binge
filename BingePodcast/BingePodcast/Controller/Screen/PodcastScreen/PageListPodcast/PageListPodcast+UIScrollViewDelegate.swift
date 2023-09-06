@@ -11,7 +11,6 @@ extension PageListPodcast: UIScrollViewDelegate {
         let offSetBottonTablView = 150.0
         
         if contentOffsetY >= contentHeight - tableViewHeight - offSetBottonTablView {
-            print("@@@ innnn ")
             podcastPageModel.fetchEpisodeMore(podcast: podcastEpisode.podcast)
         }
     }

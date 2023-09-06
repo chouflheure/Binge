@@ -169,7 +169,8 @@ class PodcastViewController: UIViewController {
                                   description: "",
                                   totalTime: "",
                                   imageUrl: "",
-                                  playerUrl: "")])
+                                  playerUrl: "")]),
+            podcastPageModel: podcastPageModel
         )
         /*
         let initialVC = PageListPodcast(episode: [Episode(title: "",
