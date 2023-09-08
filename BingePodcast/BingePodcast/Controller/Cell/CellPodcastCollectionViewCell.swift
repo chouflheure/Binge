@@ -9,7 +9,6 @@ class CellPodcastCollectionViewCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     
     override func select(_ sender: Any?) {
@@ -17,9 +16,6 @@ class CellPodcastCollectionViewCell: UICollectionViewCell {
     }
 
     func setUpUI(title: String, subtitlePodcast: String, imagePodcastString: String) {
-        
-        // imageViewPodcast = UIImageView(image: UIImage(named: subtitlePodcast))
-        
         imageViewPodcast.image = Assets.placeholderImage.image
 
         downloadImage(imagePodcastString) {
@@ -44,31 +40,6 @@ class CellPodcastCollectionViewCell: UICollectionViewCell {
             imageViewPodcast.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1),
             imageViewPodcast.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1),
         ].forEach{$0.isActive = true}
-        /*
-        imageViewPodcast.isHidden = true
-        
-        titlePodcast.text = "Le coeur sur la table"
-        titlePodcast.textAlignment = .center
-        titlePodcast.translatesAutoresizingMaskIntoConstraints = false
-        imageViewPodcast.addSubview(titlePodcast)
-        [
-            titlePodcast.heightAnchor.constraint(equalToConstant: 20.0),
-            titlePodcast.widthAnchor.constraint(equalTo: imageViewPodcast.widthAnchor),
-            titlePodcast.bottomAnchor.constraint(equalTo: imageViewPodcast.bottomAnchor)
-        ].forEach{$0.isActive = true}
-*/
-            /*
-        self.addSubview(titlePodcast)
-        titlePodcast.text = title
-        titlePodcast.translatesAutoresizingMaskIntoConstraints = false
-        
-        [
-            titlePodcast.topAnchor.constraint(equalTo: self.topAnchor, constant: 20),
-            titlePodcast.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 20),
-            titlePodcast.widthAnchor.constraint(equalToConstant: 80)
-            // imageViewPodcast.heightAnchor
-        ].forEach{$0.isActive = true}
-     */
     }
 
     

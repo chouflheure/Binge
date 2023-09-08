@@ -2,16 +2,21 @@ import Foundation
 import UIKit
 
 extension PageListPodcast: UITableViewDelegate {
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let secondVC = mainStoryboard.instantiateViewController(withIdentifier: "PlayerViewController")
-            as? PlayerViewController
+        let secondVC = mainStoryboard.instantiateViewController(
+            withIdentifier: "PlayerViewController") as? PlayerViewController
+        
+        let index = indexPath.row
 
         guard let secondVC = secondVC else {return}
+
         secondVC.isReturnButtonChevronLeft = true
-        secondVC.titlePodcast.text = "test"
-        secondVC.subtitlePodcast.text = "episode 112"
-        secondVC.descriptionPodcast.text = "test description"
+        secondVC.titlePodcast.text = podcastEpisode.episode[index].title
+        secondVC.subtitlePodcast.text = podcastEpisode.episode[index].subtitle
+        secondVC.descriptionPodcast.text = podcastEpisode.episode[index].description
+
         secondVC.modalPresentationStyle = .custom
         secondVC.transitioningDelegate = self
 

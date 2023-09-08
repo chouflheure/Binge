@@ -236,10 +236,10 @@ class PlayerViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         Task {
             if await coreDataManager.checkIfEpisodeIsFavorite(titleEpisode: titlePodcast.text ?? "") {
-                heartButton.changeSizeButton(button: heartButton, imageWidth: 25, imageString: Assets.Picto.Favorite.favoriteSelectedWhite.name)
+                heartButton.changeSizeButton(button: heartButton, imageString: Assets.Picto.Favorite.favoriteSelectedWhite.name)
                 isFavorite = true
             } else {
-                heartButton.changeSizeButton(button: heartButton, imageWidth: 25, imageString: Assets.Picto.Favorite.favoriteUnselectedWhite.name)
+                heartButton.changeSizeButton(button: heartButton, imageString: Assets.Picto.Favorite.favoriteUnselectedWhite.name)
                 isFavorite = false
             }
         }
