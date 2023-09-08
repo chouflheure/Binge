@@ -24,7 +24,9 @@ extension UIButton {
         button.backgroundColor = backGroundColor
     }
 
-    func changeSizeButton(button: UIButton, imageWidth: CGFloat, imageString: String) {
+    
+    
+    func changeSizeButton(button: UIButton, imageString: String) {
         let image = UIImage(named: imageString)
         button.contentMode = .scaleAspectFit
         button.setImage(image, for: .normal)

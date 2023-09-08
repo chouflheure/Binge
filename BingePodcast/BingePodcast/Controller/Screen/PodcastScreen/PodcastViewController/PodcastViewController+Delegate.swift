@@ -2,21 +2,27 @@ import Foundation
 import UIKit
 
 extension PodcastViewController: PodcastPageDelegate {
+
     func showPodcastAnEpisode(podcastEpisode: PodcastEpisode) {
         self.podcastEpisode.append(podcastEpisode)
-        myCollectionViewPodcast?.reloadData()
         
-        guard let last = self.podcastEpisode.last else {return}
-        let pageListPodcast = PageListPodcast(podcastEpisode: last, podcastPageModel: podcastPageModel)
+        guard let lastPodcast = self.podcastEpisode.last else {return}
+        let pageListPodcast = PageListPodcast(podcastEpisode: lastPodcast,
+                                              podcastPageModel: podcastPageModel)
+
         arrayPageListPodcast.append(pageListPodcast)
         
         currentIndex += 1
         
         if currentIndex == 6 {
-            pageController?.setViewControllers([arrayPageListPodcast[0]], direction: .forward, animated: true)
+            pageController?.setViewControllers([arrayPageListPodcast[0]],
+                                               direction: .forward,
+                                               animated: true)
             currentIndex = 0
         }
-        
+
+        myCollectionViewPodcast?.reloadData()
+
     }
 
     func fetchPodcastList(result: [Podcast]) {
@@ -27,23 +33,15 @@ extension PodcastViewController: PodcastPageDelegate {
     
     func test(podcastEpisode: PodcastEpisode) {
 
-        podcastEpisode.episode.enumerated().forEach { e in
-            print("@@@ episode init = \(e.element.subtitle)")
+        for index in 0 ..< podcastEpisode.episode.count {
+            arrayPageListPodcast[currentIndex].podcastEpisode.episode
+                .append(podcastEpisode.episode[index])
         }
-
-        for i in 0 ..< podcastEpisode.episode.count {
-            arrayPageListPodcast[currentIndex].podcastEpisode.episode.append(podcastEpisode.episode[i])
-        }
-
-        let test = arrayPageListPodcast[currentIndex]
-
-        test.podcastEpisode.episode.enumerated().forEach { e in
-           print("@@@ test = \(e.element.subtitle)")
-         }
-
-        arrayPageListPodcast[currentIndex] = test
         
-        pageController?.setViewControllers([arrayPageListPodcast[currentIndex]], direction: .forward, animated: true)
+        pageController?.setViewControllers([arrayPageListPodcast[currentIndex]],
+                                           direction: .forward,
+                                           animated: true)
+
         arrayPageListPodcast[currentIndex].tableViewEpisode.reloadData()
     }
 }

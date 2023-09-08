@@ -4,7 +4,6 @@ class PodcastHomePageCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     // MARK: - Variables Declaration
@@ -79,8 +78,7 @@ class PodcastHomePageCollectionViewCell: UICollectionViewCell {
         self.imageName = imagePodcastName
         self.title.text = titlePodcast
         self.author.text = authorPodcast
-        
-        // configure(urlString: imagePodcastName)
+
         imagePodcast.image = Assets.placeholderImage.image
 
         downloadImage(imagePodcastName) {
@@ -97,7 +95,6 @@ class PodcastHomePageCollectionViewCell: UICollectionViewCell {
                     }
                 }
         }
-        // imagePodcast.image = UIImage(named: imagePodcastName)
 
         // color
         backgroundColor = .clear

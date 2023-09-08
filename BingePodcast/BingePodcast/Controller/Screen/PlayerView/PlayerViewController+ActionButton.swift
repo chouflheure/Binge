@@ -35,7 +35,7 @@ extension PlayerViewController {
         }
         
         
-        sender.changeSizeButton(button: sender, imageWidth: 25, imageString: imageString)
+        sender.changeSizeButton(button: sender, imageString: imageString)
     }
     
     @objc func actionPressMoinsSeekButton(_ sender: UIButton) {
@@ -66,7 +66,6 @@ extension PlayerViewController {
         isPlaying = !isPlaying
 
         sender.changeSizeButton(button: sender,
-                                imageWidth: Constants.widthSquarePlayPauseButton / 2,
                                 imageString: imageString
         )
 

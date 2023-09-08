@@ -50,7 +50,6 @@ class CellEpisodeTabViewCell: UITableViewCell {
                         self.episodeImageView.image = imageObject
                     } else {
                     }
-                //self.episodeImageView.image = imageObject
                 }
             }
         }

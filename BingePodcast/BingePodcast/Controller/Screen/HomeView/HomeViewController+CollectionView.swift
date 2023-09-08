@@ -9,17 +9,23 @@ extension HomeViewController: UICollectionViewDelegate {
 }
 
 extension HomeViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        numberOfItemsInSection section: Int) -> Int {
         podcast.count
     }
         
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: cellPodcast, for: indexPath) as? PodcastHomePageCollectionViewCell
-        guard let myCell = myCell else {return UICollectionViewCell()}
-        myCell.setup(imagePodcastName: podcast[indexPath.row].image ?? "",
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellPodcast,
+                                                      for: indexPath) as? PodcastHomePageCollectionViewCell
+        
+        guard let cell = cell else {return UICollectionViewCell()}
+        cell.setup(imagePodcastName: podcast[indexPath.row].image ?? "",
                     titlePodcast: podcast[indexPath.row].title ?? "",
                     authorPodcast: podcast[indexPath.row].author ?? "")
 
-        return myCell
+        return cell
     }
 }

@@ -1,16 +1,16 @@
 import UIKit
 
 class PodcastViewController: UIViewController {
-
+    
     let cellPodcast = "cellPodcast"
     let cellEpisodeTableView = "cellEpisodeTableView"
     let cellEpisodeTabViewCell = "CellEpisodeTabViewCell"
-
+    
     let carouselView = UIView()
     var pageController: UIPageViewController?
     var pageControl: UIPageControl?
     var myCollectionViewPodcast: UICollectionView?
-
+    
     var podcastEpisode = [PodcastEpisode]()
     let podcastPageModel = PodcastPageModel()
     
@@ -18,22 +18,26 @@ class PodcastViewController: UIViewController {
     
     var currentIndex: Int = 0
     let sizeCarousel: CGFloat = UIScreen.main.bounds.width - 200
-    var offsetCell = CGFloat()
+    var horizontalSectionInsetCollectionView = CGFloat()
     let centerPageController: CGFloat = (UIScreen.main.bounds.width - 200) / 2
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        podcastPageModel.podcastPageDelegate = self
         podcastPageModel.fetchAllPodcast()
         initVar()
         setupCarousel()
-        setGradientBackground()
+        setupGradientBackground()
         setupPageController()
-        configurePageControl()
+        initDelegate()
+        setupPageControl()
     }
-    
+}
+
+// MARK: - Set up
+extension PodcastViewController {
+
     private func initVar() {
-        offsetCell = (UIScreen.main.bounds.width - sizeCarousel) / 2
+        horizontalSectionInsetCollectionView = (UIScreen.main.bounds.width - sizeCarousel) / 2
     }
     
     private func setupCarousel() {
@@ -49,26 +53,14 @@ class PodcastViewController: UIViewController {
         carouselView.backgroundColor = Colors.yellow.color.withAlphaComponent(0.5)
         setupCollectionViewPodcast()
     }
-    
-    @objc private func swipeLeftToRight(_ sender: UISwipeGestureRecognizer) {
-        if currentIndex != 0 {
-            positionCellWithIdexPath(indexCell: currentIndex - 1)
-        }
-    }
-    
-    @objc private func swipeRightToLeft(_ sender: UISwipeGestureRecognizer) {
-        if currentIndex != podcastEpisode.count - 1 {
-            positionCellWithIdexPath(indexCell: currentIndex + 1)
-        }
-    }
-    
+
     private func setupCollectionViewPodcast() {
 
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0,
-                                           left: offsetCell,
+                                           left: horizontalSectionInsetCollectionView,
                                            bottom: 0,
-                                           right: 0)
+                                           right: horizontalSectionInsetCollectionView)
         layout.itemSize = CGSize(width: sizeCarousel, height: sizeCarousel)
         layout.scrollDirection = .horizontal
 
@@ -83,9 +75,6 @@ class PodcastViewController: UIViewController {
                                           forCellWithReuseIdentifier: cellPodcast)
 
         myCollectionViewPodcast?.backgroundColor = .clear
-        
-        myCollectionViewPodcast?.dataSource = self
-        myCollectionViewPodcast?.delegate = self
 
         carouselView.addSubview(myCollectionViewPodcast ?? UICollectionView())
 
@@ -105,30 +94,8 @@ class PodcastViewController: UIViewController {
         
         myCollectionViewPodcast?.isScrollEnabled = false
     }
-    
-    func configurePageControl() {
-        self.pageControl = UIPageControl(frame: CGRectMake(centerPageController,
-                                                           (sizeCarousel + 50),
-                                                           200,
-                                                           20))
-        guard let pageControl = pageControl else {return}
-        pageControl.isUserInteractionEnabled = false
-        pageControl.numberOfPages = 6
-        pageControl.currentPage = 0
-        pageControl.pageIndicatorTintColor = .lightGray
-        pageControl.currentPageIndicatorTintColor = Colors.yellow.color
-        self.view.addSubview(pageControl)
-     }
-    
-    func next() {
-        pageController?.goToNextPage()
-    }
-    
-    func previous() {
-        pageController?.goToPreviousPage()
-    }
-    
-    private func setGradientBackground() {
+
+    private func setupGradientBackground() {
         let colorTop = Colors.ligthBlue.color.cgColor
         let colorBottom = Colors.white.color.cgColor
         
@@ -145,8 +112,6 @@ class PodcastViewController: UIViewController {
                                               navigationOrientation: .horizontal,
                                               options: nil)
 
-        pageController?.dataSource = self
-        pageController?.delegate = self
         pageController?.view.backgroundColor = .clear
         pageController?.view.frame = CGRect(x: 0,
                                             y: myCollectionViewPodcast?.frame.height ?? 300,
@@ -157,7 +122,6 @@ class PodcastViewController: UIViewController {
         self.addChild(pageController)
         self.view.addSubview(pageController.view)
 
-        
         let initialVC = PageListPodcast(
             podcastEpisode: PodcastEpisode(
                 podcast: Podcast(title: "",
@@ -172,15 +136,76 @@ class PodcastViewController: UIViewController {
                                   playerUrl: "")]),
             podcastPageModel: podcastPageModel
         )
-        /*
-        let initialVC = PageListPodcast(episode: [Episode(title: "",
-                                                          subtitle: "",
-                                                          description: "",
-                                                          totalTime: "",
-                                                          imageUrl: "",
-                                                          playerUrl: "")])
-         */
-        pageController.setViewControllers([initialVC], direction: .forward, animated: true, completion: nil)
+
+        pageController.setViewControllers([initialVC],
+                                          direction: .forward,
+                                          animated: true,
+                                          completion: nil)
+
         pageController.didMove(toParent: self)
+    }
+
+    private func initDelegate() {
+        podcastPageModel.podcastPageDelegate = self
+        myCollectionViewPodcast?.dataSource = self
+        myCollectionViewPodcast?.delegate = self
+        pageController?.dataSource = nil
+        pageController?.delegate = self
+    }
+    
+    func setupPageControl() {
+        self.pageControl = UIPageControl(frame: CGRectMake(centerPageController,
+                                                           (sizeCarousel + 50),
+                                                           200,
+                                                           20))
+        guard let pageControl = pageControl else {return}
+        pageControl.isUserInteractionEnabled = false
+        pageControl.numberOfPages = 6
+        pageControl.currentPage = 0
+        pageControl.pageIndicatorTintColor = .lightGray
+        pageControl.currentPageIndicatorTintColor = Colors.yellow.color
+        self.view.addSubview(pageControl)
+     }
+}
+
+// MARK: - Action
+extension PodcastViewController {
+    @objc private func swipeLeftToRight(_ sender: UISwipeGestureRecognizer) {
+        if currentIndex != 0 {
+            positionCellWithIdexPath(indexCell: currentIndex - 1)
+        }
+    }
+    
+    @objc private func swipeRightToLeft(_ sender: UISwipeGestureRecognizer) {
+        if currentIndex != podcastEpisode.count - 1 {
+            positionCellWithIdexPath(indexCell: currentIndex + 1)
+        }
+    }
+    
+    func next() {
+        print("@@@ next")
+        // pageController?.goToNextPage()
+        
+        if currentIndex >= podcastEpisode.count - 1 {return}
+        currentIndex += 1
+        
+        let vc: PageListPodcast = arrayPageListPodcast[currentIndex]
+
+        pageControl?.currentPage = currentIndex
+        
+        pageController?.setViewControllers([vc], direction: .forward, animated: true, completion: nil)
+    }
+    
+    func previous() {
+        print("@@@ previous")
+        
+        if currentIndex == 0 {return}
+        currentIndex -= 1
+
+        let vc: PageListPodcast = arrayPageListPodcast[currentIndex]
+
+        pageControl?.currentPage = currentIndex
+        
+        pageController?.setViewControllers([vc], direction: .reverse, animated: true, completion: nil)
     }
 }

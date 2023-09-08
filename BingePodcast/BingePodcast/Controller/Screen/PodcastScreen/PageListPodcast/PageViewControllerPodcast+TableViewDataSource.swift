@@ -9,7 +9,6 @@ extension PageListPodcast: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         podcastEpisode.episode.count
-        // episode.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -28,14 +27,7 @@ extension PageListPodcast: UITableViewDataSource {
                        time: podcastEpisode.episode[index].totalTime ?? "",
                        favorite: favorite[index]
         )
-        /*
-        cell.setupCell(title: episode[index].title ?? "",
-                       subtitle: episode[index].subtitle ?? "",
-                       imageEpisode: episode[index].imageUrl ?? "",
-                       time: episode[index].totalTime ?? "",
-                       favorite: favorite[index]
-        )
-         */
+
         return cell
     }
     

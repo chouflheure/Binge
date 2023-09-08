@@ -18,14 +18,8 @@ class HomeViewController: UIViewController {
         setGradientBackground()
         homePageModel.homePageDelegate = self
         loadPodcast()
-
         homePageModel.fetchAllPodcast()
-        
         switchPlayerFirst.showLoader()
-        
-        print("@@@ Podcast = \(podcast)")
-
-        // PlayerObserver.sharedInstance.getPodcastPlayingData()
     }
     
     let scrollView: UIScrollView = {
