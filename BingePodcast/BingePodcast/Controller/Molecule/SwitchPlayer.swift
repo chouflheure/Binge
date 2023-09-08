@@ -7,7 +7,7 @@ protocol SlideToActionButtonDelegate: AnyObject {
 class SwitchPlayer: UIView {
     
     let innerShadowTop = CALayer()
-    var episode = Episode(title: "", subtitle: "", description: "", totalTime: "", imageUrl: "", playerUrl: "")
+    var episode: Episode
 
     private var leftContainerImageCircleViewConstraint: NSLayoutConstraint?
     private var leftTextStackViewConstraint: NSLayoutConstraint?
@@ -21,8 +21,8 @@ class SwitchPlayer: UIView {
     private var isFinished = false
     
     required init(episode: Episode) {
-        super.init(frame: .zero)
         self.episode = episode
+        super.init(frame: .zero)
         setup()
     }
     

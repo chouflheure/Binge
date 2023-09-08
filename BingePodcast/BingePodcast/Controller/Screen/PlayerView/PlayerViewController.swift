@@ -6,6 +6,7 @@ class PlayerViewController: UIViewController {
 
     // MARK: - Variable déclaration
 
+    var podcastTitle: String = ""
     let totalTimeTest: String = "01:01"
     var isPlaying: Bool = false
     var imageString: String = "play"
@@ -225,6 +226,7 @@ class PlayerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view = view
+        
         setupUI()
         setupAction()
         setupDescription()

@@ -37,7 +37,7 @@ class CoreDataManager {
 
 
     // This method is to save a recipe on core data
-    func addEpisodeIFavorite(title: String, subtitle: String, description: String, totalTime: String, imageUrl: String, playerUrl: String, podcastName: String) async {
+    func addEpisodeInFavorite(title: String, subtitle: String, description: String, totalTime: String, imageUrl: String, playerUrl: String, podcastName: String) async {
 
         let newEpisode = NSEntityDescription.insertNewObject(forEntityName: "EpisodeSaved", into: coreDataStack.mainContext)
         

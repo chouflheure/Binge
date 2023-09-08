@@ -133,7 +133,8 @@ extension PodcastViewController {
                                   description: "",
                                   totalTime: "",
                                   imageUrl: "",
-                                  playerUrl: "")]),
+                                  playerUrl: "",
+                                 podcastTitle: "")]),
             podcastPageModel: podcastPageModel
         )
 

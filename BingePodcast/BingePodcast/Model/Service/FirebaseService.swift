@@ -4,7 +4,7 @@ import Firebase
 public class FirebaseService {
     
     private var arrayLastDocument = [String: DocumentSnapshot]()
-    private var limit: Int = 5 // Limite initiale
+    private var podcastTitle: Int = 5
     private var lastDocument: DocumentSnapshot? = nil
     private var isLoading: Bool = false
     
@@ -46,7 +46,9 @@ public class FirebaseService {
                                       description: document.data()["description"] as? String,
                                       totalTime: document.data()["totalTime"] as? String,
                                       imageUrl: document.data()["imageUrl"] as? String,
-                                      playerUrl: document.data()["playerUrl"] as? String)
+                                      playerUrl: document.data()["playerUrl"] as? String,
+                                      podcastTitle: podcast
+                    )
                     onCompletion(episode)
                 }
             }
@@ -56,7 +58,7 @@ public class FirebaseService {
     func fetchEpisodeOnPosdcastFirebase(podcastName: String, onCompletion: @escaping (Result<[Episode]?,Error>) -> Void) {
 
         let query = callFirebase(collectionName: podcastName)
-                    .limit(to: limit)
+                    .limit(to: podcastTitle)
 
         query.getDocuments() { (querySnapshot, err) in
             var episode = [Episode]()
@@ -71,7 +73,8 @@ public class FirebaseService {
                                            description: document.data()["description"] as? String,
                                            totalTime: document.data()["totalTime"] as? String,
                                            imageUrl: document.data()["imageUrl"] as? String,
-                                           playerUrl: document.data()["playerUrl"] as? String)
+                                           playerUrl: document.data()["playerUrl"] as? String,
+                                           podcastTitle: podcastName)
                     )
                     
                 }
@@ -83,13 +86,13 @@ public class FirebaseService {
     }
     
     func loadMoreData(podcastName: String, onCompletion: @escaping (Result<[Episode]?,Error>) -> Void) {
-        print("@@@ arrayLastDocument = \(arrayLastDocument[podcastName]?.documentID)")
-        print("@@@ isLoading = \(isLoading)")
         guard let lastDocument = self.arrayLastDocument[podcastName], !isLoading else {return}
         
         isLoading = true
         
-        let query = callFirebase(collectionName: podcastName).start(afterDocument: lastDocument).limit(to: limit)
+        let query = callFirebase(collectionName: podcastName)
+                    .start(afterDocument: lastDocument)
+                    .limit(to: podcastTitle)
         
         query.getDocuments { (querySnapshot, error) in
             self.isLoading = false
@@ -107,11 +110,9 @@ public class FirebaseService {
                                                 description: document.data()["description"] as? String,
                                                 totalTime: document.data()["totalTime"] as? String,
                                                 imageUrl: document.data()["imageUrl"] as? String,
-                                                playerUrl: document.data()["playerUrl"] as? String)
+                                                playerUrl: document.data()["playerUrl"] as? String,
+                                                podcastTitle: podcastName )
                         )
-                    }
-                    episode.enumerated().forEach { e in
-                        print("@@@ episode fetch = \(e.element.subtitle)")
                     }
                 }
                 onCompletion(.success(episode))
@@ -142,9 +143,12 @@ public class FirebaseService {
                 onCompletion(nil)
             } else {
                 let podcast = querySnapshot!.documents[0].documentID
-                let numberEpisode = Int(querySnapshot!.documents[0].data()["numberEpisode"] as? String ?? "0") ?? 0
+                let numberEpisode = Int(querySnapshot!.documents[0].data()["numberEpisode"]
+                                        as? String ?? "0") ?? 0
                 let randomEpisode = Int.random(in: 1..<numberEpisode-1)
-                self.fetchOneEpisodeFirebase(podcast: podcast, episodeNumber: randomEpisode, onCompletion: { querySnapshot in
+                self.fetchOneEpisodeFirebase(podcast: podcast,
+                                             episodeNumber: randomEpisode,
+                                             onCompletion: { querySnapshot in
                     onCompletion(querySnapshot)
                 })
             }

@@ -18,6 +18,7 @@ public struct Episode {
     let totalTime: String?
     let imageUrl: String?
     let playerUrl: String?
+    let podcastTitle: String?
 }
 
 public struct PodcastEpisode {

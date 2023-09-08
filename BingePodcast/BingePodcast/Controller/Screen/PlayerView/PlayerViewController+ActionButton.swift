@@ -149,13 +149,13 @@ extension PlayerViewController {
     func favoriteButtonClick(sender: UIButton) async {
         let favorite = isFavorite
         if !favorite {
-            await coreDataManager.addEpisodeIFavorite(title: titlePodcast.text ?? "",
+            await coreDataManager.addEpisodeInFavorite(title: titlePodcast.text ?? "",
                                                       subtitle: subtitlePodcast.text ?? "",
                                                       description: "",//descriptionPodcast.text ?? "",
                                                       totalTime: "",
                                                       imageUrl: imageString,
                                                       playerUrl: "",
-                                                      podcastName: ""
+                                                      podcastName: podcastTitle
             )
         } else {
             await coreDataManager.removeEpisodeFromFavorite(titlePodcast: titlePodcast.text ?? "")

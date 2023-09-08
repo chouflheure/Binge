@@ -104,7 +104,16 @@ class HomeViewController: UIViewController {
     }()
 
     let switchPlayerFirst: SwitchPlayer = {
-        let episode1 = Episode(title: "EPISODE 16", subtitle: "Romance et soumission Deuxième partie", description: "", totalTime: "", imageUrl: Assets.aBientotDeTeRevoir.name, playerUrl: "")
+        let episode1 = Episode(
+            title: "EPISODE 16",
+            subtitle: "Romance et soumission Deuxième partie",
+            description: "",
+            totalTime: "",
+            imageUrl: Assets.aBientotDeTeRevoir.name,
+            playerUrl: "",
+            podcastTitle: "DU SPORT"
+        
+        )
 
         let switchPlayerFirst = SwitchPlayer(
             episode: episode1
@@ -114,7 +123,15 @@ class HomeViewController: UIViewController {
     }()
     
     let switchPlayerSecond: SwitchPlayer = {
-        let episode2 = Episode(title: "EPISODE 82", subtitle: "Cuisines indiennes, clichés en sauce", description: "", totalTime: "", imageUrl: "https://back.bingeaudio.fr/wp-content/uploads/2019/07/Channel_itunes_logo_v2-768x768.png", playerUrl: "")
+        let episode2 = Episode(
+            title: "EPISODE 82",
+            subtitle: "Cuisines indiennes, clichés en sauce",
+            description: "",
+            totalTime: "",
+            imageUrl: "https://back.bingeaudio.fr/wp-content/uploads/2019/07/Channel_itunes_logo_v2-768x768.png",
+            playerUrl: "",
+            podcastTitle: "DU SPORT"
+        )
 
         let switchPlayerSecond = SwitchPlayer(
             episode: episode2
