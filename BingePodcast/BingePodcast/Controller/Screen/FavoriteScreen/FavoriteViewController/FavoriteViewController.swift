@@ -1,12 +1,5 @@
 // https://github.com/cjlarsen/Tutorials/tree/master
 
-
-// TODO: init page avec le premier element soit le favorite
-// Aujourd'hui il génère un favorite object qui ne va pas
-// Empècher de régénerer les élements à chaque fois
-// Peut être un tableau de view controller ?
-
-
 import UIKit
 
 class FavoriteViewController: UIViewController {
@@ -33,7 +26,7 @@ class FavoriteViewController: UIViewController {
         return label
     }()
 
-    let line : UIView = {
+    private let line : UIView = {
         let line = UIView()
         line.backgroundColor = Colors.yellow.color
         line.layer.cornerRadius = 2
@@ -47,7 +40,7 @@ class FavoriteViewController: UIViewController {
         podcastSaved.append(PodcastSaved(titlePocast: "Du Sport", episodeSaved: [
             EpisodeSaved_test(titleEpisode: "Episode 1",
                               subtitleEpisode: "Les jeux olympiques sont ils utilent",
-                              totalTimeEpisode: "12:45",
+                              totalTimeEpisode: "12",
                               favorite: true,
                               imageEpisode: Assets.aBientotDeTeRevoir.name),
             
@@ -138,8 +131,7 @@ class FavoriteViewController: UIViewController {
         seeLaterTitle.addGestureRecognizer(tapSeeLater)
         
     }
-    
-    
+
     private func setGradientBackground() {
         let colorTop = Colors.ligthBlue.color.cgColor
         let colorBottom = Colors.white.color.cgColor

@@ -151,10 +151,12 @@ extension PlayerViewController {
         if !favorite {
             await coreDataManager.addEpisodeIFavorite(title: titlePodcast.text ?? "",
                                                       subtitle: subtitlePodcast.text ?? "",
-                                                      description: descriptionPodcast.text ?? "",
+                                                      description: "",//descriptionPodcast.text ?? "",
                                                       totalTime: "",
                                                       imageUrl: imageString,
-                                                      playerUrl: "")
+                                                      playerUrl: "",
+                                                      podcastName: ""
+            )
         } else {
             await coreDataManager.removeEpisodeFromFavorite(titlePodcast: titlePodcast.text ?? "")
         }

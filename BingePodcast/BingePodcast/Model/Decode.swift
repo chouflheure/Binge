@@ -25,3 +25,13 @@ public struct PodcastEpisode {
     var episode: [Episode]
     
 }
+
+public struct EpisodeSavedInCoreData {
+    var titleEpisode = String()
+    var subtitleEpisode = String()
+    var descriptionEpisode = String()
+    var totalTimeEpisode = String()
+    var imageUrlEpisode = String()
+    var playerUrlEpisode = String()
+    var podcastName = String()
+}

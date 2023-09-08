@@ -1,7 +1,6 @@
 import Foundation
 import UIKit
 
-// MARK: - Extension Page Controller
 extension FavoriteViewController: UIPageViewControllerDelegate {
     
     private func nextPagePoint() {
@@ -15,7 +14,7 @@ extension FavoriteViewController: UIPageViewControllerDelegate {
                 self.leftContainer!.constant += UIScreen.main.bounds.width -
                     (self.favoriteTitle.intrinsicContentSize.width / 2) -
                     (self.seeLaterTitle.intrinsicContentSize.width / 2) - 80
-                self.view.layoutIfNeeded() // Assurez-vous d'appeler cette méthode pour mettre à jour l'affichage.
+                self.view.layoutIfNeeded() 
             }
             currentIndex += 1
         }
@@ -30,7 +29,7 @@ extension FavoriteViewController: UIPageViewControllerDelegate {
                 self.leftContainer!.constant -= UIScreen.main.bounds.width -
                     (self.favoriteTitle.intrinsicContentSize.width / 2) -
                     (self.seeLaterTitle.intrinsicContentSize.width / 2) - 80
-                self.view.layoutIfNeeded() // Assurez-vous d'appeler cette méthode pour mettre à jour l'affichage.
+                self.view.layoutIfNeeded()
             }
             currentIndex -= 1
         }
@@ -92,6 +91,6 @@ extension FavoriteViewController: UIPageViewControllerDelegate {
     }
     
     func presentationIndex(for pageViewController: UIPageViewController) -> Int {
-        self.currentIndex
+        currentIndex
     }
 }
