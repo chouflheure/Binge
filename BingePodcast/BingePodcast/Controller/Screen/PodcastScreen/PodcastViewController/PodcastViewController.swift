@@ -1,26 +1,25 @@
 import UIKit
 
 class PodcastViewController: UIViewController {
-    
+
     let cellPodcast = "cellPodcast"
     let cellEpisodeTableView = "cellEpisodeTableView"
     let cellEpisodeTabViewCell = "CellEpisodeTabViewCell"
-    
+
     let carouselView = UIView()
     var pageController: UIPageViewController?
     var pageControl: UIPageControl?
     var myCollectionViewPodcast: UICollectionView?
-    
+
     var podcastEpisode = [PodcastEpisode]()
     let podcastPageModel = PodcastPageModel()
-    
     var arrayPageListPodcast = [PageListPodcast]()
-    
+
     var currentIndex: Int = 0
     let sizeCarousel: CGFloat = UIScreen.main.bounds.width - 200
     var horizontalSectionInsetCollectionView = CGFloat()
     let centerPageController: CGFloat = (UIScreen.main.bounds.width - 200) / 2
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         podcastPageModel.fetchAllPodcast()
@@ -113,10 +112,11 @@ extension PodcastViewController {
                                               options: nil)
 
         pageController?.view.backgroundColor = .clear
-        pageController?.view.frame = CGRect(x: 0,
-                                            y: myCollectionViewPodcast?.frame.height ?? 300,
-                                            width: self.view.frame.width,
-                                            height: UIScreen.main.bounds.height - (myCollectionViewPodcast?.frame.height ?? 300))
+        pageController?.view.frame = CGRect(
+            x: 0,
+            y: myCollectionViewPodcast?.frame.height ?? 300,
+            width: self.view.frame.width,
+            height: UIScreen.main.bounds.height - (myCollectionViewPodcast?.frame.height ?? 300))
         
         guard let pageController = pageController else {return}
         self.addChild(pageController)
@@ -155,10 +155,13 @@ extension PodcastViewController {
     }
     
     func setupPageControl() {
-        self.pageControl = UIPageControl(frame: CGRectMake(centerPageController,
-                                                           (sizeCarousel + 50),
-                                                           200,
-                                                           20))
+        self.pageControl = UIPageControl(frame: CGRectMake(
+            centerPageController,
+            (sizeCarousel + 50),
+            200,
+            20)
+        )
+
         guard let pageControl = pageControl else {return}
         pageControl.isUserInteractionEnabled = false
         pageControl.numberOfPages = 6
@@ -184,29 +187,18 @@ extension PodcastViewController {
     }
     
     func next() {
-        print("@@@ next")
-        // pageController?.goToNextPage()
-        
         if currentIndex >= podcastEpisode.count - 1 {return}
         currentIndex += 1
-        
         let vc: PageListPodcast = arrayPageListPodcast[currentIndex]
-
         pageControl?.currentPage = currentIndex
-        
         pageController?.setViewControllers([vc], direction: .forward, animated: true, completion: nil)
     }
     
     func previous() {
-        print("@@@ previous")
-        
         if currentIndex == 0 {return}
         currentIndex -= 1
-
         let vc: PageListPodcast = arrayPageListPodcast[currentIndex]
-
         pageControl?.currentPage = currentIndex
-        
         pageController?.setViewControllers([vc], direction: .reverse, animated: true, completion: nil)
     }
 }

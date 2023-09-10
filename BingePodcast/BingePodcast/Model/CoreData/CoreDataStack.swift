@@ -5,7 +5,6 @@ import UIKit
 open class CoreDataStack {
 
     // MARK: - Properties
-    var favorite = false
     var useInMemoryStore = false
     private let modelName: String
 

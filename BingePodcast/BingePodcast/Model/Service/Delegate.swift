@@ -7,6 +7,6 @@ protocol HomePageDelegate: AnyObject {
 
 protocol PodcastPageDelegate: AnyObject {
     func fetchPodcastList(result: [Podcast])
-    func showPodcastAnEpisode(podcastEpisode: PodcastEpisode)
-    func test(podcastEpisode: PodcastEpisode)
+    func showPodcastAndEpisode(podcastEpisode: PodcastEpisode)
+    func loadMoreEpisode(podcastEpisode: PodcastEpisode)
 }

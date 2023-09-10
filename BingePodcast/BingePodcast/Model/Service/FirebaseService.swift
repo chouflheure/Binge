@@ -31,7 +31,9 @@ public class FirebaseService {
         }
     }
     
-    func fetchOneEpisodeFirebase(podcast: String, episodeNumber: Int, onCompletion: @escaping (Episode?) -> Void) {
+    func fetchOneEpisodeFirebase(podcast: String,
+                                 episodeNumber: Int,
+                                 onCompletion: @escaping (Episode?) -> Void) {
         
         callFirebase(collectionName: podcast).getDocuments() { (querySnapshot, err) in
             var episode: Episode
@@ -85,7 +87,9 @@ public class FirebaseService {
         }
     }
     
-    func loadMoreData(podcastName: String, onCompletion: @escaping (Result<[Episode]?,Error>) -> Void) {
+    func loadMoreData(podcastName: String,
+                      onCompletion: @escaping (Result<[Episode]?,Error>) -> Void) {
+
         guard let lastDocument = self.arrayLastDocument[podcastName], !isLoading else {return}
         
         isLoading = true

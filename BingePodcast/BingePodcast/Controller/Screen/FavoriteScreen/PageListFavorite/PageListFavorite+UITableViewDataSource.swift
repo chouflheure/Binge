@@ -4,7 +4,8 @@ import UIKit
 extension PageListFavorite: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        podcastSaved.count
+        print("@@@ podcastSaved.count = \(podcastSaved.count)")
+        return podcastSaved.count
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -38,7 +39,7 @@ extension PageListFavorite: UITableViewDataSource {
         )
 
         label.font = UIFont(name: .fonts.proximaNova_Regular.fontName(), size: 20)
-        label.text = podcastSaved[section].titlePocast
+        label.text = podcastSaved[section].podcast.title
         label.textColor = Colors.darkBlue.color
         view.addSubview(label)
         
@@ -46,7 +47,7 @@ extension PageListFavorite: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        podcastSaved[section].episodeSaved.count
+        podcastSaved[section].episode.count
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -79,13 +80,13 @@ extension PageListFavorite: UITableViewDataSource {
         
         guard let cell = cell else {return UITableViewCell()}
         
-        let episode = podcastSaved[section].episodeSaved[row]
-        
-        cell.setupCell(title: episode.titleEpisode,
-                       subtitle: episode.subtitleEpisode,
-                       imageEpisode: episode.imageEpisode,
-                       time: episode.totalTimeEpisode,
-                       favorite: episode.favorite)
+        let episode = podcastSaved[section].episode[row]
+        print("@@@ episode @@@@@@@ = \(podcastSaved[section].episode[row] )")
+        cell.setupCell(title: episode.title ?? "",
+                       subtitle: episode.subtitle ?? "",
+                       imageEpisode: episode.imageUrl ?? "",
+                       time: episode.totalTime ?? "",
+                       favorite: true)
 
         return cell
     }

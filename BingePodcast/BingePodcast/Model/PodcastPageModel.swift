@@ -6,6 +6,7 @@ class PodcastPageModel {
     let firebaseService = FirebaseService()
     weak var podcastPageDelegate: PodcastPageDelegate?
     
+    // This method retrieves all the information on the list of podcasts
     func fetchAllPodcast() {
         firebaseService.fetchAllPodcastFirebase { result in
             switch result {
@@ -18,13 +19,14 @@ class PodcastPageModel {
         }
     }
     
+    // This method fetches podcasts retrieved and displays them in the pagecontroller
     func fetchEpisodePodcast(podcast: Podcast) {
         firebaseService.fetchEpisodeOnPosdcastFirebase(podcastName: podcast.title ?? "", onCompletion: { result in
             switch result {
             case .success(let data):
                 guard let data = data else {return}
                 let test = PodcastEpisode(podcast: podcast, episode: data)
-                self.podcastPageDelegate?.showPodcastAnEpisode(podcastEpisode: test)
+                self.podcastPageDelegate?.showPodcastAndEpisode(podcastEpisode: test)
             case .failure(let error):
                 print("@@@ error = \(error)")
             }
@@ -32,19 +34,17 @@ class PodcastPageModel {
         })
     }
     
+    // This method retrieves the next 5 episodes
     func fetchEpisodeMore(podcast: Podcast) {
-        print("@@@ here")
-        print("@@@ podcast = \(podcast)")
         self.firebaseService.loadMoreData(podcastName: podcast.title ?? "", onCompletion: { result in
             print("@@@ resul = \(result)")
             switch result {
             case .success(let data):
                 guard let data = data else {return}
-                let test = PodcastEpisode(podcast: Podcast(title: "Panier Piano", image: "", author: ""), episode: data)
-                test.episode.enumerated().forEach{ e in
-                    print("@@@ episode fetchEpisodePodcast = \(e.element.subtitle)")
+                let episode = PodcastEpisode(podcast: Podcast(title: podcast.title, image: "", author: ""), episode: data)
+                episode.episode.enumerated().forEach{ e in
                 }
-                self.podcastPageDelegate?.test(podcastEpisode: test)
+                self.podcastPageDelegate?.loadMoreEpisode(podcastEpisode: episode)
             case .failure(let error):
                 print("@@@ error = \(error)")
             }

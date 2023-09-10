@@ -2,25 +2,31 @@ import Foundation
 import UIKit
 
 extension FavoriteViewController: UIPageViewControllerDelegate {
-    
-    private func nextPagePoint() {
-        seeLaterTitle.adjustsFontSizeToFitWidth = true
-        favoriteTitle.adjustsFontSizeToFitWidth = true
+
+    @objc func nextPageController() {
+        animationTransitionTitle()
+        guard let pageController = pageController else {return}
         
-        if currentIndex == 0 {
-            seeLaterTitle.font = UIFont(name: .fonts.proximaNova_Bold.fontName(), size: 24)
-            favoriteTitle.font = UIFont(name: .fonts.proximaNova_Regular.fontName(), size: 24)
-            UIView.animate(withDuration: 0.3) {
-                self.leftContainer!.constant += UIScreen.main.bounds.width -
-                    (self.favoriteTitle.intrinsicContentSize.width / 2) -
-                    (self.seeLaterTitle.intrinsicContentSize.width / 2) - 80
-                self.view.layoutIfNeeded() 
-            }
-            currentIndex += 1
-        }
+        pageController.setViewControllers([arrayPageListFavorite[currentIndex]],
+                                          direction: .forward,
+                                          animated: true,
+                                          completion: nil)
     }
     
-    private func previousPagePoint() {
+    @objc func previousPageController() {
+        animationTransitionTitle()
+        guard let pageController = pageController else {return}
+        pageController.setViewControllers([arrayPageListFavorite[currentIndex]],
+                                          direction: .reverse,
+                                          animated: true,
+                                          completion: nil)
+    }
+
+    // This method is used to initialise the method which displays the transition of the yellow border showing the selected element
+    private func animationTransitionTitle() {
+        seeLaterTitle.adjustsFontSizeToFitWidth = true
+        favoriteTitle.adjustsFontSizeToFitWidth = true
+
         if currentIndex == 1 {
             seeLaterTitle.font = UIFont(name: .fonts.proximaNova_Regular.fontName(), size: 24)
             favoriteTitle.font = UIFont(name: .fonts.proximaNova_Bold.fontName(), size: 24)
@@ -32,59 +38,18 @@ extension FavoriteViewController: UIPageViewControllerDelegate {
                 self.view.layoutIfNeeded()
             }
             currentIndex -= 1
+        } else {
+            seeLaterTitle.font = UIFont(name: .fonts.proximaNova_Bold.fontName(), size: 24)
+            favoriteTitle.font = UIFont(name: .fonts.proximaNova_Regular.fontName(), size: 24)
+            UIView.animate(withDuration: 0.3) {
+                self.leftContainer!.constant += UIScreen.main.bounds.width -
+                    (self.favoriteTitle.intrinsicContentSize.width / 2) -
+                    (self.seeLaterTitle.intrinsicContentSize.width / 2) - 80
+                self.view.layoutIfNeeded()
+            }
+            currentIndex += 1
         }
     }
-    
-    @objc func nextPageController() {
-        guard let pageController = pageController else {return}
-        pageController.setViewControllers([PageListFavorite(with: seeLater)],
-                                          direction: .forward,
-                                          animated: true,
-                                          completion: nil)
-        nextPagePoint()
-    }
-    
-    @objc func previousPageController() {
-        guard let pageController = pageController else {return}
-        pageController.setViewControllers([PageListFavorite(with: podcastSaved)],
-                                          direction: .reverse,
-                                          animated: true,
-                                          completion: nil)
-        previousPagePoint()
-    }
-    
-    func setupPageController() {
-        
-        self.pageController = UIPageViewController(transitionStyle: .scroll,
-                                                   navigationOrientation: .horizontal,
-                                                   options: nil)
-
-        // nil dataSource to disable the swipe gesture on PageController
-        self.pageController?.dataSource = nil
-        self.pageController?.delegate = self
-        self.pageController?.view.backgroundColor = .clear
-
-        self.pageController?.view.frame = CGRect(
-            x: 0,
-            y: 120,
-            width: self.view.frame.width,
-            height: self.view.frame.height - 120
-        )
-        guard let pageController = pageController else {return}
-
-        self.addChild(pageController)
-        self.view.addSubview(pageController.view)
-        
-        
-        let initialVC = PageListFavorite(with: podcastSaved)
-        
-        pageController.setViewControllers([initialVC], direction: .forward,
-                                                animated: true,
-                                                completion: nil)
-        
-        pageController.didMove(toParent: self)
-    }
-    
     
     func presentationCount(for pageViewController: UIPageViewController) -> Int {
         2

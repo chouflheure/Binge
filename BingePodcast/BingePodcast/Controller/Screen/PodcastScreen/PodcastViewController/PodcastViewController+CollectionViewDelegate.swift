@@ -10,16 +10,12 @@ extension PodcastViewController: UICollectionViewDelegate {
         )
 
         var position = CGPoint(x: 0, y: 0)
-
         if attributesCollectionViewPodcast != nil {
             position.x = attributesCollectionViewPodcast!.frame.origin.x - horizontalSectionInsetCollectionView
         }
-
         myCollectionViewPodcast?.setContentOffset(position, animated: true)
-
         if indexCell < currentIndex {previous()}
         if indexCell > currentIndex {next()}
-
         currentIndex = indexCell
     }
 

@@ -8,7 +8,7 @@ extension PageListPodcast: UITableViewDelegate {
         let secondVC = mainStoryboard.instantiateViewController(
             withIdentifier: "PlayerViewController") as? PlayerViewController
         
-        let index = indexPath.row
+        let index = indexPath.section
 
         guard let secondVC = secondVC else {return}
 
