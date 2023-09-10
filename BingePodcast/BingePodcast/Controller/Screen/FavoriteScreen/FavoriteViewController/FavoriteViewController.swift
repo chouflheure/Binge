@@ -1,15 +1,25 @@
-// https://github.com/cjlarsen/Tutorials/tree/master
-
 import UIKit
 
 class FavoriteViewController: UIViewController {
 
+    // MARK: - Var declaration
+    // Var declaration
     var pageController: UIPageViewController?
     var currentIndex: Int = 0
+    var podcastSaved = [PodcastEpisode]()
+    var seeLater = [PodcastEpisode]()
+    var arrayPageListFavorite = [PageListFavorite]()
+    var emptyPageListPodcast: PageListFavorite?
     var leftContainer: NSLayoutConstraint?
-    var podcastSaved = [PodcastSaved]()
-    var seeLater = [PodcastSaved]()
 
+    // var Core data declaration
+    let favoriteCoreData = "BingePodcast"
+    let seeLaterCoreData = "SeeLater"
+    var coreDataManagerFavorite: CoreDataManager? = nil
+    var coreDataManagerSeeLater: CoreDataManager? = nil
+
+    
+    // MARK: - Compiled var
     let favoriteTitle : UILabel = {
         let label = UILabel()
         label.text = L10n.favorite
@@ -36,64 +46,63 @@ class FavoriteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .clear
-        
-        podcastSaved.append(PodcastSaved(titlePocast: "Du Sport", episodeSaved: [
-            EpisodeSaved_test(titleEpisode: "Episode 1",
-                              subtitleEpisode: "Les jeux olympiques sont ils utilent",
-                              totalTimeEpisode: "12",
-                              favorite: true,
-                              imageEpisode: Assets.aBientotDeTeRevoir.name),
-            
-            EpisodeSaved_test(titleEpisode: "Episode 2",
-                              subtitleEpisode: "À quoi ca sert de courir ?",
-                              totalTimeEpisode: "12:45",
-                              favorite: true,
-                              imageEpisode: Assets.aBientotDeTeRevoir.name),
-            
-            EpisodeSaved_test(titleEpisode: "Episode 3",
-                              subtitleEpisode: "Peut-on toujours repousser les limites ?",
-                              totalTimeEpisode: "12:45",
-                              favorite: true,
-                              imageEpisode: Assets.aBientotDeTeRevoir.name),
-            
-            EpisodeSaved_test(titleEpisode: "Episode 4",
-                              subtitleEpisode: "Pourquoi les ballons no…",
-                              totalTimeEpisode: "12:45",
-                              favorite: true,
-                              imageEpisode: Assets.aBientotDeTeRevoir.name),
-        ]))
 
-        podcastSaved.append(PodcastSaved(titlePocast: "Les couilles sur la table", episodeSaved: [
-            EpisodeSaved_test(titleEpisode: "Episode 1",
-                              subtitleEpisode: "Les jeux olympiques sont ils utilent",
-                              totalTimeEpisode: "12:45",
-                              favorite: true,
-                              imageEpisode: Assets.aBientotDeTeRevoir.name),
-
-            EpisodeSaved_test(titleEpisode: "Episode 2",
-                              subtitleEpisode: "À quoi ca sert de courir ?",
-                              totalTimeEpisode: "12:45",
-                              favorite: true,
-                              imageEpisode: Assets.aBientotDeTeRevoir.name),
-
-            EpisodeSaved_test(titleEpisode: "Episode 3",
-                              subtitleEpisode: "Peut-on toujours repousser les limites ?",
-                              totalTimeEpisode: "12:45",
-                              favorite: true,
-                              imageEpisode: Assets.aBientotDeTeRevoir.name)
-        ]))
-
-        seeLater.append(PodcastSaved(titlePocast: "Du Sport", episodeSaved: [
-            EpisodeSaved_test(titleEpisode: "Episode 1",
-                              subtitleEpisode: "Les jeux olympiques sont ils utilent",
-                              totalTimeEpisode: "12:45",
-                              favorite: true,
-                              imageEpisode: Assets.aBientotDeTeRevoir.name)]))
-
+        initDelegate()
+        initVariable()
         setupTitlePageViewController()
-        setupPageController()
         setGradientBackground()
+        setupPageController()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        let episodeSaved = coreDataManagerFavorite?.fetchFavoriteEpisode()
+        print("@@@ test = \(episodeSaved)")
+        guard let episodeSaved = episodeSaved else {return}
+        podcastSaved = episodeSaved
+        arrayPageListFavorite[0].podcastSaved = podcastSaved
+        pageController?.setViewControllers([arrayPageListFavorite[0]],
+                                          direction: .forward,
+                                          animated: true,
+                                          completion: nil)
+
+        arrayPageListFavorite[0].tableViewEpisode.reloadData()
+        print("@@@ test = \( arrayPageListFavorite[0].podcastSaved)")
+    }
+
+    private func initDelegate() {
+        // nil dataSource to disable the swipe gesture on PageController
+        self.pageController?.dataSource = nil
+        self.pageController?.delegate = self
+    }
+
+    private func initVariable() {
+        print("@@@ initVar")
+        coreDataManagerFavorite = CoreDataManager(
+            coreDataStack: CoreDataStack(modelName: favoriteCoreData, useInMemoryStore: false)
+        )
+
+        coreDataManagerSeeLater = CoreDataManager(
+            coreDataStack: CoreDataStack(modelName: "", useInMemoryStore: false)
+        )
         
+        emptyPageListPodcast = PageListFavorite(
+            with: [ PodcastEpisode(podcast: Podcast(title: "",
+                                            image: "",
+                                            author: ""),
+                                   episode: [Episode(title: "",
+                                             subtitle: "",
+                                             description: "",
+                                             totalTime: "",
+                                             imageUrl: "",
+                                             playerUrl: "",
+                                             podcastTitle: "")])],
+            status: .initialisation)
+
+        let test1 = PageListFavorite(with: podcastSaved, status: .favorite)
+        let test2 = PageListFavorite(with: seeLater, status: .seeLater)
+
+        arrayPageListFavorite.append(test1)
+        arrayPageListFavorite.append(test2)
     }
 
     private func setupTitlePageViewController() {
@@ -107,7 +116,7 @@ class FavoriteViewController: UIViewController {
         line.translatesAutoresizingMaskIntoConstraints = false
 
         leftContainer = line.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 40)
-        
+
         favoriteTitle.isUserInteractionEnabled = true
         seeLaterTitle.isUserInteractionEnabled = true
 
@@ -121,15 +130,15 @@ class FavoriteViewController: UIViewController {
             line.widthAnchor.constraint(equalToConstant: favoriteTitle.intrinsicContentSize.width),
             line.heightAnchor.constraint(equalToConstant: 2),
             line.centerXAnchor.constraint(equalTo: favoriteTitle.centerXAnchor)
-
         ].forEach{$0.isActive = true}
-        
-        let tapFavorite = UITapGestureRecognizer(target: self, action: #selector(self.previousPageController))
+
+        let tapFavorite = UITapGestureRecognizer(target: self,
+                                                 action: #selector(self.previousPageController))
         favoriteTitle.addGestureRecognizer(tapFavorite)
-        
-        let tapSeeLater = UITapGestureRecognizer(target: self, action: #selector(self.nextPageController))
+
+        let tapSeeLater = UITapGestureRecognizer(target: self,
+                                                 action: #selector(self.nextPageController))
         seeLaterTitle.addGestureRecognizer(tapSeeLater)
-        
     }
 
     private func setGradientBackground() {
@@ -143,5 +152,30 @@ class FavoriteViewController: UIViewController {
                 
         self.view.layer.insertSublayer(gradientLayer, at: 0)
     }
- 
+
+    func setupPageController() {
+        let initialVC = emptyPageListPodcast
+        self.pageController?.view.backgroundColor = .clear
+        self.pageController = UIPageViewController(transitionStyle: .scroll,
+                                                   navigationOrientation: .horizontal,
+                                                   options: nil
+        )
+        self.pageController?.view.frame = CGRect(x: 0,
+                                                 y: 120,
+                                                 width: self.view.frame.width,
+                                                 height: self.view.frame.height - 120
+        )
+        guard let pageController = pageController else {return}
+        guard let initialVC = initialVC else {return}
+
+        pageController.setViewControllers([initialVC],
+                                          direction: .forward,
+                                          animated: true,
+                                          completion: nil)
+
+        pageController.didMove(toParent: self)
+
+        self.addChild(pageController)
+        self.view.addSubview(pageController.view)
+    }
 }

@@ -14,6 +14,8 @@ internal enum L10n {
   internal static let allEpisodes = L10n.tr("Strings", "allEpisodes", fallback: "Tous les épisodes")
   /// Description
   internal static let description = L10n.tr("Strings", "description", fallback: "Description")
+  /// Aucun Podcast enregistré dans vos favoris. Cette rubrique vous permet de retrouver vos podcasts préférés. Pour les mettres en favoris, il suffit de les enregistrer en cliquant sur le coeur dans le player.
+  internal static let emptyFavoritePodcast = L10n.tr("Strings", "emptyFavoritePodcast", fallback: "Aucun Podcast enregistré dans vos favoris. Cette rubrique vous permet de retrouver vos podcasts préférés. Pour les mettres en favoris, il suffit de les enregistrer en cliquant sur le coeur dans le player.")
   /// Favoris
   internal static let favorite = L10n.tr("Strings", "favorite", fallback: "Favoris")
   /// Podcasts

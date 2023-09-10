@@ -4,7 +4,6 @@ import UIKit
 extension PageListPodcast: UIScrollViewDelegate {
     
     // This method allows you to request a new episode when you scroll to the bottom of the podcast list
-
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let contentOffsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height

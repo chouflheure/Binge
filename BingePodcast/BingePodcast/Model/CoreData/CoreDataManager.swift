@@ -68,22 +68,22 @@ class CoreDataManager {
     
     
     // This method is to fectch all recipes from core data
-    func fetchFavoriteEpisode() -> [PodcastEpisode] {
+    func fetchFavoriteEpisode() -> [PodcastEpisode]  {
         var episodeFavoriteList = [PodcastEpisode]()
-        var episode = [EpisodeSavedInCoreData]()
+        var episodes = [Episode]()
 
         do {
             let result = try context.fetch(request)
-            
+
             for res in result as! [NSManagedObject] {
-                let data = EpisodeSavedInCoreData(
-                    titleEpisode:       res.value(forKey: "titleEpisode")       as? String ?? "",
-                    subtitleEpisode:    res.value(forKey: "subtitleEpisode")    as? String ?? "",
-                    descriptionEpisode: res.value(forKey: "descriptionEpisode") as? String ?? "",
-                    totalTimeEpisode:   res.value(forKey: "totalTimeEpisode")   as? String ?? "",
-                    imageUrlEpisode:    res.value(forKey: "imageUrlEpisode")    as? String ?? "",
-                    playerUrlEpisode:   res.value(forKey: "playerUrlEpisode")   as? String ?? "",
-                    podcastName:        res.value(forKey: "podcastName")        as? String ?? ""
+                let data = Episode(
+                    title:        res.value(forKey: "titleEpisode")       as? String ?? "",
+                    subtitle:     res.value(forKey: "subtitleEpisode")    as? String ?? "",
+                    description:  res.value(forKey: "descriptionEpisode") as? String ?? "",
+                    totalTime:    res.value(forKey: "totalTimeEpisode")   as? String ?? "",
+                    imageUrl:     res.value(forKey: "imageUrlEpisode")    as? String ?? "",
+                    playerUrl:    res.value(forKey: "playerUrlEpisode")   as? String ?? "",
+                    podcastTitle: res.value(forKey: "podcastName")        as? String ?? ""
                 )
                 /*
                 let data = EpisodeSavedInCoreData(
@@ -95,13 +95,29 @@ class CoreDataManager {
                     playerUrl: res.value(forKey: "playerUrlEpisode") as? String ?? "",
                     podcastName: res.value(forKey: "podcastName") as? String ?? ""
                 )*/
-                episode.append(data)
-                
+
+                episodes.append(data)
             }
             
+            var podcastEpisodeDictionary = [String: [Episode]]()
+            for episode in episodes {
+                if var existingEpisodes = podcastEpisodeDictionary[episode.podcastTitle ?? ""] {
+                    existingEpisodes.append(episode)
+                    podcastEpisodeDictionary[episode.podcastTitle ?? ""] = existingEpisodes
+                } else {
+                    podcastEpisodeDictionary[episode.podcastTitle ?? ""] = [episode]
+                }
+            }
             
+            podcastEpisodeDictionary.enumerated().forEach { index in
+                episodeFavoriteList.append(PodcastEpisode(
+                    podcast: Podcast(title: index.element.key, image: "", author: ""),
+                    episode: index.element.value))
+            }
             
-            print("@@@ episode = \(episode)")
+            episodeFavoriteList.enumerated().forEach { index in
+                print("@@@ index = \(index)")
+            } 
 
         } catch {}
         return episodeFavoriteList

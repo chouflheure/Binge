@@ -3,3 +3,4 @@
 "favorite" = "Favoris";
 "seeLater" = "A écouter";
 "podcast" = "Podcasts";
+"emptyFavoritePodcast" = "Aucun Podcast enregistré dans vos favoris. Cette rubrique vous permet de retrouver vos podcasts préférés. Pour les mettres en favoris, il suffit de les enregistrer en cliquant sur le coeur dans le player.";
