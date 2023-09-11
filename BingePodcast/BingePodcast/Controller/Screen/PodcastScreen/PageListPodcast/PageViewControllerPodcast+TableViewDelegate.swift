@@ -17,6 +17,7 @@ extension PageListPodcast: UITableViewDelegate {
         secondVC.subtitlePodcast.text = podcastEpisode.episode[index].subtitle
         secondVC.descriptionPodcast.text = podcastEpisode.episode[index].description
         secondVC.podcastTitle = podcastEpisode.episode[index].podcastTitle ?? ""
+        secondVC.imagePlayer = podcastEpisode.episode[index].imageUrl ?? ""
         
         secondVC.modalPresentationStyle = .custom
         secondVC.transitioningDelegate = self

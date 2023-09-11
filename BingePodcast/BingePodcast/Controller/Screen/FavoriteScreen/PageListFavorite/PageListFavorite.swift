@@ -17,7 +17,7 @@ class PageListFavorite: UIViewController {
     var tableViewEpisode = UITableView()
     var podcastSaved = [PodcastEpisode]()
     private let cellEpisodeTabViewCell = "CellEpisodeTabViewCell"
-    private var animationView = AnimationView.init(name: "workinProgress")
+    private var animationView = AnimationView.init(name: "workingProgress")
     private let viewEmptyMessage = UIView(frame: CGRect(x: 0,
                                                         y: 0,
                                                         width: UIScreen.main.bounds.width,
@@ -44,7 +44,6 @@ class PageListFavorite: UIViewController {
     
     // This method can be used to determine whether or not the podcasts recorded are empty
     private func checkIfEmptyTableView() {
-        print("@@@ podcastSaved.first?.podcast.title = \(podcastSaved.first?.podcast.title)")
         podcastSaved.isEmpty ? emptyViewMessage() : initTableView()
     }
 
@@ -62,7 +61,6 @@ class PageListFavorite: UIViewController {
     
     // This method is used to set up the how to add a podcast to favourites message
     private func emptyViewMessage() {
-        print("@@@ init emptyViewMessage")
         let labelEmptyMessage = UILabel()
         labelEmptyMessage.numberOfLines = 0
         labelEmptyMessage.translatesAutoresizingMaskIntoConstraints = false
@@ -104,7 +102,6 @@ class PageListFavorite: UIViewController {
 private extension PageListFavorite {
    
     private func initTableView() {
-        print("@@@ init tableview")
         viewEmptyMessage.removeFromSuperview()
         tableViewEpisode.delegate = self
         tableViewEpisode.dataSource = self

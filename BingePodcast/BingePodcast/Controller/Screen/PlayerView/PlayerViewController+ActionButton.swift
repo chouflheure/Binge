@@ -82,15 +82,14 @@ extension PlayerViewController {
     }
     
     @objc func actionFullScreenButton(_ sender: UIButton) {
-        let playerVC = self.storyboard?.instantiateViewController(withIdentifier: "DescriptionPlayerViewController") as? DescriptionPlayerViewController
+        let playerVC = self.storyboard?.instantiateViewController(
+            withIdentifier: "DescriptionPlayerViewController") as? DescriptionPlayerViewController
+        
         playerVC?.modalPresentationStyle = .custom
         playerVC?.transitioningDelegate = self
-        playerVC?.descriptionText = """
-        Cet été, A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices. Cet été, A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices. Cet été, A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices.<3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3
-        """
+        playerVC?.descriptionText = descriptionPodcast.text ?? ""
         playerVC?.titleText = podcastTitle
-        playerVC?.authorName = "Remi Sourcier"
-        playerVC?.imageAuthorName = Assets.aBientotDeTeRevoir.name
+        playerVC?.imageAuthorName = imagePlayer
 
         guard let playerVC = playerVC else {return}
         self.present(playerVC, animated: true, completion: nil)
@@ -153,7 +152,7 @@ extension PlayerViewController {
                                                       subtitle: subtitlePodcast.text ?? "",
                                                       description: descriptionPodcast.text ?? "",
                                                       totalTime: "",
-                                                      imageUrl: imageString,
+                                                      imageUrl: imagePlayer,
                                                       playerUrl: "",
                                                       podcastName: podcastTitle
             )

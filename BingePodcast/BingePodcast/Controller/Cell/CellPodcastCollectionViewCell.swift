@@ -10,18 +10,13 @@ class CellPodcastCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-    
-    override func select(_ sender: Any?) {
-        print("@@@ selected ")
-    }
 
     func setUpUI(title: String, subtitlePodcast: String, imagePodcastString: String) {
         imageViewPodcast.image = Assets.placeholderImage.image
 
         downloadImage(imagePodcastString) {
             image, urlString in
-                if let imageObject = image {
-                    // performing UI operation on main thread
+                if let imageObject = image { 
                     DispatchQueue.main.async {
                         self.imageViewPodcast.image = imageObject
                     }

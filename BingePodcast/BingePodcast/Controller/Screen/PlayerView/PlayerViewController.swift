@@ -9,7 +9,7 @@ class PlayerViewController: UIViewController {
     var podcastTitle: String = ""
     let totalTimeTest: String = "01:01"
     var isPlaying: Bool = false
-    var imageString: String = "play"
+    var imagePlayer: String = Assets.placeholderImage.name
     var isFavorite: Bool = false
     var isSmallScreen: Bool = UIScreen.main.bounds.height < 800
     var isReturnButtonChevronLeft: Bool = false
@@ -77,7 +77,8 @@ class PlayerViewController: UIViewController {
     var imageViewPlayer: UIStackView = {
         var stack = UIStackView()
         stack = stack.verticalStack()
-        let image = UIImage(named: Assets.aBientotDeTeRevoir.name)
+
+        let image = UIImage(named: Assets.placeholderImage.name)
         let imageView = UIImageView(image: image)
 
         imageView.layer.cornerRadius = 30
@@ -114,7 +115,6 @@ class PlayerViewController: UIViewController {
         let label = UILabel()
         label.font = UIFont(name: .fonts.proximaNova_Semibold.fontName(), size: 20)
         label.numberOfLines = 1
-        label.text = "A bientot de te revoir"
         label.textColor = Colors.yellow.color
         return label
     }()
@@ -122,7 +122,6 @@ class PlayerViewController: UIViewController {
     // MARK: - Subtitle
     let subtitlePodcast: UILabel = {
         let label = UILabel()
-        label.text = "Episode 112"
         label.font = UIFont(name: .fonts.proximaNova_Regular.fontName(), size: 17.0)
         label.textColor = .white
         label.numberOfLines = 1
@@ -230,12 +229,11 @@ class PlayerViewController: UIViewController {
         setupUI()
         setupAction()
         setupDescription()
-        // let url = URL(string: urlString)!
-        // player.play(url: url)
         setupAudioPlayer()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        var imageString = ""
         Task {
             if await coreDataManager.checkIfEpisodeIsFavorite(titleEpisode: titlePodcast.text ?? "",
                                                               subtitleEpisode: subtitlePodcast.text ?? "") {
