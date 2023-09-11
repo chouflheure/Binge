@@ -56,7 +56,6 @@ class FavoriteViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         let episodeSaved = coreDataManagerFavorite?.fetchFavoriteEpisode()
-        print("@@@ test = \(episodeSaved)")
         guard let episodeSaved = episodeSaved else {return}
         podcastSaved = episodeSaved
         arrayPageListFavorite[0].podcastSaved = podcastSaved
@@ -66,7 +65,6 @@ class FavoriteViewController: UIViewController {
                                           completion: nil)
 
         arrayPageListFavorite[0].tableViewEpisode.reloadData()
-        print("@@@ test = \( arrayPageListFavorite[0].podcastSaved)")
     }
 
     private func initDelegate() {
@@ -76,7 +74,6 @@ class FavoriteViewController: UIViewController {
     }
 
     private func initVariable() {
-        print("@@@ initVar")
         coreDataManagerFavorite = CoreDataManager(
             coreDataStack: CoreDataStack(modelName: favoriteCoreData, useInMemoryStore: false)
         )

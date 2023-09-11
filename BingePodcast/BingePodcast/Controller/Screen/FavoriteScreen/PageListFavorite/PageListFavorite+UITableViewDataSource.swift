@@ -4,8 +4,7 @@ import UIKit
 extension PageListFavorite: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        print("@@@ podcastSaved.count = \(podcastSaved.count)")
-        return podcastSaved.count
+        podcastSaved.count
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

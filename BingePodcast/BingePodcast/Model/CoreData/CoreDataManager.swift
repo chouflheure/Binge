@@ -23,11 +23,12 @@ class CoreDataManager {
     }
 
     // This method is to check if the recipe is in favorite / in Core Data
-    func checkIfEpisodeIsFavorite(titleEpisode: String) async -> Bool {
+    func checkIfEpisodeIsFavorite(titleEpisode: String, subtitleEpisode: String) async -> Bool {
         do {
             let result = try context.fetch(request)
             for r in result as! [NSManagedObject] {
-                if r.value(forKey: "titleEpisode") as! String == titleEpisode {
+                if r.value(forKey: "titleEpisode") as! String == titleEpisode
+                    && r.value(forKey: "subtitleEpisode") as! String == subtitleEpisode {
                     return true
                 }
             }
@@ -42,6 +43,7 @@ class CoreDataManager {
         let newEpisode = NSEntityDescription.insertNewObject(forEntityName: "EpisodeSaved", into: coreDataStack.mainContext)
         
         newEpisode.setValue(title, forKey: "titleEpisode")
+        newEpisode.setValue(subtitle, forKey: "subtitleEpisode")
         newEpisode.setValue(description, forKey: "descriptionEpisode")
         newEpisode.setValue(totalTime, forKey: "totalTimeEpisode")
         newEpisode.setValue(imageUrl, forKey: "imageUrlEpisode")
@@ -52,12 +54,13 @@ class CoreDataManager {
     }
 
     // This method is to remove a recipe on core data
-    func removeEpisodeFromFavorite(titlePodcast: String) async {
+    func removeEpisodeFromFavorite(titlePodcast: String, subtitlePodcast: String) async {
 
         do {
             let result = try context.fetch(request)
             for r in result as! [NSManagedObject] {
-                if r.value(forKey: "titleEpisode") as! String == titlePodcast
+                if (r.value(forKey: "titleEpisode") as! String == titlePodcast
+                    && r.value(forKey: "subtitleEpisode") as! String == subtitlePodcast )
                     || r.value(forKey: "titleEpisode") as! String == "" {
                     coreDataStack.mainContext.delete(r)
                 }
@@ -85,16 +88,6 @@ class CoreDataManager {
                     playerUrl:    res.value(forKey: "playerUrlEpisode")   as? String ?? "",
                     podcastTitle: res.value(forKey: "podcastName")        as? String ?? ""
                 )
-                /*
-                let data = EpisodeSavedInCoreData(
-                    title: res.value(forKey: "titleEpisode") as? String ?? "",
-                    subtitle: res.value(forKey: "subtitleEpisode") as? String ?? "",
-                    description: res.value(forKey: "descriptionEpisode") as? String ?? "",
-                    totalTime: res.value(forKey: "totalTimeEpisode") as? String ?? "",
-                    imageUrl: res.value(forKey: "imageUrlEpisode") as? String ?? "",
-                    playerUrl: res.value(forKey: "playerUrlEpisode") as? String ?? "",
-                    podcastName: res.value(forKey: "podcastName") as? String ?? ""
-                )*/
 
                 episodes.append(data)
             }
@@ -114,10 +107,6 @@ class CoreDataManager {
                     podcast: Podcast(title: index.element.key, image: "", author: ""),
                     episode: index.element.value))
             }
-            
-            episodeFavoriteList.enumerated().forEach { index in
-                print("@@@ index = \(index)")
-            } 
 
         } catch {}
         return episodeFavoriteList
