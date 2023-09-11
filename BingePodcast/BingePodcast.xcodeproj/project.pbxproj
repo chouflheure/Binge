@@ -37,10 +37,10 @@
 		1D2A2EB22A76E3FA00ABD880 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2A2EB12A76E3FA00ABD880 /* FirebaseService.swift */; };
 		1D2A2EB42A77DF5900ABD880 /* HomePageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2A2EB32A77DF5900ABD880 /* HomePageModel.swift */; };
 		1D2A2EB62A77E17700ABD880 /* Decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2A2EB52A77E17700ABD880 /* Decode.swift */; };
-		1D2A2EB82A7857D800ABD880 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2A2EB72A7857D700ABD880 /* UIImageView.swift */; };
 		1D30400D2A6805850089C2F7 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D30400C2A6805850089C2F7 /* PlayerViewController.swift */; };
 		1D3C3F492A4C7A9B00F0CA90 /* CellPodcastCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3C3F472A4C7A9B00F0CA90 /* CellPodcastCollectionViewCell.swift */; };
 		1D3C3F4A2A4C7A9B00F0CA90 /* CellPodcastCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D3C3F482A4C7A9B00F0CA90 /* CellPodcastCollectionViewCell.xib */; };
+		1D40D2662AAF6ACF0047F111 /* ImageCallURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D40D2652AAF6ACF0047F111 /* ImageCallURL.swift */; };
 		1D4D40EF2AA66D8E004A49FB /* PageListPodcast+UIScrollViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4D40EE2AA66D8E004A49FB /* PageListPodcast+UIScrollViewDelegate.swift */; };
 		1D55E2902A408B2200F1A9BD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D55E28F2A408B2200F1A9BD /* Constants.swift */; };
 		1D55E2922A409CB000F1A9BD /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D55E2912A409CB000F1A9BD /* UIButton.swift */; };
@@ -174,10 +174,10 @@
 		1D2A2EB12A76E3FA00ABD880 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		1D2A2EB32A77DF5900ABD880 /* HomePageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageModel.swift; sourceTree = "<group>"; };
 		1D2A2EB52A77E17700ABD880 /* Decode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decode.swift; sourceTree = "<group>"; };
-		1D2A2EB72A7857D700ABD880 /* UIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		1D30400C2A6805850089C2F7 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		1D3C3F472A4C7A9B00F0CA90 /* CellPodcastCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellPodcastCollectionViewCell.swift; sourceTree = "<group>"; };
 		1D3C3F482A4C7A9B00F0CA90 /* CellPodcastCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CellPodcastCollectionViewCell.xib; sourceTree = "<group>"; };
+		1D40D2652AAF6ACF0047F111 /* ImageCallURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCallURL.swift; sourceTree = "<group>"; };
 		1D4D40EE2AA66D8E004A49FB /* PageListPodcast+UIScrollViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PageListPodcast+UIScrollViewDelegate.swift"; sourceTree = "<group>"; };
 		1D55E28F2A408B2200F1A9BD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		1D55E2912A409CB000F1A9BD /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
@@ -490,6 +490,7 @@
 				1D2A2EB12A76E3FA00ABD880 /* FirebaseService.swift */,
 				1DCA9ECD2A35FD22008ED92E /* PlayerAudioService.swift */,
 				1D973A6C2A3A87800027AC75 /* Delegate.swift */,
+				1D40D2652AAF6ACF0047F111 /* ImageCallURL.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -600,7 +601,6 @@
 		1DDF70042A3CC84300EC2294 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				1D2A2EB72A7857D700ABD880 /* UIImageView.swift */,
 				1D55E2912A409CB000F1A9BD /* UIButton.swift */,
 				1D55E2932A40B3D400F1A9BD /* UIImage.swift */,
 				1D55E2952A4119AC00F1A9BD /* UILabel.swift */,
@@ -993,6 +993,7 @@
 				1D1843972A65458A00A5129E /* EpisodeSaved.swift in Sources */,
 				1D1843A02A656DFF00A5129E /* DismissTransition.swift in Sources */,
 				1DA63F0E2A41F65B0013BB86 /* UIString.swift in Sources */,
+				1D40D2662AAF6ACF0047F111 /* ImageCallURL.swift in Sources */,
 				1D8550512A8A339000001A4C /* PageListFavorite+UIViewControllerTransitioningDelegate.swift in Sources */,
 				1D973A6D2A3A87800027AC75 /* Delegate.swift in Sources */,
 				1D2A2EB42A77DF5900ABD880 /* HomePageModel.swift in Sources */,
@@ -1001,7 +1002,6 @@
 				1DC976592A9F6BEB003E3E9E /* PodcastPageModel.swift in Sources */,
 				1D18448C2A65A06400A5129E /* DescriptionPlayerViewController.swift in Sources */,
 				1D2A2EB62A77E17700ABD880 /* Decode.swift in Sources */,
-				1D2A2EB82A7857D800ABD880 /* UIImageView.swift in Sources */,
 				1D55E2902A408B2200F1A9BD /* Constants.swift in Sources */,
 				1D85504D2A8A331700001A4C /* PageListFavorite+UITableViewDelegate.swift in Sources */,
 				1D1879F62A2CC8AA00827277 /* AppDelegate.swift in Sources */,

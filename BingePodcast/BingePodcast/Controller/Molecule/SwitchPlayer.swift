@@ -8,6 +8,7 @@ class SwitchPlayer: UIView {
     
     let innerShadowTop = CALayer()
     var episode: Episode
+    var imageCallURL = ImageCallURL()
 
     private var leftContainerImageCircleViewConstraint: NSLayoutConstraint?
     private var leftTextStackViewConstraint: NSLayoutConstraint?
@@ -129,32 +130,7 @@ class SwitchPlayer: UIView {
         blurEffectView.isHidden = true
         return blurEffectView
     }()
-    
-    func downloadImage(_ urlString: String, completion: ((_ _image: UIImage?, _ urlString: String?) -> ())?) {
-           guard let url = URL(string: urlString) else {
-              completion?(nil, urlString)
-              return
-          }
-          URLSession.shared.dataTask(with: url) { (data, response,error) in
-             if let error = error {
-                print("error in downloading image: \(error)")
-                completion?(nil, urlString)
-                return
-             }
-             guard let httpResponse = response as? HTTPURLResponse,(200...299).contains(httpResponse.statusCode) else {
-                completion?(nil, urlString)
-                return
-             }
-             if let data = data, let image = UIImage(data: data) {
-                completion?(image, urlString)
-                return
-             }
-             completion?(nil, urlString)
-          }.resume()
-       }
-    
-    
-    
+
     func setup() {
 
         // general view
@@ -174,8 +150,8 @@ class SwitchPlayer: UIView {
         subtitleLabel.text = episode.subtitle
         imageCircle.image = Assets.placeholderImage.image
         guard let imageUrl = episode.imageUrl else {return}
-        downloadImage(imageUrl) {
-            image, imageUrl  in
+
+        imageCallURL.downloadImage(imageUrl) { image, imageUrl  in
                 if let imageObject = image {
                     // performing UI operation on main thread
                     DispatchQueue.main.async {
@@ -184,7 +160,7 @@ class SwitchPlayer: UIView {
                     }
                 }
         }
-        
+
         addSubview(containerCircleImage)
         containerCircleImage.addSubview(imageCircle)
         imageCircle.addSubview(imagePlayer)
@@ -254,19 +230,6 @@ class SwitchPlayer: UIView {
     func reset() {
         isFinished = false
         updateContainerImageCircleXPosition(Constants_SwitchPlayer.marginContainerImage)
-        /*
-        titleLabel.attributedText = "3ab apple3 3bana".reduce(NSMutableAttributedString()) {
-            $0.append(
-                NSAttributedString(
-                    string: String($1),
-                    attributes: [
-                        .foregroundColor: $1 == "3" ? UIColor.red : .black
-                    ]
-                )
-            )
-            return $0
-        }
-         */
     }
 
     func active(action: Action) {
@@ -290,11 +253,6 @@ class SwitchPlayer: UIView {
                 
                 self.blurEffectView.isHidden = false
             }
-
-            
-
-            
-            
             self.innerShadowTop.isHidden = true
 
         } else {
