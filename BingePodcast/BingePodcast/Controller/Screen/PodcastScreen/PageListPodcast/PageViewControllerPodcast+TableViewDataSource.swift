@@ -24,7 +24,7 @@ extension PageListPodcast: UITableViewDataSource {
         cell.setupCell(title: podcastEpisode.episode[index].title ?? "",
                        subtitle: podcastEpisode.episode[index].subtitle ?? "",
                        imageEpisode: podcastEpisode.episode[index].imageUrl ?? "",
-                       time: podcastEpisode.episode[index].totalTime ?? "",
+                       time: "1:02", //podcastEpisode.episode[index].totalTime ?? "",
                        favorite: favorite[index]
         )
 

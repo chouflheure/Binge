@@ -6,7 +6,6 @@ class CellEpisodeTabViewCell: UITableViewCell {
     @IBOutlet weak var playButtonImageView: UIImageView!
     @IBOutlet weak var titleEpisode: UILabel!
     @IBOutlet weak var subtitleEpisode: UILabel!
-    @IBOutlet weak var favorisImageView: UIImageView!
     @IBOutlet weak var totalTimeEpisode: UILabel!
     
     override func awakeFromNib() {
@@ -34,8 +33,6 @@ class CellEpisodeTabViewCell: UITableViewCell {
         self.totalTimeEpisode.numberOfLines = 1
         self.totalTimeEpisode.font = UIFont(name: .fonts.proximaNova_Alt_Thin.fontName(), size: 15)
         self.totalTimeEpisode.textColor = Colors.darkBlue.color
-        
-        self.favorisImageView.image = favorite ? Assets.Picto.Favorite.favoriteSelectedBlue.image : Assets.Picto.Favorite.favoriteUnselectedBlue.image
         
         self.episodeImageView.image = Assets.placeholderImage.image
         self.episodeImageView.layer.cornerRadius = 10

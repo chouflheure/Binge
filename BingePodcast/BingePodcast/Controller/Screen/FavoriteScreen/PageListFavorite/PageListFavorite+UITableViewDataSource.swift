@@ -85,7 +85,7 @@ extension PageListFavorite: UITableViewDataSource {
         cell.setupCell(title: episode.title ?? "",
                        subtitle: episode.subtitle ?? "",
                        imageEpisode: episode.imageUrl ?? "",
-                       time: episode.totalTime ?? "",
+                       time: "1:02", // episode.totalTime ?? "",
                        favorite: true)
 
         return cell

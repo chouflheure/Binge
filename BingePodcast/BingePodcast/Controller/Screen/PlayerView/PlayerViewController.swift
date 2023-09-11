@@ -14,7 +14,7 @@ class PlayerViewController: UIViewController {
     var isSmallScreen: Bool = UIScreen.main.bounds.height < 800
     var isReturnButtonChevronLeft: Bool = false
     let descriptionView = UIView()
-
+    
     var favoriteEpisode = false
     let coreDataManager = CoreDataManager()
     
