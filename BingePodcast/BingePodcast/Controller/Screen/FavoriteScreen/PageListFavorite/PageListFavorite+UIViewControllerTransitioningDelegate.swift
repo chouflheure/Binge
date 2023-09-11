@@ -8,6 +8,7 @@ extension PageListFavorite: UIViewControllerTransitioningDelegate {
     }
     
     public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        fetchFavoriteEpisode()
         return DismissTransition()
     }
 

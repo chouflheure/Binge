@@ -15,6 +15,7 @@ class PageListFavorite: UIViewController {
     // MARK: - Init var
     var status: FavoriteStatus
     var tableViewEpisode = UITableView()
+    var coreDataManager: CoreDataManager
     var podcastSaved = [PodcastEpisode]()
     private let cellEpisodeTabViewCell = "CellEpisodeTabViewCell"
     private var animationView = AnimationView.init(name: "workingProgress")
@@ -24,8 +25,8 @@ class PageListFavorite: UIViewController {
                                                         height: UIScreen.main.bounds.height)
     )
 
-    init(with podcastElemet: [PodcastEpisode], status: FavoriteStatus) {
-        self.podcastSaved = podcastElemet
+    init(with coreDataManager: CoreDataManager, status: FavoriteStatus) {
+        self.coreDataManager = coreDataManager
         self.status = status
         super.init(nibName: nil, bundle: nil)
     }
@@ -38,12 +39,18 @@ class PageListFavorite: UIViewController {
         if status == .seeLater {
             initAimation()
         } else {
-            checkIfEmptyTableView()
+            fetchFavoriteEpisode()
         }
     }
     
+    func fetchFavoriteEpisode() {
+        podcastSaved = coreDataManager.fetchFavoriteEpisode()
+        tableViewEpisode.reloadData()
+        checkIfEmptyTableView()
+    }
+    
     // This method can be used to determine whether or not the podcasts recorded are empty
-    private func checkIfEmptyTableView() {
+    func checkIfEmptyTableView() {
         podcastSaved.isEmpty ? emptyViewMessage() : initTableView()
     }
 

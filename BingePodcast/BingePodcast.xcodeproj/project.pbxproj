@@ -50,7 +50,6 @@
 		1D72B3AA2A81216F0033F355 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D72B3A92A81216F0033F355 /* CoreDataStack.swift */; };
 		1D72B3AC2A8121A90033F355 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D72B3AB2A8121A90033F355 /* CoreDataManager.swift */; };
 		1D8550482A8A313B00001A4C /* FavoriteViewController+UIPageViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8550472A8A313B00001A4C /* FavoriteViewController+UIPageViewControllerDelegate.swift */; };
-		1D85504A2A8A322D00001A4C /* FavoriteViewController+UIViewControllerTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8550492A8A322D00001A4C /* FavoriteViewController+UIViewControllerTransitioningDelegate.swift */; };
 		1D85504D2A8A331700001A4C /* PageListFavorite+UITableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D85504C2A8A331700001A4C /* PageListFavorite+UITableViewDelegate.swift */; };
 		1D85504F2A8A332A00001A4C /* PageListFavorite+UITableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D85504E2A8A332A00001A4C /* PageListFavorite+UITableViewDataSource.swift */; };
 		1D8550512A8A339000001A4C /* PageListFavorite+UIViewControllerTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8550502A8A339000001A4C /* PageListFavorite+UIViewControllerTransitioningDelegate.swift */; };
@@ -103,7 +102,7 @@
 		1DC976592A9F6BEB003E3E9E /* PodcastPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC976582A9F6BEB003E3E9E /* PodcastPageModel.swift */; };
 		1DCA33BD2A711EEC00120500 /* PlayerObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCA33BC2A711EEC00120500 /* PlayerObserver.swift */; };
 		1DCA9ECE2A35FD22008ED92E /* PlayerAudioService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCA9ECD2A35FD22008ED92E /* PlayerAudioService.swift */; };
-		1DCAD99D2A7922630048C87D /* workinProgress.json in Resources */ = {isa = PBXBuildFile; fileRef = 1DCAD99C2A7922630048C87D /* workinProgress.json */; };
+		1DCAD99D2A7922630048C87D /* workingProgress.json in Resources */ = {isa = PBXBuildFile; fileRef = 1DCAD99C2A7922630048C87D /* workingProgress.json */; };
 		1DCAD9A02A793A630048C87D /* PresentDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCAD99F2A793A630048C87D /* PresentDescription.swift */; };
 		1DCAD9A22A793A8F0048C87D /* DismissDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCAD9A12A793A8F0048C87D /* DismissDescription.swift */; };
 		1DD7263A2A45D86400CD6D16 /* FloatingTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD726392A45D86400CD6D16 /* FloatingTabBarViewController.swift */; };
@@ -188,7 +187,6 @@
 		1D72B3A92A81216F0033F355 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		1D72B3AB2A8121A90033F355 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		1D8550472A8A313B00001A4C /* FavoriteViewController+UIPageViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteViewController+UIPageViewControllerDelegate.swift"; sourceTree = "<group>"; };
-		1D8550492A8A322D00001A4C /* FavoriteViewController+UIViewControllerTransitioningDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteViewController+UIViewControllerTransitioningDelegate.swift"; sourceTree = "<group>"; };
 		1D85504C2A8A331700001A4C /* PageListFavorite+UITableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PageListFavorite+UITableViewDelegate.swift"; sourceTree = "<group>"; };
 		1D85504E2A8A332A00001A4C /* PageListFavorite+UITableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PageListFavorite+UITableViewDataSource.swift"; sourceTree = "<group>"; };
 		1D8550502A8A339000001A4C /* PageListFavorite+UIViewControllerTransitioningDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PageListFavorite+UIViewControllerTransitioningDelegate.swift"; sourceTree = "<group>"; };
@@ -215,7 +213,7 @@
 		1DC976582A9F6BEB003E3E9E /* PodcastPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastPageModel.swift; sourceTree = "<group>"; };
 		1DCA33BC2A711EEC00120500 /* PlayerObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerObserver.swift; sourceTree = "<group>"; };
 		1DCA9ECD2A35FD22008ED92E /* PlayerAudioService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerAudioService.swift; sourceTree = "<group>"; };
-		1DCAD99C2A7922630048C87D /* workinProgress.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = workinProgress.json; sourceTree = "<group>"; };
+		1DCAD99C2A7922630048C87D /* workingProgress.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = workingProgress.json; sourceTree = "<group>"; };
 		1DCAD99F2A793A630048C87D /* PresentDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentDescription.swift; sourceTree = "<group>"; };
 		1DCAD9A12A793A8F0048C87D /* DismissDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissDescription.swift; sourceTree = "<group>"; };
 		1DD726392A45D86400CD6D16 /* FloatingTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingTabBarViewController.swift; sourceTree = "<group>"; };
@@ -471,7 +469,6 @@
 			children = (
 				1D0AC26D2A6198460029EAAE /* FavoriteViewController.swift */,
 				1D8550472A8A313B00001A4C /* FavoriteViewController+UIPageViewControllerDelegate.swift */,
-				1D8550492A8A322D00001A4C /* FavoriteViewController+UIViewControllerTransitioningDelegate.swift */,
 			);
 			path = FavoriteViewController;
 			sourceTree = "<group>";
@@ -583,7 +580,7 @@
 		1DCAD99E2A7934EA0048C87D /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
-				1DCAD99C2A7922630048C87D /* workinProgress.json */,
+				1DCAD99C2A7922630048C87D /* workingProgress.json */,
 			);
 			path = Lottie;
 			sourceTree = "<group>";
@@ -808,7 +805,7 @@
 			files = (
 				1D187A052A2CC8AD00827277 /* LaunchScreen.storyboard in Resources */,
 				1DC25BBC2A4266FD0024CD41 /* ProximaNova-Alt-Thin.otf in Resources */,
-				1DCAD99D2A7922630048C87D /* workinProgress.json in Resources */,
+				1DCAD99D2A7922630048C87D /* workingProgress.json in Resources */,
 				1D986AB12A2E120600D26CEB /* GoogleService-Info.plist in Resources */,
 				1DC25BC02A4266FD0024CD41 /* ProximaNova-Alt-Bold.otf in Resources */,
 				1DC25BC12A4266FD0024CD41 /* ProximaNova-Alt-Light.otf in Resources */,
@@ -978,7 +975,6 @@
 				1D15181E2A8BC0F000F6F4A2 /* PageViewControllerPodcast.swift in Sources */,
 				1D2A2EAE2A76D03900ABD880 /* HomeViewController+CollectionView.swift in Sources */,
 				1DD76B9D2AA0C22600EA1FFA /* PodcastViewController+Delegate.swift in Sources */,
-				1D85504A2A8A322D00001A4C /* FavoriteViewController+UIViewControllerTransitioningDelegate.swift in Sources */,
 				1D18439E2A656DD600A5129E /* PresentTransition.swift in Sources */,
 				1D986AA62A2DFF0E00D26CEB /* Strings.gen.swift in Sources */,
 				1D0AC26C2A61982A0029EAAE /* FavoriteTableViewCell.swift in Sources */,
