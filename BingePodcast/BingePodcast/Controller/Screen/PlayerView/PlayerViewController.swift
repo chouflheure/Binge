@@ -5,7 +5,6 @@ import AVFoundation
 class PlayerViewController: UIViewController {
 
     // MARK: - Variable déclaration
-
     var podcastTitle: String = ""
     let totalTimeTest: String = "01:01"
     var isPlaying: Bool = false
@@ -14,10 +13,9 @@ class PlayerViewController: UIViewController {
     var isSmallScreen: Bool = UIScreen.main.bounds.height < 800
     var isReturnButtonChevronLeft: Bool = false
     let descriptionView = UIView()
-
     var favoriteEpisode = false
     let coreDataManager = CoreDataManager()
-    
+    var imageCallURL = ImageCallURL()
     var player = AVPlayer()
 
     // MARK: Gradient Color
@@ -72,19 +70,18 @@ class PlayerViewController: UIViewController {
         stack.distribution = .fill
         return stack
     }()
-
+    
+    var imageView: UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: Assets.placeholderImage.name))
+        imageView.layer.cornerRadius = 30
+        imageView.layer.masksToBounds = true
+        return imageView
+    }()
+    
     // MARK: - Image View
     var imageViewPlayer: UIStackView = {
         var stack = UIStackView()
         stack = stack.verticalStack()
-
-        let image = UIImage(named: Assets.placeholderImage.name)
-        let imageView = UIImageView(image: image)
-
-        imageView.layer.cornerRadius = 30
-        imageView.layer.masksToBounds = true
-        
-        stack.addArrangedSubview(imageView)
 
         stack.layer.cornerRadius = 30
         stack.layer.shadowRadius = 3
@@ -211,9 +208,6 @@ class PlayerViewController: UIViewController {
     
     var descriptionPodcast: UILabel = {
         var description = UILabel()
-        description.text = """
-            Cet été, A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices. Cet été, A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices. Cet été, A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices avec le meilleur des quatre saisons. Le premier best-of est est A bientôt de te revoir accompagne les auditeur·ices.<3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3
-            """
         description.setLineSpacing(lineSpacing: 8.0)
         description.numberOfLines = 0
         description.font = UIFont(name: .fonts.proximaNova_Alt_Thin.fontName(), size: 16)
@@ -225,7 +219,7 @@ class PlayerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view = view
-        
+        setupImagePlayer()
         setupUI()
         setupAction()
         setupDescription()
@@ -233,7 +227,27 @@ class PlayerViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        var imageString = ""
+        checkIfPodcastIsFavorite()
+    }
+    
+    private func setupImagePlayer() {
+        imageViewPlayer.addArrangedSubview(imageView)
+
+        imageCallURL.downloadImage(imagePlayer) { image, urlString in
+            if let imageObject = image {
+                // performing UI operation on main thread
+                DispatchQueue.main.async {
+                    guard let urlString = urlString else {return}
+                    if self.imagePlayer == urlString {
+                        self.imageView.image = imageObject
+                    } else {}
+                }
+            }
+        }
+    }
+
+    private func checkIfPodcastIsFavorite() {
+
         Task {
             if await coreDataManager.checkIfEpisodeIsFavorite(titleEpisode: titlePodcast.text ?? "",
                                                               subtitleEpisode: subtitlePodcast.text ?? "") {
@@ -245,7 +259,7 @@ class PlayerViewController: UIViewController {
             }
         }
     }
-
+    
     func setupAudioPlayer(){
 
         let url = URL(string: "https://sphinx.acast.com/a-bientot-de-te-revoir/la-presque-100eme/media.mp3")
@@ -275,7 +289,6 @@ class PlayerViewController: UIViewController {
 
     @objc func audioPlaybackSlider(_ sender: Any) {
 
-        //перемотка аудиозвука
         let duration = CMTimeGetSeconds(player.currentItem!.asset.duration)
         let value = self.slider.value
         spendTime.text = "\(self.slider.value)"
