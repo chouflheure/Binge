@@ -1,8 +1,8 @@
-
 import Foundation
 import UIKit
 
 extension Float {
+    
     func convertHoursToFloat(totalTime: String) -> Int{
         let delimiter = ":"
         let token = totalTime.components(separatedBy: delimiter)

@@ -1,17 +1,9 @@
-//
-//  PodcastHomePageCollectionViewCell.swift
-//  BingePodcast
-//
-//  Created by charlesCalvignac on 12/07/2023.
-//
-
 import UIKit
 
 class PodcastHomePageCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     // MARK: - Variables Declaration
@@ -48,15 +40,62 @@ class PodcastHomePageCollectionViewCell: UICollectionViewCell {
     }()
     
     
+    func configure(urlString: String?) {
+        guard let urlString = urlString else {return}
+        imagePodcast.imageFrom(urlString: urlString)
+        imagePodcast.contentMode = .scaleAspectFill
+        reloadInputViews()
+    }
+    
+    
+    func downloadImage(_ urlString: String, completion: ((_ _image: UIImage?, _ urlString: String?) -> ())?) {
+           guard let url = URL(string: urlString) else {
+              completion?(nil, urlString)
+              return
+          }
+          URLSession.shared.dataTask(with: url) { (data, response,error) in
+             if let error = error {
+                print("error in downloading image: \(error)")
+                completion?(nil, urlString)
+                return
+             }
+             guard let httpResponse = response as? HTTPURLResponse,(200...299).contains(httpResponse.statusCode) else {
+                completion?(nil, urlString)
+                return
+             }
+             if let data = data, let image = UIImage(data: data) {
+                completion?(image, urlString)
+                return
+             }
+             completion?(nil, urlString)
+          }.resume()
+       }
+    
+    // static var shared = NetworkManager()
+    
     func setup(imagePodcastName: String, titlePodcast: String, authorPodcast: String) {
         
         self.imageName = imagePodcastName
         self.title.text = titlePodcast
         self.author.text = authorPodcast
-        
-        imagePodcast.image = UIImage(named: imagePodcastName)
-       
-        
+
+        imagePodcast.image = Assets.placeholderImage.image
+
+        downloadImage(imagePodcastName) {
+            image, urlString in
+                if let imageObject = image {
+                    // performing UI operation on main thread
+                    DispatchQueue.main.async {
+                        guard let urlString = urlString else {return}
+                        
+                        if self.imageName == urlString {
+                            self.imagePodcast.image = imageObject
+                        } else {
+                        }
+                    }
+                }
+        }
+
         // color
         backgroundColor = .clear
 

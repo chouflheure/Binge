@@ -1,23 +1,29 @@
-//
-//  UIImageView.swift
-//  BingePodcast
-//
-//  Created by charlesCalvignac on 08/07/2023.
-//
 
 import Foundation
 import UIKit
 
-extension UIImageView {
-    func applyshadowWithCorner(containerView : UIView, cornerRadious : CGFloat){
-        containerView.clipsToBounds = false
-        containerView.layer.shadowColor = UIColor.black.cgColor
-        containerView.layer.shadowOpacity = 1
-        containerView.layer.shadowOffset = CGSize.zero
-        containerView.layer.shadowRadius = 10
-        containerView.layer.cornerRadius = cornerRadious
-        containerView.layer.shadowPath = UIBezierPath(roundedRect: containerView.bounds, cornerRadius: cornerRadious).cgPath
-        self.clipsToBounds = true
-        self.layer.cornerRadius = cornerRadious
+var imageCache = NSCache<AnyObject, AnyObject>()
+
+extension UIImageView{
+    
+    func imageFrom(urlString: String){
+        
+        if let image = imageCache.object(forKey: urlString as NSString) as? UIImage {
+            self.image = image
+            return
+        }
+
+        guard let url = URL(string: urlString) else {return}
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: url){
+                if let image = UIImage(data:data){
+                    DispatchQueue.main.async{
+                        imageCache.setObject(image, forKey: urlString as NSString)
+                        self?.image = image
+                    }
+                }
+            }
+        }
     }
 }
+

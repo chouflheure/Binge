@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 24 30"
+   version="1.1"
+   x="0px"
+   y="0px"
+   id="svg14"
+   sodipodi:docname="noun-chevron-up-1988112.svg"
+   inkscape:version="1.2.2 (b0a8486, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs18" />
+  <sodipodi:namedview
+     id="namedview16"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="5.8528567"
+     inkscape:cx="-2.0502809"
+     inkscape:cy="17.256531"
+     inkscape:window-width="1440"
+     inkscape:window-height="900"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg14" />
+  <title
+     id="title2">chevron-up</title>
+  <desc
+     id="desc4">Created with Sketch.</desc>
+  <g
+     stroke="none"
+     stroke-width="1"
+     fill="none"
+     fill-rule="evenodd"
+     id="g8"
+     style="fill:#144d93;fill-opacity:1">
+    <path
+       d="M4.61979958,16.7206603 C4.24924802,17.0931132 3.64846523,17.0931132 3.27791367,16.7206603 C2.90736211,16.3482075 2.90736211,15.744342 3.27791367,15.3718892 L11.3291519,7.27933966 C11.6997066,6.90688368 12.3004955,6.90688724 12.6710457,7.27934761 L20.7220942,15.3718971 C21.0926414,15.7443544 21.0926344,16.3482198 20.7220784,16.7206683 C20.3515225,17.0931168 19.7507397,17.0931097 19.3801925,16.7206524 L12.000087,9.30250438 L4.61979958,16.7206603 Z"
+       fill="#000000"
+       fill-rule="nonzero"
+       id="path6"
+       style="fill:#144d93;fill-opacity:1" />
+  </g>
+</svg>

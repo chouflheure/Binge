@@ -7,7 +7,7 @@
 
 # Generate String
 strings:
-  inputs: ../../../BingePodcast/ProductionsFiles/Strings.strings
+  inputs: ../../../BingePodcast/ProductionsFiles/Assets/Strings.strings
   outputs:
     - templateName: structured-swift5
       output: ../../../BingePodcast/ProductionsFiles/Generated/Strings.gen.swift
@@ -21,7 +21,7 @@ strings:
 
 # Generate Assets
 xcassets:
-    - inputs: ../../../BingePodcast/ProductionsFiles/Colors.xcassets
+    - inputs: ../../../BingePodcast/ProductionsFiles/Assets/Colors.xcassets
       outputs:
         - templatePath: template_disable_swiftFormat.stencil
           params:
@@ -29,7 +29,7 @@ xcassets:
             enumName: Colors
           output: ../../../BingePodcast/ProductionsFiles/Generated/Colors.gen.swift
 
-    - inputs: ../../../BingePodcast/ProductionsFiles/Assets.xcassets
+    - inputs: ../../../BingePodcast/ProductionsFiles/Assets/Assets.xcassets
       outputs:
         - templatePath: template_disable_swiftFormat.stencil
           params:

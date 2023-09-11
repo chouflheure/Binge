@@ -54,12 +54,12 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>SwiftGen.xcscheme</key>
+		<key>SwiftEntryKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>VBRRollingPit.xcscheme</key>
+		<key>SwiftGen.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>

@@ -1,18 +1,12 @@
 import Foundation
+import UIKit
 
-protocol SearchDelegate: AnyObject {
-
-    func messageErrorServerConnexionDelegate()
-    func addAlimentsInList(ingredient: String)
-    func togglePressButton()
-    func messageErrorEmptyIngredient()
+protocol HomePageDelegate: AnyObject {
+    func fetchPodcastListAndShowOnHomePage(result: [Podcast])
 }
 
-protocol ListRecipeDelegate: AnyObject {
-    func inAppDelegateFavorite()
-}
-
-protocol DetailRecipeDelegate: AnyObject {
-    func inAppDelegateFavorite()
-    func addTimeAndLikeIfNotEmpty(dataLike: Int, dataTime: Int)
+protocol PodcastPageDelegate: AnyObject {
+    func fetchPodcastList(result: [Podcast])
+    func showPodcastAndEpisode(podcastEpisode: PodcastEpisode)
+    func loadMoreEpisode(podcastEpisode: PodcastEpisode)
 }

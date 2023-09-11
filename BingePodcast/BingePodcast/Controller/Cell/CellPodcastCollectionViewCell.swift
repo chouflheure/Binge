@@ -1,10 +1,3 @@
-//
-//  CellPodcastCollectionViewCell.swift
-//  BingePodcast
-//
-//  Created by charlesCalvignac on 28/06/2023.
-//
-
 import UIKit
 
 class CellPodcastCollectionViewCell: UICollectionViewCell {
@@ -16,12 +9,26 @@ class CellPodcastCollectionViewCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+    }
+    
+    override func select(_ sender: Any?) {
+        print("@@@ selected ")
     }
 
     func setUpUI(title: String, subtitlePodcast: String, imagePodcastString: String) {
+        imageViewPodcast.image = Assets.placeholderImage.image
+
+        downloadImage(imagePodcastString) {
+            image, urlString in
+                if let imageObject = image {
+                    // performing UI operation on main thread
+                    DispatchQueue.main.async {
+                        self.imageViewPodcast.image = imageObject
+                    }
+                }
+        }
         
-        imageViewPodcast = UIImageView(image: UIImage(named: subtitlePodcast))
+        
         imageViewPodcast.translatesAutoresizingMaskIntoConstraints = false
         imageViewPodcast.layer.cornerRadius = 24
         self.imageViewPodcast.layer.masksToBounds = true
@@ -33,21 +40,37 @@ class CellPodcastCollectionViewCell: UICollectionViewCell {
             imageViewPodcast.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1),
             imageViewPodcast.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1),
         ].forEach{$0.isActive = true}
-        
-        imageViewPodcast.isHidden = true
-        
-            /*
-        self.addSubview(titlePodcast)
-        titlePodcast.text = title
-        titlePodcast.translatesAutoresizingMaskIntoConstraints = false
-        
-        [
-            titlePodcast.topAnchor.constraint(equalTo: self.topAnchor, constant: 20),
-            titlePodcast.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 20),
-            titlePodcast.widthAnchor.constraint(equalToConstant: 80)
-            // imageViewPodcast.heightAnchor
-        ].forEach{$0.isActive = true}
-     */
     }
 
+    
+    func downloadImage(_ urlString: String, completion: ((_ _image: UIImage?, _ urlString: String?) -> ())?) {
+           guard let url = URL(string: urlString) else {
+              completion?(nil, urlString)
+              return
+          }
+          URLSession.shared.dataTask(with: url) { (data, response,error) in
+             if let error = error {
+                print("error in downloading image: \(error)")
+                completion?(nil, urlString)
+                return
+             }
+             guard let httpResponse = response as? HTTPURLResponse,(200...299).contains(httpResponse.statusCode) else {
+                completion?(nil, urlString)
+                return
+             }
+             if let data = data, let image = UIImage(data: data) {
+                completion?(image, urlString)
+                return
+             }
+             completion?(nil, urlString)
+          }.resume()
+       }
+    
+    
+    
+    
+    
 }
+
+
+

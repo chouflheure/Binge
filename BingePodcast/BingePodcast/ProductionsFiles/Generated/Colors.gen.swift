@@ -7,6 +7,7 @@ import UIKit
 // MARK: - Asset Catalogs
 
 internal enum Colors {
+  internal static let bluePodcastPage = ColorAsset(name: "BluePodcastPage")
   internal static let darkBlue = ColorAsset(name: "DarkBlue")
   internal static let lightBlueTabBar = ColorAsset(name: "LightBlueTabBar")
   internal static let ligthBlue = ColorAsset(name: "LigthBlue")

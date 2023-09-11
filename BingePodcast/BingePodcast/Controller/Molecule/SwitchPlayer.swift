@@ -7,27 +7,22 @@ protocol SlideToActionButtonDelegate: AnyObject {
 class SwitchPlayer: UIView {
     
     let innerShadowTop = CALayer()
-    var title = String()
-    var subtitle = String()
-    var imageString = String()
+    var episode: Episode
 
     private var leftContainerImageCircleViewConstraint: NSLayoutConstraint?
     private var leftTextStackViewConstraint: NSLayoutConstraint?
     
     weak var delegate: SlideToActionButtonDelegate?
-    
+
     private var xEndingPoint: CGFloat {
         return (bounds.width - containerCircleImage.bounds.width - Constants_SwitchPlayer.marginContainerImage)
     }
     
     private var isFinished = false
     
-    required init(title: String, subtitle: String, imageString: String) {
+    required init(episode: Episode) {
+        self.episode = episode
         super.init(frame: .zero)
-        self.title = title
-        self.subtitle = subtitle
-        self.title = title
-        self.imageString = imageString
         setup()
     }
     
@@ -124,7 +119,6 @@ class SwitchPlayer: UIView {
     var backView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-
         return view
     }()
 
@@ -135,6 +129,32 @@ class SwitchPlayer: UIView {
         blurEffectView.isHidden = true
         return blurEffectView
     }()
+    
+    func downloadImage(_ urlString: String, completion: ((_ _image: UIImage?, _ urlString: String?) -> ())?) {
+           guard let url = URL(string: urlString) else {
+              completion?(nil, urlString)
+              return
+          }
+          URLSession.shared.dataTask(with: url) { (data, response,error) in
+             if let error = error {
+                print("error in downloading image: \(error)")
+                completion?(nil, urlString)
+                return
+             }
+             guard let httpResponse = response as? HTTPURLResponse,(200...299).contains(httpResponse.statusCode) else {
+                completion?(nil, urlString)
+                return
+             }
+             if let data = data, let image = UIImage(data: data) {
+                completion?(image, urlString)
+                return
+             }
+             completion?(nil, urlString)
+          }.resume()
+       }
+    
+    
+    
     func setup() {
 
         // general view
@@ -142,6 +162,7 @@ class SwitchPlayer: UIView {
         layer.cornerRadius = 50
 
         backView.frame.size = CGSize(width: 90, height: 90)
+        
         imageCircle.addSubview(backView)
 
         // Create a blur effect
@@ -149,9 +170,20 @@ class SwitchPlayer: UIView {
         imageCircle.addSubview(blurEffectView)
         
         // Add view :
-        titleLabel.text = title
-        subtitleLabel.text = subtitle
-        imageCircle.image = UIImage(named: imageString)
+        titleLabel.text = episode.title
+        subtitleLabel.text = episode.subtitle
+        imageCircle.image = Assets.placeholderImage.image
+        guard let imageUrl = episode.imageUrl else {return}
+        downloadImage(imageUrl) {
+            image, imageUrl  in
+                if let imageObject = image {
+                    // performing UI operation on main thread
+                    DispatchQueue.main.async {
+                        self.imageCircle.image = imageObject
+                        self.reloadInputViews()
+                    }
+                }
+        }
         
         addSubview(containerCircleImage)
         containerCircleImage.addSubview(imageCircle)
