@@ -8,6 +8,8 @@ public class FirebaseService {
     private var lastDocument: DocumentSnapshot? = nil
     private var isLoading: Bool = false
     
+
+    
     private func callFirebase(collectionName: String) -> CollectionReference {
         return Firestore.firestore().collection(collectionName)
     }
