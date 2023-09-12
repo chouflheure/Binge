@@ -15,17 +15,18 @@ class PageListFavorite: UIViewController {
     // MARK: - Init var
     var status: FavoriteStatus
     var tableViewEpisode = UITableView()
+    var coreDataManager: CoreDataManager
     var podcastSaved = [PodcastEpisode]()
     private let cellEpisodeTabViewCell = "CellEpisodeTabViewCell"
-    private var animationView = AnimationView.init(name: "workinProgress")
+    private var animationView = AnimationView.init(name: "workingProgress")
     private let viewEmptyMessage = UIView(frame: CGRect(x: 0,
                                                         y: 0,
                                                         width: UIScreen.main.bounds.width,
                                                         height: UIScreen.main.bounds.height)
     )
 
-    init(with podcastElemet: [PodcastEpisode], status: FavoriteStatus) {
-        self.podcastSaved = podcastElemet
+    init(with coreDataManager: CoreDataManager, status: FavoriteStatus) {
+        self.coreDataManager = coreDataManager
         self.status = status
         super.init(nibName: nil, bundle: nil)
     }
@@ -38,13 +39,18 @@ class PageListFavorite: UIViewController {
         if status == .seeLater {
             initAimation()
         } else {
-            checkIfEmptyTableView()
+            fetchFavoriteEpisode()
         }
     }
     
+    func fetchFavoriteEpisode() {
+        podcastSaved = coreDataManager.fetchFavoriteEpisode()
+        tableViewEpisode.reloadData()
+        checkIfEmptyTableView()
+    }
+    
     // This method can be used to determine whether or not the podcasts recorded are empty
-    private func checkIfEmptyTableView() {
-        print("@@@ podcastSaved.first?.podcast.title = \(podcastSaved.first?.podcast.title)")
+    func checkIfEmptyTableView() {
         podcastSaved.isEmpty ? emptyViewMessage() : initTableView()
     }
 
@@ -62,7 +68,6 @@ class PageListFavorite: UIViewController {
     
     // This method is used to set up the how to add a podcast to favourites message
     private func emptyViewMessage() {
-        print("@@@ init emptyViewMessage")
         let labelEmptyMessage = UILabel()
         labelEmptyMessage.numberOfLines = 0
         labelEmptyMessage.translatesAutoresizingMaskIntoConstraints = false
@@ -104,7 +109,6 @@ class PageListFavorite: UIViewController {
 private extension PageListFavorite {
    
     private func initTableView() {
-        print("@@@ init tableview")
         viewEmptyMessage.removeFromSuperview()
         tableViewEpisode.delegate = self
         tableViewEpisode.dataSource = self

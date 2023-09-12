@@ -56,7 +56,6 @@ class FavoriteViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         let episodeSaved = coreDataManagerFavorite?.fetchFavoriteEpisode()
-        print("@@@ test = \(episodeSaved)")
         guard let episodeSaved = episodeSaved else {return}
         podcastSaved = episodeSaved
         arrayPageListFavorite[0].podcastSaved = podcastSaved
@@ -66,7 +65,6 @@ class FavoriteViewController: UIViewController {
                                           completion: nil)
 
         arrayPageListFavorite[0].tableViewEpisode.reloadData()
-        print("@@@ test = \( arrayPageListFavorite[0].podcastSaved)")
     }
 
     private func initDelegate() {
@@ -76,7 +74,6 @@ class FavoriteViewController: UIViewController {
     }
 
     private func initVariable() {
-        print("@@@ initVar")
         coreDataManagerFavorite = CoreDataManager(
             coreDataStack: CoreDataStack(modelName: favoriteCoreData, useInMemoryStore: false)
         )
@@ -85,21 +82,14 @@ class FavoriteViewController: UIViewController {
             coreDataStack: CoreDataStack(modelName: "", useInMemoryStore: false)
         )
         
-        emptyPageListPodcast = PageListFavorite(
-            with: [ PodcastEpisode(podcast: Podcast(title: "",
-                                            image: "",
-                                            author: ""),
-                                   episode: [Episode(title: "",
-                                             subtitle: "",
-                                             description: "",
-                                             totalTime: "",
-                                             imageUrl: "",
-                                             playerUrl: "",
-                                             podcastTitle: "")])],
-            status: .initialisation)
+        guard let coreDataManagerFavorite = coreDataManagerFavorite,
+                let coreDataManagerSeeLater = coreDataManagerSeeLater else {return}
 
-        let test1 = PageListFavorite(with: podcastSaved, status: .favorite)
-        let test2 = PageListFavorite(with: seeLater, status: .seeLater)
+        emptyPageListPodcast = PageListFavorite(with: coreDataManagerFavorite,
+                                                status: .initialisation)
+
+        let test1 = PageListFavorite(with: coreDataManagerFavorite, status: .favorite)
+        let test2 = PageListFavorite(with: coreDataManagerSeeLater, status: .seeLater)
 
         arrayPageListFavorite.append(test1)
         arrayPageListFavorite.append(test2)
