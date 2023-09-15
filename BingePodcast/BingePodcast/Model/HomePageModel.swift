@@ -18,7 +18,7 @@ class HomePageModel {
             switch result {
             case .success(let data):
                 guard let data = data else {return}
-                self.homePageDelegate?.fetchPodcastListAndShowOnHomePage(result: data)
+                // self.homePageDelegate?.fetchPodcastListAndShowOnHomePage(result: data)
             case .failure(let error):
                 print("@@@ error = \(error)")
             }

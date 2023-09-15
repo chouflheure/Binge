@@ -15,6 +15,7 @@ target 'BingePodcast' do
     inherit! :search_paths
     # Pods for testing
 	pod 'Firebase'
+	pod 'Firebase/Firestore'
   end
 
 end

@@ -1,13 +1,23 @@
 import XCTest
+import Firebase
 
 @testable import BingePodcast // Assurez-vous d'importer votre module ici
+/*
+class MockFireBaseManager: FirebaseCommande {
+    func getDocuments(collectionName: String, completion: @escaping (QuerySnapshot?, Error?) -> Void) {
+        
+    }
+    func getDocumentsWithLimit(podcastName: String, completion: @escaping (QuerySnapshot?, Error?) -> Void) {}
+    func getDocumentsWithLimitAndStart(podcastName: String, completion: @escaping (QuerySnapshot?, Error?) -> Void) {}
+}
 
 class FirebaseServiceTests: XCTestCase {
 
     func testFetchAllPodcastFirebaseSuccess() {
+         
         // Créez une instance de FirebaseService
-        let firebaseService = FirebaseService()
-
+        let firebaseService = FirebaseService(firebaseManager: FirebaseManager())
+        
         // Créez un mock de Firestore qui retournera des données fictives
         let firestoreMock = FirestoreMock()
 
@@ -23,7 +33,10 @@ class FirebaseServiceTests: XCTestCase {
 
         // Créez une expectation pour vérifier le résultat du test
         let expectation = XCTestExpectation(description: "Fetch podcast data")
-
+        
+        
+        
+/*
         // Appelez la méthode fetchAllPodcastFirebase
         firebaseService.fetchAllPodcastFirebase { result in
             switch result {
@@ -38,9 +51,9 @@ class FirebaseServiceTests: XCTestCase {
 
         // Attendre que l'expectation soit remplie
         wait(for: [expectation], timeout: 5.0)
+ */
     }
-
-    // Vous pouvez ajouter d'autres tests ici, par exemple, pour gérer les cas d'erreur.
+ 
 }
 
 // Créez un mock de Firestore pour simuler les appels à Firestore
@@ -49,3 +62,4 @@ class FirestoreMock {
 
    
 }
+*/

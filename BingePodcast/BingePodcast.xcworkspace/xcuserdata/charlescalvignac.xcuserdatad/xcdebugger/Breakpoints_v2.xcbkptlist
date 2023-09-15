@@ -3,4 +3,70 @@
    uuid = "1B642AB9-C828-4A1B-AC02-5F0E9AD2C755"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F5746D51-01C4-4E33-A2E7-D40312770328"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BingePodcastTests/Filee.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
+            landmarkName = "test()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F5746D51-01C4-4E33-A2E7-D40312770328 - 7aa12a51085cf81b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(7) suspend resume partial function for BingePodcastTests.CoreDataManagerTests.test() async -&gt; ()"
+                  moduleName = "BingePodcastTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/charlescalvignac/Documents/cours/Binge/Binge/BingePodcast/BingePodcastTests/Filee.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "165"
+                  endingLineNumber = "165"
+                  offsetFromSymbolStart = "4901">
+               </Location>
+               <Location
+                  uuid = "F5746D51-01C4-4E33-A2E7-D40312770328 - 7aa12a51085cf859"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(7) suspend resume partial function for BingePodcastTests.CoreDataManagerTests.test() async -&gt; ()"
+                  moduleName = "BingePodcastTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/charlescalvignac/Documents/cours/Binge/Binge/BingePodcast/BingePodcastTests/Filee.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "167"
+                  endingLineNumber = "167"
+                  offsetFromSymbolStart = "5779">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "97925197-D5FF-4549-91BD-A5D132A5524A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BingePodcastTests/Filee.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
+            landmarkName = "test()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

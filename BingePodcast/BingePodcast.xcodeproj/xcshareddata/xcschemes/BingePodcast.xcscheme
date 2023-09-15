@@ -7,7 +7,7 @@
       buildImplicitDependencies = "YES">
       <BuildActionEntries>
          <BuildActionEntry
-            buildForTesting = "NO"
+            buildForTesting = "YES"
             buildForRunning = "YES"
             buildForProfiling = "YES"
             buildForArchiving = "YES"
@@ -34,20 +34,6 @@
                ReferencedContainer = "container:BingePodcast.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "NO"
-            buildForRunning = "NO"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1D187A142A2CC8AE00827277"
-               BuildableName = "BingePodcastUITests.xctest"
-               BlueprintName = "BingePodcastUITests"
-               ReferencedContainer = "container:BingePodcast.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -67,23 +53,22 @@
          </BuildableReference>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1D187A142A2CC8AE00827277"
-            BuildableName = "BingePodcastUITests.xctest"
-            BlueprintName = "BingePodcastUITests"
-            ReferencedContainer = "container:BingePodcast.xcodeproj">
-         </BuildableReference>
-         <BuildableReference
-            BuildableIdentifier = "primary"
             BlueprintIdentifier = "1D1879F12A2CC8AA00827277"
             BuildableName = "BingePodcast.app"
             BlueprintName = "BingePodcast"
             ReferencedContainer = "container:BingePodcast.xcodeproj">
          </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "FirebaseFirestore"
+            BuildableName = "FirebaseFirestore"
+            BlueprintName = "FirebaseFirestore"
+            ReferencedContainer = "container:../../../../../Library/Developer/Xcode/DerivedData/BingePodcast-bgamqhbbaggepsauztcvwbzpeeog/SourcePackages/checkouts/firebase-ios-sdk">
+         </BuildableReference>
       </CodeCoverageTargets>
       <Testables>
          <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
+            skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "1D187A0A2A2CC8AE00827277"

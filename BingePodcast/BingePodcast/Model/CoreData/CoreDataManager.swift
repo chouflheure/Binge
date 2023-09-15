@@ -17,12 +17,12 @@ class CoreDataManager {
         request.returnsObjectsAsFaults = false
     }
 
-    var recipes: [PodcastEpisode] {
-        let recipes = fetchFavoriteEpisode()
-        return recipes
+    var arrayPodcastEpisode: [PodcastEpisode] {
+        let arrayPodcastEpisode = fetchFavoriteEpisode()
+        return arrayPodcastEpisode
     }
 
-    // This method is to check if the recipe is in favorite / in Core Data
+    // This method is to check if the episode is in favorite / in Core Data
     func checkIfEpisodeIsFavorite(titleEpisode: String, subtitleEpisode: String) async -> Bool {
         do {
             let result = try context.fetch(request)
@@ -37,7 +37,7 @@ class CoreDataManager {
     }
 
 
-    // This method is to save a recipe on core data
+    // This method is to save a episode on core data
     func addEpisodeInFavorite(title: String, subtitle: String, description: String, totalTime: String, imageUrl: String, playerUrl: String, podcastName: String) async {
 
         let newEpisode = NSEntityDescription.insertNewObject(forEntityName: "EpisodeSaved", into: coreDataStack.mainContext)
@@ -53,7 +53,7 @@ class CoreDataManager {
         coreDataStack.saveContext()
     }
 
-    // This method is to remove a recipe on core data
+    // This method is to remove a episode on core data
     func removeEpisodeFromFavorite(titlePodcast: String, subtitlePodcast: String) async {
 
         do {
@@ -70,7 +70,7 @@ class CoreDataManager {
     }
     
     
-    // This method is to fectch all recipes from core data
+    // This method is to fectch all episode from core data
     func fetchFavoriteEpisode() -> [PodcastEpisode]  {
         var episodeFavoriteList = [PodcastEpisode]()
         var episodes = [Episode]()
