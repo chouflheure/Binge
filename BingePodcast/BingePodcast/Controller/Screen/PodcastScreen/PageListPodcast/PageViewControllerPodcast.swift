@@ -25,8 +25,6 @@ class PageListPodcast: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    let favorite = [true, false, false, true, false, true, true, true,true, false, false, true, false, true, true, true,true, false, false, true, false, true, true, true,true, false, false, true, false, true, true, true,true, false, false, true, false, true, true, true,true, false, false, true, false, true, true, true]
-    
     let imagePodcastString = Assets.aBientotDeTeRevoir.name
     
     let tableViewEpisode = UITableView()
