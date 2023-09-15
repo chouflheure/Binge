@@ -18,7 +18,7 @@ class CellEpisodeTabViewCell: UITableViewCell {
         self.backgroundColor = .clear
     }
     
-    func setupCell(title: String, subtitle: String, imageEpisode: String, time: String, favorite: Bool) {
+    func setupCell(title: String, subtitle: String, imageEpisode: String, time: String) {
         
         self.titleEpisode.text = title
         self.titleEpisode.numberOfLines = 1

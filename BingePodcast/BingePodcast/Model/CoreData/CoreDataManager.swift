@@ -27,8 +27,8 @@ class CoreDataManager {
         do {
             let result = try context.fetch(request)
             for r in result as! [NSManagedObject] {
-                if r.value(forKey: "titleEpisode") as! String == titleEpisode
-                    && r.value(forKey: "subtitleEpisode") as! String == subtitleEpisode {
+                if r.value(forKey: "titleEpisode") as? String == titleEpisode
+                    && r.value(forKey: "subtitleEpisode") as? String == subtitleEpisode {
                     return true
                 }
             }
@@ -59,9 +59,9 @@ class CoreDataManager {
         do {
             let result = try context.fetch(request)
             for r in result as! [NSManagedObject] {
-                if (r.value(forKey: "titleEpisode") as! String == titlePodcast
-                    && r.value(forKey: "subtitleEpisode") as! String == subtitlePodcast )
-                    || r.value(forKey: "titleEpisode") as! String == "" {
+                if (r.value(forKey: "titleEpisode") as? String == titlePodcast
+                    && r.value(forKey: "subtitleEpisode") as? String == subtitlePodcast )
+                    || r.value(forKey: "titleEpisode") as? String == "" {
                     coreDataStack.mainContext.delete(r)
                 }
             }

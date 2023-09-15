@@ -26,7 +26,6 @@ class PageListPodcast: UIViewController {
     }
 
     let imagePodcastString = Assets.aBientotDeTeRevoir.name
-    
     let tableViewEpisode = UITableView()
     
     override func viewDidLoad() {

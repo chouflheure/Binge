@@ -161,7 +161,10 @@ class HomeViewController: UIViewController {
         layout.minimumLineSpacing = 20
         layout.scrollDirection = .horizontal
         
-        let collectionViewPodcast = UICollectionView(frame: CGRect(x: 0, y: 30, width: UIScreen.main.bounds.width, height: 200), collectionViewLayout: layout)
+        let collectionViewPodcast = UICollectionView(frame: CGRect(x: 0,
+                                                                   y: 30,
+                                                                   width: UIScreen.main.bounds.width,
+                                                                   height: 200), collectionViewLayout: layout)
         collectionViewPodcast.backgroundColor = .clear
         collectionViewPodcast.isScrollEnabled = true
         collectionViewPodcast.translatesAutoresizingMaskIntoConstraints = false
@@ -215,7 +218,8 @@ class HomeViewController: UIViewController {
     }
 
     private func initCollectionView() {
-        collectionViewPodcast.register(PodcastHomePageCollectionViewCell.self, forCellWithReuseIdentifier: cellPodcast)
+        collectionViewPodcast.register(PodcastHomePageCollectionViewCell.self,
+                                       forCellWithReuseIdentifier: cellPodcast)
         collectionViewPodcast.dataSource = self
         collectionViewPodcast.delegate = self
     }
@@ -232,7 +236,9 @@ class HomeViewController: UIViewController {
         self.view.layer.insertSublayer(gradientLayer, at: 0)
     }
 
-    private func toggleSelectedSwitchPlayer() {}
+    private func toggleSelectedSwitchPlayer() {
+        
+    }
 
     let stackViewLoaderCollectionView: UIStackView = {
         let stack = UIStackView()

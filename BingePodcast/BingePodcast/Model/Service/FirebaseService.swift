@@ -154,8 +154,9 @@ public class FirebaseService {
                 print("@@@ Error getting: \(err)")
                 onCompletion(nil)
             } else {
-                let podcast = querySnapshot!.documents[0].documentID
-                let numberEpisode = Int(querySnapshot!.documents[0].data()["numberEpisode"]
+                guard let firstQuerySnapShot = querySnapshot?.documents[0] else {return}
+                let podcast = firstQuerySnapShot.documentID
+                let numberEpisode = Int(firstQuerySnapShot.data()["numberEpisode"]
                                         as? String ?? "0") ?? 0
                 let randomEpisode = Int.random(in: 1..<numberEpisode-1)
                 self.fetchOneEpisodeFirebase(podcast: podcast,
