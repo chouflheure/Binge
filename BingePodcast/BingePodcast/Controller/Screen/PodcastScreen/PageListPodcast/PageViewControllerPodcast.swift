@@ -35,6 +35,7 @@ class PageListPodcast: UIViewController {
         super.viewDidLoad()
         initTableView()
         initTableViewFooter()
+        setupAccessibility()
     }
     
     private func initTableView() {
@@ -68,6 +69,10 @@ class PageListPodcast: UIViewController {
         ].forEach{$0.isActive = true}
         
         tableViewEpisode.separatorColor = .clear
+    }
+    
+    private func setupAccessibility() {
+        tableViewEpisode.accessibilityLabel = "" 
     }
     
     private func initTableViewFooter() {

@@ -223,11 +223,23 @@ class PlayerViewController: UIViewController {
         setupUI()
         setupAction()
         setupDescription()
-        setupAudioPlayer()
+        setupAccessibility()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         checkIfPodcastIsFavorite()
+    }
+    
+    private func setupAccessibility() {
+        seekMoreButton.accessibilityLabel = ""
+        seekLessButton.accessibilityLabel = ""
+        playPauseButton.accessibilityLabel = ""
+        descriptionPodcast.accessibilityLabel = ""
+        stackVerticalMenu.accessibilityLabel = ""
+        heartButton.accessibilityLabel = ""
+        titlePodcast.accessibilityLabel = ""
+        subtitlePodcast.accessibilityLabel = ""
+        slider.accessibilityLabel = ""
     }
     
     private func setupImagePlayer() {
@@ -259,49 +271,7 @@ class PlayerViewController: UIViewController {
             }
         }
     }
-    
-    func setupAudioPlayer(){
 
-        let url = URL(string: "https://sphinx.acast.com/a-bientot-de-te-revoir/la-presque-100eme/media.mp3")
-        let playerItem = AVPlayerItem(url: url!)
-        player = AVPlayer(playerItem:playerItem)
-        player.play()
-
-        NotificationCenter.default.addObserver(self, selector: #selector(playerDidFinishPlaying), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: player.currentItem)
-        
-        let _ = player.addPeriodicTimeObserver(forInterval: CMTime(seconds: 1, preferredTimescale: CMTimeScale(NSEC_PER_SEC)), queue: DispatchQueue.main) { [weak self] (time) in
-            self?.updateSlider(time: time)
-        }
-
-    }
-    
-    @objc func playerDidFinishPlaying(note: NSNotification) {
-        player.pause()
-        print("@@@ The audio file is complete!")
-    }
-    
-    func updateSlider(time:CMTime){
-        let duration = CMTimeGetSeconds(player.currentItem!.asset.duration)
-        self.slider.value = Float(CMTimeGetSeconds(time)) / Float(duration)
-        spendTime.text = "\(self.slider.value)"
-    }
-
-
-    @objc func audioPlaybackSlider(_ sender: Any) {
-
-        let duration = CMTimeGetSeconds(player.currentItem!.asset.duration)
-        let value = self.slider.value
-        spendTime.text = "\(self.slider.value)"
-        let durationToSeek = Float(duration) * value
-
-        self.player.seek(to: CMTimeMakeWithSeconds(Float64(durationToSeek),preferredTimescale: player.currentItem!.duration.timescale)) { [](state) in
-
-        }
-
-    }
-    
-    
-    
     private func setupUI() {
         setupGradient()
         setupScrollView()

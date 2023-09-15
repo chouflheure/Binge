@@ -18,7 +18,7 @@ class PageListFavorite: UIViewController {
     var coreDataManager: CoreDataManager
     var podcastSaved = [PodcastEpisode]()
     private let cellEpisodeTabViewCell = "CellEpisodeTabViewCell"
-    private var animationView = AnimationView.init(name: "workingProgress")
+    private var animationView = LottieAnimationView.init(name: "workingProgress")
     private let viewEmptyMessage = UIView(frame: CGRect(x: 0,
                                                         y: 0,
                                                         width: UIScreen.main.bounds.width,

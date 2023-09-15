@@ -29,6 +29,7 @@ class PodcastViewController: UIViewController {
         setupPageController()
         initDelegate()
         setupPageControl()
+        setupAccessibility()
     }
 }
 
@@ -170,6 +171,24 @@ extension PodcastViewController {
         pageControl.currentPageIndicatorTintColor = Colors.yellow.color
         self.view.addSubview(pageControl)
      }
+    
+    private func setupAccessibility() {
+        myCollectionViewPodcast?.accessibilityLabel = ""
+        pageControl?.accessibilityLabel = ""
+        
+        /*
+        seekMoreButton.accessibilityLabel = ""
+        seekLessButton.accessibilityLabel = ""
+        playPauseButton.accessibilityLabel = ""
+        descriptionPodcast.accessibilityLabel = ""
+        stackVerticalMenu.accessibilityLabel = ""
+        heartButton.accessibilityLabel = ""
+        titlePodcast.accessibilityLabel = ""
+        subtitlePodcast.accessibilityLabel = ""
+        slider.accessibilityLabel = ""
+         */
+    }
+
 }
 
 // MARK: - Action

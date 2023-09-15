@@ -162,9 +162,12 @@ final class CoreDataManagerTests: XCTestCase {
             XCTAssertTrue(arrayPodcast.first?.episode.count == 1)
         }
 
-        if !podcastFirst.episode.isEmpty && podcastFirst.episode.first?.title == "TitleEpisode_1" {
-            
-            print("@@@ coucou")
+        if podcastFirst.episode.first?.title == "TitleEpisode_1" {
+            XCTAssertTrue(podcastFirst.episode.last?.title == "TitleEpisode_1")
+        } else if podcastFirst.episode.first?.title == "TitleEpisode_2" {
+            XCTAssertTrue(podcastFirst.episode.last?.title == "TitleEpisode_2")
+        } else if podcastFirst.podcast.title == "" {
+            XCTAssertTrue( arrayPodcast.first?.episode.first?.title == "TitleEpisode_3")
         }
         
         

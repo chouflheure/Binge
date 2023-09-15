@@ -16,10 +16,10 @@ class HomeViewController: UIViewController {
         setupScrollView()
         initCollectionView()
         setGradientBackground()
-        homePageModel.homePageDelegate = self
         loadPodcast()
-        // homePageModel.fetchAllPodcast()
-        switchPlayerFirst.showLoader()
+        setupAccessibility()
+        homePageModel.homePageDelegate = self
+        homePageModel.fetchAllPodcast()
     }
     
     let scrollView: UIScrollView = {
@@ -106,13 +106,12 @@ class HomeViewController: UIViewController {
     let switchPlayerFirst: SwitchPlayer = {
         let episode1 = Episode(
             title: "EPISODE 16",
-            subtitle: "Romance et soumission Deuxième partie",
+            subtitle: "« Ommm », le yoga comme remède à tous nos maux ?",
             description: "",
             totalTime: "",
-            imageUrl: Assets.aBientotDeTeRevoir.name,
+            imageUrl: "https://back.bingeaudio.fr/wp-content/uploads/2021/02/dusport_soundcloud_cover_16-1-768x768.png",
             playerUrl: "",
             podcastTitle: "DU SPORT"
-        
         )
 
         let switchPlayerFirst = SwitchPlayer(
@@ -124,13 +123,13 @@ class HomeViewController: UIViewController {
     
     let switchPlayerSecond: SwitchPlayer = {
         let episode2 = Episode(
-            title: "EPISODE 82",
-            subtitle: "Cuisines indiennes, clichés en sauce",
+            title: "EPISODE 106",
+            subtitle: "Avec Lujipeka",
             description: "",
             totalTime: "",
-            imageUrl: "https://back.bingeaudio.fr/wp-content/uploads/2019/07/Channel_itunes_logo_v2-768x768.png",
+            imageUrl: "https://back.bingeaudio.fr/wp-content/uploads/2021/12/soundcloud_cover_116-768x768.png",
             playerUrl: "",
-            podcastTitle: "DU SPORT"
+            podcastTitle: "À bientôt de te revoir"
         )
 
         let switchPlayerSecond = SwitchPlayer(
@@ -177,6 +176,15 @@ class HomeViewController: UIViewController {
         return view
     }()
     
+    private func setupAccessibility() {
+        stackViewLoaderCollectionView.accessibilityLabel = ""
+        collectionViewPodcast.accessibilityLabel = ""
+        switchPlayerFirst.accessibilityLabel = ""
+        switchPlayerSecond.accessibilityLabel = ""
+        switchPlayerFirst.imageCircle.accessibilityLabel = ""
+        switchPlayerSecond.imageCircle.accessibilityLabel = ""
+    }
+    
     private func setupScrollView() {
         view.addSubview(scrollView)
 
@@ -205,12 +213,11 @@ class HomeViewController: UIViewController {
             viewOffsetCollectionnView.heightAnchor.constraint(equalToConstant: 70)
         ].forEach{$0.isActive = true}
     }
-    
+
     private func initCollectionView() {
         collectionViewPodcast.register(PodcastHomePageCollectionViewCell.self, forCellWithReuseIdentifier: cellPodcast)
         collectionViewPodcast.dataSource = self
         collectionViewPodcast.delegate = self
-        
     }
     
     private func setGradientBackground() {
@@ -225,9 +232,7 @@ class HomeViewController: UIViewController {
         self.view.layer.insertSublayer(gradientLayer, at: 0)
     }
 
-    private func toggleSelectedSwitchPlayer() {
-        
-    }
+    private func toggleSelectedSwitchPlayer() {}
 
     let stackViewLoaderCollectionView: UIStackView = {
         let stack = UIStackView()

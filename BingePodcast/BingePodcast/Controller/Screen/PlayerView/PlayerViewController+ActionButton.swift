@@ -4,16 +4,6 @@ import UIKit
 
 extension PlayerViewController {
     
-    @objc func actionSliderValueChanged(_ sender: Any) {
-        player.pause()
-        spendTime.text = spendTime.text?.secondsToHoursMinutesSecondsToString(Int(slider.value))
-    }
-    
-    @objc func sliderDidEndSliding(_ sender: Any) {
-        print("@@@ action Slider, spendTime = \(spendTime.text)")
-        print("@@@ sliderValue = \(slider.value)")
-    }
-    
     @objc func actionPressButtonLightColor(_ sender: UIButton) {
         UIView.animate(withDuration: 0.1, delay: 0.1) {
             sender.layer.borderColor = Colors.darkBlue.color.withAlphaComponent(1).cgColor
@@ -40,16 +30,6 @@ extension PlayerViewController {
     
     @objc func actionPressMoinsSeekButton(_ sender: UIButton) {
         sender.layer.borderColor = Colors.darkBlue.color.withAlphaComponent(0.3).cgColor
-        /*
-        player.pause()
-        let timescale = player.leftOffPlaybackTime.timescale
-        if player.leftOffPlaybackTime.value > player.leftOffPlaybackTime.timescale {
-            player.leftOffPlaybackTime.value -= (10 * Int64(timescale))
-        } else {
-            player.leftOffPlaybackTime.value = 0
-        }
-        player.playResume()
-         */
     }
     
     @objc func actionPressPlayPauseButton(_ sender: UIButton) {
@@ -73,12 +53,7 @@ extension PlayerViewController {
     
     @objc func actionPressPlusSeekButton(_ sender: UIButton) {
         sender.layer.borderColor = Colors.darkBlue.color.withAlphaComponent(0.3).cgColor
-        player.pause()
-       /*
-        let timescale = player.leftOffPlaybackTime.timescale
-        player.leftOffPlaybackTime.value += (10 * Int64(timescale))
-        player.playResume()
-        */
+
     }
     
     @objc func actionFullScreenButton(_ sender: UIButton) {
@@ -125,13 +100,6 @@ extension PlayerViewController {
 
         // Favorite button
         heartButton.addTarget(self, action: #selector(actionPressFavoriteButton(_:)), for: .touchUpInside)
-        
-        // Slider
-        /*
-        slider.addTarget(self, action: #selector(actionSliderValueChanged(_:)), for: .valueChanged)
-        slider.addTarget(self, action: #selector(sliderDidEndSliding(_:)), for: .touchUpInside)
-         */
-        slider.addTarget(self, action: #selector(audioPlaybackSlider), for: .touchUpInside)
         
         // Action Button
         seekLessButton.addTarget(self, action: #selector(actionPressButtonLightColor(_:)), for: .touchUpInside)

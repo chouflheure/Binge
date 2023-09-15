@@ -148,22 +148,6 @@ public class FirebaseService {
         }
     }
 
-    func fetchAllAuthorFirebase(onCompletion: @escaping ([Author]?) -> Void) {
-        firebaseManager.getDocuments(collectionName: "Author", completion: { (querySnapshot, err) in
-            var author = [Author]()
-            if let err = err {
-                print("@@@ Error getting: \(err)")
-                onCompletion(nil)
-            } else {
-                for document in querySnapshot!.documents {
-                    author.append(Author(image: document.data()["image"] as? String,
-                                         name: document.data()["name"] as? String))
-                }
-                onCompletion(author)
-            }
-        })
-    }
-
     func fetchRandomPodcast(onCompletion: @escaping (Episode?) -> Void) {
         firebaseManager.getDocuments(collectionName: "Podcast", completion: { (querySnapshot, err) in
             if let err = err {

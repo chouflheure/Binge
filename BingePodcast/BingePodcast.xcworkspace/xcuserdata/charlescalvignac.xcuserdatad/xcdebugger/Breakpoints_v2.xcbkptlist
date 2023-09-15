@@ -14,8 +14,8 @@
             filePath = "BingePodcastTests/Filee.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
             landmarkName = "test()"
             landmarkType = "7">
             <Locations>
@@ -49,6 +49,21 @@
                   endingLineNumber = "167"
                   offsetFromSymbolStart = "5779">
                </Location>
+               <Location
+                  uuid = "F5746D51-01C4-4E33-A2E7-D40312770328 - 7aa12a51085cf87a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(7) suspend resume partial function for BingePodcastTests.CoreDataManagerTests.test() async -&gt; ()"
+                  moduleName = "BingePodcastTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/charlescalvignac/Documents/cours/Binge/Binge/BingePodcast/BingePodcastTests/Filee.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "166"
+                  endingLineNumber = "166"
+                  offsetFromSymbolStart = "5519">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -66,6 +81,116 @@
             endingLineNumber = "156"
             landmarkName = "test()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "97925197-D5FF-4549-91BD-A5D132A5524A - 7aa12a51085cf734"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(7) suspend resume partial function for BingePodcastTests.CoreDataManagerTests.test() async -&gt; ()"
+                  moduleName = "BingePodcastTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/charlescalvignac/Documents/cours/Binge/Binge/BingePodcast/BingePodcastTests/Filee.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "156"
+                  endingLineNumber = "156"
+                  offsetFromSymbolStart = "1408">
+               </Location>
+               <Location
+                  uuid = "97925197-D5FF-4549-91BD-A5D132A5524A - 7aa12a51085cf734"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(7) suspend resume partial function for BingePodcastTests.CoreDataManagerTests.test() async -&gt; ()"
+                  moduleName = "BingePodcastTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/charlescalvignac/Documents/cours/Binge/Binge/BingePodcast/BingePodcastTests/Filee.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "156"
+                  endingLineNumber = "156"
+                  offsetFromSymbolStart = "1391">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6D56B4FA-6E73-457C-85C4-FB8E8EE8FFA8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BingePodcastTests/Filee.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
+            landmarkName = "test()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "6D56B4FA-6E73-457C-85C4-FB8E8EE8FFA8 - 7aa12a51085cfa49"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(7) suspend resume partial function for BingePodcastTests.CoreDataManagerTests.test() async -&gt; ()"
+                  moduleName = "BingePodcastTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/charlescalvignac/Documents/cours/Binge/Binge/BingePodcast/BingePodcastTests/Filee.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "183"
+                  endingLineNumber = "183"
+                  offsetFromSymbolStart = "5818">
+               </Location>
+               <Location
+                  uuid = "6D56B4FA-6E73-457C-85C4-FB8E8EE8FFA8 - 3388c4c2dafed98e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(8) await resume partial function for BingePodcastTests.CoreDataManagerTests.test() async -&gt; ()"
+                  moduleName = "BingePodcastTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/charlescalvignac/Documents/cours/Binge/Binge/BingePodcast/BingePodcastTests/Filee.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "183"
+                  endingLineNumber = "183"
+                  offsetFromSymbolStart = "45">
+               </Location>
+               <Location
+                  uuid = "6D56B4FA-6E73-457C-85C4-FB8E8EE8FFA8 - f38e25c719d12e4f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(9) suspend resume partial function for BingePodcastTests.CoreDataManagerTests.test() async -&gt; ()"
+                  moduleName = "BingePodcastTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/charlescalvignac/Documents/cours/Binge/Binge/BingePodcast/BingePodcastTests/Filee.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "183"
+                  endingLineNumber = "183"
+                  offsetFromSymbolStart = "86">
+               </Location>
+               <Location
+                  uuid = "6D56B4FA-6E73-457C-85C4-FB8E8EE8FFA8 - 7aa12a51085cf8b8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(7) suspend resume partial function for BingePodcastTests.CoreDataManagerTests.test() async -&gt; ()"
+                  moduleName = "BingePodcastTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/charlescalvignac/Documents/cours/Binge/Binge/BingePodcast/BingePodcastTests/Filee.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "168"
+                  endingLineNumber = "168"
+                  offsetFromSymbolStart = "5793">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
