@@ -1,7 +1,8 @@
+/*
 import XCTest
 import Firebase
 @testable import BingePodcast // Assurez-vous d'importer votre module ici
-/*
+
 class MockFireBaseManager: FirebaseCommande {
     func getDocuments(collectionName: String, completion: @escaping (QuerySnapshot?, Error?) -> Void) {
         let documentData: [String: Any] = [

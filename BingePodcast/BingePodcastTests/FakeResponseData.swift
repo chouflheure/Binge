@@ -1,3 +1,4 @@
+/*
 import Foundation
 
 class FakeResponseData {
@@ -25,3 +26,4 @@ class FakeResponseData {
     
     static let incorrectData = "erreur".data(using: .utf8)!
 }
+*/

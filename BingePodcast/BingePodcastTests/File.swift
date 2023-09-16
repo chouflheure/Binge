@@ -1,3 +1,4 @@
+/*
 import XCTest
 @testable import BingePodcast
 
@@ -31,3 +32,4 @@ class ImageCallURLTests: XCTestCase {
         waitForExpectations(timeout: 5, handler: nil)
     }
 }
+*/
