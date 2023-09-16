@@ -54,7 +54,6 @@
 		1D85504D2A8A331700001A4C /* PageListFavorite+UITableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D85504C2A8A331700001A4C /* PageListFavorite+UITableViewDelegate.swift */; };
 		1D85504F2A8A332A00001A4C /* PageListFavorite+UITableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D85504E2A8A332A00001A4C /* PageListFavorite+UITableViewDataSource.swift */; };
 		1D8550512A8A339000001A4C /* PageListFavorite+UIViewControllerTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8550502A8A339000001A4C /* PageListFavorite+UIViewControllerTransitioningDelegate.swift */; };
-		1D973A6B2A3A875F0027AC75 /* PlayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D973A6A2A3A875F0027AC75 /* PlayerModel.swift */; };
 		1D973A6D2A3A87800027AC75 /* Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D973A6C2A3A87800027AC75 /* Delegate.swift */; };
 		1D986A962A2DEB0100D26CEB /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D986A952A2DEB0100D26CEB /* Colors.xcassets */; };
 		1D986A9F2A2DEF7600D26CEB /* Colors.gen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D986A9D2A2DEF7600D26CEB /* Colors.gen.swift */; };
@@ -192,7 +191,6 @@
 		1D85504C2A8A331700001A4C /* PageListFavorite+UITableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PageListFavorite+UITableViewDelegate.swift"; sourceTree = "<group>"; };
 		1D85504E2A8A332A00001A4C /* PageListFavorite+UITableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PageListFavorite+UITableViewDataSource.swift"; sourceTree = "<group>"; };
 		1D8550502A8A339000001A4C /* PageListFavorite+UIViewControllerTransitioningDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PageListFavorite+UIViewControllerTransitioningDelegate.swift"; sourceTree = "<group>"; };
-		1D973A6A2A3A875F0027AC75 /* PlayerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerModel.swift; sourceTree = "<group>"; };
 		1D973A6C2A3A87800027AC75 /* Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delegate.swift; sourceTree = "<group>"; };
 		1D986A952A2DEB0100D26CEB /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		1D986A9D2A2DEF7600D26CEB /* Colors.gen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.gen.swift; sourceTree = "<group>"; };
@@ -515,7 +513,6 @@
 			isa = PBXGroup;
 			children = (
 				1D72B3A82A81212F0033F355 /* CoreData */,
-				1D973A6A2A3A875F0027AC75 /* PlayerModel.swift */,
 				1D973A692A3A873F0027AC75 /* Service */,
 				1D2A2EB32A77DF5900ABD880 /* HomePageModel.swift */,
 				1D2A2EB52A77E17700ABD880 /* Decode.swift */,
@@ -763,7 +760,7 @@
 				1D187A072A2CC8AE00827277 /* Sources */,
 				1D187A082A2CC8AE00827277 /* Frameworks */,
 				1D187A092A2CC8AE00827277 /* Resources */,
-				ADD91E0CC4555C172F71BE47 /* [CP] Embed Pods Frameworks */,
+				264B189F73A5CF6276C93616 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -771,8 +768,6 @@
 				1D187A0D2A2CC8AE00827277 /* PBXTargetDependency */,
 			);
 			name = BingePodcastTests;
-			packageProductDependencies = (
-			);
 			productName = BingePodcastTests;
 			productReference = 1D187A0B2A2CC8AE00827277 /* BingePodcastTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -903,6 +898,23 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/SwiftGen/bin/swiftgen\" config run --config ${PODS_ROOT}/SwiftGen/bin/swiftgen.yml\n";
 		};
+		264B189F73A5CF6276C93616 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BingePodcastTests/Pods-BingePodcastTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BingePodcastTests/Pods-BingePodcastTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BingePodcastTests/Pods-BingePodcastTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		6EEB7E5E78AA9E3AA7B3226D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -923,23 +935,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		ADD91E0CC4555C172F71BE47 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BingePodcastTests/Pods-BingePodcastTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BingePodcastTests/Pods-BingePodcastTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BingePodcastTests/Pods-BingePodcastTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E91A568289B1D51BDE3352AC /* [CP] Embed Pods Frameworks */ = {
@@ -993,7 +988,6 @@
 				1D4D40EF2AA66D8E004A49FB /* PageListPodcast+UIScrollViewDelegate.swift in Sources */,
 				1D55E2962A4119AC00F1A9BD /* UILabel.swift in Sources */,
 				1DD76B8F2AA09DEC00EA1FFA /* PageViewControllerPodcast+TableViewDelegate.swift in Sources */,
-				1D973A6B2A3A875F0027AC75 /* PlayerModel.swift in Sources */,
 				1D2A2EA92A76CF2F00ABD880 /* ReturnViewForPlayerViewController.swift in Sources */,
 				1D85504F2A8A332A00001A4C /* PageListFavorite+UITableViewDataSource.swift in Sources */,
 				1D2A2EB22A76E3FA00ABD880 /* FirebaseService.swift in Sources */,

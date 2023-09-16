@@ -48,6 +48,7 @@ public class FirebaseService {
 
     func fetchAllPodcastFirebase(onCompletion: @escaping (Result<[Podcast]?,Error>) -> Void) {
         firebaseManager.getDocuments(collectionName: "Podcast", completion: { (querySnapshot, err) in
+            print("@@@ query = \(querySnapshot)")
             var podcast = [Podcast]()
             guard let querySnapshot = querySnapshot else {return}
             if let err = err {

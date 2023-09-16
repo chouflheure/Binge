@@ -1,6 +1,6 @@
 
 import XCTest
-@testable import BingePodcast
+// @testable import BingePodcast
 
 final class BingePodcastTests: XCTestCase {
 

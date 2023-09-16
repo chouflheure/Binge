@@ -1,4 +1,5 @@
 import XCTest
+import Firebase
 @testable import BingePodcast
 
 final class CoreDataManagerTests: XCTestCase {
@@ -11,6 +12,14 @@ final class CoreDataManagerTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
+        if ProcessInfo.processInfo.environment["unit_tests"] == "true" {
+          print("Setting up Firebase emulator localhost:8080")
+          let settings = Firestore.firestore().settings
+          settings.host = "localhost:8080"
+          settings.isPersistenceEnabled = false
+          settings.isSSLEnabled = false
+          Firestore.firestore().settings = settings
+        }
         self.coreDataManager = CoreDataManager(coreDataStack: CoreDataStack(modelName: "BingePodcast",
                                                                             useInMemoryStore: true))
     }
@@ -163,9 +172,9 @@ final class CoreDataManagerTests: XCTestCase {
         }
 
         if podcastFirst.episode.first?.title == "TitleEpisode_1" {
-            XCTAssertTrue(podcastFirst.episode.last?.title == "TitleEpisode_1")
+            XCTAssertTrue(podcastFirst.episode.first?.title == "TitleEpisode_1")
         } else if podcastFirst.episode.first?.title == "TitleEpisode_2" {
-            XCTAssertTrue(podcastFirst.episode.last?.title == "TitleEpisode_2")
+            XCTAssertTrue(podcastFirst.episode.first?.title == "TitleEpisode_2")
         } else if podcastFirst.podcast.title == "" {
             XCTAssertTrue( arrayPodcast.first?.episode.first?.title == "TitleEpisode_3")
         }
@@ -188,3 +197,4 @@ final class CoreDataManagerTests: XCTestCase {
         XCTAssertFalse(isFavoriteEpisode)
     }
 }
+
