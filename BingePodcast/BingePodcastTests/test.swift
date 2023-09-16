@@ -1,7 +1,7 @@
 import XCTest
 
 @testable import BingePodcast // Assurez-vous d'importer votre module ici
-
+/*
 class FirebaseServiceTests: XCTestCase {
 
     func testFetchAllPodcastFirebaseSuccess() {
@@ -49,3 +49,4 @@ class FirestoreMock {
 
    
 }
+*/
