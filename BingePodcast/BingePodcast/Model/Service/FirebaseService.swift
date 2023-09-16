@@ -13,13 +13,9 @@ protocol FirebaseServiceProtocol {
 public protocol FirebaseCommande {
     func getDocuments(collectionName: String, completion: @escaping (QuerySnapshot?, Error?) -> Void)
     func getDocumentsWithLimit(podcastName: String, completion: @escaping (QuerySnapshot?, Error?) -> Void)
-    func getDocumentsWithLimitAndStart(podcastName: String, completion: @escaping (QuerySnapshot?, Error?) -> Void)
 }
 
 class FirebaseManager: FirebaseCommande {
-    func getDocumentsWithLimitAndStart(podcastName: String, completion: @escaping (QuerySnapshot?, Error?) -> Void) {}
-    
-    
     func getDocumentsWithLimit(podcastName: String, completion: @escaping (QuerySnapshot?, Error?) -> Void) {
         Firestore.firestore().collection(podcastName).limit(to: 5).getDocuments { (querySnapshot, err) in
             completion(querySnapshot, err)
@@ -48,7 +44,6 @@ public class FirebaseService {
 
     func fetchAllPodcastFirebase(onCompletion: @escaping (Result<[Podcast]?,Error>) -> Void) {
         firebaseManager.getDocuments(collectionName: "Podcast", completion: { (querySnapshot, err) in
-            print("@@@ query = \(querySnapshot)")
             var podcast = [Podcast]()
             guard let querySnapshot = querySnapshot else {return}
             if let err = err {

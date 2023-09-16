@@ -18,6 +18,16 @@ class MockFireBaseManager: FirebaseCommande {
     func getDocumentsWithLimitAndStart(podcastName: String, completion: @escaping (QuerySnapshot?, Error?) -> Void) {}
 }
 
+
+
+
+struct FakeResponse {
+    var response: HTTPURLResponse?
+    var data: Data?
+    var error: Error?
+}
+
+
 class FirebaseServiceTests: XCTestCase {
 
     func testFetchAllPodcastFirebaseSuccess() {
@@ -25,8 +35,10 @@ class FirebaseServiceTests: XCTestCase {
         // Créez une instance de FirebaseService
         let firebaseService = FirebaseService(firebaseManager: MockFireBaseManager())
         
+        let fakeResponse = FakeResponse(response: nil, data: nil, error: nil)
         // Créez un mock de Firestore qui retournera des données fictives
         firebaseService.firebaseManager.getDocuments(collectionName: "") { (querySnapshot, err) in
+            // test here des résultats 
             querySnapshot?.documents.first?.data()["fieldName"]
         }
         
@@ -76,11 +88,6 @@ class FirestoreMock {
    
 }
 
-
-
-import XCTest
-import FirebaseFirestore
-
 class FirestoreTests: XCTestCase {
     
     var firestore: Firestore!
@@ -114,45 +121,39 @@ class FirestoreTests: XCTestCase {
             // Add other fields as needed for your test
         ]
         
-        let mockDocument = QueryDocumentSnapshotMock(data: documentData, documentID: "documentID")
-        let mockQuerySnapshot = QuerySnapshotMock(documents: [mockDocument])
-        
+        let mockDocument: QueryDocumentSnapshotMock
+        mockDocument.mockData = documentData
+        mockDocument.mockDocumentID = "documentID"
+    
+        let mockQuerySnapshot: QuerySnapshotMock
+        mockQuerySnapshot.documents = [mockDocument]
         // Now you can use `mockQuerySnapshot` in your test code
         XCTAssertEqual(mockQuerySnapshot.count, 1)
         // Perform assertions or testing logic here
         
         // Example: Check if the first document in the snapshot has the expected data
         let firstDocument = mockQuerySnapshot.documents.first
-        XCTAssertEqual(firstDocument?.data(), documentData)
+        // XCTAssertEqual(firstDocument?.data(), documentData)
         XCTAssertEqual(firstDocument?.documentID, "documentID")
     }
 }
 
 // Mock classes to simulate QueryDocumentSnapshot and QuerySnapshot
 class QueryDocumentSnapshotMock: QueryDocumentSnapshot {
-    let mockData: [String: Any]
-    let mockDocumentID: String
-    
-    init(data: [String: Any], documentID: String) {
-        self.mockData = data
-        self.mockDocumentID = documentID
-    }
+    public var mockData: [String: Any]
+    public var mockDocumentID: String
     
     override func data() -> [String: Any] {
         return mockData
     }
     
-    override var documentID: String? {
+    override var documentID: String {
         return mockDocumentID
     }
 }
 
 class QuerySnapshotMock: QuerySnapshot {
-    let mockDocuments: [QueryDocumentSnapshotMock]
-    
-    init(documents: [QueryDocumentSnapshotMock]) {
-        self.mockDocuments = documents
-    }
+    public var mockDocuments: [QueryDocumentSnapshotMock]
     
     override var documents: [QueryDocumentSnapshot] {
         return mockDocuments

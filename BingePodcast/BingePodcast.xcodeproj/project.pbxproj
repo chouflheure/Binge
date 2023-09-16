@@ -99,6 +99,7 @@
 		1DC25BC12A4266FD0024CD41 /* ProximaNova-Alt-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1DC25BB82A4266FC0024CD41 /* ProximaNova-Alt-Light.otf */; };
 		1DC25BC22A4266FD0024CD41 /* ProximaNova-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1DC25BB92A4266FC0024CD41 /* ProximaNova-Black.otf */; };
 		1DC25BC32A4266FD0024CD41 /* ProximaNova-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1DC25BBA2A4266FD0024CD41 /* ProximaNova-Bold.otf */; };
+		1DC30FA92AB5D92400301FFF /* FakeResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC30FA82AB5D92400301FFF /* FakeResponseData.swift */; };
 		1DC4CC7E2AB0A172000F3600 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC4CC7D2AB0A171000F3600 /* test.swift */; };
 		1DC4CC812AB0B33C000F3600 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC4CC802AB0B33C000F3600 /* File.swift */; };
 		1DC976592A9F6BEB003E3E9E /* PodcastPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC976582A9F6BEB003E3E9E /* PodcastPageModel.swift */; };
@@ -210,6 +211,7 @@
 		1DC25BB82A4266FC0024CD41 /* ProximaNova-Alt-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Alt-Light.otf"; sourceTree = "<group>"; };
 		1DC25BB92A4266FC0024CD41 /* ProximaNova-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Black.otf"; sourceTree = "<group>"; };
 		1DC25BBA2A4266FD0024CD41 /* ProximaNova-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Bold.otf"; sourceTree = "<group>"; };
+		1DC30FA82AB5D92400301FFF /* FakeResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeResponseData.swift; sourceTree = "<group>"; };
 		1DC4CC7D2AB0A171000F3600 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		1DC4CC802AB0B33C000F3600 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		1DC976582A9F6BEB003E3E9E /* PodcastPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastPageModel.swift; sourceTree = "<group>"; };
@@ -573,6 +575,14 @@
 			path = CustomFonts;
 			sourceTree = "<group>";
 		};
+		1DC30FA72AB5D91700301FFF /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				1DC30FA82AB5D92400301FFF /* FakeResponseData.swift */,
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
 		1DC460CE2A7BEF0F00D63CB3 /* FloatingTabBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -608,6 +618,7 @@
 		1DD44B422AB082F000DC3B7D /* FirebaseServiceTests */ = {
 			isa = PBXGroup;
 			children = (
+				1DC30FA72AB5D91700301FFF /* New Group */,
 				1DC4CC7D2AB0A171000F3600 /* test.swift */,
 			);
 			name = FirebaseServiceTests;
@@ -1053,6 +1064,7 @@
 			files = (
 				1D187A102A2CC8AE00827277 /* BingePodcastTests.swift in Sources */,
 				1DC4CC812AB0B33C000F3600 /* File.swift in Sources */,
+				1DC30FA92AB5D92400301FFF /* FakeResponseData.swift in Sources */,
 				1DC4CC7E2AB0A172000F3600 /* test.swift in Sources */,
 				1DD0464C2AB349CC00626651 /* Filee.swift in Sources */,
 			);
