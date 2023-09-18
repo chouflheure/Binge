@@ -1,4 +1,4 @@
-/*
+
 import XCTest
 @testable import BingePodcast
 
@@ -22,7 +22,7 @@ class ImageCallURLTests: XCTestCase {
         let imageDownloader = ImageCallURL()
         let expectation = self.expectation(description: "Download image with invalid URL")
         
-        let invalidURL = "invalid-url" // This URL is intentionally invalid
+        let invalidURL = "invalid-url"
         imageDownloader.downloadImage(invalidURL) { (image, urlString) in
             XCTAssertNil(image)
             XCTAssertEqual(urlString, invalidURL)
@@ -32,4 +32,3 @@ class ImageCallURLTests: XCTestCase {
         waitForExpectations(timeout: 5, handler: nil)
     }
 }
-*/

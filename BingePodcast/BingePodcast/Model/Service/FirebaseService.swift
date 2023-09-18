@@ -32,11 +32,11 @@ class FirebaseManager: FirebaseCommande {
 
 public class FirebaseService {
     
-    var arrayLastDocument = [String: DocumentSnapshot]()
+    private var arrayLastDocument = [String: DocumentSnapshot]()
     private var podcastLimit: Int = 5
-    var lastDocument: DocumentSnapshot? = nil
+    private var lastDocument: DocumentSnapshot? = nil
     private var isLoading: Bool = false
-    var firebaseManager: FirebaseCommande
+    private var firebaseManager: FirebaseCommande
     
     init(firebaseManager: FirebaseCommande = FirebaseManager()) {
         self.firebaseManager = firebaseManager

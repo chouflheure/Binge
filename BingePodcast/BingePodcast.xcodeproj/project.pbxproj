@@ -24,7 +24,6 @@
 		1D1879FD2A2CC8AA00827277 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D1879FB2A2CC8AA00827277 /* Main.storyboard */; };
 		1D187A002A2CC8AA00827277 /* BingePodcast.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1D1879FE2A2CC8AA00827277 /* BingePodcast.xcdatamodeld */; };
 		1D187A052A2CC8AD00827277 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D187A032A2CC8AD00827277 /* LaunchScreen.storyboard */; };
-		1D187A102A2CC8AE00827277 /* BingePodcastTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D187A0F2A2CC8AE00827277 /* BingePodcastTests.swift */; };
 		1D187C992A49D98600D67271 /* UIPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D187C982A49D98600D67271 /* UIPageViewController.swift */; };
 		1D2A2E4A2A73D16000ABD880 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2A2E492A73D16000ABD880 /* UIStackView.swift */; };
 		1D2A2EA32A76CAA800ABD880 /* PlayerViewController+Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2A2EA22A76CAA800ABD880 /* PlayerViewController+Transition.swift */; };
@@ -101,13 +100,13 @@
 		1DC25BC32A4266FD0024CD41 /* ProximaNova-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1DC25BBA2A4266FD0024CD41 /* ProximaNova-Bold.otf */; };
 		1DC30FA92AB5D92400301FFF /* FakeResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC30FA82AB5D92400301FFF /* FakeResponseData.swift */; };
 		1DC4CC7E2AB0A172000F3600 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC4CC7D2AB0A171000F3600 /* test.swift */; };
-		1DC4CC812AB0B33C000F3600 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC4CC802AB0B33C000F3600 /* File.swift */; };
+		1DC4CC812AB0B33C000F3600 /* ImageCallURLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC4CC802AB0B33C000F3600 /* ImageCallURLTests.swift */; };
 		1DC976592A9F6BEB003E3E9E /* PodcastPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC976582A9F6BEB003E3E9E /* PodcastPageModel.swift */; };
 		1DCA33BD2A711EEC00120500 /* PlayerObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCA33BC2A711EEC00120500 /* PlayerObserver.swift */; };
 		1DCAD99D2A7922630048C87D /* workingProgress.json in Resources */ = {isa = PBXBuildFile; fileRef = 1DCAD99C2A7922630048C87D /* workingProgress.json */; };
 		1DCAD9A02A793A630048C87D /* PresentDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCAD99F2A793A630048C87D /* PresentDescription.swift */; };
 		1DCAD9A22A793A8F0048C87D /* DismissDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCAD9A12A793A8F0048C87D /* DismissDescription.swift */; };
-		1DD0464C2AB349CC00626651 /* Filee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD0464B2AB349CC00626651 /* Filee.swift */; };
+		1DD0464C2AB349CC00626651 /* CoreDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD0464B2AB349CC00626651 /* CoreDataManagerTests.swift */; };
 		1DD7263A2A45D86400CD6D16 /* FloatingTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD726392A45D86400CD6D16 /* FloatingTabBarViewController.swift */; };
 		1DD76B8F2AA09DEC00EA1FFA /* PageViewControllerPodcast+TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD76B8E2AA09DEC00EA1FFA /* PageViewControllerPodcast+TableViewDelegate.swift */; };
 		1DD76B922AA0B7E700EA1FFA /* PageViewControllerPodcast+TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD76B912AA0B7E700EA1FFA /* PageViewControllerPodcast+TableViewDataSource.swift */; };
@@ -162,7 +161,6 @@
 		1D187A042A2CC8AD00827277 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1D187A062A2CC8AD00827277 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = BingePodcast/ProductionsFiles/Plist/Info.plist; sourceTree = SOURCE_ROOT; };
 		1D187A0B2A2CC8AE00827277 /* BingePodcastTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BingePodcastTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1D187A0F2A2CC8AE00827277 /* BingePodcastTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BingePodcastTests.swift; sourceTree = "<group>"; };
 		1D187A152A2CC8AE00827277 /* BingePodcastUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BingePodcastUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D187C982A49D98600D67271 /* UIPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPageViewController.swift; sourceTree = "<group>"; };
 		1D2A2E492A73D16000ABD880 /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
@@ -213,13 +211,13 @@
 		1DC25BBA2A4266FD0024CD41 /* ProximaNova-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Bold.otf"; sourceTree = "<group>"; };
 		1DC30FA82AB5D92400301FFF /* FakeResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeResponseData.swift; sourceTree = "<group>"; };
 		1DC4CC7D2AB0A171000F3600 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
-		1DC4CC802AB0B33C000F3600 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		1DC4CC802AB0B33C000F3600 /* ImageCallURLTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCallURLTests.swift; sourceTree = "<group>"; };
 		1DC976582A9F6BEB003E3E9E /* PodcastPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastPageModel.swift; sourceTree = "<group>"; };
 		1DCA33BC2A711EEC00120500 /* PlayerObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerObserver.swift; sourceTree = "<group>"; };
 		1DCAD99C2A7922630048C87D /* workingProgress.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = workingProgress.json; sourceTree = "<group>"; };
 		1DCAD99F2A793A630048C87D /* PresentDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentDescription.swift; sourceTree = "<group>"; };
 		1DCAD9A12A793A8F0048C87D /* DismissDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissDescription.swift; sourceTree = "<group>"; };
-		1DD0464B2AB349CC00626651 /* Filee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filee.swift; sourceTree = "<group>"; };
+		1DD0464B2AB349CC00626651 /* CoreDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagerTests.swift; sourceTree = "<group>"; };
 		1DD726392A45D86400CD6D16 /* FloatingTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingTabBarViewController.swift; sourceTree = "<group>"; };
 		1DD76B8E2AA09DEC00EA1FFA /* PageViewControllerPodcast+TableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PageViewControllerPodcast+TableViewDelegate.swift"; sourceTree = "<group>"; };
 		1DD76B912AA0B7E700EA1FFA /* PageViewControllerPodcast+TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PageViewControllerPodcast+TableViewDataSource.swift"; sourceTree = "<group>"; };
@@ -400,7 +398,6 @@
 				1DD0464A2AB33D1B00626651 /* CallImageData */,
 				1DC4CC7F2AB0A9BA000F3600 /* CoreDataTest */,
 				1DD44B422AB082F000DC3B7D /* FirebaseServiceTests */,
-				1D187A0F2A2CC8AE00827277 /* BingePodcastTests.swift */,
 			);
 			path = BingePodcastTests;
 			sourceTree = "<group>";
@@ -594,7 +591,7 @@
 		1DC4CC7F2AB0A9BA000F3600 /* CoreDataTest */ = {
 			isa = PBXGroup;
 			children = (
-				1DD0464B2AB349CC00626651 /* Filee.swift */,
+				1DD0464B2AB349CC00626651 /* CoreDataManagerTests.swift */,
 			);
 			name = CoreDataTest;
 			sourceTree = "<group>";
@@ -610,7 +607,7 @@
 		1DD0464A2AB33D1B00626651 /* CallImageData */ = {
 			isa = PBXGroup;
 			children = (
-				1DC4CC802AB0B33C000F3600 /* File.swift */,
+				1DC4CC802AB0B33C000F3600 /* ImageCallURLTests.swift */,
 			);
 			name = CallImageData;
 			sourceTree = "<group>";
@@ -1062,11 +1059,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D187A102A2CC8AE00827277 /* BingePodcastTests.swift in Sources */,
-				1DC4CC812AB0B33C000F3600 /* File.swift in Sources */,
+				1DC4CC812AB0B33C000F3600 /* ImageCallURLTests.swift in Sources */,
 				1DC30FA92AB5D92400301FFF /* FakeResponseData.swift in Sources */,
 				1DC4CC7E2AB0A172000F3600 /* test.swift in Sources */,
-				1DD0464C2AB349CC00626651 /* Filee.swift in Sources */,
+				1DD0464C2AB349CC00626651 /* CoreDataManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -3,4 +3,84 @@
    uuid = "1B642AB9-C828-4A1B-AC02-5F0E9AD2C755"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EE59E92E-99A8-4EAC-986A-F784637B79A5"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BingePodcastTests/test.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "test1()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "EE59E92E-99A8-4EAC-986A-F784637B79A5 - 95bbc79bda116d92"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.Optional&lt;Swift.Array&lt;BingePodcast.Podcast&gt;&gt;, Swift.Error&gt;) -&gt; () in BingePodcastTests.Test.test1() -&gt; ()"
+                  moduleName = "BingePodcastTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/charlescalvignac/Documents/cours/Binge/Binge/BingePodcast/BingePodcastTests/test.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "101">
+               </Location>
+               <Location
+                  uuid = "EE59E92E-99A8-4EAC-986A-F784637B79A5 - e339b1bafe8cf46c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BingePodcastTests.Test.test1() -&gt; ()"
+                  moduleName = "BingePodcastTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/charlescalvignac/Documents/cours/Binge/Binge/BingePodcast/BingePodcastTests/test.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "1909">
+               </Location>
+               <Location
+                  uuid = "EE59E92E-99A8-4EAC-986A-F784637B79A5 - 95bbc79bda116cfb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.Optional&lt;Swift.Array&lt;BingePodcast.Podcast&gt;&gt;, Swift.Error&gt;) -&gt; () in BingePodcastTests.Test.test1() -&gt; ()"
+                  moduleName = "BingePodcastTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/charlescalvignac/Documents/cours/Binge/Binge/BingePodcast/BingePodcastTests/test.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "83">
+               </Location>
+               <Location
+                  uuid = "EE59E92E-99A8-4EAC-986A-F784637B79A5 - 95bbc79bda116cfb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.Optional&lt;Swift.Array&lt;BingePodcast.Podcast&gt;&gt;, Swift.Error&gt;) -&gt; () in BingePodcastTests.Test.test1() -&gt; ()"
+                  moduleName = "BingePodcastTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/charlescalvignac/Documents/cours/Binge/Binge/BingePodcast/BingePodcastTests/test.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "101">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

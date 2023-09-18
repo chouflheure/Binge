@@ -1,4 +1,3 @@
-/*
 import XCTest
 import Firebase
 @testable import BingePodcast
@@ -129,74 +128,4 @@ final class CoreDataManagerTests: XCTestCase {
         
         XCTAssertFalse(isFavoriteEpisode)
     }
-     
-    
-    func test() async {
-        
-        /// create new episode in CoreData for PodcastTitle_1
-        await coreDataManager.addEpisodeInFavorite(title: "TitleEpisode_1",
-                                                   subtitle: "SubtitleEpisode_1",
-                                                   description: "DescriptionEpisode_1",
-                                                   totalTime: "x_1",
-                                                   imageUrl: "https://www.image.png_1",
-                                                   playerUrl: "https://player.mp3_1",
-                                                   podcastName: "PodcastTitle_1")
-        
-        await coreDataManager.addEpisodeInFavorite(title: "TitleEpisode_2",
-                                                   subtitle: "SubtitleEpisode_2",
-                                                   description: "DescriptionEpisode_2",
-                                                   totalTime: "x_2",
-                                                   imageUrl: "https://www.image.png_2",
-                                                   playerUrl: "https://player.mp3_2",
-                                                   podcastName: "PodcastTitle_1")
-        
-        /// create new episode in CoreData for PodcastTitle_2
-        await coreDataManager.addEpisodeInFavorite(title: "TitleEpisode_3",
-                                                   subtitle: "SubtitleEpisode_3",
-                                                   description: "DescriptionEpisode_3",
-                                                   totalTime: "x_3",
-                                                   imageUrl: "https://www.image.png_3",
-                                                   playerUrl: "https://player.mp3_3",
-                                                   podcastName: "PodcastTitle_2")
-        
-        /// remove the not void episode
-        let arrayPodcast = coreDataManager.fetchFavoriteEpisode()
-        var podcastFirst = PodcastEpisode(podcast: Podcast(title: "", image: "", author: ""), episode: [Episode(title: "", subtitle: "", description: "", totalTime: "", imageUrl: "", playerUrl: "", podcastTitle: "")])
-
-        print("@@@ arrayPodcast.first?.podcast.title = \(arrayPodcast.first?.podcast.title)")
-        
-        if arrayPodcast.first?.podcast.title == "PodcastTitle_1" {
-            XCTAssertTrue(arrayPodcast.first?.episode.count == 2)
-            podcastFirst = arrayPodcast.first!
-        } else {
-            XCTAssertTrue(arrayPodcast.first?.episode.count == 1)
-        }
-
-        if podcastFirst.episode.first?.title == "TitleEpisode_1" {
-            XCTAssertTrue(podcastFirst.episode.first?.title == "TitleEpisode_1")
-        } else if podcastFirst.episode.first?.title == "TitleEpisode_2" {
-            XCTAssertTrue(podcastFirst.episode.first?.title == "TitleEpisode_2")
-        } else if podcastFirst.podcast.title == "" {
-            XCTAssertTrue( arrayPodcast.first?.episode.first?.title == "TitleEpisode_3")
-        }
-        
-        
-//        XCTAssertTrue(!coreDataManager.arrayPodcastEpisode.isEmpty)
-//        XCTAssertTrue(lastEpisodeSaved.episode.last?.totalTime == "x")
-//        XCTAssertTrue(lastEpisodeSaved.podcast.title == "PodcastTitle")
-//        XCTAssertTrue(lastEpisodeSaved.episode.last?.title == "TitleEpisode")
-//        XCTAssertTrue(lastEpisodeSaved.episode.last?.subtitle == "SubtitleEpisode")
-//        XCTAssertTrue(lastEpisodeSaved.episode.last?.playerUrl == "https://player.mp3")
-//        XCTAssertTrue(lastEpisodeSaved.episode.last?.description == "DescriptionEpisode")
-//        XCTAssertTrue(lastEpisodeSaved.episode.last?.imageUrl == "https://www.image.png")
-        
-        
-        /// check if the void episode is delete
-        let isFavoriteEpisode = await coreDataManager.checkIfEpisodeIsFavorite(titleEpisode: "",
-                                                                               subtitleEpisode: "")
-        
-        XCTAssertFalse(isFavoriteEpisode)
-    }
 }
-
-*/
