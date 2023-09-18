@@ -29,3 +29,5 @@ jobs:
         workspace: BingePodcast.xcworkspace
         working-directory: BingePodcast
         platform: iOS
+    - name: Run tests
+      run: swift test
