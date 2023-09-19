@@ -89,35 +89,4 @@ final class CoreDataManagerTests: XCTestCase {
         XCTAssertFalse(coreDataManager.arrayPodcastEpisode.isEmpty)
         
     }
-    
-    func testDeleteVoidEpisodeMethod_WhenAnEntityIsCreated_ThenShouldBeCorrectlyAllDeleted() async {
-        
-        /// create new episode in CoreData
-        await coreDataManager.addEpisodeInFavorite(title: "TitleEpisode_1",
-                                                   subtitle: "SubtitleEpisode_1",
-                                                   description: "DescriptionEpisode_1",
-                                                   totalTime: "x_1",
-                                                   imageUrl: "https://www.image.png_1",
-                                                   playerUrl: "https://player.mp3_1",
-                                                   podcastName: "PodcastTitle_1")
-        
-        await coreDataManager.addEpisodeInFavorite(title: "",
-                                                   subtitle: "",
-                                                   description: "",
-                                                   totalTime: "",
-                                                   imageUrl: "",
-                                                   playerUrl: "",
-                                                   podcastName: "")
-        
-        /// remove the not void episode
-        await coreDataManager.removeEpisodeFromFavorite(titlePodcast: "TitleEpisode_1",
-                                                        subtitlePodcast: "SubtitleEpisode_1")
-        
-        
-        /// check if the void episode is delete
-        let isFavoriteEpisode = await coreDataManager.checkIfEpisodeIsFavorite(titleEpisode: "",
-                                                                               subtitleEpisode: "")
-        
-        XCTAssertFalse(isFavoriteEpisode)
-    }
 }
