@@ -8,8 +8,8 @@ class HomeViewController: UIViewController {
     var imageViewTest = UIImageView()
 
     let cellPodcast = "cellPodcast"
-    private let homePageModel = HomePageModel()
-    
+    private let homePageModel = HomePageModel(firebaseService: FirebaseService() )
+
     override func viewDidLoad() {
         super.viewDidLoad()
         

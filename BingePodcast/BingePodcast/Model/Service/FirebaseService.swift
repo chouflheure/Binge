@@ -30,7 +30,11 @@ class FirebaseManager: FirebaseCommande {
 
 }
 
-public class FirebaseService {
+public class FirebaseService: FirebaseServiceProtocol {
+    func fetchAllAuthorFirebase(onCompletion: @escaping ([Author]?) -> Void) {
+        // 
+    }
+    
     
     private var arrayLastDocument = [String: DocumentSnapshot]()
     private var podcastLimit: Int = 5

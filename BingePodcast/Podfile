@@ -7,13 +7,13 @@ target 'BingePodcast' do
   use_frameworks!
 	pod 'lottie-ios', '~> 3.1'
 	pod 'SwiftGen', '~> 6.6.2'
-
+        pod 'Firebase'
+        pod 'Firebase/Firestore'
   # Pods for BingePodcastTests
   target 'BingePodcastTests' do
     inherit! :search_paths
     # Pods for testing
-	pod 'Firebase'
-	pod 'Firebase/Firestore'
+	
   end
 
 end
