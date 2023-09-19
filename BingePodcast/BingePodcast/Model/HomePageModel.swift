@@ -2,8 +2,12 @@ import Foundation
 
 class HomePageModel {
     
-    let firebaseService = FirebaseService()
+    let firebaseService: FirebaseServiceProtocol
     weak var homePageDelegate: HomePageDelegate?
+    
+    init(firebaseService: FirebaseServiceProtocol) {
+        self.firebaseService = firebaseService
+    }
     
     func fetchAllPodcast() {
         firebaseService.fetchAllPodcastFirebase { result in

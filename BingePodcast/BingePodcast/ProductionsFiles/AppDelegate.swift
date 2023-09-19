@@ -7,7 +7,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        FirebaseApp.configure()
+        guard let processInfo = ProcessInfo.processInfo.environment["unit-test"] else {
+            FirebaseApp.configure(); return true
+        }
+        
+        if processInfo == "true" {
+            let setting = Firestore.firestore().settings
+            setting.host = "localhost:8888"
+            Firestore.firestore().settings = setting
+            FirebaseApp.configure()
+        } else {
+            FirebaseApp.configure()
+        }
         return true
     }
     
