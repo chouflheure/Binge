@@ -43,4 +43,4 @@ jobs:
         run: pod install
         working-directory: BingePodcast
       - name: Exécuter les tests
-        run: xcodebuild test -workspace BingePodcast.xcworkspace  -scheme 'BingePodcast' -destination 'platform=iOS Simulator,OS=16.2,name=iPhone 12 Pro Max'
+        run: xcodebuild test -workspace BingePodcast/BingePodcast.xcworkspace  -scheme 'BingePodcast' -destination 'platform=iOS Simulator,OS=16.2,name=iPhone 12 Pro Max'
