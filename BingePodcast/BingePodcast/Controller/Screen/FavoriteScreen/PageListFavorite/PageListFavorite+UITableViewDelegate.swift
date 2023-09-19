@@ -12,7 +12,6 @@ extension PageListFavorite: UITableViewDelegate {
         let secondVC = mainStoryboard.instantiateViewController(
             withIdentifier: "PlayerViewController") as? PlayerViewController
 
-        print("@@@ click = \(indexPath)")
         guard let secondVC = secondVC else {return}
         secondVC.isReturnButtonChevronLeft = true
         secondVC.titlePodcast.text = episodeData.title

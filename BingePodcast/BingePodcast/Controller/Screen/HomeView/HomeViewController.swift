@@ -105,11 +105,11 @@ class HomeViewController: UIViewController {
 
     let switchPlayerFirst: SwitchPlayer = {
         let episode1 = Episode(
-            title: "EPISODE 16",
-            subtitle: "« Ommm », le yoga comme remède à tous nos maux ?",
+            title: "EPISODE 8",
+            subtitle: "Tu dors ?",
             description: "",
             totalTime: "",
-            imageUrl: "https://back.bingeaudio.fr/wp-content/uploads/2021/02/dusport_soundcloud_cover_16-1-768x768.png",
+            imageUrl: "https://back.bingeaudio.fr/wp-content/uploads/2023/01/pp-vignette-carr%C3%A9e-%C3%A9pisode-768x768.png",
             playerUrl: "",
             podcastTitle: "DU SPORT"
         )
@@ -180,12 +180,11 @@ class HomeViewController: UIViewController {
     }()
     
     private func setupAccessibility() {
-        stackViewLoaderCollectionView.accessibilityLabel = ""
-        collectionViewPodcast.accessibilityLabel = ""
-        switchPlayerFirst.accessibilityLabel = ""
-        switchPlayerSecond.accessibilityLabel = ""
-        switchPlayerFirst.imageCircle.accessibilityLabel = ""
-        switchPlayerSecond.imageCircle.accessibilityLabel = ""
+        collectionViewPodcast.accessibilityLabel = "collection view which references all available podcasts, clicking on it takes you to the Podcast page"
+        switchPlayerFirst.accessibilityLabel = "switch player, an element that allows you to launch or stop a podcast by clicking on it"
+        switchPlayerSecond.accessibilityLabel = "switch player, an element that allows you to launch or stop a podcast by clicking on it"
+        switchPlayerFirst.imageCircle.accessibilityLabel = "click on the image to start or stop a podcast"
+        switchPlayerSecond.imageCircle.accessibilityLabel = "click on the image to start or stop a podcast"
     }
     
     private func setupScrollView() {

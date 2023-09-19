@@ -173,20 +173,8 @@ extension PodcastViewController {
      }
     
     private func setupAccessibility() {
-        myCollectionViewPodcast?.accessibilityLabel = ""
-        pageControl?.accessibilityLabel = ""
-        
-        /*
-        seekMoreButton.accessibilityLabel = ""
-        seekLessButton.accessibilityLabel = ""
-        playPauseButton.accessibilityLabel = ""
-        descriptionPodcast.accessibilityLabel = ""
-        stackVerticalMenu.accessibilityLabel = ""
-        heartButton.accessibilityLabel = ""
-        titlePodcast.accessibilityLabel = ""
-        subtitlePodcast.accessibilityLabel = ""
-        slider.accessibilityLabel = ""
-         */
+        myCollectionViewPodcast?.accessibilityLabel = "collection view which references all available podcasts"
+        pageControl?.accessibilityLabel = "page control, which lets you know which page is selected "
     }
 
 }

@@ -231,15 +231,15 @@ class PlayerViewController: UIViewController {
     }
     
     private func setupAccessibility() {
-        seekMoreButton.accessibilityLabel = ""
-        seekLessButton.accessibilityLabel = ""
-        playPauseButton.accessibilityLabel = ""
-        descriptionPodcast.accessibilityLabel = ""
-        stackVerticalMenu.accessibilityLabel = ""
-        heartButton.accessibilityLabel = ""
-        titlePodcast.accessibilityLabel = ""
-        subtitlePodcast.accessibilityLabel = ""
-        slider.accessibilityLabel = ""
+        seekMoreButton.accessibilityLabel = "seek more button"
+        seekLessButton.accessibilityLabel = "seek less button"
+        playPauseButton.accessibilityLabel = "play/pause button"
+        descriptionPodcast.accessibilityLabel = "description of podcast"
+        stackVerticalMenu.accessibilityLabel = "a space where you can share the podcast you're listening to"
+        heartButton.accessibilityLabel = "button for adding or removing the podcast from favourites"
+        titlePodcast.accessibilityLabel = "title podcast"
+        subtitlePodcast.accessibilityLabel = "subtitle podcast"
+        slider.accessibilityLabel = "slider for scrolling through the podcast"
     }
     
     private func setupImagePlayer() {

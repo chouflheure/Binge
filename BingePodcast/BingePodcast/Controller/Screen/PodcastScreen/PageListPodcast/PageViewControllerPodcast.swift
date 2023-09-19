@@ -69,7 +69,7 @@ class PageListPodcast: UIViewController {
     }
     
     private func setupAccessibility() {
-        tableViewEpisode.accessibilityLabel = "" 
+        tableViewEpisode.accessibilityLabel = "table view with all episode from the podcast selected" 
     }
     
     private func initTableViewFooter() {
