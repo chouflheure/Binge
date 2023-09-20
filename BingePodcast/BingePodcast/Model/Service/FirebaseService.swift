@@ -6,7 +6,6 @@ protocol FirebaseServiceProtocol {
     func fetchOneEpisodeFirebase(podcast: String, episodeNumber: Int, onCompletion: @escaping (Episode?) -> Void)
     func fetchEpisodeOnPosdcastFirebase(podcastName: String, onCompletion: @escaping (Result<[Episode]?,Error>) -> Void)
     func loadMoreData(podcastName: String, onCompletion: @escaping (Result<[Episode]?,Error>) -> Void)
-    func fetchAllAuthorFirebase(onCompletion: @escaping ([Author]?) -> Void)
     func fetchRandomPodcast(onCompletion: @escaping (Episode?) -> Void)
 }
 
@@ -31,10 +30,6 @@ class FirebaseManager: FirebaseCommande {
 }
 
 public class FirebaseService: FirebaseServiceProtocol {
-    func fetchAllAuthorFirebase(onCompletion: @escaping ([Author]?) -> Void) {
-        // 
-    }
-    
     
     private var arrayLastDocument = [String: DocumentSnapshot]()
     private var podcastLimit: Int = 5
@@ -46,19 +41,20 @@ public class FirebaseService: FirebaseServiceProtocol {
         self.firebaseManager = firebaseManager
     }
 
-    func fetchAllPodcastFirebase(onCompletion: @escaping (Result<[Podcast]?,Error>) -> Void) {
+    func fetchAllPodcastFirebase(onCompletion: @escaping (Result<[Podcast]?, Error>) -> Void) {
         firebaseManager.getDocuments(collectionName: "Podcast", completion: { (querySnapshot, err) in
             var podcast = [Podcast]()
-            guard let querySnapshot = querySnapshot else {return}
+            guard let querySnapshot = querySnapshot else { return }
             if let err = err {
                 print("@@@ Error getting: \(err)")
                 onCompletion(.failure(err))
             } else {
                 for document in querySnapshot.documents {
-                    podcast.append(Podcast(title: document.data()["title"] as? String,
-                                           image: document.data()["image"] as? String,
-                                           author: document.data()["author"] as? String)
-                    )
+                    podcast.append(Podcast(
+                        title: document.data()["title"] as? String,
+                        image: document.data()["image"] as? String,
+                        author: document.data()["author"] as? String
+                    ))
                 }
                 onCompletion(.success(podcast))
             }
