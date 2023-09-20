@@ -7,11 +7,9 @@
 
 import Foundation
 import XCTest
+import Firebase
 @testable import BingePodcast
 
-protocol QueryDocumentSnapshotProtocol {
-    func data() -> [String: Any]?
-}
 
 
 class PodcastManagerTests: XCTestCase {
@@ -27,17 +25,22 @@ class PodcastManagerTests: XCTestCase {
             "author": "Test Author"
         ]
         
-        let mockSnapshot = MockQueryDocumentSnapshot(mockData: mockData)
+        let fakeResponse = FakeResponse(data: mockData, error: nil)
+        let fakeFirebaseSession = FakeFirebaseSession(fakeResponse: fakeResponse)
         
+        let firebase = FirebaseService(firebaseManager: fakeFirebaseSession)
+        
+                
         // Utilisez le mockSnapshot dans la méthode fetchAllPodcastFirebase
         let expectation = XCTestExpectation(description: "Fetch Podcasts")
         
-        firebaseService.fetchAllPodcastFirebase { result in
+        let test = [Podcast(title: "title", image: "image", author: "author")]
+        
+        firebase.fetchAllPodcastFirebase { result in
             switch result {
             case .success(let podcasts):
-                print("@@@ podcasts?.first?.title = \(podcasts?.first?.title)")
                 XCTAssertNotNil(podcasts)
-                XCTAssertEqual(podcasts?.count, 1) // Vérifiez le nombre de podcasts récupérés
+                XCTAssertEqual(podcasts?.count, 1)
                 // Vous pouvez ajouter d'autres assertions ici pour vérifier les détails des podcasts récupérés.
                 
             case .failure(let error):
@@ -47,11 +50,13 @@ class PodcastManagerTests: XCTestCase {
             expectation.fulfill()
         }
     }
-
-    
 }
 
-class MockQueryDocumentSnapshot: QueryDocumentSnapshotProtocol {
+class MockQueryDocumentSnapshotMock: QueryDocumentSnapshotProtocol {
+    func data() -> [String : Any] {
+        return mockData
+    }
+    
     private let mockData: [String: Any]
 
     init(mockData: [String: Any]) {
@@ -62,3 +67,66 @@ class MockQueryDocumentSnapshot: QueryDocumentSnapshotProtocol {
         return mockData
     }
 }
+
+
+
+
+
+// Créez une classe de mock qui adopte le protocole personnalisé
+class QuerySnapshotMock: QuerySnapshotProtocol {
+
+    var documents: [QueryDocumentSnapshot]
+    
+    init(documents: [QueryDocumentSnapshot]) {
+        self.documents = documents
+    }
+}
+
+
+
+class FakeFirebaseSession: FirebaseCommande {
+    
+    private let fakeResponse: FakeResponse
+    
+    init(fakeResponse: FakeResponse) {
+        self.fakeResponse = fakeResponse
+    }
+ 
+    func getDocuments(collectionName: String, completion: @escaping (QuerySnapshotProtocol?, Error?) -> Void) {
+        var mockDocument = QueryDocumentSnapshotMock(mockData: fakeResponse.data)
+        
+        var querySnapShot = QuerySnapshotMock(documents: [mockDocument])
+        
+        let error = fakeResponse.error
+        
+        completion(querySnapShot, error)
+    }
+    
+    func getDocumentsWithLimit(podcastName: String, completion: @escaping (QuerySnapshotProtocol?, Error?) -> Void) {}
+}
+
+struct FakeResponse {
+    var data: [String: Any]
+    var error: Error?
+}
+
+protocol QueryDocumentSnapshotProtocol {
+    func data() -> [String: Any]
+    // Ajoutez d'autres méthodes ou propriétés si nécessaire
+}
+
+extension QueryDocumentSnapshot: QueryDocumentSnapshotProtocol {}
+
+class QueryDocumentSnapshotMock: QueryDocumentSnapshotProtocol {
+    public var mockData: [String: Any] = [:]
+     
+    init(mockData: [String : Any]) {
+        self.mockData = mockData
+    }
+    
+    func data() -> [String: Any] {
+        return mockData
+    }
+}
+
+

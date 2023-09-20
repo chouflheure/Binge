@@ -87,7 +87,7 @@ class QuerySnapshotMock: QuerySnapshot {
     }
 }
 
-/*
+
 
 class MockFireBaseManager: FirebaseCommande {
     func getDocuments(collectionName: String, completion: @escaping (QuerySnapshot?, Error?) -> Void) {
@@ -103,5 +103,5 @@ class MockFireBaseManager: FirebaseCommande {
     }
     func getDocumentsWithLimit(podcastName: String, completion: @escaping (QuerySnapshot?, Error?) -> Void) {}
  }
-*/
+
 */
