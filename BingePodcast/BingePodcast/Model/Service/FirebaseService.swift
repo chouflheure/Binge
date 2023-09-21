@@ -3,6 +3,7 @@ import Firebase
 
 public protocol QuerySnapshotProtocol {
     var queryDoc: [QueryDocumentSnapShotProtocol] { get }
+    
 }
 
 extension QuerySnapshot: QuerySnapshotProtocol {
@@ -10,12 +11,12 @@ extension QuerySnapshot: QuerySnapshotProtocol {
         documents.map {$0}
     }
 }
-extension QueryDocumentSnapshot: QueryDocumentSnapShotProtocol{}
-                                    
+
 public protocol QueryDocumentSnapShotProtocol {
     func data() -> [String: Any]
 }
 
+extension QueryDocumentSnapshot: QueryDocumentSnapShotProtocol{}
 
 
 protocol FirebaseServiceProtocol {
@@ -119,7 +120,8 @@ public class FirebaseService: FirebaseServiceProtocol {
                     )
                 }
                 
-                // self.arrayLastDocument[podcastName]
+                
+                // self.arrayLastDocument[podcastName] = documents.last
                 //self.arrayLastDocument[podcastName] = documents.last
                 //self.lastDocument = documents.last
                 

@@ -1,17 +1,7 @@
 
- //
-//  test2.swift
-//  BingePodcastTests
-//
-//  Created by charlesCalvignac on 20/09/2023.
-//
-
 import Foundation
 import XCTest
-import Firebase
 @testable import BingePodcast
-
-
 
 class PodcastManagerTests: XCTestCase {
     
@@ -91,7 +81,7 @@ class PodcastManagerTests: XCTestCase {
     
 }
 
-class QueryDocumentSnapshotMock: QueyDocumentSnapShotProtocol {
+class QueryDocumentSnapshotMock: QueryDocumentSnapShotProtocol {
     public var mockData: [String: Any] = [:]
      
     init(mockData: [String : Any]) {
@@ -109,9 +99,9 @@ class QueryDocumentSnapshotMock: QueyDocumentSnapShotProtocol {
 
 // Créez une classe de mock qui adopte le protocole personnalisé
 class QuerySnapshotMock: QuerySnapshotProtocol {
-    var queryDoc: [QueyDocumentSnapShotProtocol]
+    var queryDoc: [QueryDocumentSnapShotProtocol]
     
-    init(queryDoc: [QueyDocumentSnapShotProtocol]) {
+    init(queryDoc: [QueryDocumentSnapShotProtocol]) {
         self.queryDoc = queryDoc
     }
 }
