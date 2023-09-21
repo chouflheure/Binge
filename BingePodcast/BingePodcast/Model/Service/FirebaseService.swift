@@ -1,27 +1,43 @@
 import Foundation
 import Firebase
 
+public protocol QuerySnapshotProtocol {
+    var queryDoc: [QueryDocumentSnapShotProtocol] { get }
+}
+
+extension QuerySnapshot: QuerySnapshotProtocol {
+    public var queryDoc: [QueryDocumentSnapShotProtocol] {
+        documents.map {$0}
+    }
+}
+extension QueryDocumentSnapshot: QueryDocumentSnapShotProtocol{}
+                                    
+public protocol QueryDocumentSnapShotProtocol {
+    func data() -> [String: Any]
+}
+
+
+
 protocol FirebaseServiceProtocol {
     func fetchAllPodcastFirebase(onCompletion: @escaping (Result<[Podcast]?,Error>) -> Void)
-    func fetchOneEpisodeFirebase(podcast: String, episodeNumber: Int, onCompletion: @escaping (Episode?) -> Void)
+    func fetchOneEpisodeFirebase(podcast: String, episodeNumber: Int, onCompletion: @escaping (Result<Episode?, Error>) -> Void)
     func fetchEpisodeOnPosdcastFirebase(podcastName: String, onCompletion: @escaping (Result<[Episode]?,Error>) -> Void)
     func loadMoreData(podcastName: String, onCompletion: @escaping (Result<[Episode]?,Error>) -> Void)
-    func fetchRandomPodcast(onCompletion: @escaping (Episode?) -> Void)
 }
 
 public protocol FirebaseCommande {
-    func getDocuments(collectionName: String, completion: @escaping (QuerySnapshot?, Error?) -> Void)
-    func getDocumentsWithLimit(podcastName: String, completion: @escaping (QuerySnapshot?, Error?) -> Void)
+    func getDocuments(collectionName: String, completion: @escaping (QuerySnapshotProtocol?, Error?) -> Void)
+    func getDocumentsWithLimit(podcastName: String, completion: @escaping (QuerySnapshotProtocol?, Error?) -> Void)
 }
 
 class FirebaseManager: FirebaseCommande {
-    func getDocumentsWithLimit(podcastName: String, completion: @escaping (QuerySnapshot?, Error?) -> Void) {
+    func getDocumentsWithLimit(podcastName: String, completion: @escaping (QuerySnapshotProtocol?, Error?) -> Void) {
         Firestore.firestore().collection(podcastName).limit(to: 5).getDocuments { (querySnapshot, err) in
             completion(querySnapshot, err)
         }
     }
     
-    func getDocuments(collectionName: String, completion: @escaping (QuerySnapshot?, Error?) -> Void) {
+    func getDocuments(collectionName: String, completion: @escaping (QuerySnapshotProtocol?, Error?) -> Void) {
         Firestore.firestore().collection(collectionName).getDocuments() { (querySnapshot, err) in
             completion(querySnapshot, err)
         }
@@ -30,7 +46,7 @@ class FirebaseManager: FirebaseCommande {
 }
 
 public class FirebaseService: FirebaseServiceProtocol {
-    
+
     private var arrayLastDocument = [String: DocumentSnapshot]()
     private var podcastLimit: Int = 5
     private var lastDocument: DocumentSnapshot? = nil
@@ -49,7 +65,7 @@ public class FirebaseService: FirebaseServiceProtocol {
                 print("@@@ Error getting: \(err)")
                 onCompletion(.failure(err))
             } else {
-                for document in querySnapshot.documents {
+                for document in querySnapshot.queryDoc {
                     podcast.append(Podcast(
                         title: document.data()["title"] as? String,
                         image: document.data()["image"] as? String,
@@ -61,14 +77,14 @@ public class FirebaseService: FirebaseServiceProtocol {
         })
     }
     
-    func fetchOneEpisodeFirebase(podcast: String, episodeNumber: Int, onCompletion: @escaping (Episode?) -> Void) {
+    func fetchOneEpisodeFirebase(podcast: String, episodeNumber: Int, onCompletion: @escaping (Result<Episode?, Error>) -> Void) {
         firebaseManager.getDocuments(collectionName: podcast, completion: { (querySnapshot, err) in
             var episode: Episode
             if let err = err {
                 print("@@@ Error getting: \(err)")
-                onCompletion(nil)
+                onCompletion(.failure(err))
             } else {
-                if let document = querySnapshot?.documents[episodeNumber] {
+                if let document = querySnapshot?.queryDoc[episodeNumber] {
                     episode = Episode(title: document.data()["title"] as? String,
                                       subtitle: document.data()["subtitle"] as? String,
                                       description: document.data()["description"] as? String,
@@ -77,13 +93,13 @@ public class FirebaseService: FirebaseServiceProtocol {
                                       playerUrl: document.data()["playerUrl"] as? String,
                                       podcastTitle: podcast
                     )
-                    onCompletion(episode)
+                    onCompletion(.success(episode))
                 }
             }
         })
     }
     
-    func fetchEpisodeOnPosdcastFirebase(podcastName: String, onCompletion: @escaping (Result<[Episode]?,Error>) -> Void) {
+    func fetchEpisodeOnPosdcastFirebase(podcastName: String, onCompletion: @escaping (Result<[Episode]?, Error>) -> Void) {
 
         firebaseManager.getDocumentsWithLimit(podcastName: podcastName, completion: { (querySnapshot, err) in
             var episode = [Episode]()
@@ -91,7 +107,7 @@ public class FirebaseService: FirebaseServiceProtocol {
                 print("@@@ Error getting: \(err)")
                 onCompletion(.failure(err))
             } else {
-                guard let documents = querySnapshot?.documents else {return}
+                guard let documents = querySnapshot?.queryDoc else {return}
                 for document in documents {
                     episode.append(Episode(title: document.data()["title"] as? String,
                                            subtitle: document.data()["subtitle"] as? String,
@@ -102,15 +118,18 @@ public class FirebaseService: FirebaseServiceProtocol {
                                            podcastTitle: podcastName)
                     )
                 }
-                self.arrayLastDocument[podcastName] = documents.last
-                self.lastDocument = documents.last
+                
+                // self.arrayLastDocument[podcastName]
+                //self.arrayLastDocument[podcastName] = documents.last
+                //self.lastDocument = documents.last
+                
                 onCompletion(.success(episode))
             }
         })
     }
     
     func loadMoreData(podcastName: String,
-                      onCompletion: @escaping (Result<[Episode]?,Error>) -> Void) {
+                      onCompletion: @escaping (Result<[Episode]?, Error>) -> Void) {
 
         guard let lastDocument = self.arrayLastDocument[podcastName], !isLoading else {return}
         isLoading = true
@@ -127,7 +146,7 @@ public class FirebaseService: FirebaseServiceProtocol {
             } else {
                 var episode = [Episode]()
                 if let documents = querySnapshot?.documents {
-                    self.arrayLastDocument[podcastName] = documents.last
+                   // self.arrayLastDocument[podcastName] = documents.last
                     for document in documents {
                         episode.append(Episode(title: document.data()["title"] as? String,
                                                 subtitle: document.data()["subtitle"] as? String,
@@ -143,25 +162,4 @@ public class FirebaseService: FirebaseServiceProtocol {
             }
         }
     }
-
-    func fetchRandomPodcast(onCompletion: @escaping (Episode?) -> Void) {
-        firebaseManager.getDocuments(collectionName: "Podcast", completion: { (querySnapshot, err) in
-            if let err = err {
-                print("@@@ Error getting: \(err)")
-                onCompletion(nil)
-            } else {
-                guard let firstQuerySnapShot = querySnapshot?.documents[0] else {return}
-                let podcast = firstQuerySnapShot.documentID
-                let numberEpisode = Int(firstQuerySnapShot.data()["numberEpisode"]
-                                        as? String ?? "0") ?? 0
-                let randomEpisode = Int.random(in: 1..<numberEpisode-1)
-                self.fetchOneEpisodeFirebase(podcast: podcast,
-                                             episodeNumber: randomEpisode,
-                                             onCompletion: { querySnapshot in
-                    onCompletion(querySnapshot)
-                })
-            }
-        })
-    }
-    
 }

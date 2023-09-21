@@ -9,11 +9,12 @@ target 'BingePodcast' do
 	pod 'SwiftGen', '~> 6.6.2'
         pod 'Firebase'
         pod 'Firebase/Firestore'
+        
   # Pods for BingePodcastTests
   target 'BingePodcastTests' do
     inherit! :search_paths
     # Pods for testing
-	
+
   end
 
 end
