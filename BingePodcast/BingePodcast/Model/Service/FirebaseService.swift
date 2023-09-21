@@ -14,9 +14,11 @@ extension QuerySnapshot: QuerySnapshotProtocol {
 
 public protocol QueryDocumentSnapShotProtocol {
     func data() -> [String: Any]
+    
 }
 
-extension QueryDocumentSnapshot: QueryDocumentSnapShotProtocol{}
+extension QueryDocumentSnapshot: QueryDocumentSnapShotProtocol{
+}
 
 
 protocol FirebaseServiceProtocol {
@@ -121,10 +123,7 @@ public class FirebaseService: FirebaseServiceProtocol {
                 }
                 
                 
-                // self.arrayLastDocument[podcastName] = documents.last
-                //self.arrayLastDocument[podcastName] = documents.last
-                //self.lastDocument = documents.last
-                
+                self.arrayLastDocument[podcastName] = (documents.last as! DocumentSnapshot)
                 onCompletion(.success(episode))
             }
         })
@@ -148,7 +147,7 @@ public class FirebaseService: FirebaseServiceProtocol {
             } else {
                 var episode = [Episode]()
                 if let documents = querySnapshot?.documents {
-                   // self.arrayLastDocument[podcastName] = documents.last
+                    self.arrayLastDocument[podcastName] = documents.last
                     for document in documents {
                         episode.append(Episode(title: document.data()["title"] as? String,
                                                 subtitle: document.data()["subtitle"] as? String,
