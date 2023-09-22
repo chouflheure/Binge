@@ -20,7 +20,6 @@ public protocol QueryDocumentSnapShotProtocol {
 extension QueryDocumentSnapshot: QueryDocumentSnapShotProtocol{
 }
 
-
 protocol FirebaseServiceProtocol {
     func fetchAllPodcastFirebase(onCompletion: @escaping (Result<[Podcast]?,Error>) -> Void)
     func fetchOneEpisodeFirebase(podcast: String, episodeNumber: Int, onCompletion: @escaping (Result<Episode?, Error>) -> Void)

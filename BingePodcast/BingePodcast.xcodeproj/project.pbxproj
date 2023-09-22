@@ -47,7 +47,7 @@
 		1D625F872A8AD951008B656D /* ListLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D625F862A8AD951008B656D /* ListLoader.swift */; };
 		1D72B3AA2A81216F0033F355 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D72B3A92A81216F0033F355 /* CoreDataStack.swift */; };
 		1D72B3AC2A8121A90033F355 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D72B3AB2A8121A90033F355 /* CoreDataManager.swift */; };
-		1D7E22CD2ABADFED0014E30D /* test2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7E22CC2ABADFED0014E30D /* test2.swift */; };
+		1D7E22CD2ABADFED0014E30D /* FirebaseCallTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7E22CC2ABADFED0014E30D /* FirebaseCallTest.swift */; };
 		1D8131282AB25DF100D0DF3F /* Pods_BingePodcastTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D8131272AB25DF100D0DF3F /* Pods_BingePodcastTests.framework */; };
 		1D8131292AB25E2700D0DF3F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1D986AB02A2E120500D26CEB /* GoogleService-Info.plist */; };
 		1D8550482A8A313B00001A4C /* FavoriteViewController+UIPageViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8550472A8A313B00001A4C /* FavoriteViewController+UIPageViewControllerDelegate.swift */; };
@@ -79,7 +79,6 @@
 		1DCAD9A02A793A630048C87D /* PresentDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCAD99F2A793A630048C87D /* PresentDescription.swift */; };
 		1DCAD9A22A793A8F0048C87D /* DismissDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCAD9A12A793A8F0048C87D /* DismissDescription.swift */; };
 		1DD0464C2AB349CC00626651 /* CoreDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD0464B2AB349CC00626651 /* CoreDataManagerTests.swift */; };
-		1DD4EDCF2ABACEB700141B15 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD4EDCE2ABACEB700141B15 /* test.swift */; };
 		1DD7263A2A45D86400CD6D16 /* FloatingTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD726392A45D86400CD6D16 /* FloatingTabBarViewController.swift */; };
 		1DD76B8F2AA09DEC00EA1FFA /* PageViewControllerPodcast+TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD76B8E2AA09DEC00EA1FFA /* PageViewControllerPodcast+TableViewDelegate.swift */; };
 		1DD76B922AA0B7E700EA1FFA /* PageViewControllerPodcast+TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD76B912AA0B7E700EA1FFA /* PageViewControllerPodcast+TableViewDataSource.swift */; };
@@ -150,7 +149,7 @@
 		1D625F862A8AD951008B656D /* ListLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListLoader.swift; sourceTree = "<group>"; };
 		1D72B3A92A81216F0033F355 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		1D72B3AB2A8121A90033F355 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		1D7E22CC2ABADFED0014E30D /* test2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test2.swift; sourceTree = "<group>"; };
+		1D7E22CC2ABADFED0014E30D /* FirebaseCallTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseCallTest.swift; sourceTree = "<group>"; };
 		1D8131272AB25DF100D0DF3F /* Pods_BingePodcastTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_BingePodcastTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D8550472A8A313B00001A4C /* FavoriteViewController+UIPageViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteViewController+UIPageViewControllerDelegate.swift"; sourceTree = "<group>"; };
 		1D85504C2A8A331700001A4C /* PageListFavorite+UITableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PageListFavorite+UITableViewDelegate.swift"; sourceTree = "<group>"; };
@@ -182,7 +181,6 @@
 		1DCAD99F2A793A630048C87D /* PresentDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentDescription.swift; sourceTree = "<group>"; };
 		1DCAD9A12A793A8F0048C87D /* DismissDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissDescription.swift; sourceTree = "<group>"; };
 		1DD0464B2AB349CC00626651 /* CoreDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagerTests.swift; sourceTree = "<group>"; };
-		1DD4EDCE2ABACEB700141B15 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		1DD726392A45D86400CD6D16 /* FloatingTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingTabBarViewController.swift; sourceTree = "<group>"; };
 		1DD76B8E2AA09DEC00EA1FFA /* PageViewControllerPodcast+TableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PageViewControllerPodcast+TableViewDelegate.swift"; sourceTree = "<group>"; };
 		1DD76B912AA0B7E700EA1FFA /* PageViewControllerPodcast+TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PageViewControllerPodcast+TableViewDataSource.swift"; sourceTree = "<group>"; };
@@ -325,10 +323,9 @@
 		1D187A0E2A2CC8AE00827277 /* BingePodcastTests */ = {
 			isa = PBXGroup;
 			children = (
-				1DD0464A2AB33D1B00626651 /* CallImageData */,
+				1DA16E002ABDD36F00B085BE /* FirebaseCallTest */,
+				1DD0464A2AB33D1B00626651 /* CallImageDataTest */,
 				1DC4CC7F2AB0A9BA000F3600 /* CoreDataTest */,
-				1DD4EDCE2ABACEB700141B15 /* test.swift */,
-				1D7E22CC2ABADFED0014E30D /* test2.swift */,
 			);
 			path = BingePodcastTests;
 			sourceTree = "<group>";
@@ -503,6 +500,14 @@
 			path = CustomFonts;
 			sourceTree = "<group>";
 		};
+		1DA16E002ABDD36F00B085BE /* FirebaseCallTest */ = {
+			isa = PBXGroup;
+			children = (
+				1D7E22CC2ABADFED0014E30D /* FirebaseCallTest.swift */,
+			);
+			name = FirebaseCallTest;
+			sourceTree = "<group>";
+		};
 		1DC460CE2A7BEF0F00D63CB3 /* FloatingTabBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -527,12 +532,12 @@
 			path = Lottie;
 			sourceTree = "<group>";
 		};
-		1DD0464A2AB33D1B00626651 /* CallImageData */ = {
+		1DD0464A2AB33D1B00626651 /* CallImageDataTest */ = {
 			isa = PBXGroup;
 			children = (
 				1DC4CC802AB0B33C000F3600 /* ImageCallURLTests.swift */,
 			);
-			name = CallImageData;
+			name = CallImageDataTest;
 			sourceTree = "<group>";
 		};
 		1DD76B902AA0B69400EA1FFA /* PodcastViewController */ = {
@@ -897,9 +902,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D7E22CD2ABADFED0014E30D /* test2.swift in Sources */,
+				1D7E22CD2ABADFED0014E30D /* FirebaseCallTest.swift in Sources */,
 				1DC4CC812AB0B33C000F3600 /* ImageCallURLTests.swift in Sources */,
-				1DD4EDCF2ABACEB700141B15 /* test.swift in Sources */,
 				1DD0464C2AB349CC00626651 /* CoreDataManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
