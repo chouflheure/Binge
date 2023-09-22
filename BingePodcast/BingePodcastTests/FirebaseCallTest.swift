@@ -56,7 +56,6 @@ class PodcastManagerTests: XCTestCase {
         firebaseService.fetchOneEpisodeFirebase(podcast: "PodcastName", episodeNumber: 0, onCompletion: { result in
             switch result {
             case .success(let episode):
-                print("@@@ episode = \(episode)")
                 XCTAssertNotNil(episode)
             case .failure(let err):
                 XCTAssertNil(err)
@@ -118,8 +117,8 @@ class FakeFirebaseSession: FirebaseCommande {
  
     func getDocuments(collectionName: String, completion: @escaping (QuerySnapshotProtocol?, Error?) -> Void) {
         
-        var mockDocument = QueryDocumentSnapshotMock(mockData: fakeResponse.data ?? ["":""])
-        var query = QuerySnapshotMock(queryDoc: [mockDocument])
+        let mockDocument = QueryDocumentSnapshotMock(mockData: fakeResponse.data ?? ["":""])
+        let query = QuerySnapshotMock(queryDoc: [mockDocument])
         let error = fakeResponse.error
         
         completion(query, error)
