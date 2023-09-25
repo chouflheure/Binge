@@ -9,17 +9,17 @@ class HomeViewController: UIViewController {
 
     let cellPodcast = "cellPodcast"
     private let homePageModel = HomePageModel()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupScrollView()
         initCollectionView()
         setGradientBackground()
-        homePageModel.homePageDelegate = self
         loadPodcast()
+        setupAccessibility()
+        homePageModel.homePageDelegate = self
         homePageModel.fetchAllPodcast()
-        switchPlayerFirst.showLoader()
     }
     
     let scrollView: UIScrollView = {
@@ -105,14 +105,13 @@ class HomeViewController: UIViewController {
 
     let switchPlayerFirst: SwitchPlayer = {
         let episode1 = Episode(
-            title: "EPISODE 16",
-            subtitle: "Romance et soumission Deuxième partie",
+            title: "EPISODE 8",
+            subtitle: "Tu dors ?",
             description: "",
             totalTime: "",
-            imageUrl: Assets.aBientotDeTeRevoir.name,
+            imageUrl: "https://back.bingeaudio.fr/wp-content/uploads/2023/01/pp-vignette-carr%C3%A9e-%C3%A9pisode-768x768.png",
             playerUrl: "",
             podcastTitle: "DU SPORT"
-        
         )
 
         let switchPlayerFirst = SwitchPlayer(
@@ -124,13 +123,13 @@ class HomeViewController: UIViewController {
     
     let switchPlayerSecond: SwitchPlayer = {
         let episode2 = Episode(
-            title: "EPISODE 82",
-            subtitle: "Cuisines indiennes, clichés en sauce",
+            title: "EPISODE 106",
+            subtitle: "Avec Lujipeka",
             description: "",
             totalTime: "",
-            imageUrl: "https://back.bingeaudio.fr/wp-content/uploads/2019/07/Channel_itunes_logo_v2-768x768.png",
+            imageUrl: "https://back.bingeaudio.fr/wp-content/uploads/2021/12/soundcloud_cover_116-768x768.png",
             playerUrl: "",
-            podcastTitle: "DU SPORT"
+            podcastTitle: "À bientôt de te revoir"
         )
 
         let switchPlayerSecond = SwitchPlayer(
@@ -162,7 +161,10 @@ class HomeViewController: UIViewController {
         layout.minimumLineSpacing = 20
         layout.scrollDirection = .horizontal
         
-        let collectionViewPodcast = UICollectionView(frame: CGRect(x: 0, y: 30, width: UIScreen.main.bounds.width, height: 200), collectionViewLayout: layout)
+        let collectionViewPodcast = UICollectionView(frame: CGRect(x: 0,
+                                                                   y: 30,
+                                                                   width: UIScreen.main.bounds.width,
+                                                                   height: 200), collectionViewLayout: layout)
         collectionViewPodcast.backgroundColor = .clear
         collectionViewPodcast.isScrollEnabled = true
         collectionViewPodcast.translatesAutoresizingMaskIntoConstraints = false
@@ -176,6 +178,14 @@ class HomeViewController: UIViewController {
         view.backgroundColor = .clear
         return view
     }()
+    
+    private func setupAccessibility() {
+        collectionViewPodcast.accessibilityLabel = "collection view which references all available podcasts, clicking on it takes you to the Podcast page"
+        switchPlayerFirst.accessibilityLabel = "switch player, an element that allows you to launch or stop a podcast by clicking on it"
+        switchPlayerSecond.accessibilityLabel = "switch player, an element that allows you to launch or stop a podcast by clicking on it"
+        switchPlayerFirst.imageCircle.accessibilityLabel = "click on the image to start or stop a podcast"
+        switchPlayerSecond.imageCircle.accessibilityLabel = "click on the image to start or stop a podcast"
+    }
     
     private func setupScrollView() {
         view.addSubview(scrollView)
@@ -205,12 +215,12 @@ class HomeViewController: UIViewController {
             viewOffsetCollectionnView.heightAnchor.constraint(equalToConstant: 70)
         ].forEach{$0.isActive = true}
     }
-    
+
     private func initCollectionView() {
-        collectionViewPodcast.register(PodcastHomePageCollectionViewCell.self, forCellWithReuseIdentifier: cellPodcast)
+        collectionViewPodcast.register(PodcastHomePageCollectionViewCell.self,
+                                       forCellWithReuseIdentifier: cellPodcast)
         collectionViewPodcast.dataSource = self
         collectionViewPodcast.delegate = self
-        
     }
     
     private func setGradientBackground() {
